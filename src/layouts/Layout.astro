@@ -5,49 +5,107 @@ import '@fontsource-variable/jetbrains-mono';
 import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import spaceGroteskWoff2 from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { getPortfolioContent } from '../data/portfolio';
-import { getAlternateLinks, type Locale } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
 
 interface Props {
   locale?: Locale;
   title?: string;
   description?: string;
+  canonicalPath?: string;
+  alternateEsPath?: string;
+  alternateEnPath?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  keywords?: string[];
+  structuredData?: Record<string, unknown>;
 }
 
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 Astro.response.headers.set('Content-Language', locale);
 Astro.response.headers.set('Vary', 'Accept-Language, Cookie');
 const content = getPortfolioContent(locale);
-const { siteMetadata, ogLocale } = content;
+const { siteMetadata, ogLocale, projectsSection, servicesSection } = content;
 
 const {
   title = `${siteMetadata.brandName} — ${siteMetadata.roleTitle}`,
   description = siteMetadata.description,
+  canonicalPath = Astro.url.pathname,
+  alternateEsPath = locale === 'en' ? '/' : Astro.url.pathname,
+  alternateEnPath = locale === 'es' ? '/en' : Astro.url.pathname,
+  ogImage = new URL('/retrato-profesional.png', Astro.site ?? 'https://victoralvarez.dev').toString(),
+  ogImageAlt = content.heroData.portraitPlaceholder.svgAriaLabel,
+  ogType = 'website',
+  keywords = servicesSection.tags.map((t) => t.label),
+  structuredData,
 } = Astro.props;
 
 const siteOrigin = (Astro.site ?? new URL('https://victoralvarez.dev')).toString();
-const canonicalPath = locale === 'en' ? '/en' : '/';
 const canonicalURL = new URL(canonicalPath, siteOrigin);
-const alternates = getAlternateLinks(siteOrigin);
+const esURL = new URL(alternateEsPath, siteOrigin).toString();
+const enURL = new URL(alternateEnPath, siteOrigin).toString();
 
-const jsonLd = {
+const defaultJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Victor Alvarez',
-  jobTitle: siteMetadata.roleTitle,
-  description: siteMetadata.description,
-  url: canonicalURL.toString(),
-  inLanguage: locale,
-  knowsAbout: [
-    'Full-Stack Software Engineering',
-    'Distributed Systems Architecture',
-    'SaaS & B2B Platforms',
-    'Blockchain & Crypto Payment Infrastructure',
-    'Artificial Intelligence & Vector Search',
-    'Graph Databases & GraphRAG',
-    'Technical Leadership',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteOrigin.replace(/\/$/, '')}/#person`,
+      name: 'Victor Alvarez',
+      jobTitle: siteMetadata.roleTitle,
+      description: siteMetadata.description,
+      image: new URL('/retrato-profesional.png', siteOrigin).toString(),
+      url: canonicalURL.toString(),
+      email: siteMetadata.email,
+      inLanguage: locale,
+      knowsAbout: [
+        'Full-Stack Software Engineering',
+        'Software Architecture & Product Ownership',
+        'SaaS & B2B Multi-Tenant Platforms',
+        'Cryptocurrency Payment Gateways & On-Chain Settlement',
+        'Live Market & Forex Algorithmic Execution',
+        'E-Learning, HLS Streaming & Multi-Level Marketing (MLM) Engines',
+        'Self-Hosted AI GPU Labs, Vector Search (Qdrant) & Knowledge Graphs (Neo4j / GraphRAG)',
+        'E-Commerce & PropTech Real Estate Systems',
+      ],
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': canonicalURL.toString(),
+      name: title,
+      description,
+      inLanguage: locale,
+      mainEntity: { '@id': `${siteOrigin.replace(/\/$/, '')}/#person` },
+    },
+    {
+      '@type': 'ItemList',
+      name: projectsSection.heading,
+      description: projectsSection.subtitle,
+      numberOfItems: projectsSection.items.length,
+      itemListElement: projectsSection.items.map((proj, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: {
+          '@type': 'SoftwareApplication',
+          name: proj.title,
+          applicationCategory: proj.category,
+          description: proj.seoDescription,
+          image: proj.image,
+          operatingSystem: 'Web, Cloud, Distributed Systems',
+          keywords: [...proj.industryTags, ...proj.techTags, ...proj.stack].join(', '),
+          url: new URL(
+            locale === 'en' ? `/en/projects/${proj.id}` : `/proyectos/${proj.id}`,
+            siteOrigin,
+          ).toString(),
+        },
+      })),
+    },
   ],
 };
+
+const finalJsonLd = structuredData ?? defaultJsonLd;
 ---
 
 <!doctype html>
@@ -78,17 +136,21 @@ const jsonLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
     <meta name="author" content="Victor Alvarez" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalURL.toString()} />
 
+    <!-- AI / LLM Crawler Context Discovery -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context & Portfolio Summary" />
+
     <!-- i18n SEO Alternate Links (Hreflang) -->
-    <link rel="alternate" hreflang="es" href={alternates.es} />
-    <link rel="alternate" hreflang="en" href={alternates.en} />
-    <link rel="alternate" hreflang="x-default" href={alternates.xDefault} />
+    <link rel="alternate" hreflang="es" href={esURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={esURL} />
 
     <!-- Open Graph / Social -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.toString()} />
@@ -98,14 +160,19 @@ const jsonLd = {
       property="og:locale:alternate"
       content={locale === 'es' ? 'en_US' : 'es_ES'}
     />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <meta name="generator" content={Astro.generator} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <ClientRouter />
+    <script type="application/ld+json" set:html={JSON.stringify(finalJsonLd)} />
   </head>
   <body class="bg-bg-base text-text-primary antialiased selection:bg-accent/25 selection:text-text-primary">
     <!-- Accessible Skip Navigation Link -->

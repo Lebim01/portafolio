@@ -9,6 +9,9 @@ interface Props {
 
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
+const homeBase = locale === 'en' ? '/en' : '/';
+const resolveNavHref = (href: string) =>
+  href.startsWith('#') && href !== '#contact' ? `${homeBase}${href}` : href;
 ---
 
 <header
@@ -20,7 +23,7 @@ const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
   <div class="container-shell flex h-20 items-center justify-between gap-4">
     <!-- Brand Identity -->
     <a
-      href="#hero"
+      href={`${homeBase}#hero`}
       class="group flex items-center gap-3 text-text-primary focus-visible:rounded-md"
       aria-label={`${siteMetadata.brandName} — ${navigationItems[0]?.label}`}
     >
@@ -46,7 +49,7 @@ const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
           navigationItems.map((item, idx) => (
             <li>
               <a
-                href={item.href}
+                href={resolveNavHref(item.href)}
                 data-nav-link={item.href.replace('#', '')}
                 class:list={[
                   'nav-link relative inline-flex items-center px-3.5 py-2 text-xs font-medium tracking-wider uppercase transition-colors duration-200 rounded-md',
@@ -144,7 +147,7 @@ const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
           navigationItems.map((item) => (
             <li>
               <a
-                href={item.href}
+                href={resolveNavHref(item.href)}
                 data-mobile-link
                 class="flex min-h-[44px] items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:bg-surface hover:text-accent"
               >
@@ -170,123 +173,125 @@ const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
 </header>
 
 <script>
-  const header = document.getElementById('site-header');
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const menuPanel = document.getElementById('mobile-menu-panel');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
-  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('[data-mobile-link]');
-  const langSwitchLinks = document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]');
+  document.addEventListener('astro:page-load', () => {
+    const header = document.getElementById('site-header');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuPanel = document.getElementById('mobile-menu-panel');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+    const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('[data-mobile-link]');
+    const langSwitchLinks = document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]');
 
-  const openAria = header?.dataset.openAria ?? 'Open menu';
-  const closeAria = header?.dataset.closeAria ?? 'Close menu';
+    const openAria = header?.dataset.openAria ?? 'Open menu';
+    const closeAria = header?.dataset.closeAria ?? 'Close menu';
 
-  // Preserve current section hash when switching language
-  langSwitchLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      const targetLang = link.getAttribute('data-lang-switch');
-      if (targetLang) {
-        document.cookie = `va_locale=${targetLang}; path=/; max-age=31536000; samesite=lax`;
-      }
-      if (window.location.hash) {
-        const baseHref = link.getAttribute('href')?.split('#')[0] ?? '/';
-        link.setAttribute('href', `${baseHref}${window.location.hash}`);
-      }
+    // Preserve current section hash when switching language
+    langSwitchLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetLang = link.getAttribute('data-lang-switch');
+        if (targetLang) {
+          document.cookie = `va_locale=${targetLang}; path=/; max-age=31536000; samesite=lax`;
+        }
+        if (window.location.hash) {
+          const baseHref = link.getAttribute('href')?.split('#')[0] ?? '/';
+          link.setAttribute('href', `${baseHref}${window.location.hash}`);
+        }
+      });
     });
-  });
 
-  // Sticky Header Transition on Scroll
-  const updateHeaderStyle = () => {
-    if (!header) return;
-    if (window.scrollY > 16) {
-      header.classList.add(
-        'bg-bg-base/90',
-        'backdrop-blur-md',
-        'border-border-subtle',
-        'shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]'
-      );
-      header.classList.remove('border-transparent');
-    } else {
-      header.classList.remove(
-        'bg-bg-base/90',
-        'backdrop-blur-md',
-        'border-border-subtle',
-        'shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]'
-      );
-      header.classList.add('border-transparent');
-    }
-  };
-
-  updateHeaderStyle();
-  window.addEventListener('scroll', updateHeaderStyle, { passive: true });
-
-  // Mobile Menu Toggle & Accessibility
-  const setMobileMenuOpen = (isOpen: boolean) => {
-    if (!menuBtn || !menuPanel || !iconOpen || !iconClose) return;
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
-    menuBtn.setAttribute('aria-label', isOpen ? closeAria : openAria);
-    menuPanel.classList.toggle('hidden', !isOpen);
-    iconOpen.classList.toggle('hidden', isOpen);
-    iconClose.classList.toggle('hidden', !isOpen);
-  };
-
-  menuBtn?.addEventListener('click', () => {
-    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    setMobileMenuOpen(!isExpanded);
-  });
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', () => setMobileMenuOpen(false));
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuBtn?.getAttribute('aria-expanded') === 'true') {
-      setMobileMenuOpen(false);
-      menuBtn.focus();
-    }
-  });
-
-  // Active Section Indicator via IntersectionObserver
-  const setActiveNav = (sectionId: string) => {
-    navLinks.forEach((link) => {
-      const target = link.getAttribute('data-nav-link');
-      const indicator = link.querySelector('[data-nav-indicator]');
-      const isActive = target === sectionId;
-
-      link.classList.toggle('text-accent', isActive);
-      link.classList.toggle('text-text-secondary', !isActive);
-      if (isActive) {
-        link.setAttribute('aria-current', 'location');
+    // Sticky Header Transition on Scroll
+    const updateHeaderStyle = () => {
+      if (!header) return;
+      if (window.scrollY > 16) {
+        header.classList.add(
+          'bg-bg-base/90',
+          'backdrop-blur-md',
+          'border-border-subtle',
+          'shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]'
+        );
+        header.classList.remove('border-transparent');
       } else {
-        link.removeAttribute('aria-current');
+        header.classList.remove(
+          'bg-bg-base/90',
+          'backdrop-blur-md',
+          'border-border-subtle',
+          'shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]'
+        );
+        header.classList.add('border-transparent');
       }
+    };
 
-      if (indicator) {
-        indicator.classList.toggle('opacity-100', isActive);
-        indicator.classList.toggle('scale-x-100', isActive);
-        indicator.classList.toggle('opacity-0', !isActive);
-        indicator.classList.toggle('scale-x-0', !isActive);
+    updateHeaderStyle();
+    window.addEventListener('scroll', updateHeaderStyle, { passive: true });
+
+    // Mobile Menu Toggle & Accessibility
+    const setMobileMenuOpen = (isOpen: boolean) => {
+      if (!menuBtn || !menuPanel || !iconOpen || !iconClose) return;
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.setAttribute('aria-label', isOpen ? closeAria : openAria);
+      menuPanel.classList.toggle('hidden', !isOpen);
+      iconOpen.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+    };
+
+    menuBtn?.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      setMobileMenuOpen(!isExpanded);
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuBtn?.getAttribute('aria-expanded') === 'true') {
+        setMobileMenuOpen(false);
+        menuBtn.focus();
       }
     });
-  };
 
-  const sections = document.querySelectorAll<HTMLElement>('section[id]');
-  if ('IntersectionObserver' in window && sections.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.target.id) {
-            setActiveNav(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-25% 0px -60% 0px',
-        threshold: 0,
-      }
-    );
+    // Active Section Indicator via IntersectionObserver
+    const setActiveNav = (sectionId: string) => {
+      navLinks.forEach((link) => {
+        const target = link.getAttribute('data-nav-link');
+        const indicator = link.querySelector('[data-nav-indicator]');
+        const isActive = target === sectionId;
 
-    sections.forEach((section) => observer.observe(section));
-  }
+        link.classList.toggle('text-accent', isActive);
+        link.classList.toggle('text-text-secondary', !isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+
+        if (indicator) {
+          indicator.classList.toggle('opacity-100', isActive);
+          indicator.classList.toggle('scale-x-100', isActive);
+          indicator.classList.toggle('opacity-0', !isActive);
+          indicator.classList.toggle('scale-x-0', !isActive);
+        }
+      });
+    };
+
+    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+    if ('IntersectionObserver' in window && sections.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.target.id) {
+              setActiveNav(entry.target.id);
+            }
+          });
+        },
+        {
+          rootMargin: '-25% 0px -60% 0px',
+          threshold: 0,
+        }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    }
+  });
 </script>

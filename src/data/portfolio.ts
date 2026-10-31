@@ -14,42 +14,41 @@ export interface HeroBadge {
   accentColor: string;
 }
 
-export interface VerifiablePillar {
-  code: string;
-  label: string;
-  value: string;
-  detail: string;
+export interface JourneyMilestone {
+  stage: string;
+  title: string;
+  tags: string;
+  description: string;
 }
 
-export interface ServiceItem {
+export interface FilterTag {
   id: string;
-  title: string;
-  badge: string;
-  description: string;
-  capabilities: string[];
-  iconName:
-    | 'code-2'
-    | 'network'
-    | 'coins'
-    | 'Sparkles'
-    | 'layers'
-    | 'cloud-cog';
+  label: string;
+  group: 'industry' | 'tech';
 }
 
 export interface ProjectItem {
   id: string;
   title: string;
-  category:
-    | 'Blockchain & Payments'
-    | 'SaaS & B2B'
-    | 'AI & Vector Search'
-    | 'Knowledge Graphs';
+  dateRange: string;
+  image: string;
+  imageAlt: string;
+  seoDescription: string;
+  category: string;
   summary: string;
   architectureNotes: string;
   highlights: string[];
+  industryTags: string[];
+  techTags: string[];
   stack: string[];
   statusLabel: string;
-  previewType: 'crypto-gateway' | 'vector-graph' | 'saas-b2b' | 'ai-pipeline';
+  previewType:
+    | 'crypto-gateway'
+    | 'live-market'
+    | 'elearning-mlm'
+    | 'vector-graph'
+    | 'ecommerce-saas'
+    | 'real-estate';
   detailsAnchor?: string;
 }
 
@@ -98,32 +97,32 @@ export interface PortfolioContent {
     sectionLabel: string;
     heading: string;
     lead: string;
-    paragraphs: string[];
-    focusHeading: string;
-    focusBadge: string;
-    focusAreas: string[];
-    pillarsAriaLabel: string;
-    verifiablePillars: VerifiablePillar[];
-    techSheetTitle: string;
-    profileMetadata: { label: string; value: string }[];
-    ctaServicesLabel: string;
+    personalNote: string;
+    highlights: string[];
+    milestones: JourneyMilestone[];
   };
   servicesSection: {
     eyebrow: string;
     heading: string;
     subtitle: string;
-    cardCtaLabel: string;
-    items: ServiceItem[];
+    industryLabel: string;
+    techLabel: string;
+    allLabel: string;
+    clearFilterLabel: string;
+    tags: FilterTag[];
   };
   projectsSection: {
     eyebrow: string;
     heading: string;
     subtitle: string;
     headerCtaLabel: string;
-    archToggleLabel: string;
+    expandHintLabel: string;
+    highlightsLabel: string;
     archSystemDesignLabel: string;
     stackAriaLabel: string;
-    detailsAriaPrefix: string;
+    inquireCtaLabel: string;
+    closeModalAria: string;
+    emptyFilterText: string;
     items: ProjectItem[];
   };
   contactSection: {
@@ -175,16 +174,6 @@ export interface PortfolioContent {
       };
     };
   };
-  footer: {
-    navHeading: string;
-    specialtiesHeading: string;
-    copyrightText: string;
-    backToTopLabel: string;
-    emailAria: string;
-    projectsAria: string;
-    servicesAria: string;
-    stackNote: string;
-  };
 }
 
 const esContent: PortfolioContent = {
@@ -217,7 +206,7 @@ const esContent: PortfolioContent = {
   navigationItems: [
     { label: 'Inicio', href: '#hero' },
     { label: 'Sobre mí', href: '#about' },
-    { label: 'Especialidades', href: '#services' },
+    { label: 'Industrias', href: '#services' },
     { label: 'Proyectos', href: '#projects' },
   ],
   heroData: {
@@ -236,11 +225,11 @@ const esContent: PortfolioContent = {
       href: '#projects',
     },
     portraitPlaceholder: {
-      isPlaceholder: true,
-      label: 'RETRATO DEL DESARROLLADOR',
-      sublabel: 'Placeholder',
+      isPlaceholder: false,
+      label: 'VICTOR ALVAREZ',
+      sublabel: 'Lead Product Engineer',
       svgAriaLabel:
-        'Espacio reservado claramente identificable para fotografía del desarrollador',
+        'Retrato profesional de Victor Alvarez, Lead Product Engineer, Arquitecto de Software y Product Owner especializado en ecosistemas SaaS, FinTech, Crypto e Inteligencia Artificial',
     },
     floatingBadges: [
       {
@@ -278,231 +267,196 @@ const esContent: PortfolioContent = {
     ],
   },
   aboutData: {
-    sectionLabel: 'SOBRE MÍ',
-    heading:
-      'Ingeniería orientada a sistemas críticos, escalabilidad y precisión técnica',
-    lead: 'Mi enfoque combina el diseño de arquitectura de software con la ejecución práctica en todo el ciclo de vida del producto: modelado de dominio, APIs de baja latencia, infraestructura segura e interfaces rápidas y accesibles.',
-    paragraphs: [
-      'Trabajo en la intersección de ecosistemas SaaS B2B, infraestructura financiera descentralizada (Web3/Pagos) e inteligencia artificial aplicada mediante búsqueda vectorial e indexación sobre bases de datos de grafos.',
-      'Además de la implementación técnica directa, coordino equipos de ingeniería definiendo estándares de código, revisiones de arquitectura, automatización de despliegues y observabilidad en entornos de producción.',
+    sectionLabel: 'EVOLUCIÓN PROFESIONAL',
+    heading: 'De desarrollador a dueño de productos autónomos y socio internacional',
+    lead: 'Mi carrera ha sido una evolución continua de responsabilidades: empecé construyendo plataformas de principio a fin, pasé a diseñar arquitecturas y liderar equipos multidisciplinarios, hasta consolidar mis propios ecosistemas que hoy facturan en automático mientras colaboro con empresas internacionales.',
+    personalNote:
+      'Me encanta participar en eventos de networking y viajo constantemente para crear relaciones estratégicas, cerrar alianzas e impulsar nuevos negocios tecnológicos.',
+    highlights: [
+      'Dueño de Productos en Automático',
+      '+6 años dirigiendo equipos multidisciplinarios',
+      'Colaboración con Empresas Internacionales',
+      'Home AI Lab & Networking Global',
     ],
-    focusHeading: 'Áreas de Especialización Directa',
-    focusBadge: 'System Scope',
-    focusAreas: [
-      'Desarrollo Full-Stack con tipado estricto de extremo a extremo',
-      'Arquitectura de sistemas modulares, orientados a eventos y microservicios',
-      'Ecosistemas SaaS y plataformas B2B multi-tenant',
-      'Pasarelas de pagos cripto, custodia programable y conciliación on-chain',
-      'Búsqueda vectorial híbrida, RAG y bases de datos de grafos',
-      'Liderazgo técnico, mentoría y coordinación de equipos multidisciplinarios',
-    ],
-    pillarsAriaLabel: 'Pilares verificables de ingeniería',
-    verifiablePillars: [
+    milestones: [
       {
-        code: 'END-TO-END',
-        value: 'Full-Stack',
-        label: 'Ciclo Completo',
-        detail:
-          'Desde diseño de esquemas y contratos API hasta interfaces con Core Web Vitals óptimos.',
+        stage: '01 · Full-Stack Developer',
+        title: 'Ejecución técnica completa y dominio de infraestructura',
+        tags: 'E-Commerce · E-Learning · Data Analytics',
+        description:
+          'Inicié asumiendo la construcción técnica de principio a fin: desde el desarrollo de aplicaciones y plataformas web hasta la administración de infraestructura. Dominé stacks completos para crear ecosistemas desde cero en diversas industrias.',
       },
       {
-        code: 'FINTECH / WEB3',
-        value: 'On-Chain',
-        label: 'Infraestructura de Pagos',
-        detail:
-          'Integración de redes EVM/no-EVM, webhooks deterministas y verificación criptográfica.',
+        stage: '02 · Software Architect & Product Owner',
+        title: 'De escribir código a dirigir la estrategia y la arquitectura',
+        tags: 'Visión de Producto · Arquitectura · Home AI Lab (RAG & Grafos)',
+        description:
+          'Evolucioné hacia la toma de decisiones estratégicas como Arquitecto de Software y Product Owner, conectando objetivos de negocio con ingeniería de vanguardia e investigación propia en mi laboratorio de IA con GPUs dedicadas.',
       },
       {
-        code: 'AI / DATA',
-        value: 'Vector + Graph',
-        label: 'Recuperación Semántica',
-        detail:
-          'Motores de búsqueda híbridos combinando embeddings densos y relaciones en grafos.',
+        stage: '03 · Team Lead & creador de equipos (+6 años)',
+        title: 'Liderazgo de células multidisciplinarias de alto impacto',
+        tags: '',
+        description:
+          'Durante más de 6 años he tenido personas a mi cargo —tanto contratadas por empresas como subcontratadas por mi cuenta—, formando y dirigiendo equipos compactos para lanzar y escalar productos completos.',
       },
       {
-        code: 'ARCHITECTURE',
-        value: 'SaaS & B2B',
-        label: 'Sistemas Escalables',
-        detail:
-          'Aislamiento multi-tenant, control de acceso granular (RBAC) y liderazgo técnico.',
+        stage: '04 · Product Owner, Socio & Consultor Internacional',
+        title: 'Proyectos propios que facturan en automático y alcance global',
+        tags: 'Ingresos Automatizados · SaaS · Forex · Crypto · Empresas Globales',
+        description:
+          'Tras impulsar decenas de negocios como socio (en Forex automatizado, pasarelas cripto, academias y SaaS), hoy soy dueño de productos que operan y facturan en automático, a la vez que colaboro estratégicamente con empresas internacionales y viajo constantemente haciendo networking.',
       },
     ],
-    techSheetTitle: 'Ficha Técnica de Ingeniería',
-    profileMetadata: [
-      { label: 'Perfil', value: 'Lead Product Engineer' },
-      { label: 'Especialidad', value: 'Sistemas Distribuidos, SaaS, Blockchain & IA' },
-      { label: 'Modalidad', value: 'Remoto / Colaboración Internacional' },
-    ],
-    ctaServicesLabel: 'Ver arquitectura de servicios',
   },
   servicesSection: {
-    eyebrow: 'CAPACIDADES & ARQUITECTURA',
-    heading: 'Servicios y Especialidades de Ingeniería',
+    eyebrow: 'INDUSTRIAS & ÁREAS DE EXPERIENCIA',
+    heading: 'Sectores e implementaciones donde he construido',
     subtitle:
-      'Soluciones diseñadas bajo principios de modularidad, seguridad transaccional y alto rendimiento operativo.',
-    cardCtaLabel: 'Consultar implementación',
-    items: [
-      {
-        id: 'fullstack-engineering',
-        title: 'Full-Stack Engineering',
-        badge: 'Core Engineering',
-        description:
-          'Desarrollo de aplicaciones web modernas con arquitectura Astro/React en el cliente y servicios backend robustos en Node.js y TypeScript.',
-        capabilities: [
-          'Interfaces de alta velocidad orientadas a Core Web Vitals',
-          'APIs REST, GraphQL y tRPC con validación estricta de esquemas',
-          'Estado predecible, caché inteligente y renderizado híbrido (SSR/SSG)',
-        ],
-        iconName: 'code-2',
-      },
-      {
-        id: 'software-architecture',
-        title: 'Software Architecture',
-        badge: 'System Design',
-        description:
-          'Diseño de sistemas modulares preparados para evolucionar sin fricción técnica, priorizando simplicidad operativa y trazabilidad.',
-        capabilities: [
-          'Modelado de dominio (DDD), monolitos modulares y servicios desacoplados',
-          'Procesamiento asíncrono con colas de mensajes y eventos idempotentes',
-          'Liderazgo técnico, estándares de calidad y revisión arquitectónica',
-        ],
-        iconName: 'network',
-      },
-      {
-        id: 'blockchain-payments',
-        title: 'Blockchain & Payment Infrastructure',
-        badge: 'Web3 & Fintech',
-        description:
-          'Construcción de flujos de cobro, liquidación y verificación transaccional sobre redes blockchain e infraestructuras financieras.',
-        capabilities: [
-          'Pasarelas de pagos cripto con monitoreo de confirmaciones en tiempo real',
-          'Integración de smart contracts, firmas criptográficas y wallets',
-          'Libros contables internos (double-entry ledger) e idempotencia transaccional',
-        ],
-        iconName: 'coins',
-      },
-      {
-        id: 'ai-intelligent-search',
-        title: 'AI & Intelligent Search',
-        badge: 'Applied AI',
-        description:
-          'Implementación de sistemas de búsqueda semántica, pipelines de ingesta documental y recuperación aumentada (RAG) sobre grafos y vectores.',
-        capabilities: [
-          'Indexación vectorial de alta dimensionalidad y búsqueda híbrida (léxica + semántica)',
-          'Modelado de conocimiento conectado en bases de datos de grafos',
-          'Orquestación de LLMs con control de latencia, contexto y estructuración de salidas',
-        ],
-        iconName: 'Sparkles',
-      },
-      {
-        id: 'saas-b2b-ecosystems',
-        title: 'SaaS & B2B Ecosystems',
-        badge: 'Product Platform',
-        description:
-          'Plataformas multi-organización diseñadas para operaciones empresariales, flujos de trabajo complejos e integraciones con terceros.',
-        capabilities: [
-          'Arquitectura multi-tenant con aislamiento lógico o por esquema',
-          'Autenticación empresarial, permisos granulares (RBAC/ABAC) y auditoría',
-          'Webhooks salientes, paneles operativos y facturación por suscripción o uso',
-        ],
-        iconName: 'layers',
-      },
-      {
-        id: 'cloud-devops',
-        title: 'Cloud & Infrastructure',
-        badge: 'Reliability',
-        description:
-          'Automatización de infraestructura, contenerización y despliegues reproducibles para mantener servicios estables y seguros.',
-        capabilities: [
-          'Entornos contenerizados con Docker y pipelines CI/CD automatizados',
-          'Configuración de proxies inversos, redes privadas, caché en borde y TLS',
-          'Observabilidad, logs estructurados y optimización de recursos en la nube',
-        ],
-        iconName: 'cloud-cog',
-      },
+      'Selecciona cualquier etiqueta de industria o implementación para filtrar los proyectos debajo.',
+    industryLabel: 'Por Industria',
+    techLabel: 'Por Implementación / Tecnología',
+    allLabel: 'Todos',
+    clearFilterLabel: 'Limpiar filtro',
+    tags: [
+      { id: 'ecommerce', label: 'E-Commerce', group: 'industry' },
+      { id: 'elearning', label: 'E-Learning', group: 'industry' },
+      { id: 'streaming', label: 'Streaming', group: 'industry' },
+      { id: 'multinivel', label: 'Multinivel / MLM', group: 'industry' },
+      { id: 'crypto', label: 'Crypto & Web3', group: 'industry' },
+      { id: 'payment-gateway', label: 'Payment Gateway', group: 'industry' },
+      { id: 'live-market', label: 'Live Market / Forex', group: 'industry' },
+      { id: 'real-estate', label: 'Bienes Raíces', group: 'industry' },
+      { id: 'saas', label: 'SaaS & B2B', group: 'industry' },
+      { id: 'ai-rag', label: 'IA · RAG & Grafos', group: 'tech' },
+      { id: 'automation', label: 'Automatización', group: 'tech' },
+      { id: 'realtime', label: 'Tiempo Real / WS', group: 'tech' },
+      { id: 'onchain', label: 'Smart Contracts / RPC', group: 'tech' },
+      { id: 'analytics', label: 'Análisis de Datos', group: 'tech' },
+      { id: 'gpu-lab', label: 'Self-Hosted / GPU Lab', group: 'tech' },
     ],
   },
   projectsSection: {
-    eyebrow: 'PROYECTOS DESTACADOS',
-    heading: 'Sistemas e Infraestructura de Producto',
+    eyebrow: 'PROYECTOS & ECOSISTEMAS',
+    heading: 'Sistemas Construidos y en Producción',
     subtitle:
-      'Selección de arquitecturas reales enfocadas en pasarelas de pagos cripto, recuperación semántica con vectores y grafos, plataformas SaaS B2B y automatización con IA.',
-    headerCtaLabel: 'Solicitar demo o arquitectura',
-    archToggleLabel: 'Notas de arquitectura interna',
-    archSystemDesignLabel: 'Diseño del Sistema:',
-    stackAriaLabel: 'Tecnologías utilizadas',
-    detailsAriaPrefix: 'Consultar detalles técnicos de',
+      'Haz clic en cualquier tarjeta para expandir la arquitectura y los detalles del proyecto.',
+    headerCtaLabel: 'Hablemos de tu proyecto',
+    expandHintLabel: 'Ver detalle',
+    highlightsLabel: 'Puntos clave de implementación',
+    archSystemDesignLabel: 'Arquitectura y Diseño del Sistema',
+    stackAriaLabel: 'Stack tecnológico',
+    inquireCtaLabel: 'Consultar sobre este proyecto',
+    closeModalAria: 'Cerrar detalle del proyecto',
+    emptyFilterText: 'No hay proyectos con este filtro.',
     items: [
       {
-        id: 'crypto-payment-gateway',
-        title: 'Pasarela de Pagos Cripto & Motor de Conciliación On-Chain',
-        category: 'Blockchain & Payments',
+        id: 'gibor-academy-community-mlm',
+        title: 'Gibor Ecosystem: Academia, Streaming & Red MLM en Grafos',
+        dateRange: 'Jul 2024 — Oct 2026',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Ecosistema Gibor de academia E-Learning, streaming en vivo con Cloudflare Stream y motor de red binaria multinivel en Neo4j desarrollado por Victor Alvarez',
+        seoDescription:
+          'Plataforma integral E-Learning, comunidad en vivo y red multinivel (MLM) construida con React, NestJS, Neo4j, Cloudflare Stream, Zoom SDK y múltiples pasarelas cripto y fiat.',
+        category: 'E-Learning · Streaming · MLM · FinTech',
         summary:
-          'Infraestructura para procesamiento de cobros en activos digitales con generación dinámica de órdenes, monitoreo de confirmaciones por bloque y notificación mediante webhooks firmados.',
+          'Ecosistema educativo y de comunidad con clases en streaming, árbol binario de comisiones sobre base de datos de grafos (Neo4j) y orquestación multi-pasarela de pagos cripto y fiat.',
         architectureNotes:
-          'Diseñado con separación estricta entre el servicio de escucha RPC (indexer), el motor contable idempotente y la API comercial para comercios B2B.',
+          'Arquitectura distribuida en NestJS, PostgreSQL, Firebase y Neo4j para modelar la genealogía del árbol binario, cálculo automatizado de bonos/cortes de rango con Google Cloud Tasks, streaming de video con Cloudflare Stream/RealtimeKit y cobros integrados con CoinPayments, Node Payments, XRPL, Openpay, Culqi e Izipay.',
         highlights: [
-          'Detección determinista de transacciones y manejo de reorganizaciones de bloques',
-          'Webhooks con firma criptográfica HMAC y reintentos con backoff exponencial',
-          'Panel de control para seguimiento de órdenes, estados de liquidación y auditoría',
+          'Motor de genealogía y árbol binario en Neo4j con cálculo automatizado de rangos, bonos, puntos de viaje y nómina (Payroll)',
+          'Aulas de streaming en vivo y cursos bajo demanda con Cloudflare Stream, RealtimeKit, Zoom SDK y búsqueda instantánea en Algolia',
+          'Orquestación de suscripciones y pagos globales en criptomonedas (CoinPayments, Node Payments, XRPL) y pasarelas locales (Openpay, Culqi, Izipay)',
         ],
-        stack: ['TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'EVM RPC', 'React'],
-        statusLabel: 'Arquitectura en Producción / Caso Técnico',
-        previewType: 'crypto-gateway',
+        industryTags: ['elearning', 'streaming', 'multinivel', 'payment-gateway', 'crypto'],
+        techTags: ['ai-rag', 'realtime', 'automation', 'onchain'],
+        stack: [
+          'React',
+          'TypeScript',
+          'NestJS',
+          'Neo4j',
+          'PostgreSQL',
+          'Cloudflare Stream',
+          'Socket.IO',
+          'Firebase',
+          'Google Cloud Tasks',
+          'AWS S3',
+        ],
+        statusLabel: 'Ecosistema en Producción (1,000+ Commits)',
+        previewType: 'elearning-mlm',
         detailsAnchor: '#contact',
       },
       {
-        id: 'hybrid-vector-graph-search',
-        title: 'Motor de Búsqueda Inteligente con Vectores y Grafos (GraphRAG)',
-        category: 'AI & Vector Search',
+        id: 'gibor-shop-ecommerce',
+        title: 'Gibor Shop: Plataforma E-Commerce Multi-Tienda',
+        dateRange: 'Jul 2026',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Plataforma E-Commerce multi-tienda Gibor Shop estilo Shopify con gestión de catálogos, envíos internacionales y analítica desarrollada por Victor Alvarez en Next.js y NestJS',
+        seoDescription:
+          'Plataforma E-Commerce multi-tienda tipo Shopify desarrollada con Next.js, NestJS, Prisma ORM, PostgreSQL y AWS S3 para gestión de tiendas, inventario, cupones y tarifas de envío.',
+        category: 'E-Commerce · SaaS Multi-Store',
         summary:
-          'Sistema de recuperación de información empresarial que combina similitud semántica vectorial con recorrido de relaciones en bases de datos de grafos para consultas de alta precisión.',
+          'Plataforma de comercio electrónico multi-tienda tipo Shopify con creación de tiendas, catálogo de productos, reglas de envío por país, cupones y analítica comercial.',
         architectureNotes:
-          'Pipeline asíncrono de ingesta que fragmenta documentos, extrae entidades/relaciones hacia el grafo y sincroniza embeddings densos para consultas híbridas.',
+          'Frontend en Next.js con bloques modulares, editor enriquecido Lexical y visualización de métricas en ECharts, respaldado por una API REST/WebSocket en NestJS con Prisma ORM, autenticación JWT/Argon2 y almacenamiento de medios en AWS S3.',
         highlights: [
-          'Fusión de resultados léxicos, vectoriales y de vecindad en grafo',
-          'Respuestas fundamentadas en fuentes trazables evitando alucinaciones sin contexto',
-          'API de baja latencia con caché semántica y filtrado por permisos de usuario',
+          'Administración multi-tienda (stores) con catálogos independientes, variantes de productos, categorías y políticas legales personalizables',
+          'Motor de órdenes, cupones promocionales y cálculo dinámico de tarifas de envío por país y región con autocompletado geográfico',
+          'Panel administrativo con métricas de conversión en ECharts, notificaciones en tiempo real con Socket.IO y gestión multimedia en S3',
         ],
-        stack: ['Python', 'TypeScript', 'Qdrant / pgvector', 'Neo4j', 'LLM API', 'Docker'],
-        statusLabel: 'Sistema de IA & Búsqueda Semántica',
-        previewType: 'vector-graph',
+        industryTags: ['ecommerce', 'saas', 'payment-gateway'],
+        techTags: ['automation', 'analytics', 'realtime'],
+        stack: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'NestJS',
+          'Prisma ORM',
+          'PostgreSQL',
+          'AWS S3',
+          'Socket.IO',
+          'Tailwind CSS',
+        ],
+        statusLabel: 'Plataforma E-Commerce en Producción',
+        previewType: 'ecommerce-saas',
         detailsAnchor: '#contact',
       },
       {
-        id: 'multi-tenant-b2b-saas',
-        title: 'Ecosistema SaaS B2B Multi-Tenant & Orquestador Operativo',
-        category: 'SaaS & B2B',
+        id: 'gibor-scanner-live-market',
+        title: 'Gibor Scanner: Escáner Financiero & Señales Live Market',
+        dateRange: 'Abr 2026 — Oct 2026',
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Escáner financiero Gibor Scanner de análisis técnico en vivo y señales de mercado con TradingView Lightweight Charts y amCharts 5 desarrollado por Victor Alvarez',
+        seoDescription:
+          'Escáner de mercado financiero en tiempo real y plataforma de señales de trading construida con Next.js, TradingView Lightweight Charts, amCharts 5, ECharts y Firebase.',
+        category: 'Live Market · Financial Scanner',
         summary:
-          'Plataforma modular para gestión operativa entre organizaciones con control de acceso basado en roles (RBAC), flujos de trabajo configurables e integraciones vía API.',
+          'Aplicación de análisis técnico y escáner de mercado en vivo con gráficos financieros interactivos, configuración de setups de trading, watchlists y muro de señales en tiempo real.',
         architectureNotes:
-          'Arquitectura orientada a dominios con aislamiento por organización, colas de procesamiento en segundo plano y trazabilidad completa de eventos.',
+          'Interfaz financiera de baja latencia construida en Next.js combinando motores gráficos especializados (Lightweight Charts, amCharts 5 y ECharts) con sincronización de señales e interacciones en tiempo real sobre Firebase.',
         highlights: [
-          'Aislamiento de datos multi-organización y gestión granular de sesiones y permisos',
-          'Sincronización de catálogos, reportes operativos y exportación asíncrona',
-          'Interfaz rápida y accesible construida con componentes reutilizables y diseño consistente',
+          'Visualización avanzada de activos (Oro, Plata, Divisas e Índices) con herramientas de dibujo técnico, indicadores y múltiples temporalidades',
+          'Panel de configuración de operaciones (Trade Setup Sidebar), listas de seguimiento (Watchlist) y análisis de mercado en vivo',
+          'Muro interactivo de señales de trading (Trading Wall & Signal Interactions) con actualizaciones instantáneas para la comunidad',
         ],
-        stack: ['React', 'TypeScript', 'NestJS / Node.js', 'PostgreSQL', 'Redis', 'Tailwind CSS'],
-        statusLabel: 'Plataforma Ecosistema B2B',
-        previewType: 'saas-b2b',
-        detailsAnchor: '#contact',
-      },
-      {
-        id: 'ai-automation-knowledge-hub',
-        title: 'Plataforma de Ingesta Documental & Asistente Técnico con IA',
-        category: 'Knowledge Graphs',
-        summary:
-          'Herramienta de ingeniería de conocimiento para indexar repositorios técnicos, documentación interna y esquemas operativos en un espacio de consulta unificado.',
-        architectureNotes:
-          'Integración de colas de procesamiento documental, normalización en Markdown/AST y evaluación estructurada de consultas complejas.',
-        highlights: [
-          'Procesamiento incremental ante cambios en documentos sin reindexación total',
-          'Clasificación automática de taxonomías y extracción de metadatos estructurados',
-          'Interfaz de exploración de nodos de conocimiento y referencias cruzadas',
+        industryTags: ['live-market', 'saas'],
+        techTags: ['realtime', 'analytics', 'automation'],
+        stack: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Lightweight Charts',
+          'amCharts 5',
+          'ECharts',
+          'Firebase',
+          'Framer Motion',
+          'Tailwind CSS',
         ],
-        stack: ['Astro', 'TypeScript', 'Node.js', 'Graph DB', 'Vector Index', 'SSE Streaming'],
-        statusLabel: 'Herramienta de Ingeniería & IA',
-        previewType: 'ai-pipeline',
+        statusLabel: 'Herramienta Financiera Live Market',
+        previewType: 'live-market',
         detailsAnchor: '#contact',
       },
     ],
@@ -578,17 +532,6 @@ const esContent: PortfolioContent = {
       },
     },
   },
-  footer: {
-    navHeading: 'Navegación',
-    specialtiesHeading: 'Especialidades Clave',
-    copyrightText: 'Victor Alvarez. Arquitectura e ingeniería de software.',
-    backToTopLabel: 'Subir',
-    emailAria: 'Enviar correo electrónico',
-    projectsAria: 'Ver proyectos destacados',
-    servicesAria: 'Ver especialidades de ingeniería',
-    stackNote:
-      'Stack de esta plataforma: Astro SSR · Tailwind CSS v4 · TypeScript Strict · GSAP',
-  },
 };
 
 const enContent: PortfolioContent = {
@@ -621,7 +564,7 @@ const enContent: PortfolioContent = {
   navigationItems: [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
-    { label: 'Expertise', href: '#services' },
+    { label: 'Industries', href: '#services' },
     { label: 'Projects', href: '#projects' },
   ],
   heroData: {
@@ -640,11 +583,11 @@ const enContent: PortfolioContent = {
       href: '#projects',
     },
     portraitPlaceholder: {
-      isPlaceholder: true,
-      label: 'DEVELOPER PORTRAIT',
-      sublabel: 'Placeholder',
+      isPlaceholder: false,
+      label: 'VICTOR ALVAREZ',
+      sublabel: 'Lead Product Engineer',
       svgAriaLabel:
-        'Clearly identifiable placeholder reserved for official developer portrait',
+        'Professional portrait of Victor Alvarez, Lead Product Engineer, Software Architect, and Product Owner specializing in SaaS ecosystems, FinTech, Crypto, and Artificial Intelligence',
     },
     floatingBadges: [
       {
@@ -682,234 +625,196 @@ const enContent: PortfolioContent = {
     ],
   },
   aboutData: {
-    sectionLabel: 'ABOUT ME',
-    heading:
-      'Engineering focused on mission-critical systems, scalability, and technical precision',
-    lead: 'My approach combines software architecture design with hands-on execution across the entire product lifecycle: domain modeling, low-latency APIs, resilient infrastructure, and fast, accessible interfaces.',
-    paragraphs: [
-      'I operate at the intersection of B2B SaaS ecosystems, decentralized financial infrastructure (Web3/Payments), and applied artificial intelligence through vector search and knowledge graph indexing.',
-      'Beyond direct technical implementation, I lead engineering teams by establishing code standards, conducting architecture reviews, automating deployment pipelines, and enforcing production observability.',
+    sectionLabel: 'ROLE EVOLUTION',
+    heading: 'From developer to owner of automated products & international partner',
+    lead: 'My career has been a progressive evolution of scope and ownership: starting in end-to-end platform development, moving into systems architecture and cross-functional team leadership, and ultimately owning automated revenue-generating products while collaborating with international companies.',
+    personalNote:
+      'I love attending networking events and travel constantly to build strategic relationships, forge partnerships, and launch new tech ventures.',
+    highlights: [
+      'Automated Revenue Products',
+      '6+ yrs leading cross-functional teams',
+      'International Enterprise Collaboration',
+      'Home AI Lab & Global Networking',
     ],
-    focusHeading: 'Core Engineering Specializations',
-    focusBadge: 'System Scope',
-    focusAreas: [
-      'End-to-end Full-Stack engineering with strict type safety',
-      'Modular, event-driven, and distributed systems architecture',
-      'Multi-tenant SaaS platforms and B2B operational ecosystems',
-      'Crypto payment gateways, programmable custody, and on-chain settlement',
-      'Hybrid vector search, RAG pipelines, and graph databases',
-      'Technical leadership, mentorship, and cross-functional team coordination',
-    ],
-    pillarsAriaLabel: 'Verifiable engineering pillars',
-    verifiablePillars: [
+    milestones: [
       {
-        code: 'END-TO-END',
-        value: 'Full-Stack',
-        label: 'Complete Lifecycle',
-        detail:
-          'From database schemas and API contracts to interfaces with optimal Core Web Vitals.',
+        stage: '01 · Full-Stack Developer',
+        title: 'End-to-end technical execution and infrastructure ownership',
+        tags: 'E-Commerce · E-Learning · Data Analytics',
+        description:
+          'Started by taking full technical ownership from the ground up: from application and web platform development to infrastructure management. Mastered complete stacks to build ecosystems from scratch across multiple industries.',
       },
       {
-        code: 'FINTECH / WEB3',
-        value: 'On-Chain',
-        label: 'Payment Infrastructure',
-        detail:
-          'EVM/non-EVM network integration, deterministic webhooks, and cryptographic verification.',
+        stage: '02 · Software Architect & Product Owner',
+        title: 'From writing code to driving product strategy and architecture',
+        tags: 'Product Ownership · Architecture · Home AI Lab (RAG & Graphs)',
+        description:
+          'Stepped up into strategic decision-making as a Software Architect and Product Owner, aligning business models with bleeding-edge engineering and R&D in my own dedicated-GPU home AI lab.',
       },
       {
-        code: 'AI / DATA',
-        value: 'Vector + Graph',
-        label: 'Semantic Retrieval',
-        detail:
-          'Hybrid search engines combining dense vector embeddings and graph relationships.',
+        stage: '03 · Team Lead & Cross-Functional Builder (6+ yrs)',
+        title: 'Building and managing compact, high-impact teams',
+        tags: '',
+        description:
+          'For over 6 years, I have managed people directly—both hired within companies and subcontracted on my own—forming and leading agile teams to ship and scale complete products.',
       },
       {
-        code: 'ARCHITECTURE',
-        value: 'SaaS & B2B',
-        label: 'Scalable Systems',
-        detail:
-          'Multi-tenant isolation, granular role-based access control (RBAC), and tech leadership.',
+        stage: '04 · Product Owner, Venture Partner & International Consultant',
+        title: 'Automated revenue-generating products & global collaboration',
+        tags: 'Automated Revenue · SaaS · Forex · Crypto · International Clients',
+        description:
+          'After partnering in dozens of ventures (automated Forex execution, crypto gateways, academy platforms, and SaaS), I now own products that operate and generate revenue on full autopilot, while collaborating with international companies and traveling constantly to network.',
       },
     ],
-    techSheetTitle: 'Engineering Profile Specification',
-    profileMetadata: [
-      { label: 'Profile', value: 'Lead Product Engineer' },
-      {
-        label: 'Specialty',
-        value: 'Distributed Systems, SaaS, Blockchain & AI',
-      },
-      { label: 'Work Mode', value: 'Remote / International Collaboration' },
-    ],
-    ctaServicesLabel: 'Explore service architecture',
   },
   servicesSection: {
-    eyebrow: 'CAPABILITIES & ARCHITECTURE',
-    heading: 'Engineering Services & Expertise',
+    eyebrow: 'INDUSTRIES & IMPLEMENTATIONS',
+    heading: 'Domains & Technologies I Have Built In',
     subtitle:
-      'Solutions engineered around modularity, transactional security, and high operational performance.',
-    cardCtaLabel: 'Inquire about implementation',
-    items: [
-      {
-        id: 'fullstack-engineering',
-        title: 'Full-Stack Engineering',
-        badge: 'Core Engineering',
-        description:
-          'Modern web applications engineered with Astro/React on the client and resilient Node.js and TypeScript backend services.',
-        capabilities: [
-          'High-speed interfaces optimized for Core Web Vitals',
-          'REST, GraphQL, and tRPC APIs with strict schema validation',
-          'Predictable state, intelligent caching, and hybrid rendering (SSR/SSG)',
-        ],
-        iconName: 'code-2',
-      },
-      {
-        id: 'software-architecture',
-        title: 'Software Architecture',
-        badge: 'System Design',
-        description:
-          'Modular systems designed to evolve without technical friction, prioritizing operational simplicity and end-to-end observability.',
-        capabilities: [
-          'Domain-Driven Design (DDD), modular monoliths, and decoupled services',
-          'Asynchronous processing via message queues and idempotent events',
-          'Technical leadership, engineering standards, and architecture reviews',
-        ],
-        iconName: 'network',
-      },
-      {
-        id: 'blockchain-payments',
-        title: 'Blockchain & Payment Infrastructure',
-        badge: 'Web3 & Fintech',
-        description:
-          'Checkout, settlement, and transaction verification pipelines built across blockchain networks and financial rails.',
-        capabilities: [
-          'Crypto payment gateways with real-time block confirmation tracking',
-          'Smart contract integration, cryptographic signatures, and wallets',
-          'Internal double-entry ledgers and transactional idempotency',
-        ],
-        iconName: 'coins',
-      },
-      {
-        id: 'ai-intelligent-search',
-        title: 'AI & Intelligent Search',
-        badge: 'Applied AI',
-        description:
-          'Semantic search engines, document ingestion pipelines, and Retrieval-Augmented Generation (RAG) over graphs and vectors.',
-        capabilities: [
-          'High-dimensional vector indexing and hybrid search (lexical + semantic)',
-          'Connected knowledge modeling in graph databases',
-          'LLM orchestration with latency control, context grounding, and structured outputs',
-        ],
-        iconName: 'Sparkles',
-      },
-      {
-        id: 'saas-b2b-ecosystems',
-        title: 'SaaS & B2B Ecosystems',
-        badge: 'Product Platform',
-        description:
-          'Multi-organization platforms engineered for enterprise operations, complex workflows, and third-party API integrations.',
-        capabilities: [
-          'Multi-tenant architecture with logical or schema-level isolation',
-          'Enterprise authentication, granular permissions (RBAC/ABAC), and audit logs',
-          'Outbound webhooks, operational control planes, and usage/subscription billing',
-        ],
-        iconName: 'layers',
-      },
-      {
-        id: 'cloud-devops',
-        title: 'Cloud & Infrastructure',
-        badge: 'Reliability',
-        description:
-          'Infrastructure automation, containerization, and reproducible deployments to keep production services stable and secure.',
-        capabilities: [
-          'Containerized environments with Docker and automated CI/CD pipelines',
-          'Reverse proxies, private networking, edge caching, and TLS configuration',
-          'Observability, structured logging, and cloud resource optimization',
-        ],
-        iconName: 'cloud-cog',
-      },
+      'Click any industry or implementation tag to filter the projects below.',
+    industryLabel: 'By Industry',
+    techLabel: 'By Implementation / Technology',
+    allLabel: 'All projects',
+    clearFilterLabel: 'Clear filter',
+    tags: [
+      { id: 'ecommerce', label: 'E-Commerce', group: 'industry' },
+      { id: 'elearning', label: 'E-Learning', group: 'industry' },
+      { id: 'streaming', label: 'Streaming', group: 'industry' },
+      { id: 'multinivel', label: 'MLM / Network', group: 'industry' },
+      { id: 'crypto', label: 'Crypto & Web3', group: 'industry' },
+      { id: 'payment-gateway', label: 'Payment Gateway', group: 'industry' },
+      { id: 'live-market', label: 'Live Market / Forex', group: 'industry' },
+      { id: 'real-estate', label: 'Real Estate', group: 'industry' },
+      { id: 'saas', label: 'SaaS & B2B', group: 'industry' },
+      { id: 'ai-rag', label: 'AI · RAG & Graphs', group: 'tech' },
+      { id: 'automation', label: 'Automated Execution', group: 'tech' },
+      { id: 'realtime', label: 'WebSockets / Real-Time', group: 'tech' },
+      { id: 'onchain', label: 'Smart Contracts / RPC', group: 'tech' },
+      { id: 'analytics', label: 'Data & Analytics', group: 'tech' },
+      { id: 'gpu-lab', label: 'Self-Hosted AI / GPU Lab', group: 'tech' },
     ],
   },
   projectsSection: {
-    eyebrow: 'FEATURED PROJECTS',
-    heading: 'Product Systems & Core Infrastructure',
+    eyebrow: 'ECOSYSTEMS & PRODUCTS',
+    heading: 'Projects, Platforms & Automated Systems',
     subtitle:
-      'Selected real-world architectures focused on crypto payment gateways, hybrid vector + graph semantic search, multi-tenant B2B SaaS platforms, and AI automation.',
-    headerCtaLabel: 'Request architecture walkthrough',
-    archToggleLabel: 'Internal architecture notes',
-    archSystemDesignLabel: 'System Design:',
-    stackAriaLabel: 'Technologies used',
-    detailsAriaPrefix: 'Inquire about technical details for',
+      'Click any card to expand the full system architecture and project details.',
+    headerCtaLabel: 'Inquire about a project',
+    expandHintLabel: 'View details',
+    highlightsLabel: 'Key implementation highlights',
+    archSystemDesignLabel: 'System Architecture & Design',
+    stackAriaLabel: 'Tech stack',
+    inquireCtaLabel: 'Inquire about this project',
+    closeModalAria: 'Close project details',
+    emptyFilterText: 'No projects match this filter.',
     items: [
       {
-        id: 'crypto-payment-gateway',
-        title: 'Crypto Payment Gateway & On-Chain Settlement Engine',
-        category: 'Blockchain & Payments',
+        id: 'gibor-academy-community-mlm',
+        title: 'Gibor Ecosystem: Academy, Live Streaming & Graph MLM Engine',
+        dateRange: 'Jul 2024 — Oct 2026',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Gibor Ecosystem E-Learning academy, Cloudflare live streaming, and Neo4j graph binary MLM network engineered by Victor Alvarez',
+        seoDescription:
+          'Comprehensive E-Learning, live streaming community, and graph-powered MLM platform built with React, NestJS, Neo4j, Cloudflare Stream, Zoom SDK, and multi-rail crypto/fiat gateways.',
+        category: 'E-Learning · Streaming · MLM · FinTech',
         summary:
-          'Digital asset payment processing infrastructure featuring dynamic invoice generation, block-by-block confirmation tracking, and signed webhook delivery.',
+          'Educational and community ecosystem featuring live streaming classes, a graph-based binary commission tree in Neo4j, and multi-rail crypto and fiat payment orchestration.',
         architectureNotes:
-          'Engineered with strict isolation between the RPC block listener (indexer), the idempotent double-entry ledger, and the merchant B2B API.',
+          'Distributed architecture powered by NestJS, PostgreSQL, Firebase, and Neo4j to model binary tree genealogy, automated rank-cut and bonus calculation via Google Cloud Tasks, live video via Cloudflare Stream/RealtimeKit, and payment integrations across CoinPayments, Node Payments, XRPL, Openpay, Culqi, and Izipay.',
         highlights: [
-          'Deterministic transaction detection and chain reorganization handling',
-          'Cryptographically signed HMAC webhooks with exponential backoff retries',
-          'Merchant control plane for order tracking, settlement states, and auditing',
+          'Graph-based binary genealogy engine in Neo4j with automated rank cuts, bonuses, travel points, and payroll dispersion',
+          'Live streaming classrooms and on-demand courses powered by Cloudflare Stream, RealtimeKit, Zoom SDK, and Algolia instant search',
+          'Global subscription and checkout orchestration across crypto rails (CoinPayments, Node Payments, XRPL) and regional gateways (Openpay, Culqi, Izipay)',
         ],
-        stack: ['TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'EVM RPC', 'React'],
-        statusLabel: 'Production Architecture / Technical Case',
-        previewType: 'crypto-gateway',
+        industryTags: ['elearning', 'streaming', 'multinivel', 'payment-gateway', 'crypto'],
+        techTags: ['ai-rag', 'realtime', 'automation', 'onchain'],
+        stack: [
+          'React',
+          'TypeScript',
+          'NestJS',
+          'Neo4j',
+          'PostgreSQL',
+          'Cloudflare Stream',
+          'Socket.IO',
+          'Firebase',
+          'Google Cloud Tasks',
+          'AWS S3',
+        ],
+        statusLabel: 'Production Ecosystem (1,000+ Commits)',
+        previewType: 'elearning-mlm',
         detailsAnchor: '#contact',
       },
       {
-        id: 'hybrid-vector-graph-search',
-        title: 'Intelligent Hybrid Vector & Graph Search Engine (GraphRAG)',
-        category: 'AI & Vector Search',
+        id: 'gibor-shop-ecommerce',
+        title: 'Gibor Shop: Multi-Store E-Commerce Platform',
+        dateRange: 'Jul 2026',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Gibor Shop Shopify-style multi-store E-Commerce platform with catalog management, international shipping rates, and analytics built by Victor Alvarez in Next.js and NestJS',
+        seoDescription:
+          'Shopify-style multi-store E-Commerce platform built with Next.js, NestJS, Prisma ORM, PostgreSQL, and AWS S3 featuring store management, coupons, and country shipping rules.',
+        category: 'E-Commerce · SaaS Multi-Store',
         summary:
-          'Enterprise information retrieval system combining dense vector semantic similarity with graph database relationship traversal for high-precision queries.',
+          'Shopify-style multi-store e-commerce platform featuring custom store creation, product catalogs, country-based shipping rules, discount coupons, and commercial analytics.',
         architectureNotes:
-          'Asynchronous ingestion pipeline that chunks documents, extracts entities and edges into the graph store, and synchronizes dense embeddings for hybrid queries.',
+          'Next.js storefront and admin with modular blocks, Lexical rich-text editor, and ECharts analytics, backed by a NestJS REST/WebSocket API using Prisma ORM, JWT/Argon2 security, and AWS S3 media storage.',
         highlights: [
-          'Reciprocal Rank Fusion (RRF) across lexical, vector, and 2-hop graph results',
-          'Source-grounded responses with verifiable citations preventing hallucinations',
-          'Low-latency API with semantic caching and document-level ACL permission filtering',
+          'Multi-store management with independent product catalogs, categories, and customizable store legal policies',
+          'Order engine, promotional coupon system, and dynamic shipping rate calculation by country and region with Google autocomplete',
+          'Merchant dashboard with ECharts conversion telemetry, real-time Socket.IO notifications, and AWS S3 media pipelines',
         ],
-        stack: ['Python', 'TypeScript', 'Qdrant / pgvector', 'Neo4j', 'LLM API', 'Docker'],
-        statusLabel: 'AI & Semantic Retrieval System',
-        previewType: 'vector-graph',
+        industryTags: ['ecommerce', 'saas', 'payment-gateway'],
+        techTags: ['automation', 'analytics', 'realtime'],
+        stack: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'NestJS',
+          'Prisma ORM',
+          'PostgreSQL',
+          'AWS S3',
+          'Socket.IO',
+          'Tailwind CSS',
+        ],
+        statusLabel: 'Production E-Commerce Platform',
+        previewType: 'ecommerce-saas',
         detailsAnchor: '#contact',
       },
       {
-        id: 'multi-tenant-b2b-saas',
-        title: 'Multi-Tenant B2B SaaS Ecosystem & Operational Orchestrator',
-        category: 'SaaS & B2B',
+        id: 'gibor-scanner-live-market',
+        title: 'Gibor Scanner: Financial Market Scanner & Live Signals',
+        dateRange: 'Apr 2026 — Oct 2026',
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80',
+        imageAlt:
+          'Gibor Scanner real-time financial technical analysis and trading signals platform built with TradingView Lightweight Charts and amCharts 5 by Victor Alvarez',
+        seoDescription:
+          'Real-time financial market scanner and live trading signals platform built with Next.js, TradingView Lightweight Charts, amCharts 5, ECharts, and Firebase.',
+        category: 'Live Market · Financial Scanner',
         summary:
-          'Modular platform for cross-organization operations featuring Role-Based Access Control (RBAC), configurable workflows, and third-party API integrations.',
+          'Real-time technical analysis and market scanner featuring interactive financial charting, trade setup sidebars, watchlists, and a live community trading signals wall.',
         architectureNotes:
-          'Domain-driven architecture with strict organization-level isolation, background worker queues, and full event auditability.',
+          'Low-latency financial interface built in Next.js combining specialized charting engines (Lightweight Charts, amCharts 5, and ECharts) with real-time signal synchronization over Firebase.',
         highlights: [
-          'Multi-organization data isolation and granular session & permission enforcement',
-          'Catalog synchronization, operational reporting, and asynchronous exports',
-          'Fast, accessible interface built with reusable design system components',
+          'Interactive charting for commodities and FX (Gold, Silver, Currencies) with custom drawing toolbars and multi-timeframe analysis',
+          'Trade Setup Sidebar, customizable symbol Watchlists, and real-time market analysis panels',
+          'Interactive Trading Wall & Signal Interactions delivering instant trade ideas and community feedback',
         ],
-        stack: ['React', 'TypeScript', 'NestJS / Node.js', 'PostgreSQL', 'Redis', 'Tailwind CSS'],
-        statusLabel: 'B2B Ecosystem Platform',
-        previewType: 'saas-b2b',
-        detailsAnchor: '#contact',
-      },
-      {
-        id: 'ai-automation-knowledge-hub',
-        title: 'Document Ingestion Pipeline & Technical AI Knowledge Hub',
-        category: 'Knowledge Graphs',
-        summary:
-          'Knowledge engineering platform designed to index technical repositories, internal documentation, and operational schemas into a unified query workspace.',
-        architectureNotes:
-          'Integrates document processing queues, Markdown/AST structural normalization, and schema-validated evaluation of complex technical queries.',
-        highlights: [
-          'Delta-hash incremental processing on document updates without full re-indexing',
-          'Automated taxonomy classification and structured metadata extraction',
-          'Interactive exploration of connected knowledge nodes and cross-references',
+        industryTags: ['live-market', 'saas'],
+        techTags: ['realtime', 'analytics', 'automation'],
+        stack: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Lightweight Charts',
+          'amCharts 5',
+          'ECharts',
+          'Firebase',
+          'Framer Motion',
+          'Tailwind CSS',
         ],
-        stack: ['Astro', 'TypeScript', 'Node.js', 'Graph DB', 'Vector Index', 'SSE Streaming'],
-        statusLabel: 'AI & Knowledge Engineering Tool',
-        previewType: 'ai-pipeline',
+        statusLabel: 'Live Market Financial Tool',
+        previewType: 'live-market',
         detailsAnchor: '#contact',
       },
     ],
@@ -984,17 +889,6 @@ const enContent: PortfolioContent = {
         context: 'Message / Technical Context',
       },
     },
-  },
-  footer: {
-    navHeading: 'Navigation',
-    specialtiesHeading: 'Core Specialties',
-    copyrightText: 'Victor Alvarez. Software Architecture & Engineering.',
-    backToTopLabel: 'Top',
-    emailAria: 'Send email',
-    projectsAria: 'View featured projects',
-    servicesAria: 'View engineering expertise',
-    stackNote:
-      'Platform stack: Astro SSR · Tailwind CSS v4 · TypeScript Strict · GSAP',
   },
 };
 

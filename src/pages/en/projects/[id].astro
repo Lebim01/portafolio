@@ -1,0 +1,17 @@
+---
+export const prerender = false;
+
+import ProjectDetailPage from '../../../components/ProjectDetailPage.astro';
+import { getPortfolioContent } from '../../../data/portfolio';
+
+const { id } = Astro.params;
+const { projectsSection } = getPortfolioContent('en');
+const project = projectsSection.items.find((item) => item.id === id);
+
+if (!project) {
+  return Astro.redirect('/en#projects');
+}
+---
+
+<ProjectDetailPage locale="en" project={project} />
+

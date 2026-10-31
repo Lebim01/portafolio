@@ -6,7 +6,6 @@ import About from './About.astro';
 import Services from './Services.astro';
 import Projects from './Projects.astro';
 import Contact from './Contact.astro';
-import Footer from './Footer.astro';
 import type { Locale } from '../i18n/utils';
 
 interface Props {
@@ -23,115 +22,116 @@ const { locale } = Astro.props;
     <About locale={locale} />
     <Services locale={locale} />
     <Projects locale={locale} />
-    <Contact locale={locale} />
   </main>
-  <Footer locale={locale} />
+  <Contact locale={locale} />
 </Layout>
 
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+  document.addEventListener('astro:page-load', () => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
-  // 1. Localized Spotlight Glow on Interactive Cards (Pointer devices only, rAF throttled)
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const cards = document.querySelectorAll<HTMLElement>('.spotlight-card');
-    cards.forEach((card) => {
-      let rafId = 0;
-      card.addEventListener(
-        'pointermove',
-        (event: PointerEvent) => {
-          if (rafId) return;
-          rafId = window.requestAnimationFrame(() => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
-            card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
-            rafId = 0;
-          });
-        },
-        { passive: true }
-      );
-    });
-  }
-
-  // 2. GSAP Coordinated Hero Entrance & ScrollTrigger Reveals (Respecting prefers-reduced-motion)
-  if (!prefersReducedMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const heroTl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
-    });
-
-    // Step 1: Background subtle fade-in
-    heroTl.fromTo(
-      '[data-hero-bg]',
-      { opacity: 0 },
-      { opacity: 1, duration: 0.65 },
-      0
-    );
-
-    // Step 2: Eyebrow & Main Title
-    heroTl.fromTo(
-      ['[data-hero-eyebrow]', '[data-hero-title]'],
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
-      0.08
-    );
-
-    // Step 3: Subtitle & Description with slight offset
-    heroTl.fromTo(
-      ['[data-hero-subtitle]', '[data-hero-desc]'],
-      { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
-      0.2
-    );
-
-    // Step 4: Buttons
-    heroTl.fromTo(
-      '[data-hero-ctas]',
-      { opacity: 0, y: 14 },
-      { opacity: 1, y: 0, duration: 0.45 },
-      0.32
-    );
-
-    // Step 5: Portrait Visual Stage & Floating Badges
-    heroTl.fromTo(
-      '[data-hero-visual]',
-      { opacity: 0, scale: 0.97 },
-      { opacity: 1, scale: 1, duration: 0.65 },
-      0.18
-    );
-
-    heroTl.fromTo(
-      '[data-hero-badge]',
-      { opacity: 0, y: 12, scale: 0.95 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.07 },
-      0.38
-    );
-
-    // Scroll Reveal for sections without hiding content if JS fails
-    const revealElements = gsap.utils.toArray<HTMLElement>('[data-reveal]');
-    revealElements.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-            once: true,
+    // 1. Localized Spotlight Glow on Interactive Cards (Pointer devices only, rAF throttled)
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const cards = document.querySelectorAll<HTMLElement>('.spotlight-card');
+      cards.forEach((card) => {
+        let rafId = 0;
+        card.addEventListener(
+          'pointermove',
+          (event: PointerEvent) => {
+            if (rafId) return;
+            rafId = window.requestAnimationFrame(() => {
+              const rect = card.getBoundingClientRect();
+              card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+              card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
+              rafId = 0;
+            });
           },
-        }
+          { passive: true }
+        );
+      });
+    }
+
+    // 2. GSAP Coordinated Hero Entrance & ScrollTrigger Reveals (Respecting prefers-reduced-motion)
+    if (!prefersReducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const heroTl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+      });
+
+      // Step 1: Background subtle fade-in
+      heroTl.fromTo(
+        '[data-hero-bg]',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.65 },
+        0
       );
-    });
-  }
+
+      // Step 2: Eyebrow & Main Title
+      heroTl.fromTo(
+        ['[data-hero-eyebrow]', '[data-hero-title]'],
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
+        0.08
+      );
+
+      // Step 3: Subtitle & Description with slight offset
+      heroTl.fromTo(
+        ['[data-hero-subtitle]', '[data-hero-desc]'],
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+        0.2
+      );
+
+      // Step 4: Buttons
+      heroTl.fromTo(
+        '[data-hero-ctas]',
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.45 },
+        0.32
+      );
+
+      // Step 5: Portrait Visual Stage & Floating Badges
+      heroTl.fromTo(
+        '[data-hero-visual]',
+        { opacity: 0, scale: 0.97 },
+        { opacity: 1, scale: 1, duration: 0.65 },
+        0.18
+      );
+
+      heroTl.fromTo(
+        '[data-hero-badge]',
+        { opacity: 0, y: 12, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.07 },
+        0.38
+      );
+
+      // Scroll Reveal for sections without hiding content if JS fails
+      const revealElements = gsap.utils.toArray<HTMLElement>('[data-reveal]');
+      revealElements.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
+      });
+    }
+  });
 </script>
 

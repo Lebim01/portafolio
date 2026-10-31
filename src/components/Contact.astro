@@ -4,10 +4,10 @@ import type { Locale } from '../i18n/utils';
 import {
   Mail,
   MapPin,
-  Clock,
   Send,
   Copy,
   ShieldCheck,
+  X,
 } from '@lucide/astro';
 
 interface Props {
@@ -18,288 +18,278 @@ const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { siteMetadata, contactSection } = getPortfolioContent(locale);
 const { form: f } = contactSection;
 const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
+const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventana de contacto';
 ---
 
-<section
-  id="contact"
+<!-- Emergent Contact Popup Modal -->
+<div
+  id="contact-modal"
+  role="dialog"
+  aria-modal="true"
   aria-labelledby="contact-heading"
-  class="relative py-20 md:py-28"
+  aria-hidden="true"
+  class="fixed inset-0 z-[90] hidden items-center justify-center p-4 sm:p-6 overflow-y-auto"
 >
-  <div class="section-divider mb-20 md:mb-28" aria-hidden="true"></div>
+  <!-- Backdrop -->
+  <div
+    id="contact-modal-backdrop"
+    class="fixed inset-0 bg-bg-base/80 backdrop-blur-md transition-opacity duration-200 opacity-0"
+    aria-hidden="true"
+  ></div>
 
-  <div class="container-shell">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
-      <!-- Left Column: Section Intro -->
-      <div class="lg:col-span-4" data-reveal>
-        <div class="mb-3 inline-flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          <span>{contactSection.eyebrow}</span>
-          <span class="h-[1px] w-8 bg-accent/70" aria-hidden="true"></span>
+  <!-- Modal Dialog Surface -->
+  <div
+    id="contact-modal-panel"
+    class="spotlight-card corner-amber-glow relative z-10 my-auto w-full max-w-2xl scale-95 opacity-0 shadow-[0_24px_64px_rgba(0,0,0,0.85)] transition-all duration-200"
+  >
+    <div class="relative z-10 p-6 sm:p-8">
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between gap-4 border-b border-border-subtle/80 pb-4">
+        <div>
+          <div class="mb-1.5 inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
+            <span>{contactSection.eyebrow}</span>
+            <span class="h-[1px] w-6 bg-accent/70" aria-hidden="true"></span>
+          </div>
+          <h2
+            id="contact-heading"
+            class="font-display text-2xl font-bold tracking-tight text-text-primary sm:text-3xl"
+          >
+            {contactSection.heading}
+          </h2>
+          <p class="mt-1.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
+            {contactSection.subtitle}
+          </p>
         </div>
 
-        <h2
-          id="contact-heading"
-          class="font-display text-3xl font-bold tracking-tight text-text-primary sm:text-4xl"
+        <button
+          id="contact-modal-close"
+          type="button"
+          class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[20px] border border-border-subtle bg-bg-base/80 text-text-secondary transition-colors hover:border-accent/60 hover:text-accent"
+          aria-label={closeModalLabel}
         >
-          {contactSection.heading}
-        </h2>
+          <X class="h-4 w-4" aria-hidden="true" />
+        </button>
+      </div>
 
-        <p class="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base">
-          {contactSection.subtitle}
-        </p>
+      <!-- Compact Direct Info Strip -->
+      <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-xl border border-border-subtle/70 bg-bg-base/60 px-4 py-2.5 text-xs">
+        <a
+          href={`mailto:${siteMetadata.email}`}
+          class="inline-flex items-center gap-2 font-mono text-text-primary transition-colors hover:text-accent"
+        >
+          <Mail class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          <span>{siteMetadata.email}</span>
+        </a>
+        <span class="inline-flex items-center gap-2 text-text-secondary">
+          <MapPin class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          <span>{siteMetadata.location}</span>
+        </span>
+      </div>
 
-        <!-- Direct Contact Card -->
-        <div class="spotlight-card corner-amber-glow mt-8 p-6">
-          <div class="relative z-10 space-y-5">
-            <div class="flex items-start gap-3.5">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/35 bg-accent/10 text-accent">
-                <Mail class="h-4 w-4" aria-hidden="true" />
-              </div>
-              <div class="min-w-0">
-                <p class="font-mono text-[11px] font-semibold text-text-secondary uppercase">
-                  {contactSection.emailLabel}
-                </p>
-                <a
-                  href={`mailto:${siteMetadata.email}`}
-                  class="mt-0.5 block truncate font-display text-sm font-semibold text-text-primary transition-colors hover:text-accent"
-                >
-                  {siteMetadata.email}
-                </a>
-              </div>
-            </div>
+      <!-- Contact Form -->
+      <form
+        id="contact-form"
+        data-endpoint={contactEndpoint}
+        data-recipient={siteMetadata.email}
+        data-i18n={JSON.stringify({
+          processingLabel: f.processingLabel,
+          copyBtnLabel: f.copyBtnLabel,
+          copiedBtnLabel: f.copiedBtnLabel,
+          validationAlert: f.validationAlert,
+          copyValidationAlert: f.copyValidationAlert,
+          copySuccessInfo: f.copySuccessInfo,
+          copyErrorAlert: f.copyErrorAlert,
+          serverSuccessAlert: f.serverSuccessAlert,
+          serverErrorAlert: f.serverErrorAlert,
+          mailtoOpeningInfo: f.mailtoOpeningInfo,
+          mailSubjectPrefix: f.mailSubjectPrefix,
+          mailLabels: f.mailLabels,
+        })}
+        novalidate
+        class="mt-5 space-y-4"
+      >
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <!-- Name Field -->
+          <div>
+            <label
+              for="contact-name"
+              class="block font-mono text-xs font-medium text-text-primary mb-1.5"
+            >
+              {f.nameLabel} <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              required
+              minlength="2"
+              autocomplete="name"
+              placeholder={f.namePlaceholder}
+              aria-describedby="error-name"
+              class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
+            />
+            <p
+              id="error-name"
+              class="mt-1 hidden text-xs text-amber-400"
+              role="alert"
+            >
+              {f.nameError}
+            </p>
+          </div>
 
-            <div class="flex items-start gap-3.5">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/35 bg-accent/10 text-accent">
-                <MapPin class="h-4 w-4" aria-hidden="true" />
-              </div>
-              <div>
-                <p class="font-mono text-[11px] font-semibold text-text-secondary uppercase">
-                  {contactSection.locationLabel}
-                </p>
-                <p class="mt-0.5 font-display text-sm font-semibold text-text-primary">
-                  {siteMetadata.location}
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3.5">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/35 bg-accent/10 text-accent">
-                <Clock class="h-4 w-4" aria-hidden="true" />
-              </div>
-              <div>
-                <p class="font-mono text-[11px] font-semibold text-text-secondary uppercase">
-                  {contactSection.availabilityLabel}
-                </p>
-                <p class="mt-0.5 text-xs leading-relaxed text-text-secondary">
-                  {siteMetadata.availability}
-                </p>
-              </div>
-            </div>
+          <!-- Email Field -->
+          <div>
+            <label
+              for="contact-email"
+              class="block font-mono text-xs font-medium text-text-primary mb-1.5"
+            >
+              {f.emailLabel} <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder={f.emailPlaceholder}
+              aria-describedby="error-email"
+              class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
+            />
+            <p
+              id="error-email"
+              class="mt-1 hidden text-xs text-amber-400"
+              role="alert"
+            >
+              {f.emailError}
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- Right / Center Column: Accessible Professional Contact Form -->
-      <div class="lg:col-span-8" data-reveal>
-        <div class="spotlight-card p-6 sm:p-8 lg:p-10">
-          <form
-            id="contact-form"
-            data-endpoint={contactEndpoint}
-            data-recipient={siteMetadata.email}
-            data-i18n={JSON.stringify({
-              processingLabel: f.processingLabel,
-              copyBtnLabel: f.copyBtnLabel,
-              copiedBtnLabel: f.copiedBtnLabel,
-              validationAlert: f.validationAlert,
-              copyValidationAlert: f.copyValidationAlert,
-              copySuccessInfo: f.copySuccessInfo,
-              copyErrorAlert: f.copyErrorAlert,
-              serverSuccessAlert: f.serverSuccessAlert,
-              serverErrorAlert: f.serverErrorAlert,
-              mailtoOpeningInfo: f.mailtoOpeningInfo,
-              mailSubjectPrefix: f.mailSubjectPrefix,
-              mailLabels: f.mailLabels,
-            })}
-            novalidate
-            class="relative z-10 space-y-5"
-          >
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <!-- Name Field -->
-              <div>
-                <label
-                  for="contact-name"
-                  class="block font-mono text-xs font-medium text-text-primary mb-2"
-                >
-                  {f.nameLabel} <span class="text-accent" aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  required
-                  minlength="2"
-                  autocomplete="name"
-                  placeholder={f.namePlaceholder}
-                  aria-describedby="error-name"
-                  class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-4 py-3 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
-                />
-                <p
-                  id="error-name"
-                  class="mt-1.5 hidden text-xs text-amber-400"
-                  role="alert"
-                >
-                  {f.nameError}
-                </p>
-              </div>
-
-              <!-- Email Field -->
-              <div>
-                <label
-                  for="contact-email"
-                  class="block font-mono text-xs font-medium text-text-primary mb-2"
-                >
-                  {f.emailLabel} <span class="text-accent" aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  required
-                  autocomplete="email"
-                  placeholder={f.emailPlaceholder}
-                  aria-describedby="error-email"
-                  class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-4 py-3 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
-                />
-                <p
-                  id="error-email"
-                  class="mt-1.5 hidden text-xs text-amber-400"
-                  role="alert"
-                >
-                  {f.emailError}
-                </p>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <!-- Project Category Select -->
-              <div>
-                <label
-                  for="contact-type"
-                  class="block font-mono text-xs font-medium text-text-primary mb-2"
-                >
-                  {f.typeLabel} <span class="text-accent" aria-hidden="true">*</span>
-                </label>
-                <select
-                  id="contact-type"
-                  name="projectType"
-                  required
-                  aria-describedby="error-type"
-                  class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-4 py-3 text-sm text-text-primary transition-colors focus:border-accent focus:outline-none"
-                >
-                  <option value="">{f.typePlaceholder}</option>
-                  {f.typeOptions.map((opt) => <option value={opt}>{opt}</option>)}
-                </select>
-                <p
-                  id="error-type"
-                  class="mt-1.5 hidden text-xs text-amber-400"
-                  role="alert"
-                >
-                  {f.typeError}
-                </p>
-              </div>
-
-              <!-- Engagement Scope -->
-              <div>
-                <label
-                  for="contact-scope"
-                  class="block font-mono text-xs font-medium text-text-primary mb-2"
-                >
-                  {f.scopeLabel}
-                </label>
-                <select
-                  id="contact-scope"
-                  name="scope"
-                  class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-4 py-3 text-sm text-text-primary transition-colors focus:border-accent focus:outline-none"
-                >
-                  {f.scopeOptions.map((opt) => <option value={opt}>{opt}</option>)}
-                </select>
-              </div>
-            </div>
-
-            <!-- Message Textarea -->
-            <div>
-              <label
-                for="contact-message"
-                class="block font-mono text-xs font-medium text-text-primary mb-2"
-              >
-                {f.messageLabel} <span class="text-accent" aria-hidden="true">*</span>
-              </label>
-              <textarea
-                id="contact-message"
-                name="message"
-                rows="4"
-                required
-                minlength="15"
-                placeholder={f.messagePlaceholder}
-                aria-describedby="error-message"
-                class="w-full resize-y rounded-xl border border-border-subtle bg-bg-base/90 px-4 py-3 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
-              ></textarea>
-              <p
-                id="error-message"
-                class="mt-1.5 hidden text-xs text-amber-400"
-                role="alert"
-              >
-                {f.messageError}
-              </p>
-            </div>
-
-            <!-- Live Status Banner (Validation / Loading / Action Feedback) -->
-            <div
-              id="contact-status"
-              class="hidden rounded-xl border p-4 text-xs leading-relaxed"
-              role="status"
-              aria-live="polite"
-            ></div>
-
-            <!-- Submit & Secondary Actions -->
-            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-              <button
-                id="contact-submit-btn"
-                type="submit"
-                class="group inline-flex items-center justify-center gap-2 rounded-[20px] bg-accent px-4 py-2 text-xs font-bold tracking-wider text-bg-base uppercase shadow-[0_0_25px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_32px_rgba(245,158,11,0.45)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <span id="contact-submit-label">
-                  {contactEndpoint ? f.submitEndpointLabel : f.submitMailtoLabel}
-                </span>
-                <Send
-                  class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </button>
-
-              <button
-                id="contact-copy-btn"
-                type="button"
-                class="inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/70 px-3.5 py-1.5 font-mono text-xs text-text-secondary transition-colors hover:border-accent/50 hover:text-text-primary"
-              >
-                <Copy class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-                <span id="contact-copy-label">{f.copyBtnLabel}</span>
-              </button>
-            </div>
-
-            <p class="flex items-center gap-2 text-[11px] text-text-muted">
-              <ShieldCheck class="h-3.5 w-3.5 shrink-0 text-accent/80" aria-hidden="true" />
-              <span>
-                {contactEndpoint ? f.endpointDisclaimer : f.mailtoDisclaimer}
-              </span>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <!-- Project Category Select -->
+          <div>
+            <label
+              for="contact-type"
+              class="block font-mono text-xs font-medium text-text-primary mb-1.5"
+            >
+              {f.typeLabel} <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="contact-type"
+              name="projectType"
+              required
+              aria-describedby="error-type"
+              class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-3.5 py-2.5 text-sm text-text-primary transition-colors focus:border-accent focus:outline-none"
+            >
+              <option value="">{f.typePlaceholder}</option>
+              {f.typeOptions.map((opt) => <option value={opt}>{opt}</option>)}
+            </select>
+            <p
+              id="error-type"
+              class="mt-1 hidden text-xs text-amber-400"
+              role="alert"
+            >
+              {f.typeError}
             </p>
-          </form>
+          </div>
+
+          <!-- Engagement Scope -->
+          <div>
+            <label
+              for="contact-scope"
+              class="block font-mono text-xs font-medium text-text-primary mb-1.5"
+            >
+              {f.scopeLabel}
+            </label>
+            <select
+              id="contact-scope"
+              name="scope"
+              class="w-full rounded-xl border border-border-subtle bg-bg-base/90 px-3.5 py-2.5 text-sm text-text-primary transition-colors focus:border-accent focus:outline-none"
+            >
+              {f.scopeOptions.map((opt) => <option value={opt}>{opt}</option>)}
+            </select>
+          </div>
         </div>
-      </div>
+
+        <!-- Message Textarea -->
+        <div>
+          <label
+            for="contact-message"
+            class="block font-mono text-xs font-medium text-text-primary mb-1.5"
+          >
+            {f.messageLabel} <span class="text-accent" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            rows="3"
+            required
+            minlength="15"
+            placeholder={f.messagePlaceholder}
+            aria-describedby="error-message"
+            class="w-full resize-y rounded-xl border border-border-subtle bg-bg-base/90 px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none"
+          ></textarea>
+          <p
+            id="error-message"
+            class="mt-1 hidden text-xs text-amber-400"
+            role="alert"
+          >
+            {f.messageError}
+          </p>
+        </div>
+
+        <!-- Live Status Banner -->
+        <div
+          id="contact-status"
+          class="hidden rounded-xl border p-3.5 text-xs leading-relaxed"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <!-- Submit & Secondary Actions -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+          <button
+            id="contact-submit-btn"
+            type="submit"
+            class="group inline-flex items-center justify-center gap-2 rounded-[20px] bg-accent px-4 py-2 text-xs font-bold tracking-wider text-bg-base uppercase shadow-[0_0_25px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_32px_rgba(245,158,11,0.45)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <span id="contact-submit-label">
+              {contactEndpoint ? f.submitEndpointLabel : f.submitMailtoLabel}
+            </span>
+            <Send
+              class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </button>
+
+          <button
+            id="contact-copy-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/70 px-3.5 py-1.5 font-mono text-xs text-text-secondary transition-colors hover:border-accent/50 hover:text-text-primary"
+          >
+            <Copy class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+            <span id="contact-copy-label">{f.copyBtnLabel}</span>
+          </button>
+        </div>
+
+        <p class="flex items-center gap-2 text-[11px] text-text-muted">
+          <ShieldCheck class="h-3.5 w-3.5 shrink-0 text-accent/80" aria-hidden="true" />
+          <span>
+            {contactEndpoint ? f.endpointDisclaimer : f.mailtoDisclaimer}
+          </span>
+        </p>
+      </form>
     </div>
   </div>
-</section>
+</div>
 
 <script>
+  document.addEventListener('astro:page-load', () => {
+    const modal = document.getElementById('contact-modal');
+    const backdrop = document.getElementById('contact-modal-backdrop');
+    const panel = document.getElementById('contact-modal-panel');
+    const closeBtn = document.getElementById('contact-modal-close');
+
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const statusBox = document.getElementById('contact-status');
   const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
@@ -312,6 +302,68 @@ const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
   const typeSelect = document.getElementById('contact-type') as HTMLSelectElement | null;
   const scopeSelect = document.getElementById('contact-scope') as HTMLSelectElement | null;
   const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+
+  let lastFocusedElement: HTMLElement | null = null;
+
+  const openContactModal = (triggerEl?: HTMLElement | null) => {
+    if (!modal || !backdrop || !panel) return;
+    lastFocusedElement = triggerEl ?? (document.activeElement as HTMLElement | null);
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+      panel.classList.remove('scale-95', 'opacity-0');
+      panel.classList.add('scale-100', 'opacity-100');
+      nameInput?.focus();
+    });
+  };
+
+  const closeContactModal = () => {
+    if (!modal || !backdrop || !panel) return;
+    backdrop.classList.remove('opacity-100');
+    backdrop.classList.add('opacity-0');
+    panel.classList.remove('scale-100', 'opacity-100');
+    panel.classList.add('scale-95', 'opacity-0');
+
+    if (window.location.hash === '#contact') {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    setTimeout(() => {
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lastFocusedElement?.focus();
+    }, 180);
+  };
+
+  // Intercept all links pointing to #contact to open the popup modal
+  document.querySelectorAll<HTMLAnchorElement>('a[href="#contact"], [data-open-contact]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      openContactModal(trigger);
+    });
+  });
+
+  // Open automatically if URL hash is #contact
+  if (window.location.hash === '#contact') {
+    openContactModal();
+  }
+
+  closeBtn?.addEventListener('click', closeContactModal);
+  backdrop?.addEventListener('click', closeContactModal);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal?.getAttribute('aria-hidden') === 'false') {
+      closeContactModal();
+    }
+  });
 
   const i18nData = form?.dataset.i18n ? JSON.parse(form.dataset.i18n) : null;
 
@@ -411,7 +463,6 @@ const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
     return { name, email, projectType, scope, message, subject, body, labels };
   };
 
-  // Clear field errors on input
   [
     [nameInput, 'error-name'],
     [emailInput, 'error-email'],
@@ -423,7 +474,6 @@ const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
     });
   });
 
-  // Copy structured summary to clipboard
   copyBtn?.addEventListener('click', async () => {
     if (!validateForm()) {
       showStatus(
@@ -510,7 +560,6 @@ const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
       return;
     }
 
-    // Honest client-side mailto integration when no backend endpoint is configured
     const mailtoUri = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(
       payload.subject
     )}&body=${encodeURIComponent(payload.body)}`;
@@ -526,5 +575,6 @@ const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
       if (submitBtn) submitBtn.disabled = false;
       if (submitLabel) submitLabel.textContent = originalLabel;
     }, 600);
+  });
   });
 </script>
