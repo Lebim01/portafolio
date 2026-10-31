@@ -1,0 +1,110 @@
+---
+import { getPortfolioContent } from '../data/portfolio';
+import type { Locale } from '../i18n/utils';
+import {
+  Code2,
+  Network,
+  Coins,
+  Sparkles,
+  Layers,
+  CloudCog,
+  ArrowRight,
+} from '@lucide/astro';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
+const { servicesSection } = getPortfolioContent(locale);
+---
+
+<section
+  id="services"
+  aria-labelledby="services-heading"
+  class="relative py-20 md:py-28"
+>
+  <div class="section-divider mb-20 md:mb-28" aria-hidden="true"></div>
+
+  <div class="container-shell">
+    <!-- Section Header -->
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <div class="mb-3 inline-flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+        <span class="h-[1px] w-6 bg-accent/70" aria-hidden="true"></span>
+        <span>{servicesSection.eyebrow}</span>
+        <span class="h-[1px] w-6 bg-accent/70" aria-hidden="true"></span>
+      </div>
+      <h2
+        id="services-heading"
+        class="font-display text-3xl font-bold tracking-tight text-text-primary sm:text-4xl"
+      >
+        {servicesSection.heading}
+      </h2>
+      <p class="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base">
+        {servicesSection.subtitle}
+      </p>
+    </div>
+
+    <!-- Services Grid (6 Premium Interactive Spotlight Cards) -->
+    <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        servicesSection.items.map((service) => (
+          <article
+            data-reveal
+            class="spotlight-card corner-amber-glow group flex h-full flex-col justify-between p-6 sm:p-7"
+          >
+            <div class="relative z-10">
+              <!-- Top row: Icon container & specialty badge -->
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/35 bg-accent/10 text-accent shadow-[0_0_24px_rgba(245,158,11,0.14)] transition-transform duration-300 group-hover:scale-105 group-hover:border-accent">
+                  {service.iconName === 'code-2' && <Code2 class="h-6 w-6" aria-hidden="true" />}
+                  {service.iconName === 'network' && <Network class="h-6 w-6" aria-hidden="true" />}
+                  {service.iconName === 'coins' && <Coins class="h-6 w-6" aria-hidden="true" />}
+                  {service.iconName === 'Sparkles' && <Sparkles class="h-6 w-6" aria-hidden="true" />}
+                  {service.iconName === 'layers' && <Layers class="h-6 w-6" aria-hidden="true" />}
+                  {service.iconName === 'cloud-cog' && <CloudCog class="h-6 w-6" aria-hidden="true" />}
+                </div>
+                <span class="rounded-full border border-border-subtle bg-bg-base/70 px-3 py-1 font-mono text-[11px] font-medium text-text-secondary transition-colors group-hover:border-accent/40 group-hover:text-accent">
+                  {service.badge}
+                </span>
+              </div>
+
+              <!-- Title & Description -->
+              <h3 class="mt-6 font-display text-xl font-bold text-text-primary transition-colors group-hover:text-accent">
+                {service.title}
+              </h3>
+
+              <p class="mt-2.5 text-sm leading-relaxed text-text-secondary">
+                {service.description}
+              </p>
+
+              <!-- Verifiable Technical Capabilities -->
+              <ul class="mt-5 space-y-2 border-t border-border-subtle/70 pt-4">
+                {service.capabilities.map((cap) => (
+                  <li class="flex items-start gap-2 text-xs leading-relaxed text-text-secondary">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" aria-hidden="true" />
+                    <span>{cap}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Card Footer Action -->
+            <div class="relative z-10 mt-6 pt-2">
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold tracking-wider text-accent uppercase transition-colors hover:text-accent-hover"
+              >
+                <span>{servicesSection.cardCtaLabel}</span>
+                <ArrowRight
+                  class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

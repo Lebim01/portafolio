@@ -1,0 +1,125 @@
+---
+import { getPortfolioContent } from '../data/portfolio';
+import type { Locale } from '../i18n/utils';
+import { Terminal, ArrowUp, Mail, Layers, Cpu } from '@lucide/astro';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
+const { navigationItems, servicesSection, siteMetadata, footer } =
+  getPortfolioContent(locale);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border-subtle bg-bg-base pt-16 pb-12">
+  <div class="container-shell">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
+      <!-- Brand Column -->
+      <div class="lg:col-span-5">
+        <a
+          href="#hero"
+          class="inline-flex items-center gap-3 text-text-primary"
+          aria-label={`${siteMetadata.brandName} — ${footer.backToTopLabel}`}
+        >
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-accent/40 bg-surface text-accent">
+            <Terminal class="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span class="font-display text-base font-bold tracking-wider">
+            VICTOR<span class="text-accent">ALVAREZ</span>
+          </span>
+        </a>
+
+        <p class="mt-4 max-w-sm text-xs leading-relaxed text-text-secondary sm:text-sm">
+          {siteMetadata.tagline}
+        </p>
+
+        <p class="mt-4 font-mono text-[11px] text-text-muted">
+          {footer.stackNote}
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="lg:col-span-3">
+        <h3 class="font-mono text-xs font-semibold tracking-wider text-text-primary uppercase">
+          {footer.navHeading}
+        </h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            navigationItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-xs text-text-secondary transition-colors hover:text-accent sm:text-sm"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Core Specialties -->
+      <div class="lg:col-span-4">
+        <h3 class="font-mono text-xs font-semibold tracking-wider text-text-primary uppercase">
+          {footer.specialtiesHeading}
+        </h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            servicesSection.items.slice(0, 4).map((service) => (
+              <li>
+                <a
+                  href="#services"
+                  class="text-xs text-text-secondary transition-colors hover:text-accent sm:text-sm"
+                >
+                  {service.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border-subtle/70 pt-8 sm:flex-row">
+      <p class="text-xs text-text-secondary">
+        © {currentYear} {footer.copyrightText}
+      </p>
+
+      <div class="flex items-center gap-3">
+        <a
+          href={`mailto:${siteMetadata.email}`}
+          class="inline-flex h-9 w-9 items-center justify-center rounded-[20px] border border-border-subtle bg-surface text-text-secondary transition-colors hover:border-accent/60 hover:text-accent"
+          aria-label={footer.emailAria}
+        >
+          <Mail class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a
+          href="#projects"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-[20px] border border-border-subtle bg-surface text-text-secondary transition-colors hover:border-accent/60 hover:text-accent"
+          aria-label={footer.projectsAria}
+        >
+          <Layers class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a
+          href="#services"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-[20px] border border-border-subtle bg-surface text-text-secondary transition-colors hover:border-accent/60 hover:text-accent"
+          aria-label={footer.servicesAria}
+        >
+          <Cpu class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a
+          href="#hero"
+          class="inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-surface px-3 py-2 font-mono text-[11px] font-medium text-text-secondary transition-colors hover:border-accent/60 hover:text-accent"
+          aria-label={footer.backToTopLabel}
+        >
+          <span>{footer.backToTopLabel}</span>
+          <ArrowUp class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

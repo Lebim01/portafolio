@@ -1,0 +1,201 @@
+---
+import { getPortfolioContent } from '../data/portfolio';
+import type { Locale } from '../i18n/utils';
+import {
+  CheckCircle2,
+  UserCheck,
+  Layers,
+  Globe,
+  ArrowDownRight,
+} from '@lucide/astro';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
+const { aboutData } = getPortfolioContent(locale);
+---
+
+<section
+  id="about"
+  aria-labelledby="about-heading"
+  class="relative py-20 md:py-28"
+>
+  <div class="section-divider mb-20 md:mb-28" aria-hidden="true"></div>
+
+  <div class="container-shell">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 items-start">
+      <!-- Left Column: Narrative & Verifiable Engineering Pillars -->
+      <div class="lg:col-span-7" data-reveal>
+        <div class="mb-3 inline-flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+          <span>{aboutData.sectionLabel}</span>
+          <span class="h-[1px] w-8 bg-accent/70" aria-hidden="true"></span>
+        </div>
+
+        <h2
+          id="about-heading"
+          class="font-display text-3xl font-bold tracking-tight text-text-primary sm:text-4xl lg:text-[2.5rem] lg:leading-[1.15]"
+        >
+          {aboutData.heading}
+        </h2>
+
+        <p class="mt-5 text-base font-medium leading-relaxed text-text-primary/90 sm:text-lg">
+          {aboutData.lead}
+        </p>
+
+        <div class="mt-4 space-y-3.5 text-sm leading-relaxed text-text-secondary sm:text-base">
+          {aboutData.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <!-- Verifiable Engineering Pillar Cards (No invented vanity numbers) -->
+        <div
+          class="mt-8 grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-4"
+          aria-label={aboutData.pillarsAriaLabel}
+        >
+          {
+            aboutData.verifiablePillars.map((pillar) => (
+              <div class="spotlight-card p-4">
+                <div class="relative z-10">
+                  <span class="font-mono text-[10px] font-semibold tracking-widest text-accent/80 uppercase">
+                    {pillar.code}
+                  </span>
+                  <p class="mt-1 font-display text-xl font-bold text-accent">
+                    {pillar.value}
+                  </p>
+                  <p class="mt-0.5 text-xs font-semibold text-text-primary">
+                    {pillar.label}
+                  </p>
+                  <p class="mt-1.5 text-[11px] leading-snug text-text-secondary">
+                    {pillar.detail}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Action Link -->
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="#services"
+            class="inline-flex min-h-[44px] items-center gap-2 rounded-[20px] border border-border-subtle bg-surface px-6 py-2.5 text-xs font-semibold tracking-wider text-text-primary uppercase transition-all duration-200 hover:border-accent/60 hover:bg-surface-elevated hover:text-accent"
+          >
+            <span>{aboutData.ctaServicesLabel}</span>
+            <ArrowDownRight class="h-4 w-4 text-accent" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Metadata Panel, Focus Checklist & Distributed Systems Topology Graphic -->
+      <div class="lg:col-span-5 space-y-6" data-reveal>
+        <!-- Profile Metadata Card -->
+        <div class="spotlight-card corner-amber-glow p-6 sm:p-7">
+          <div class="relative z-10">
+            <h3 class="font-mono text-xs font-semibold tracking-widest text-accent uppercase">
+              {aboutData.techSheetTitle}
+            </h3>
+
+            <dl class="mt-5 divide-y divide-border-subtle/70">
+              {
+                aboutData.profileMetadata.map((item, idx) => (
+                  <div class="flex flex-col gap-1 py-3 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                    <dt class="flex items-center gap-2.5 text-xs font-medium text-text-secondary">
+                      {idx === 0 && <UserCheck class="h-4 w-4 text-accent shrink-0" aria-hidden="true" />}
+                      {idx === 1 && <Layers class="h-4 w-4 text-accent shrink-0" aria-hidden="true" />}
+                      {idx === 2 && <Globe class="h-4 w-4 text-accent shrink-0" aria-hidden="true" />}
+                      <span>{item.label}:</span>
+                    </dt>
+                    <dd class="text-xs font-semibold text-text-primary sm:text-right">
+                      {item.value}
+                    </dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </div>
+        </div>
+
+        <!-- Core Engineering Focus Checklist & Topology Visual -->
+        <div class="spotlight-card p-6 sm:p-7">
+          <div class="relative z-10">
+            <div class="flex items-center justify-between gap-2">
+              <h3 class="font-display text-sm font-semibold text-text-primary">
+                {aboutData.focusHeading}
+              </h3>
+              <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] font-medium text-accent">
+                {aboutData.focusBadge}
+              </span>
+            </div>
+
+            <ul class="mt-4 space-y-2.5">
+              {
+                aboutData.focusAreas.map((area) => (
+                  <li class="flex items-start gap-2.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
+                    <CheckCircle2
+                      class="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    <span>{area}</span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <!-- Subtle Technological Node Topology -->
+            <div
+              class="mt-6 overflow-hidden rounded-lg border border-border-subtle/80 bg-bg-base/70 p-4"
+              aria-hidden="true"
+            >
+              <div class="flex items-center justify-between text-[10px] font-mono text-text-muted mb-2">
+                <span>TOPOLOGY // FULLSTACK · WEB3 · GRAPHRAG</span>
+                <span class="text-accent">ACTIVE NODES</span>
+              </div>
+              <svg
+                viewBox="0 0 380 86"
+                class="h-20 w-full"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <pattern id="dotMatrix" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <circle cx="2" cy="2" r="1" fill="#292F39" />
+                </pattern>
+                <rect width="380" height="86" fill="url(#dotMatrix)" />
+
+                <path
+                  d="M36 46 L112 24 L196 54 L278 22 L346 48"
+                  stroke="#F59E0B"
+                  stroke-opacity="0.45"
+                  stroke-width="1.25"
+                />
+                <path
+                  d="M112 24 L196 18 L278 62 L346 48"
+                  stroke="#292F39"
+                  stroke-width="1"
+                  stroke-dasharray="3 3"
+                />
+
+                <circle cx="36" cy="46" r="4" fill="#F59E0B" />
+                <circle cx="36" cy="46" r="9" stroke="#F59E0B" stroke-opacity="0.3" />
+                <text x="20" y="68" fill="#A1A1AA" font-size="8" font-family="monospace">CLIENT/SSR</text>
+
+                <circle cx="112" cy="24" r="3.5" fill="#FBBF24" />
+                <text x="92" y="13" fill="#A1A1AA" font-size="8" font-family="monospace">API/SAAS</text>
+
+                <circle cx="196" cy="54" r="4.5" fill="#F59E0B" />
+                <circle cx="196" cy="54" r="10" stroke="#F59E0B" stroke-opacity="0.3" />
+                <text x="172" y="76" fill="#F4F4F5" font-size="8" font-family="monospace">VECTOR/GRAPH</text>
+
+                <circle cx="278" cy="22" r="3.5" fill="#10B981" />
+                <text x="256" y="12" fill="#A1A1AA" font-size="8" font-family="monospace">ON-CHAIN</text>
+
+                <circle cx="346" cy="48" r="4" fill="#F59E0B" />
+                <text x="322" y="68" fill="#A1A1AA" font-size="8" font-family="monospace">CLOUD/EDGE</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
