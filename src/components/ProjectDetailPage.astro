@@ -208,6 +208,7 @@ const detailJsonLd = {
           id="detail-hero-banner-img"
           src={project.image}
           alt={project.imageAlt}
+          title={project.title}
           width="1200"
           height="675"
           fetchpriority="high"
@@ -269,6 +270,7 @@ const detailJsonLd = {
                 <img
                   src={item.src}
                   alt={item.alt}
+                  title={item.title}
                   width="160"
                   height="90"
                   loading="lazy"
@@ -289,19 +291,32 @@ const detailJsonLd = {
 
       <!-- Minimalist Editorial Details -->
       <div class="mt-10 grid grid-cols-1 gap-8 border-t border-border-subtle/60 pt-8 md:grid-cols-12">
-        <!-- Left: Key Points -->
-        <div class="md:col-span-8">
-          <h2 class="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">
-            {projectsSection.highlightsLabel}
-          </h2>
-          <ul class="mt-3 space-y-2.5">
-            {project.highlights.map((item) => (
-              <li class="flex items-start gap-2.5 text-sm leading-relaxed text-text-secondary">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <!-- Left: Key Points & Architecture -->
+        <div class="md:col-span-8 space-y-7">
+          <div>
+            <h2 class="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">
+              {projectsSection.highlightsLabel}
+            </h2>
+            <ul class="mt-3 space-y-2.5">
+              {project.highlights.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm leading-relaxed text-text-secondary">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {project.architectureNotes && (
+            <div class="border-t border-border-subtle/50 pt-6">
+              <h2 class="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">
+                {projectsSection.archSystemDesignLabel}
+              </h2>
+              <p class="mt-2.5 text-sm leading-relaxed text-text-secondary">
+                {project.architectureNotes}
+              </p>
+            </div>
+          )}
         </div>
 
         <!-- Right: Stack -->
@@ -352,7 +367,7 @@ const detailJsonLd = {
       if (nextAlt) heroImg.alt = nextAlt;
       if (captionEl && nextTitle) captionEl.textContent = nextTitle;
 
-      const isLogoSlide = /logo|principal\.png|node-payments\/image\.png|nodeworkforce\/image\.png|gibor-.*\/image\.png|4medichealth\//i.test(nextSrc);
+      const isLogoSlide = /\.svg$|logo|principal\.png|node-payments\/image\.png|nodeworkforce\/image\.png|gibor-.*\/image\.png|4medichealth\/|auraseries\/image\.png/i.test(nextSrc);
       heroImg.classList.toggle('object-contain', isLogoSlide);
       heroImg.classList.toggle('p-10', isLogoSlide);
       heroImg.classList.toggle('sm:p-14', isLogoSlide);

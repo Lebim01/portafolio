@@ -32,7 +32,8 @@ const resolveNavHref = (href: string) =>
       >
         <img
           src="/logo-victoralvarez.svg"
-          alt="VA"
+          alt={`${siteMetadata.brandName} — ${siteMetadata.roleTitle}`}
+          title={`${siteMetadata.brandName} — ${siteMetadata.roleTitle}`}
           width="44"
           height="20"
           class="h-4 w-auto object-contain select-none"

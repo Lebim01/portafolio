@@ -126,7 +126,12 @@ const { lifestyle } = aboutData;
               >
                 <img
                   src={`https://flagcdn.com/${country.code.toLowerCase()}.svg`}
-                  alt={country.name}
+                  alt={
+                    locale === 'en'
+                      ? `Flag of ${country.name} — International Networking & Business`
+                      : `Bandera de ${country.name} — Networking y Negocios Internacionales`
+                  }
+                  title={country.name}
                   width="28"
                   height="20"
                   loading="lazy"
