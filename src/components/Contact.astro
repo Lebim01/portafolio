@@ -5,7 +5,6 @@ import {
   Mail,
   MapPin,
   Send,
-  Copy,
   ShieldCheck,
   X,
 } from '@lucide/astro';
@@ -17,7 +16,7 @@ interface Props {
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { siteMetadata, contactSection } = getPortfolioContent(locale);
 const { form: f } = contactSection;
-const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
+const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || '/api/contact';
 const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventana de contacto';
 ---
 
@@ -238,6 +237,18 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
           </p>
         </div>
 
+        <!-- Anti-Spam Honeypot (Hidden from humans) -->
+        <div class="hidden" aria-hidden="true">
+          <label for="contact-website">Website</label>
+          <input
+            id="contact-website"
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
         <!-- Live Status Banner -->
         <div
           id="contact-status"
@@ -246,15 +257,15 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
           aria-live="polite"
         ></div>
 
-        <!-- Submit & Secondary Actions -->
+        <!-- Direct Submit & Security Notice -->
         <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
           <button
             id="contact-submit-btn"
             type="submit"
-            class="group inline-flex items-center justify-center gap-2 rounded-[20px] bg-accent px-4 py-2 text-xs font-bold tracking-wider text-bg-base uppercase shadow-[0_0_25px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_32px_rgba(245,158,11,0.45)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+            class="group inline-flex items-center justify-center gap-2 rounded-[20px] bg-accent px-5 py-2.5 text-xs font-bold tracking-wider text-bg-base uppercase shadow-[0_0_25px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_32px_rgba(245,158,11,0.45)] active:scale-[0.98] cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
           >
             <span id="contact-submit-label">
-              {contactEndpoint ? f.submitEndpointLabel : f.submitMailtoLabel}
+              {f.submitEndpointLabel}
             </span>
             <Send
               class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
@@ -262,22 +273,11 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
             />
           </button>
 
-          <button
-            id="contact-copy-btn"
-            type="button"
-            class="inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/70 px-3.5 py-1.5 font-mono text-xs text-text-secondary transition-colors hover:border-accent/50 hover:text-text-primary"
-          >
-            <Copy class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-            <span id="contact-copy-label">{f.copyBtnLabel}</span>
-          </button>
+          <p class="flex items-center gap-2 text-[11px] text-text-muted">
+            <ShieldCheck class="h-3.5 w-3.5 shrink-0 text-accent/80" aria-hidden="true" />
+            <span>{f.endpointDisclaimer}</span>
+          </p>
         </div>
-
-        <p class="flex items-center gap-2 text-[11px] text-text-muted">
-          <ShieldCheck class="h-3.5 w-3.5 shrink-0 text-accent/80" aria-hidden="true" />
-          <span>
-            {contactEndpoint ? f.endpointDisclaimer : f.mailtoDisclaimer}
-          </span>
-        </p>
       </form>
     </div>
   </div>
@@ -294,15 +294,15 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
   const statusBox = document.getElementById('contact-status');
   const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
   const submitLabel = document.getElementById('contact-submit-label');
-  const copyBtn = document.getElementById('contact-copy-btn') as HTMLButtonElement | null;
-  const copyLabel = document.getElementById('contact-copy-label');
 
   const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
   const emailInput = document.getElementById('contact-email') as HTMLInputElement | null;
   const typeSelect = document.getElementById('contact-type') as HTMLSelectElement | null;
   const scopeSelect = document.getElementById('contact-scope') as HTMLSelectElement | null;
   const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+  const websiteInput = document.getElementById('contact-website') as HTMLInputElement | null;
 
+  const formLoadedAt = Date.now();
   let lastFocusedElement: HTMLElement | null = null;
 
   const openContactModal = (triggerEl?: HTMLElement | null) => {
@@ -474,42 +474,6 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
     });
   });
 
-  copyBtn?.addEventListener('click', async () => {
-    if (!validateForm()) {
-      showStatus(
-        'error',
-        i18nData?.copyValidationAlert ??
-          'Please complete all required fields before copying.'
-      );
-      return;
-    }
-
-    const payload = buildStructuredPayload();
-    const recipient = form?.dataset.recipient ?? 'contacto@victoralvarez.dev';
-    try {
-      await navigator.clipboard.writeText(
-        `${payload.labels.to}: ${recipient}\n${payload.labels.subject}: ${payload.subject}\n\n${payload.body}`
-      );
-      if (copyLabel) {
-        copyLabel.textContent = i18nData?.copiedBtnLabel ?? 'Copied!';
-      }
-      showStatus(
-        'info',
-        `${i18nData?.copySuccessInfo ?? 'Copied! Send to'} ${recipient}.`
-      );
-      setTimeout(() => {
-        if (copyLabel) {
-          copyLabel.textContent = i18nData?.copyBtnLabel ?? 'Copy summary';
-        }
-      }, 3500);
-    } catch {
-      showStatus(
-        'error',
-        `${i18nData?.copyErrorAlert ?? 'Error copying. Email:'} ${recipient}.`
-      );
-    }
-  });
-
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -521,60 +485,50 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
       return;
     }
 
-    const endpoint = form.dataset.endpoint?.trim() ?? '';
+    const endpoint = form.dataset.endpoint?.trim() || '/api/contact';
     const recipient = form.dataset.recipient?.trim() ?? 'contacto@victoralvarez.dev';
     const payload = buildStructuredPayload();
+    const locale = document.documentElement.lang === 'en' ? 'en' : 'es';
 
     if (submitBtn) submitBtn.disabled = true;
     const originalLabel = submitLabel?.textContent ?? 'Send';
     if (submitLabel) {
-      submitLabel.textContent = i18nData?.processingLabel ?? 'Processing...';
+      submitLabel.textContent = i18nData?.processingLabel ?? 'Sending...';
     }
 
-    if (endpoint) {
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
-        });
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...payload,
+          locale,
+          website: websiteInput?.value ?? '',
+          elapsedMs: Date.now() - formLoadedAt,
+        }),
+      });
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
+      const result = await response.json().catch(() => null);
 
-        showStatus(
-          'success',
-          i18nData?.serverSuccessAlert ?? 'Message received.'
-        );
-        form.reset();
-      } catch {
-        showStatus(
-          'error',
-          `${i18nData?.serverErrorAlert ?? 'Server error. Email:'} ${recipient}.`
-        );
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-        if (submitLabel) submitLabel.textContent = originalLabel;
+      if (!response.ok || (result && result.ok === false)) {
+        throw new Error(result?.message || `HTTP ${response.status}`);
       }
-      return;
-    }
 
-    const mailtoUri = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(
-      payload.subject
-    )}&body=${encodeURIComponent(payload.body)}`;
-
-    showStatus(
-      'info',
-      `${i18nData?.mailtoOpeningInfo ?? 'Opening email client for'} ${recipient}.`
-    );
-
-    window.location.href = mailtoUri;
-
-    setTimeout(() => {
+      const refSuffix = result?.id ? ` (Ref: ${result.id})` : '';
+      showStatus(
+        'success',
+        `${i18nData?.serverSuccessAlert ?? 'Message sent and confirmed.'}${refSuffix}`
+      );
+      form.reset();
+    } catch {
+      showStatus(
+        'error',
+        `${i18nData?.serverErrorAlert ?? 'Server error. Email:'} ${recipient}.`
+      );
+    } finally {
       if (submitBtn) submitBtn.disabled = false;
       if (submitLabel) submitLabel.textContent = originalLabel;
-    }, 600);
+    }
   });
   });
 </script>

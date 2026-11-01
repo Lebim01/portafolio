@@ -513,9 +513,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Como CTO escribí personalmente casi todo el código central de las 4 plataformas y su infraestructura, con el apoyo de 1 a 2 desarrolladores en interfaz y soporte.',
+            'Lideré la estrategia tecnológica y me involucré de lleno en la arquitectura y el desarrollo de las 4 plataformas, colaborando estrechamente con diseño, operaciones y dirección financiera en Nueva York.',
           personalModules:
-            'Diseñé y programé el motor contable de partida doble, la API financiera, el portal de inversionistas, el ERP administrativo, la billetera con doble factor (2FA) y el generador automático de contratos legales con firma digital.',
+            'Diseñé y construí el motor contable de partida doble, la API financiera, el portal de inversionistas, el ERP administrativo, la billetera con doble factor (2FA) y el generador automático de contratos con firma digital.',
           hardestChallenge:
             'Reemplazar un sistema antiguo en PHP que estaba en plena operación por 4 plataformas modernas en la nube, cuidando que cada centavo cuadrara a la perfección en millones de dólares bajo gestión y en 4 idiomas.',
           productImpact:
@@ -529,9 +529,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Cuatro aplicaciones conectadas entre sí (Portal de Inversionistas, ERP Administrativo, API Financiera y Sitio Corporativo) desplegadas en Google Cloud Run con Next.js, NestJS, PostgreSQL y almacenamiento seguro en Cloudflare R2.',
         highlights: [
-          'Operación internacional en 4 idiomas (español, inglés, portugués e italiano), alineada con auditorías contables en EE. UU. y custodia en Interactive Brokers y BMO.',
-          'Alta de clientes y contratación 100% digital: verificación de identidad, firma electrónica en pantalla, emisión de certificados en PDF y cálculo automático de rendimientos.',
-          'Contabilidad automática de partida doble: cada depósito, retiro, interés o comisión genera sus asientos contables al instante, integrado con billetera multimoneda y red de asesores.',
+          'Operación multilingüe (ES, EN, PT, IT) en 3 continentes, alineada con auditorías contables independientes en EE. UU. y custodia en Interactive Brokers y BMO',
+          'Modernización completa desde un sistema antiguo en PHP hacia 4 aplicaciones en la nube: Portal de Inversionistas, Backoffice Administrativo, Core Financiero y Sitio Corporativo',
+          'Alta de clientes y contratación 100% digital: verificación de identidad (KYC), firma electrónica en pantalla, emisión automática de contratos en PDF y cálculo de intereses',
+          'ERP contable de partida doble que registra cada depósito, retiro, pago de rendimientos y comisión de asesores sin intervención manual, integrado con billetera híbrida 2FA',
         ],
         industryTags: ['fintech'],
         techTags: ['automation', 'analytics', 'ai-rag'],
@@ -580,9 +581,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Diseñé y programé personalmente el 100% del motor criptográfico y el backend de pagos, coordinando de 1 a 3 personas en detalles de interfaz e integración con clientes.',
+            'Como fundador lideré el diseño del producto y el desarrollo del motor blockchain y de pagos, haciendo equipo con desarrolladores de interfaz y especialistas de integración para clientes empresariales.',
           personalModules:
-            'Programé los contratos inteligentes en Solidity, la generación de billeteras únicas por cobro, el monitoreo en tiempo real en múltiples redes (BSC, Ethereum, Polygon y Tron), el fondeo automático de gas y el motor de pagos masivos.',
+            'Construí los contratos inteligentes en Solidity, la generación de billeteras únicas por cobro, el monitoreo en tiempo real en múltiples redes (BSC, Ethereum, Polygon y Tron), el fondeo automático de gas y el motor de pagos masivos.',
           hardestChallenge:
             'Mover fondos de forma automática y sin custodia en varias blockchains con costos y tiempos distintos: detectar cada pago entrante, inyectar el gas exacto en ese instante y repartir los fondos sin trabar saldos ni duplicar envíos.',
           productImpact:
@@ -596,9 +597,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Construida con NestJS, PostgreSQL, colas en Redis/BullMQ y contratos inteligentes en Solidity (CREATE2), conectada a nodos en tiempo real para operar sobre BSC, Polygon, Ethereum, Base y Tron.',
         highlights: [
-          'Dirección única por cada cobro: crea bóvedas temporales en BSC, Polygon, Ethereum, Base y Tron para identificar cada pago al instante sin mostrar la billetera maestra del negocio.',
-          'Dispersión masiva por API o panel: permite liquidar nóminas globales y comisiones multinivel en lote con confirmación por doble factor.',
-          'Reglas flexibles de liquidación: el comercio elige si concentra sus fondos al instante, al cierre del día o al llegar a cierto monto, pudiendo dividir porcentajes entre varias billeteras.',
+          'Dirección única por cada orden (bóvedas CREATE2 y HD Wallets) en BSC, Polygon, Ethereum, Base y Tron, manteniendo privada la tesorería principal del comercio',
+          'Motor de pagos masivos (Mass Payouts) para dispersar cientos de comisiones o nóminas en un solo lote por API o con aprobación 2FA',
+          'Barrido automático de fondos (al instante, al cierre del día o por monto mínimo) con división porcentual entre varias billeteras y cobro de suscripciones Web3',
+          'Infraestructura en producción procesando volumen real para empresas conectadas como Gibor, InDubai e Identiko',
         ],
         industryTags: ['crypto', 'fintech', 'b2b', 'saas', 'multinivel'],
         techTags: ['onchain', 'automation', 'realtime'],
@@ -638,7 +640,7 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: diseñé, programé y desplegué toda la plataforma por mi cuenta.',
+            'Proyecto propio donde llevé desde la concepción del producto y la arquitectura de IA hasta su desarrollo e infraestructura en la nube, iterando de la mano con los primeros usuarios empresariales.',
           personalModules:
             'Construí el motor de agentes de IA con historial de versiones, el buscador documental (RAG), la bandeja en vivo para que un humano tome el control del chat, el entrenamiento automático a partir de correcciones, el sistema de cobro por créditos y el estudio de diseño con IA.',
           hardestChallenge:
@@ -654,9 +656,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Desarrollada en NestJS y Next.js con PostgreSQL (búsqueda vectorial), colas en Redis/BullMQ y WebSockets, conectando modelos de lenguaje (OpenAI, Anthropic y modelos propios en GPU) bajo un sistema de cobro exacto por consumo.',
         highlights: [
-          'Atención omnicanal con supervisión humana: los agentes atienden en vivo y cualquier supervisor puede tomar el control de un chat con un clic; si corrige una respuesta, el sistema aprende de ella.',
-          'Entrenamiento con documentos propios: procesa manuales y catálogos de la empresa para responder con datos reales sin inventar información.',
-          'Estudio creativo y cobro por uso: incluye un editor visual por capas impulsado por GPU para generar anuncios de marca y una billetera de créditos recargable con Stripe.',
+          'Agentes de IA omnicanal: control de versiones de prompts y límites de gasto, métricas en tiempo real e intervención humana instantánea en Web, WhatsApp y Slack',
+          'Aprendizaje continuo (RAG + LoRA): indexa manuales y PDFs de la empresa y permite a los supervisores corregir respuestas en el chat para reentrenar al modelo',
+          'Estudio creativo con IA: administra kits de marca y combina un lienzo visual por capas con generación rápida de imágenes publicitarias en GPU',
+          'Arquitectura multi-empresa con llaves API, contabilidad exacta de créditos por consumo y suscripciones con Stripe',
         ],
         industryTags: ['ia', 'saas'],
         techTags: ['ai-rag', 'gpu-lab', 'automation', 'realtime'],
@@ -700,9 +703,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: hice todo el sistema sin apoyo externo —motor, ruteo, interfaz, libro contable, custodia y trading spot—.',
+            'Iniciativa propia en la que estuve a cargo del diseño y desarrollo integral de la plataforma —conectando el motor de liquidez, la lógica de custodia, el libro contable, la interfaz y las herramientas de trading spot—.',
           personalModules:
-            'Programé las billeteras para 4 familias de redes (Bitcoin, Ethereum/EVM, Solana y Tron), el buscador de mejores precios entre exchanges descentralizados, el libro contable interno, las órdenes avanzadas (Limit, OCO, Trailing, DCA) y la ejecución automática de señales.',
+            'Construí las billeteras para 4 familias de redes (Bitcoin, Ethereum/EVM, Solana y Tron), el buscador de mejores precios entre exchanges descentralizados, el libro contable interno, las órdenes avanzadas (Limit, OCO, Trailing, DCA) y la ejecución automática de señales.',
           hardestChallenge:
             'Conectar 4 tecnologías blockchain completamente distintas bajo un mismo motor que compara precios en tiempo real entre 5 proveedores de liquidez y liquida órdenes complejas al instante sin descuadres de saldo.',
           productImpact:
@@ -716,9 +719,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Construido en Next.js y NestJS con PostgreSQL y Redis, conectando cotizadores descentralizados (Jupiter, 0x, LI.FI y Chainflip), análisis de seguridad GoPlus antes de cada operación y un libro contable interno de alta velocidad.',
         highlights: [
-          'Operación en múltiples redes desde una sola cuenta: soporta Bitcoin, redes EVM, Solana y Tron buscando siempre la ruta con mejor precio.',
-          'Órdenes avanzadas y compras programadas: permite configurar órdenes Limit, Stop Loss, Take Profit, Trailing, OCO y planes de ahorro automático (DCA).',
-          'Señales Spot con ejecución automática: el usuario puede activar señales técnicas que abren la compra por sí solas y vigilan el cierre en ganancia o protección.',
+          'Custodia y enrutamiento unificado en redes EVM, Solana, Bitcoin y Tron buscando siempre el mejor precio entre Jupiter, 0x, LI.FI y Chainflip',
+          'Motor de órdenes avanzadas: Limit, Stop Loss, Take Profit, Trailing Stop, OCO, OTOCO y compras programadas recurrentes (DCA)',
+          'Auto-Trading Spot: ejecuta entradas al mercado a partir de señales cuantitativas y vigila el cierre en ganancia (Take Profit) o protección (Stop Loss) 24/7',
+          'Escudo de seguridad GoPlus previo a cada operación que detecta tokens maliciosos antes de intercambiar, respaldado por un libro contable interno exacto',
         ],
         industryTags: ['crypto', 'fintech', 'live-market'],
         techTags: ['onchain', 'realtime', 'automation', 'analytics'],
@@ -835,9 +839,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Como CTO dirigí un equipo de 3 a 6 ingenieros y programé personalmente los motores centrales de búsqueda, grafos y cotización.',
+            'Como CTO dirigí un equipo de 3 a 6 ingenieros mientras me involucraba de cerca en el diseño y desarrollo de los motores de búsqueda, grafos y cotización.',
           personalModules:
-            'Diseñé y programé la base de datos en grafos (Neo4j) para conectar productos equivalentes, el buscador con IA en Elasticsearch, el cotizador B2B multi-proveedor y los procesos de sincronización en Google Cloud.',
+            'Diseñé y construí la base de datos en grafos (Neo4j) para conectar productos equivalentes, el buscador con IA en Elasticsearch, el cotizador B2B multi-proveedor y los procesos de sincronización en Google Cloud.',
           hardestChallenge:
             'Unificar decenas de miles de productos eléctricos de distintos fabricantes (Schneider, ABB, Siemens, Condumex) donde cada proveedor nombra las piezas diferente, logrando que un comprador encuentre equivalencias exactas en milisegundos.',
           productImpact:
@@ -851,9 +855,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Combina Neo4j para relacionar piezas equivalentes entre marcas, Elasticsearch con IA para búsqueda técnica, PostgreSQL para las cotizaciones y Google Cloud Run para actualizar miles de productos en segundo plano.',
         highlights: [
-          'Equivalencias automáticas entre marcas: si una pieza no tiene stock o es más cara, el grafo en Neo4j sugiere el componente técnico equivalente de otro fabricante con el mejor precio.',
-          'Buscador pensado para ingenieros: entiende códigos de parte, capacidades eléctricas y marcas filiales (como Schneider ↔ Square D) sin exigir el nombre exacto.',
-          'Cotizador empresarial completo: maneja precios confidenciales por cliente, reserva de inventario entre varios proveedores, pagos SPEI/tarjetas y conexión con Zoho CRM.',
+          'Grafo de productos en Neo4j que conecta piezas equivalentes entre marcas y distribuidores, calculando en automático el mejor precio, margen y stock disponible',
+          'Buscador inteligente (Elasticsearch + IA) que entiende términos técnicos eléctricos y sugiere marcas filiales equivalentes (como Schneider ↔ Square D)',
+          'Cotizador B2B multi-proveedor con reserva de inventario, historial de negociación, sincronización con CRM y cobros en línea o vía SPEI',
+          'Procesamiento automático de catálogos con IA (OpenAI / Ollama) para limpiar fichas técnicas desordenadas y sincronizar precios con Google Merchant Center',
         ],
         industryTags: ['ecommerce', 'b2b', 'data-analytics'],
         techTags: ['ai-rag', 'automation', 'analytics'],
@@ -922,9 +927,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Aplicación financiera de baja latencia en React y TypeScript conectada por WebSockets a motores de mercado institucionales, con manejo de estado de alta frecuencia y herramientas de cálculo de bonos.',
         highlights: [
-          'Compraventa electrónica de bonos (M Bono y UDI Bono) mediante libro de órdenes abierto (CLOB) y solicitudes de cotización directa entre instituciones (RFQ).',
-          'Herramientas de análisis en vivo: gráficos de curvas de tasas, comparativas de spreads históricos y calculadora de riesgo y sensibilidad del bono (DV01, duración y convexidad).',
-          'Flujo completo desde la postura hasta la liquidación internacional (Clearstream, Euroclear e Indeval) bajo regulación de la SEC y FINRA.',
+          'Compraventa electrónica de bonos gubernamentales (M Bono, UDI Bono) combinando libro de órdenes central en vivo (CLOB) y cotizaciones multi-banco (RFQ)',
+          'Herramientas de análisis en tiempo real: graficador de curvas de rendimiento, análisis de spreads, matriz de valor relativo y calculadoras de riesgo (DV01, Duración, Convexidad)',
+          'Ejecución de punta a punta con instrucciones automatizadas de liquidación post-operación (Clearstream, Euroclear e Indeval)',
+          'Infraestructura financiera regulada operada por Cicada Securities (SEC ATS y miembro FINRA), respaldada por Citi',
         ],
         industryTags: ['fintech', 'live-market', 'b2b'],
         techTags: ['realtime', 'analytics', 'automation'],
@@ -965,9 +971,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Construí prácticamente todo el ecosistema de principio a fin por mi cuenta, con apoyo puntual solo en diseño visual y contenido educativo.',
+            'Como fundador lideré la arquitectura y el desarrollo de las 3 aplicaciones de la plataforma, haciendo equipo con diseñadores visuales, educadores y especialistas de mercado.',
           personalModules:
-            'Programé las 3 partes del sistema: la aplicación web en Next.js, el backend en NestJS que procesa datos económicos e indicadores, la auditoría de cuentas de MetaTrader 5 y la extensión de Chrome que dibuja directo sobre TradingView.',
+            'Construí las 3 piezas del sistema: la aplicación web en Next.js, el backend en NestJS que procesa datos económicos e indicadores, la auditoría de cuentas de MetaTrader 5 y la extensión de Chrome que dibuja directo sobre TradingView.',
           hardestChallenge:
             'Lograr que nuestra extensión de Chrome se conectara directamente al lienzo interno de TradingView para dibujar patrones armónicos complejos y niveles de entrada y salida en menos de 100 milisegundos con un solo clic.',
           productImpact:
@@ -981,9 +987,10 @@ const esContent: PortfolioContent = {
         architectureNotes:
           'Sistema dividido en tres piezas: aplicación web progresiva en Next.js, motor backend en NestJS con PostgreSQL y Redis que recopila datos económicos globales, y extensión de Chrome para inyección gráfica instantánea.',
         highlights: [
-          'Centro de comando macroeconómico: procesa datos de la Reserva Federal (FRED), bonos del Tesoro, posicionamiento institucional y calendario económico para resumir el sesgo del mercado cada día.',
-          'Puente directo con TradingView en un clic: la extensión traza automáticamente el patrón detectado y sus niveles de entrada, Stop Loss y Take Profit sobre el gráfico del usuario.',
-          'Conexión con MetaTrader 5 y academia: audita el rendimiento real de las cuentas de los usuarios con apoyo de IA e incluye cursos y sistema de referidos.',
+          'Ecosistema de 3 aplicaciones en producción: Web App/PWA, API central en NestJS + PostgreSQL y Extensión de Chrome para traders',
+          'Terminal Macroeconómica: procesa datos de la Reserva Federal (FRED), rendimientos del Tesoro de EE. UU., reportes institucionales COT y sentimiento del mercado para definir el sesgo diario',
+          'Puente con TradingView (< 100 ms): dibuja patrones armónicos, cajas de riesgo/beneficio y niveles de Entrada, Stop Loss y Take Profit sobre el gráfico del usuario en 1 clic',
+          'Auditoría de cuentas reales conectada a MetaTrader 5 con retroalimentación por IA, árbol de red de afiliados y alertas push en tiempo real',
         ],
         industryTags: ['live-market', 'elearning', 'saas', 'multinivel'],
         techTags: ['realtime', 'analytics', 'automation', 'ai-rag'],
@@ -1030,7 +1037,7 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Construí prácticamente toda la plataforma de principio a fin, con apoyo puntual en diseño y operación comercial.',
+            'Encabecé el diseño técnico y el desarrollo de los módulos principales de la plataforma, colaborando de cerca con los equipos de diseño, soporte y operación comercial.',
           personalModules:
             'Desarrollé el estudio de televisión web (Gibor Live Studio con 8 escenas y 2 educadores en pantalla sin instalar OBS), el motor de red binaria y comisiones en Neo4j, la academia de cursos y las pasarelas cripto/fiat.',
           hardestChallenge:
@@ -1097,9 +1104,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: construí toda la billetera para iOS, Android, Web y el motor multired sin equipo adicional.',
+            'Estuve al frente del desarrollo integral de la billetera para iOS, Android y Web y de su motor multired, coordinando el lanzamiento junto al equipo directivo y legal de PAY CORE SAS.',
           personalModules:
-            'Programé la bóveda local de llaves privadas en el dispositivo, la conexión con Ethereum, BNB Chain, Solana y TRON, el módulo de intercambio de tokens (Swaps), la compra de USDT con moneda local y la publicación en App Store y Google Play.',
+            'Construí la bóveda local de llaves privadas en el dispositivo, la conexión con Ethereum, BNB Chain, Solana y TRON, el módulo de intercambio de tokens (Swaps), la compra de USDT con moneda local y la publicación en App Store y Google Play.',
           hardestChallenge:
             'Unificar 4 blockchains con arquitecturas muy distintas (EVM, Solana y TRON) dentro de una app móvil sencilla y rápida, asegurando que las llaves privadas nunca salgan del teléfono del usuario.',
           productImpact:
@@ -1141,9 +1148,9 @@ const esContent: PortfolioContent = {
           'ETRNO (etrnoworld.com) ecosistema FinTech, Marketplace multi-tienda, Árbol Binario interactivo y ETRNO AI Studio (SION AI) desarrollado como Principal Developer por Victor Alvarez',
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: construí toda la plataforma y sus módulos de principio a fin por mi cuenta.',
+            'Lideré la arquitectura y el desarrollo integral de la plataforma y sus módulos, trabajando de la mano con los fundadores para aterrizar cada flujo comercial y educativo.',
           personalModules:
-            'Programé el estudio de IA (SION AI con visión por computadora en el navegador), el marketplace de tiendas personalizadas por socio, la billetera cripto/fiat con simulador de bonos, el árbol binario interactivo y el panel administrativo.',
+            'Construí el estudio de IA (SION AI con visión por computadora en el navegador), el marketplace de tiendas personalizadas por socio, la billetera cripto/fiat con simulador de bonos, el árbol binario interactivo y el panel administrativo.',
           hardestChallenge:
             'Correr modelos de visión por computadora y gráficos 3D fluidos directamente en el navegador sin afectar la velocidad de la tienda, la billetera ni el árbol de afiliados en dispositivos móviles.',
           productImpact:
@@ -1210,9 +1217,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: diseñé y programé toda la plataforma multi-país de extremo a extremo por mi cuenta.',
+            'Estuve a cargo de la arquitectura y el desarrollo completo de la plataforma multi-país, colaborando con los equipos de logística, proveedores y gerencias regionales.',
           personalModules:
-            'Programé el sistema de tiendas personalizadas por vendedor, el motor que divide automáticamente un carrito en sub-pedidos por proveedor, la conexión con el constructor visual de tiendas, los tableros de ventas por país y el chat en vivo por pedido.',
+            'Construí el sistema de tiendas personalizadas por vendedor, el motor que divide automáticamente un carrito en sub-pedidos por proveedor, la conexión con el constructor visual de tiendas, los tableros de ventas por país y el chat en vivo por pedido.',
           hardestChallenge:
             'Conectar cientos de tiendas de vendedores con múltiples proveedores de dropshipping en 4 países, dividiendo cada compra automáticamente por proveedor sin sobrevender el inventario disponible.',
           productImpact:
@@ -1298,7 +1305,7 @@ const esContent: PortfolioContent = {
           'Luthor Web Builder (webbuilder-luthor.vercel.app) plataforma SaaS B2B multi-tenant de construcción visual drag-and-drop con SSO, PostgreSQL y Cloudflare R2 fundada y liderada por Victor Alvarez',
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: diseñé y programé todo el constructor visual de principio a fin por mi cuenta.',
+            'Iniciativa propia donde llevé el diseño y desarrollo completo del constructor visual y su motor de integración, pensado para sumarse fácilmente a otros productos SaaS.',
           personalModules:
             'Construí el lienzo de edición arrastrar y soltar con vista previa móvil/escritorio, el guardado automático en PostgreSQL, el inicio de sesión único (SSO) para incrustarlo dentro de otras plataformas y la publicación en un clic.',
           hardestChallenge:
@@ -1453,9 +1460,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: diseñé y programé toda la terminal financiera de principio a fin por mi cuenta.',
+            'Llevé el diseño y desarrollo integral de la terminal financiera, trabajando de cerca con traders y educadores para afinar cada herramienta de análisis en vivo.',
           personalModules:
-            'Programé el detector y dibujante automático de patrones armónicos/ABC sobre los gráficos en vivo, la conexión por WebSockets a Cripto, Metales y Forex, la calculadora de riesgo/beneficio y el sistema de votación en tiempo real.',
+            'Construí el detector y dibujante automático de patrones armónicos/ABC sobre los gráficos en vivo, la conexión por WebSockets a Cripto, Metales y Forex, la calculadora de riesgo/beneficio y el sistema de votación en tiempo real.',
           hardestChallenge:
             'Dibujar patrones geométricos y zonas de ganancia/pérdida directamente sobre las velas en vivo al milisegundo, manteniendo la pantalla fluida mientras se actualizan los precios y los votos de la comunidad.',
           productImpact:
@@ -1516,9 +1523,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: construí toda la tienda online, el motor de comisiones binarias y el panel de socios sin equipo externo.',
+            'Lideré la arquitectura y el desarrollo de la plataforma trabajando mano a mano con los fundadores para alinear la tienda, el plan de comisiones y la logística.',
           personalModules:
-            'Programé la tienda con precios dinámicos (cliente público vs. distribuidor), el árbol binario con conteo de puntos por pierna, el liquidador semanal de comisiones y la oficina virtual de socios.',
+            'Construí la tienda con precios dinámicos (cliente público vs. distribuidor), el árbol binario con conteo de puntos por pierna, el liquidador semanal de comisiones y la oficina virtual de socios.',
           hardestChallenge:
             'Unir en una sola compra la venta al público con dropshipping y las reglas del plan binario (puntos personales y grupales, topes por rango y descuentos de hasta el 50% para afiliados).',
           productImpact:
@@ -1583,9 +1590,9 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Como fundador desarrollé el 100% de la plataforma e-commerce y coordiné directamente el diseño de las fórmulas médicas y la maquila en México.',
+            'Como fundador construí la plataforma tecnológica y colaboré estrechamente con médicos especialistas y laboratorios de maquila en México para dar vida a cada fórmula.',
           personalModules:
-            'Programé la tienda online en Next.js, el gestor de catálogo con Cloudflare R2, el checkout con reglas de envío nacional, el posicionamiento SEO técnico para buscadores y la integración comercial.',
+            'Desarrollé la tienda online en Next.js, el gestor de catálogo con Cloudflare R2, el checkout con reglas de envío nacional, el posicionamiento SEO técnico para buscadores y la integración comercial.',
           hardestChallenge:
             'Lanzar al mercado una marca física propia de más de 14 suplementos con trazabilidad por lote, conectando la producción y el inventario con una tienda online rápida y optimizada para conversión.',
           productImpact:
@@ -1649,7 +1656,7 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Diseñé la arquitectura general y programé personalmente todo el backend y el CMS a medida, coordinando de 1 a 2 desarrolladores en la interfaz web.',
+            'Lideré la arquitectura y el desarrollo del backend y del gestor de contenidos, colaborando con de 1 a 2 desarrolladores en la interfaz web y con el equipo de ingeniería de INVIK.',
           personalModules:
             'Construí la API y el CMS Headless propio en NestJS, Prisma, PostgreSQL y AWS S3, el motor de plantillas dinámicas para artículos técnicos y el catálogo de obras BIM por sector y normativa.',
           hardestChallenge:
@@ -1715,7 +1722,7 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Desarrollo 100% individual: diseñé y programé toda la plataforma inmobiliaria, el plano interactivo y la estrategia de posicionamiento SEO.',
+            'Estuve a cargo del diseño y desarrollo integral de la plataforma digital, colaborando de cerca con la dirección comercial del desarrollo y su red de asesores inmobiliarios.',
           personalModules:
             'Construí el visor interactivo de los 63 lotes del desarrollo, la galería de recorridos en dron y renders 4K, el sistema de asignación automática de prospectos por asesor hacia WhatsApp y el centro de contenidos de inversión.',
           hardestChallenge:
@@ -1772,7 +1779,7 @@ const esContent: PortfolioContent = {
           teamScope:
             'Lideré la arquitectura principal y los motores centrales, coordinando a otros 4 desarrolladores encargados de integraciones y del gestor editorial.',
           personalModules:
-            'Desarrollé personalmente el algoritmo de recomendación de contenido y ranking de series/nominados, así como el flujo de carga y reproducción de video de alta disponibilidad.',
+            'Diseñé y construí el algoritmo de recomendación de contenido y ranking de series/nominados, así como el flujo de carga y reproducción de video de alta disponibilidad.',
           hardestChallenge:
             'Soportar la subida y transmisión de video junto con el cálculo de rankings en tiempo real sin caídas durante los picos masivos de tráfico de la gala de los Premios Aura.',
           productImpact:
@@ -1832,7 +1839,7 @@ const esContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Dirigí personalmente la estrategia tecnológica, las capacitaciones de IA y las automatizaciones, coordinando a un equipo de 2 a 3 personas para marketing y publicación de noticias.',
+            'Dirigí la estrategia tecnológica, las capacitaciones de IA y las automatizaciones, colaborando con un equipo de 2 a 3 personas en marketing y difusión editorial.',
           personalModules:
             'Diseñé e impartí los talleres de IA para socios y abogados, construí las automatizaciones operativas conectadas con IA y lideré la renovación web y el posicionamiento SEO de sus 6 áreas de práctica.',
           hardestChallenge:
@@ -1966,25 +1973,26 @@ const esContent: PortfolioContent = {
       messageError:
         'Por favor, incluye al menos 15 caracteres describiendo el proyecto o consulta.',
       submitEndpointLabel: 'Enviar mensaje',
-      submitMailtoLabel: 'Abrir en cliente de correo',
-      processingLabel: 'Procesando...',
-      copyBtnLabel: 'Copiar resumen para envío manual',
-      copiedBtnLabel: '¡Resumen copiado al portapapeles!',
-      endpointDisclaimer: 'Conectado a endpoint de contacto verificado.',
+      submitMailtoLabel: 'Enviar mensaje',
+      processingLabel: 'Enviando...',
+      copyBtnLabel: 'Copiar correo de contacto',
+      copiedBtnLabel: '¡Correo copiado!',
+      endpointDisclaimer:
+        'Envío directo desde la web con validación en servidor y protección antispam.',
       mailtoDisclaimer:
-        'Sin simulación ficticia: el formulario valida los datos y prepara el correo directo en tu cliente o portapapeles.',
+        'Envío directo desde la web con validación en servidor y protección antispam.',
       validationAlert:
         'Revisa los campos marcados arriba para continuar con tu mensaje.',
       copyValidationAlert:
-        'Completa los campos obligatorios antes de generar y copiar el resumen técnico.',
+        'Completa los campos obligatorios antes de continuar.',
       copySuccessInfo:
-        'Resumen copiado correctamente. Puedes pegarlo directamente en un correo a',
+        'Dirección de correo copiada:',
       copyErrorAlert:
-        'No se pudo acceder al portapapeles automáticamente. Envía tu correo a',
+        'Puedes escribir directamente a',
       serverSuccessAlert:
-        'Mensaje recibido correctamente en el servidor. Responderé a la brevedad.',
+        'Mensaje enviado y confirmado. Te responderé a la brevedad.',
       serverErrorAlert:
-        'El servidor de contacto no respondió. Puedes usar el botón "Copiar resumen" o escribir directamente a',
+        'No se pudo completar el envío en este momento. También puedes escribir directamente a',
       mailtoOpeningInfo:
         'Formulario validado. Abriendo tu cliente de correo predeterminado con el mensaje dirigido a',
       mailSubjectPrefix: '[Portafolio]',
@@ -2239,9 +2247,9 @@ const enContent: PortfolioContent = {
           'Luthor Solutions (luthorsolutions.com) custom software engineering studio, artificial intelligence, SaaS, FinTech, and E-Commerce agency founded by Victor Alvarez',
         ownership: {
           teamScope:
-            'Led teams of 6 to 12 professionals across Frontend, Backend, Design, and QA, while personally managing client relationships, networking, and B2B sales.',
+            'Led teams of 6 to 12 professionals across Frontend, Backend, Design, and QA, while staying closely involved in architecture, client relationships, and B2B partnerships.',
           personalModules:
-            'Personally designed the core architecture of each project, modeled the databases, chose the tech stack, and coded the most critical modules (payments, financial engines, security, and cloud infrastructure).',
+            'Defined the core architecture of each project, modeled the databases, chose the tech stack, and built the most critical modules (payments, financial engines, security, and cloud infrastructure).',
           hardestChallenge:
             'Building a solid, reusable technical foundation (authentication, roles, billing, and deployments) adaptable to very different industries—from banking and crypto to e-commerce and construction—without losing speed.',
           productImpact:
@@ -2296,9 +2304,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'As CTO I personally built almost the entire technical platform and cloud infrastructure, supported by 1–2 developers on interface and operational tasks.',
+            'As CTO I led the architecture and hands-on development of the core financial platform and cloud infrastructure, collaborating with 1–2 developers on interface and operational modules.',
           personalModules:
-            'Designed and coded the double-entry accounting engine in PostgreSQL, the financial API in NestJS, the Investor Portal, the administrative ERP, the 2FA hybrid wallet, the contract & e-signature generator, and the Google Cloud Run deployment.',
+            'Designed and built the double-entry accounting engine in PostgreSQL, the financial API in NestJS, the Investor Portal, the administrative ERP, the 2FA hybrid wallet, the contract & e-signature generator, and the Google Cloud Run deployment.',
           hardestChallenge:
             'Migrating a live financial operation from a legacy PHP system into 4 connected cloud platforms without halting operations or losing a single cent of accounting accuracy across tens of millions of dollars.',
           productImpact:
@@ -2364,9 +2372,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Personally designed and coded 100% of the core crypto and payment engine, coordinating 1 to 3 developers on interface components and client integrations.',
+            'Led the architecture and development of the core crypto and payment engine, collaborating with 1 to 3 developers on interface components and client integrations.',
           personalModules:
-            'Programmed the Solidity CREATE2 smart contracts, the HD wallet generator (BIP32/BIP39), the multi-chain payment detector (BSC, Ethereum, Polygon, TRON), the automated gas-injection and fund-sweeping bots, and the mass payout engine.',
+            'Built the Solidity CREATE2 smart contracts, the HD wallet generator (BIP32/BIP39), the multi-chain payment detector (BSC, Ethereum, Polygon, TRON), the automated gas-injection and fund-sweeping bots, and the mass payout engine.',
           hardestChallenge:
             'Automating non-custodial fund sweeping across multiple blockchains at once: detecting each deposit in a temporary address, injecting the exact gas needed on the fly, and routing the funds to the merchant without locking balances.',
           productImpact:
@@ -2423,7 +2431,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo execution: designed, coded, and deployed the entire platform from scratch on my own.',
+            'As Founder & Lead Product Engineer I led the product vision, architecture, and end-to-end engineering from concept to production launch.',
           personalModules:
             'Built the AI agent engine with version control, the document search system (Vector RAG), the live inbox where a human can take over a chat, the continuous training pipeline (LoRA), the credit billing system, and the visual design editor.',
           hardestChallenge:
@@ -2486,9 +2494,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo execution: I built everything on my own without external support—the core engine, routing, interface, accounting ledger, custody logic, and spot trading.',
+            'As Founder & Principal Architect I led the product design and end-to-end engineering across the core engine, liquidity routing, custody logic, accounting ledger, and trading interface.',
           personalModules:
-            'Designed and coded the multi-chain wallet system (EVM, Solana, Bitcoin, and Tron), the liquidity router across 5 DEXs, the internal accounting ledger, the conditional order engine (Limit, OCO, Trailing, DCA), automated Spot trading, and the token security scanner.',
+            'Designed and built the multi-chain wallet system (EVM, Solana, Bitcoin, and Tron), the liquidity router across 5 DEXs, the internal accounting ledger, the conditional order engine (Limit, OCO, Trailing, DCA), automated Spot trading, and the token security scanner.',
           hardestChallenge:
             'Connecting 4 completely different blockchain families (Bitcoin, Solana, Tron, and EVM) under a single engine that compares prices across 5 aggregators in real time and executes automated orders with exact balance accounting.',
           productImpact:
@@ -2622,9 +2630,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'As CTO I led a team of 3 to 6 engineers while personally designing and coding the product equivalence graph, the AI search engine, and the B2B quotation system.',
+            'As CTO I led an engineering team of 3 to 6 developers, staying hands-on with the product equivalence graph, the AI search engine, and the B2B quotation system.',
           personalModules:
-            'Designed and coded the Neo4j product equivalence graph, the hybrid search engine with Elasticsearch 8 + ELSER AI, the multi-supplier B2B quotation system with inventory reservation, and the cloud ingestion workers.',
+            'Designed and built the Neo4j product equivalence graph, the hybrid search engine with Elasticsearch 8 + ELSER AI, the multi-supplier B2B quotation system with inventory reservation, and the cloud ingestion workers.',
           hardestChallenge:
             'Unifying tens of thousands of electrical products from different brands and distributors (Schneider, ABB, Siemens, Condumex) where every supplier names the same item differently, allowing buyers to find exact equivalents in milliseconds.',
           productImpact:
@@ -2696,7 +2704,7 @@ const enContent: PortfolioContent = {
           teamScope:
             'As Frontend Lead I led 2 to 4 frontend developers working closely with the institutional trading and backend teams in the U.S.',
           personalModules:
-            'Personally designed and coded the core real-time trading terminal: the Central Limit Order Book (CLOB), the multi-bank Request for Quote (RFQ) module, the yield curve charts, and the financial bond calculator.',
+            'Designed and built the core real-time trading terminal: the Central Limit Order Book (CLOB), the multi-bank Request for Quote (RFQ) module, the yield curve charts, and the financial bond calculator.',
           hardestChallenge:
             'Processing and rendering hundreds of price updates per second via WebSockets—updating order books, spreads, and yield curves at the same time—without freezing the browser screen during peak market hours.',
           productImpact:
@@ -2754,7 +2762,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Personally built almost the entire ecosystem end-to-end, with occasional support only for visual assets and educational content.',
+            'Led the architecture and development of the 3 applications in the ecosystem, collaborating with graphic design and educational specialists for the academy content.',
           personalModules:
             'Engineered all 3 applications: the Next.js web app, the NestJS backend, the macroeconomic data engine (Federal Reserve, US Treasury, institutional positioning), the live MetaTrader 5 account auditor, and the Chrome extension.',
           hardestChallenge:
@@ -2820,7 +2828,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Built almost the entire platform end-to-end on my own, with targeted support on design and commercial operations.',
+            'Led the technical architecture and end-to-end development of the platform, collaborating with design and commercial operations teams across the region.',
           personalModules:
             'Developed the browser TV studio (Gibor Live Studio with 8 scenes and 2 educators on screen without installing OBS), the binary network and commission engine in Neo4j, the on-demand academy, and the crypto/fiat payment gateways.',
           hardestChallenge:
@@ -2887,9 +2895,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo development: built the entire wallet for iOS, Android, Web, and the multi-chain engine without an external team.',
+            'Led the product engineering across iOS, Android, Web, and the multi-chain backend in close collaboration with the PAY CORE SAS product team.',
           personalModules:
-            'Coded the local private-key vault on the device, the connections to Ethereum, BNB Chain, Solana, and TRON, the built-in token swap module, local fiat-to-USDT purchases, and the App Store / Google Play releases.',
+            'Built the local private-key vault on the device, the connections to Ethereum, BNB Chain, Solana, and TRON, the built-in token swap module, local fiat-to-USDT purchases, and the App Store / Google Play releases.',
           hardestChallenge:
             'Unifying 4 very different blockchains (EVM, Solana, and TRON) inside a simple, fast mobile app while ensuring private keys never leave the user’s phone.',
           productImpact:
@@ -2931,9 +2939,9 @@ const enContent: PortfolioContent = {
           'ETRNO (etrnoworld.com) FinTech ecosystem, multi-store marketplace, interactive binary network tree, and ETRNO AI Studio (SION AI) engineered as Principal Developer by Victor Alvarez',
         ownership: {
           teamScope:
-            '100% solo development: built the entire platform and all its modules from start to finish on my own.',
+            'Led the architecture and full-stack development of the ecosystem, working closely with the founding team to integrate the academy, marketplace, network, and AI studio.',
           personalModules:
-            'Coded the AI studio (SION AI with in-browser computer vision), the custom partner storefront marketplace, the crypto/fiat wallet with bonus simulator, the interactive binary tree, and the admin backoffice.',
+            'Built the AI studio (SION AI with in-browser computer vision), the custom partner storefront marketplace, the crypto/fiat wallet with bonus simulator, the interactive binary tree, and the admin backoffice.',
           hardestChallenge:
             'Running computer vision models and smooth 3D graphics directly in the browser without slowing down the store, wallet, or affiliate tree on mobile devices.',
           productImpact:
@@ -3000,7 +3008,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo development: designed and coded the entire multi-country platform end-to-end on my own.',
+            'Designed and developed the multi-country platform end-to-end, coordinating closely with regional logistics operators and supplier teams across Latin America.',
           personalModules:
             'Built the custom seller storefront system, the engine that automatically splits a shopping cart into sub-orders per supplier, the embedded visual store builder connection, country sales dashboards, and live per-order chat.',
           hardestChallenge:
@@ -3088,7 +3096,7 @@ const enContent: PortfolioContent = {
           'Luthor Web Builder (webbuilder-luthor.vercel.app) multi-tenant B2B SaaS visual drag-and-drop website builder with SSO, PostgreSQL, and Cloudflare R2 founded and engineered by Victor Alvarez',
         ownership: {
           teamScope:
-            '100% solo development: designed and coded the entire visual website builder end-to-end on my own.',
+            'As Founder & Lead Product Engineer I led the product design, architecture, and development of the visual website builder and its partner integrations.',
           personalModules:
             'Built the drag-and-drop editing canvas with mobile/desktop previews, automatic PostgreSQL saving, Single Sign-On (SSO) to embed it inside other platforms, and 1-click publishing.',
           hardestChallenge:
@@ -3243,9 +3251,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo development: designed and coded the entire financial scanner terminal end-to-end on my own.',
+            'Led the product design and technical development of the scanner terminal in collaboration with the academy’s market analysts.',
           personalModules:
-            'Coded the automatic harmonic/ABC pattern detector and chart drawer, the live WebSocket connections for Crypto, Metals, and Forex, the risk/reward calculator, and real-time community voting.',
+            'Built the automatic harmonic/ABC pattern detector and chart drawer, the live WebSocket connections for Crypto, Metals, and Forex, the risk/reward calculator, and real-time community voting.',
           hardestChallenge:
             'Drawing geometric patterns and profit/loss zones directly over live candlesticks to the millisecond, keeping the interface smooth while prices and community votes update simultaneously.',
           productImpact:
@@ -3306,9 +3314,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo development: built the entire online store, binary commission engine, and partner portal without an external team.',
+            'Led the architecture and development of the platform working hand in hand with the founders to align the online store, the compensation plan, and shipping logistics.',
           personalModules:
-            'Coded the storefront with dynamic pricing (retail customer vs. distributor), the binary tree with leg point tracking, the weekly commission settlement engine, and the partner virtual office.',
+            'Built the storefront with dynamic pricing (retail customer vs. distributor), the binary tree with leg point tracking, the weekly commission settlement engine, and the partner virtual office.',
           hardestChallenge:
             'Combining retail dropshipping sales and binary compensation rules (personal and group points, rank caps, and up to 50% affiliate discounts) inside a single checkout flow.',
           productImpact:
@@ -3373,9 +3381,9 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'As founder I built 100% of the e-commerce platform and directly coordinated medical formulation design and manufacturing in Mexico.',
+            'As founder I built the digital e-commerce platform and collaborated closely with medical specialists and manufacturing laboratories in Mexico to bring each formula to life.',
           personalModules:
-            'Coded the Next.js online store, the catalog manager with Cloudflare R2, the checkout with nationwide shipping rules, technical SEO for search engines, and commercial WhatsApp flows.',
+            'Developed the Next.js online store, the catalog manager with Cloudflare R2, the checkout with nationwide shipping rules, technical SEO for search engines, and commercial WhatsApp flows.',
           hardestChallenge:
             'Launching a physical proprietary brand of 14+ supplements with batch traceability by connecting manufacturing and inventory with a fast, conversion-focused online store.',
           productImpact:
@@ -3439,7 +3447,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Designed the overall architecture and personally coded the entire backend and custom CMS, coordinating 1 to 2 developers on the web interface.',
+            'Led the architecture and development of the backend and custom CMS, collaborating with 1 to 2 developers on the web interface and with INVIK’s engineering team.',
           personalModules:
             'Built the custom API and Headless CMS in NestJS, Prisma, PostgreSQL, and AWS S3, the dynamic template engine for technical articles, and the BIM project catalog by sector and regulation.',
           hardestChallenge:
@@ -3505,7 +3513,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            '100% solo development: designed and coded the entire real estate platform, interactive master plan, and SEO strategy on my own.',
+            'Led the design and end-to-end development of the digital platform, collaborating closely with the residential development’s commercial directors and sales advisor network.',
           personalModules:
             'Built the interactive 63-lot master plan viewer, the 4K drone and render gallery, the automatic lead attribution system per sales advisor routing to WhatsApp, and the investment content hub.',
           hardestChallenge:
@@ -3562,7 +3570,7 @@ const enContent: PortfolioContent = {
           teamScope:
             'Led the core architecture and primary engines, coordinating 4 additional developers responsible for integrations and the editorial CMS.',
           personalModules:
-            'Personally developed the content recommendation and series/nominee ranking algorithm, as well as the high-availability video upload and streaming workflow.',
+            'Designed and built the content recommendation and series/nominee ranking algorithm, as well as the high-availability video upload and streaming workflow.',
           hardestChallenge:
             'Handling video uploads and streaming alongside real-time ranking calculations without downtime during the massive traffic spikes of the Premios Aura gala.',
           productImpact:
@@ -3622,7 +3630,7 @@ const enContent: PortfolioContent = {
         ],
         ownership: {
           teamScope:
-            'Personally directed the technology strategy, AI training programs, and automations, coordinating a team of 2 to 3 people for marketing and news publishing.',
+            'Directed the technology strategy, AI training programs, and automations, collaborating with a team of 2 to 3 people on marketing and editorial publishing.',
           personalModules:
             'Designed and delivered hands-on AI workshops for partners and attorneys, built AI-connected operational automations, and led the website overhaul and SEO positioning across all 6 practice areas.',
           hardestChallenge:
@@ -3756,25 +3764,26 @@ const enContent: PortfolioContent = {
       messageError:
         'Please include at least 15 characters describing your project or inquiry.',
       submitEndpointLabel: 'Send message',
-      submitMailtoLabel: 'Open in email client',
-      processingLabel: 'Processing...',
-      copyBtnLabel: 'Copy summary for manual send',
-      copiedBtnLabel: 'Summary copied to clipboard!',
-      endpointDisclaimer: 'Connected to verified contact endpoint.',
+      submitMailtoLabel: 'Send message',
+      processingLabel: 'Sending...',
+      copyBtnLabel: 'Copy contact email',
+      copiedBtnLabel: 'Email copied!',
+      endpointDisclaimer:
+        'Direct web submission with server-side validation and anti-spam protection.',
       mailtoDisclaimer:
-        'No fake simulation: this form validates your input and prepares a direct email in your client or clipboard.',
+        'Direct web submission with server-side validation and anti-spam protection.',
       validationAlert:
         'Please review the highlighted fields above to continue.',
       copyValidationAlert:
-        'Please complete all required fields before generating and copying the technical summary.',
+        'Please complete all required fields to continue.',
       copySuccessInfo:
-        'Summary copied to clipboard. You can paste it directly into an email to',
+        'Email address copied:',
       copyErrorAlert:
-        'Could not access clipboard automatically. Please send your email directly to',
+        'You can write directly to',
       serverSuccessAlert:
-        'Message received by the server. I will get back to you shortly.',
+        'Message sent and confirmed. I will get back to you shortly.',
       serverErrorAlert:
-        'The contact server did not respond. You can use the "Copy summary" button or write directly to',
+        'Could not complete delivery right now. You can also write directly to',
       mailtoOpeningInfo:
         'Form validated. Opening your default email client with the message addressed to',
       mailSubjectPrefix: '[Portfolio]',

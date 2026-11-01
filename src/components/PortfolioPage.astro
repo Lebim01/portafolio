@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from './Navbar.astro';
 import Hero from './Hero.astro';
 import About from './About.astro';
-import Services from './Services.astro';
 import Projects from './Projects.astro';
 import Contact from './Contact.astro';
 import type { Locale } from '../i18n/utils';
@@ -20,7 +19,6 @@ const { locale } = Astro.props;
   <main id="main-content">
     <Hero locale={locale} />
     <About locale={locale} />
-    <Services locale={locale} />
     <Projects locale={locale} />
   </main>
   <Contact locale={locale} />

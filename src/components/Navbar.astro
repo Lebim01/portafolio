@@ -5,11 +5,15 @@ import { Menu, X, ArrowUpRight, Globe } from '@lucide/astro';
 
 interface Props {
   locale?: Locale;
+  esHref?: string;
+  enHref?: string;
 }
 
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { navigationItems, siteMetadata, navbar } = getPortfolioContent(locale);
 const homeBase = locale === 'en' ? '/en' : '/';
+const esSwitchHref = Astro.props.esHref ?? '/?lang=es';
+const enSwitchHref = Astro.props.enHref ?? '/en?lang=en';
 const resolveNavHref = (href: string) =>
   href.startsWith('#') && href !== '#contact' ? `${homeBase}${href}` : href;
 ---
@@ -90,7 +94,7 @@ const resolveNavHref = (href: string) =>
       >
         <Globe class="ml-2 mr-1 h-3.5 w-3.5 text-accent hidden sm:inline-block" aria-hidden="true" />
         <a
-          href="/?lang=es"
+          href={esSwitchHref}
           data-lang-switch="es"
           hreflang="es"
           aria-current={locale === 'es' ? 'page' : undefined}
@@ -104,7 +108,7 @@ const resolveNavHref = (href: string) =>
           ES
         </a>
         <a
-          href="/en?lang=en"
+          href={enSwitchHref}
           data-lang-switch="en"
           hreflang="en"
           aria-current={locale === 'en' ? 'page' : undefined}

@@ -1,7 +1,7 @@
 ---
-import { getPortfolioContent } from '../data/portfolio';
+import { getPortfolioContent, type ProjectItem } from '../data/portfolio';
 import type { Locale } from '../i18n/utils';
-import { Layers, RotateCcw } from '@lucide/astro';
+import { Layers, Cpu, Briefcase, RotateCcw } from '@lucide/astro';
 
 interface Props {
   locale?: Locale;
@@ -10,81 +10,166 @@ interface Props {
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { servicesSection, projectsSection } = getPortfolioContent(locale);
 
+const getRoleGroups = (role: string): string[] => {
+  const r = role.toLowerCase();
+  const groups: string[] = [];
+  if (r.includes('founder')) groups.push('role-founder');
+  if (r.includes('cto')) groups.push('role-cto');
+  if (
+    r.includes('principal') ||
+    r.includes('lead') ||
+    r.includes('senior') ||
+    r.includes('consult')
+  ) {
+    groups.push('role-lead');
+  }
+  return groups;
+};
+
+const getProjectFilterTokens = (p: ProjectItem): string[] => [
+  ...p.industryTags,
+  ...p.techTags,
+  ...getRoleGroups(p.role),
+];
+
 const getTagCount = (tagId: string) =>
-  projectsSection.items.filter((p) => p.industryTags.includes(tagId)).length;
+  projectsSection.items.filter((p) => getProjectFilterTokens(p).includes(tagId))
+    .length;
 
 const industryTags = servicesSection.tags.filter(
   (t) => t.group === 'industry' && getTagCount(t.id) > 0,
 );
+
+const techTags = servicesSection.tags.filter(
+  (t) => t.group === 'tech' && getTagCount(t.id) > 0,
+);
+
+const roleFilters = [
+  {
+    id: 'role-founder',
+    label: locale === 'en' ? 'Founder & Product Owner' : 'Founder & Producto Propio',
+  },
+  {
+    id: 'role-cto',
+    label: 'CTO & Co-CTO',
+  },
+  {
+    id: 'role-lead',
+    label:
+      locale === 'en'
+        ? 'Principal / Lead Engineer'
+        : 'Principal / Lead Engineer',
+  },
+].filter((r) => getTagCount(r.id) > 0);
+
+const catalogEyebrow =
+  locale === 'en' ? 'COMPLETE CATALOG & FILTERS' : 'CATÁLOGO COMPLETO & FILTROS';
+const catalogHeading =
+  locale === 'en' ? 'Explore All My Projects' : 'Explorar todos mis proyectos';
+const catalogSubtitle =
+  locale === 'en'
+    ? `Browse the complete ${projectsSection.items.length}-project portfolio filtered by industry, technology, or professional role.`
+    : `Explora el catálogo completo de ${projectsSection.items.length} proyectos filtrando por industria, tecnología o función profesional.`;
+const roleFilterLabel =
+  locale === 'en' ? 'By Professional Role' : 'Por Función Profesional';
 ---
 
-<section
+<div
   id="services"
-  aria-labelledby="services-heading"
-  class="relative pt-16 pb-6 md:pt-24 md:pb-8"
+  class="rounded-2xl border border-border-subtle/90 bg-surface/60 p-5 sm:p-7 backdrop-blur-sm"
+  data-reveal
 >
-  <div class="section-divider mb-14 md:mb-16" aria-hidden="true"></div>
-
-  <div class="container-shell">
-    <div
-      class="rounded-2xl border border-border-subtle/90 bg-surface/60 p-5 sm:p-7 backdrop-blur-sm"
-      data-reveal
-    >
-      <!-- Compact Header Row -->
-      <div class="flex flex-col gap-4 border-b border-border-subtle/70 pb-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2
-            id="services-heading"
-            class="font-display text-2xl font-bold tracking-tight text-text-primary sm:text-3xl"
-          >
-            {servicesSection.heading}
-          </h2>
-          <p class="mt-1.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
-            {servicesSection.subtitle}
-          </p>
-        </div>
-
-        <!-- Active Filter / Reset Pill -->
-        <div class="flex items-center gap-2 self-start md:self-auto">
-          <button
-            type="button"
-            data-filter-tag="all"
-            aria-pressed="true"
-            class="filter-tag-btn is-active inline-flex items-center gap-2 rounded-[20px] border border-accent bg-accent/15 px-3.5 py-1.5 font-mono text-xs font-semibold text-accent transition-all duration-200 cursor-pointer"
-          >
-            <span>{servicesSection.allLabel}</span>
-            <span class="rounded-full bg-accent/20 px-1.5 py-0.2 text-[10px] font-bold text-accent">
-              {projectsSection.items.length}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            id="clear-project-filter"
-            class="hidden items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/80 px-3 py-1.5 font-mono text-[11px] font-medium text-text-secondary transition-colors hover:border-accent/50 hover:text-accent cursor-pointer"
-          >
-            <RotateCcw class="h-3 w-3" aria-hidden="true" />
-            <span>{servicesSection.clearFilterLabel}</span>
-          </button>
-        </div>
+  <!-- Header Row -->
+  <div class="flex flex-col gap-4 border-b border-border-subtle/70 pb-5 md:flex-row md:items-end md:justify-between">
+    <div>
+      <div class="mb-2 inline-flex items-center gap-2.5 font-mono text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
+        <span>{catalogEyebrow}</span>
+        <span class="h-[1px] w-7 bg-accent/70" aria-hidden="true"></span>
       </div>
+      <h2
+        id="services-heading"
+        class="font-display text-2xl font-bold tracking-tight text-text-primary sm:text-3xl"
+      >
+        {catalogHeading}
+      </h2>
+      <p class="mt-1.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
+        {catalogSubtitle}
+      </p>
+    </div>
 
-      <!-- Industry Tags -->
-      <div class="mt-5">
-        <div class="mb-2.5 flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-text-secondary uppercase">
-          <Layers class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-          <span>{servicesSection.industryLabel}</span>
+    <!-- Active Filter / Reset Pill -->
+    <div class="flex items-center gap-2 self-start md:self-auto">
+      <button
+        type="button"
+        data-filter-tag="all"
+        aria-pressed="true"
+        class="filter-tag-btn is-active inline-flex items-center gap-2 rounded-[20px] border border-accent bg-accent/15 px-3.5 py-1.5 font-mono text-xs font-semibold text-accent transition-all duration-200 cursor-pointer"
+      >
+        <span>{servicesSection.allLabel}</span>
+        <span class="rounded-full bg-accent/20 px-1.5 py-0.2 text-[10px] font-bold text-accent">
+          {projectsSection.items.length}
+        </span>
+      </button>
+
+      <button
+        type="button"
+        id="clear-project-filter"
+        class="hidden items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/80 px-3 py-1.5 font-mono text-[11px] font-medium text-text-secondary transition-colors hover:border-accent/50 hover:text-accent cursor-pointer"
+      >
+        <RotateCcw class="h-3 w-3" aria-hidden="true" />
+        <span>{servicesSection.clearFilterLabel}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 3-Dimension Filter Grid: Industry, Technology & Professional Role -->
+  <div class="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-12">
+    <!-- 1. Industry Tags -->
+    <div class="lg:col-span-6">
+      <div class="mb-2.5 flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-text-secondary uppercase">
+        <Layers class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+        <span>{servicesSection.industryLabel}</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        {
+          industryTags.map((tag) => {
+            const count = getTagCount(tag.id);
+            return (
+              <button
+                type="button"
+                data-filter-tag={tag.id}
+                aria-pressed="false"
+                class="filter-tag-btn inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/75 px-3 py-1 font-mono text-xs font-medium text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-text-primary cursor-pointer"
+              >
+                <span class="text-accent/80">#</span>
+                <span>{tag.label}</span>
+                <span class="ml-0.5 rounded-full bg-surface px-1.5 py-0.2 text-[10px] text-text-muted">
+                  {count}
+                </span>
+              </button>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- 2. Technology / Implementation Tags -->
+    <div class="lg:col-span-6 lg:border-l lg:border-border-subtle/50 lg:pl-5 space-y-4">
+      <div>
+        <div class="mb-2 flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-text-secondary uppercase">
+          <Cpu class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          <span>{servicesSection.techLabel}</span>
         </div>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-1.5">
           {
-            industryTags.map((tag) => {
+            techTags.map((tag) => {
               const count = getTagCount(tag.id);
               return (
                 <button
                   type="button"
                   data-filter-tag={tag.id}
                   aria-pressed="false"
-                  class="filter-tag-btn inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/75 px-3.5 py-1.5 font-mono text-xs font-medium text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-text-primary cursor-pointer"
+                  class="filter-tag-btn inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/75 px-3 py-1 font-mono text-xs font-medium text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-text-primary cursor-pointer"
                 >
                   <span class="text-accent/80">#</span>
                   <span>{tag.label}</span>
@@ -97,6 +182,34 @@ const industryTags = servicesSection.tags.filter(
           }
         </div>
       </div>
+
+      <!-- 3. Professional Role Tags -->
+      <div class="border-t border-border-subtle/40 pt-3.5">
+        <div class="mb-2 flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-text-secondary uppercase">
+          <Briefcase class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          <span>{roleFilterLabel}</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          {
+            roleFilters.map((role) => {
+              const count = getTagCount(role.id);
+              return (
+                <button
+                  type="button"
+                  data-filter-tag={role.id}
+                  aria-pressed="false"
+                  class="filter-tag-btn inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle bg-bg-base/75 px-3 py-1 font-mono text-xs font-medium text-text-secondary transition-all duration-200 hover:border-accent/50 hover:text-text-primary cursor-pointer"
+                >
+                  <span>{role.label}</span>
+                  <span class="ml-0.5 rounded-full bg-surface px-1.5 py-0.2 text-[10px] text-text-muted">
+                    {count}
+                  </span>
+                </button>
+              );
+            })
+          }
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>

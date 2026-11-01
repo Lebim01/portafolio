@@ -86,7 +86,13 @@ const detailJsonLd = {
         name: 'Victor Alvarez',
         jobTitle: project.role,
       },
-      featureList: project.highlights,
+      featureList: [
+        ...project.highlights,
+        project.ownership.personalModules,
+        project.ownership.teamScope,
+        project.ownership.hardestChallenge,
+        project.ownership.productImpact,
+      ],
       keywords: pageKeywords.join(', '),
       operatingSystem: 'Web, Cloud, Distributed Infrastructure',
       inLanguage: locale,
@@ -125,7 +131,11 @@ const detailJsonLd = {
   keywords={pageKeywords}
   structuredData={detailJsonLd}
 >
-  <Navbar locale={locale} />
+  <Navbar
+    locale={locale}
+    esHref={`${alternateEsPath}?lang=es`}
+    enHref={`${alternateEnPath}?lang=en`}
+  />
 
   <main id="main-content" class="pb-24 md:pb-32">
     <article class="mx-auto max-w-4xl px-5 pt-6 sm:px-8">
@@ -295,8 +305,8 @@ const detailJsonLd = {
             <div>
               <h2 class="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">
                 {locale === 'en'
-                  ? 'Personally Architected Modules & Technical Decisions'
-                  : 'Módulos Diseñados Personalmente & Decisiones Técnicas'}
+                  ? 'Technical Contribution & Core Modules'
+                  : 'Aporte Técnico & Módulos Clave'}
               </h2>
               <p class="mt-2.5 text-sm leading-relaxed text-text-secondary">
                 {project.ownership.personalModules}
@@ -349,8 +359,8 @@ const detailJsonLd = {
             <div class="border-t border-border-subtle/50 pt-6">
               <h2 class="font-mono text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">
                 {locale === 'en'
-                  ? 'Ownership & Team Coordination'
-                  : 'Autoría & Coordinación'}
+                  ? 'Role & Collaboration'
+                  : 'Rol & Colaboración'}
               </h2>
               <p class="mt-2.5 text-sm leading-relaxed text-text-secondary">
                 {project.ownership.teamScope}

@@ -35,6 +35,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const queryLang = searchParams.get('lang');
   if (isValidLocale(queryLang)) {
     cookies.set(LOCALE_COOKIE_NAME, queryLang, cookieOptions);
+    if (
+      (queryLang === 'es' && pathname.startsWith('/proyectos/')) ||
+      (queryLang === 'en' && pathname.startsWith('/en/projects/'))
+    ) {
+      return redirect(pathname, 302);
+    }
     return redirect(getLocalizedPath(queryLang), 302);
   }
 
