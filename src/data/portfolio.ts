@@ -1050,6 +1050,58 @@ const esContent: PortfolioContent = {
         previewType: 'elearning-mlm',
         detailsAnchor: '#contact',
       },
+      {
+        id: 'invik-bim-contech',
+        title: 'INVIK: Plataforma B2B ConTech, Modelado BIM & CMS de Ingeniería Digital',
+        role: 'Principal Developer',
+        dateRange: 'Ene 2026 — Mar 2026',
+        liveUrl: 'https://invik.com.mx',
+        image: '/projects/invik/hero-bim.jpg',
+        imageAlt:
+          'INVIK (invik.com.mx) visualización tridimensional BIM de ingeniería multidisciplinaria e instalaciones MEP con plataforma web y CMS desarrollada como Principal Developer por Victor Alvarez',
+        gallery: [
+          {
+            src: '/projects/invik/hero-bim.jpg',
+            title: 'Modelado y Coordinación BIM Multidisciplinaria (Arquitectura + MEP)',
+            alt: 'Corte isométrico BIM de INVIK mostrando integración arquitectónica y detalle de instalaciones hidrosanitarias y eléctricas sin colisiones.',
+          },
+          {
+            src: '/projects/invik/comercial.png',
+            title: 'Infraestructura Comercial & Retail (KFC México / Dark Kitchens)',
+            alt: 'Modelo BIM tridimensional de INVIK para KFC México coordinando instalaciones de gas, climatización HVAC y protección contra incendios.',
+          },
+          {
+            src: '/projects/invik/naveindustrial.png',
+            title: 'Infraestructura Industrial (500 kVA) & Detección de Interferencias',
+            alt: 'Coordinación tridimensional de nave industrial e ingeniería eléctrica de 500 kVA con subestación y tableros de potencia.',
+          },
+        ],
+        seoDescription:
+          'INVIK (invik.com.mx): Empresa mexicana B2B de ConTech e ingeniería multidisciplinaria mediante metodología BIM (Building Information Modeling). Plataforma web interactiva y Headless CMS propio desarrollado en Next.js, NestJS 11, Prisma 7, PostgreSQL y AWS S3. Rol: Principal Developer.',
+        category: 'ConTech · Building Information Modeling (BIM) · B2B Engineering CMS',
+        summary:
+          'Empresa mexicana B2B especializada en ingeniería multidisciplinaria y transformación digital de la construcción mediante metodología BIM (arquitectura, estructura, instalaciones eléctricas de hasta 500 kVA, hidrosanitarias, HVAC y protección contra incendios para sectores industrial, residencial y retail como KFC México).',
+        architectureNotes:
+          'Desarrollo como Principal Developer de la plataforma digital B2B y su sistema CMS Headless a medida (invik-api en NestJS 11, Prisma 7, PostgreSQL, autenticación JWT y almacenamiento S3) para administrar el catálogo dinámico de portafolio por tipología de obra, normativas, software técnico, blog con plantillas JSON y comparadores interactivos de instalaciones.',
+        highlights: [
+          'Experiencia Digital B2B & Visualización Técnica: interfaz interactiva con comparador de instalaciones MEP, fichas técnicas por sector (Industrial 500 kVA, Torres Residenciales, Retail / KFC Dark Kitchens) y flujos de cotización',
+          'CMS Headless Propio en NestJS 11 + Prisma 7 + PostgreSQL: administración dinámica de portafolio de proyectos BIM (Portfolio & ProjectType), catálogo de normativas (Regulation), software especializado y colaboradores con carga de activos en S3',
+          'Motor Editorial con Plantillas Dinámicas & SEO Técnico: sistema de publicación de artículos y casos de estudio con estructura JSON configurable por plantilla (templateId / templateData), control de vistas y metadatos SEO',
+        ],
+        industryTags: ['b2b', 'real-estate'],
+        techTags: ['automation', 'analytics'],
+        stack: [
+          'Next.js & React',
+          'NestJS 11',
+          'TypeScript 5',
+          'PostgreSQL & Prisma 7',
+          'AWS S3 SDK',
+          'Custom Headless CMS & JWT',
+        ],
+        statusLabel: 'invik.com.mx — ConTech & CMS en Producción',
+        previewType: 'real-estate',
+        detailsAnchor: '#contact',
+      },
     ],
   },
   contactSection: {
@@ -1986,6 +2038,58 @@ const enContent: PortfolioContent = {
         ],
         statusLabel: 'auraseries.com · 1.1M Followers · +550M Impressions',
         previewType: 'elearning-mlm',
+        detailsAnchor: '#contact',
+      },
+      {
+        id: 'invik-bim-contech',
+        title: 'INVIK: B2B ConTech Platform, BIM Engineering Showcase & Custom CMS',
+        role: 'Principal Developer',
+        dateRange: 'Jan 2026 — Mar 2026',
+        liveUrl: 'https://invik.com.mx',
+        image: '/projects/invik/hero-bim.jpg',
+        imageAlt:
+          'INVIK (invik.com.mx) 3D Building Information Modeling (BIM) and MEP engineering platform and custom Headless CMS developed as Principal Developer by Victor Alvarez',
+        gallery: [
+          {
+            src: '/projects/invik/hero-bim.jpg',
+            title: 'Multidisciplinary BIM Modeling & MEP Coordination',
+            alt: 'INVIK isometric BIM cutaway illustrating coordinated architectural design and clash-free plumbing, electrical, and HVAC installations.',
+          },
+          {
+            src: '/projects/invik/comercial.png',
+            title: 'Commercial & Retail Infrastructure (KFC Mexico / Dark Kitchens)',
+            alt: 'INVIK 3D BIM model for KFC Mexico coordinating gas, HVAC, and fire protection engineering systems.',
+          },
+          {
+            src: '/projects/invik/naveindustrial.png',
+            title: 'Industrial Infrastructure (500 kVA) & Clash Detection',
+            alt: '3D BIM coordination for an industrial warehouse and 500 kVA electrical substation and power distribution network.',
+          },
+        ],
+        seoDescription:
+          'INVIK (invik.com.mx): Mexican B2B ConTech and multidisciplinary engineering firm specializing in Building Information Modeling (BIM). Interactive web platform and custom Headless CMS built with Next.js, NestJS 11, Prisma 7, PostgreSQL, and AWS S3. Role: Principal Developer.',
+        category: 'ConTech · Building Information Modeling (BIM) · B2B Engineering CMS',
+        summary:
+          'Mexican B2B engineering firm specializing in multidisciplinary Building Information Modeling (BIM) and digital construction across architecture, structural engineering, 500 kVA industrial electrical systems, plumbing, HVAC, and fire protection for residential, industrial, and retail clients (including KFC Mexico).',
+        architectureNotes:
+          'Engineered as Principal Developer both the interactive B2B web platform and a custom Headless CMS backend (invik-api in NestJS 11, Prisma 7, PostgreSQL, JWT auth, and AWS S3) managing project portfolios by construction sector, compliance regulations, engineering software catalogs, dynamic JSON-templated blog posts, and B2B quoting workflows.',
+        highlights: [
+          'Interactive B2B Engineering Experience: features an interactive MEP installation comparator, technical project sheets (500 kVA Industrial Substations, 11-Unit Residential Towers, KFC Dark Kitchens), and B2B lead capture',
+          'Custom Headless CMS in NestJS 11 + Prisma 7 + PostgreSQL: full CRUD management for BIM project portfolios (Portfolio & ProjectType), building regulations, engineering software stacks, and S3 media storage',
+          'Dynamic Template Publishing & Technical SEO: case study and blog engine supporting customizable JSON layout templates (templateId / templateData), view tracking, and structured SEO metadata',
+        ],
+        industryTags: ['b2b', 'real-estate'],
+        techTags: ['automation', 'analytics'],
+        stack: [
+          'Next.js & React',
+          'NestJS 11',
+          'TypeScript 5',
+          'PostgreSQL & Prisma 7',
+          'AWS S3 SDK',
+          'Custom Headless CMS & JWT',
+        ],
+        statusLabel: 'invik.com.mx — Production ConTech & CMS',
+        previewType: 'real-estate',
         detailsAnchor: '#contact',
       },
     ],
