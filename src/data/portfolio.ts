@@ -21,6 +21,19 @@ export interface JourneyMilestone {
   description: string;
 }
 
+export interface LifestyleEvent {
+  name: string;
+  role: string;
+  detail?: string;
+  url: string;
+  highlight?: boolean;
+}
+
+export interface LifestyleCountry {
+  code: string;
+  name: string;
+}
+
 export interface FilterTag {
   id: string;
   label: string;
@@ -112,6 +125,15 @@ export interface PortfolioContent {
     personalNote: string;
     highlights: string[];
     milestones: JourneyMilestone[];
+    lifestyle: {
+      eyebrow: string;
+      summary: string;
+      countriesLabel: string;
+      countries: LifestyleCountry[];
+      eventsLabel: string;
+      events: LifestyleEvent[];
+      moreLabel: string;
+    };
   };
   servicesSection: {
     eyebrow: string;
@@ -262,16 +284,16 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'fintech-web3',
-        name: 'FinTech, Web3 & ERP',
-        category: '+25 Plataformas en Producción',
+        name: 'FinTech, Web3 & SaaS',
+        category: '+15 Plataformas en Producción',
         positionClass: 'bottom-[24%] left-[-2%] sm:left-[0%]',
         delayClass: 'float-phase-3',
         accentColor: '#10B981',
       },
       {
         id: 'ai-lab',
-        name: 'AI Agents & GPU Lab',
-        category: 'RAG, Grafos & Fine-Tuning',
+        name: 'Agentes IA & Automatización',
+        category: 'RAG, Grafos & Modelos Locales',
         positionClass: 'bottom-[14%] right-[-2%] sm:right-[0%]',
         delayClass: 'float-phase-4',
         accentColor: '#A855F7',
@@ -288,29 +310,29 @@ const esContent: PortfolioContent = {
       'Luthor Solutions (Software Studio)',
       'CTO & Co-CTO (EE. UU. · MX · ES)',
       '+6 años liderando equipos de ingeniería',
-      'Home AI Lab (GPUs dedicadas)',
+      'Productos Propios & Networking Global',
     ],
     milestones: [
       {
-        stage: '01 · Full-Stack & Enterprise Engineering',
-        title: 'Cimientos técnicos en plataformas corporativas de misión crítica',
-        tags: 'Procesos IQ · Lapzo · ERP · HRTech · E-Commerce',
+        stage: '01 · Full-Stack & High-Traffic Engineering',
+        title: 'Dominio Full-Stack en plataformas de alto tráfico',
+        tags: 'Procesos IQ · Lapzo · HRTech · E-Commerce',
         description:
-          'Inicié construyendo y optimizando sistemas empresariales de principio a fin: desde ERPs agroindustriales e inventario de gran escala (Procesos IQ) hasta plataformas HRTech/LXP con IA para más de 150 corporativos (Lapzo) y ecosistemas transaccionales de alto tráfico.',
+          'Forjé mis bases asumiendo la construcción técnica de extremo a extremo —interfaces, arquitectura backend, bases de datos e infraestructura en la nube— colaborando con compañías de alto tráfico y miles de usuarios activos para escalar plataformas corporativas, educativas y transaccionales.',
       },
       {
-        stage: '02 · Arquitecto, Team Lead (+6 años) & CTO Internacional',
-        title: 'Dirección tecnológica binacional y laboratorio propio de IA',
-        tags: 'Blue Castle (NY) · CoCoCo (MX/ES) · Voltz · Home AI Lab',
+        stage: '02 · Arquitecto & Team Lead (+6 años)',
+        title: 'Dirección tecnológica y liderazgo internacional',
+        tags: 'Blue Castle (NY) · CoCoCo (MX/ES) · Voltz',
         description:
-          'Durante más de 6 años he formado y dirigido células multidisciplinarias como CTO y Co-CTO para firmas en Nueva York (Blue Castle Ventures), México y España (CoCoCo Ventures, Voltz), respaldado por investigación propia en mi laboratorio local con GPUs dedicadas para RAG, grafos y fine-tuning.',
+          'Durante más de 6 años he formado y dirigido células multidisciplinarias de ingeniería como CTO y Co-CTO para firmas en EE. UU., México y España, conectando la arquitectura de software y la velocidad del equipo con la estrategia de negocio.',
       },
       {
-        stage: '03 · Founder de Luthor Solutions (Software Studio)',
-        title: 'Fábrica de software para ecosistemas financieros y de alto impacto',
-        tags: '2023 — Actualidad · +20 Plataformas Entregadas',
+        stage: '03 · Tech Founder & Networking Global',
+        title: 'Estudio tecnológico propio y alianzas internacionales',
+        tags: 'Luthor Solutions · Alianzas Globales · R&D',
         description:
-          'Fundé mi propio estudio de ingeniería para diseñar y lanzar productos llave en mano para terceros: terminales de trading institucional y arbitraje (Cicada, Imperio, Gibor), wallets multi-cadena (Salomon), super-apps con IA (Soul Link) y plataformas ConTech/BIM e inmobiliarias.',
+          'Como fundador de mi propio estudio tecnológico, impulso colaboraciones internacionales y relaciones estratégicas en eventos de negocio, manteniendo siempre una cultura de experimentación técnica —incluyendo pruebas en entorno propio con GPUs locales— para llevar soluciones de vanguardia al mercado.',
       },
       {
         stage: '04 · Dueño de Productos Propios Autónomos (SaaS, Web3 & IA)',
@@ -320,6 +342,54 @@ const esContent: PortfolioContent = {
           'Hoy consolido mi propia suite de productos tecnológicos —pasarelas cripto no-custodiales (NodePayments), fuerza laboral de agentes IA con voz y RAG (NodeWorkforce), exchanges híbridos (NodexSpot) y constructores web con IA— diseñados para escalar y facturar de forma autónoma.',
       },
     ],
+    lifestyle: {
+      eyebrow: 'ESTILO DE VIDA · NETWORKING, CONFERENCIAS & FESTIVALES',
+      summary:
+        'Me apasiona viajar, vivir festivales y asistir constantemente a foros financieros y tecnológicos para compartir escenario y crear relaciones reales.',
+      countriesLabel: '11 Países Visitados',
+      countries: [
+        { code: 'MX', name: 'México' },
+        { code: 'US', name: 'EE. UU.' },
+        { code: 'CO', name: 'Colombia' },
+        { code: 'PE', name: 'Perú' },
+        { code: 'AR', name: 'Argentina' },
+        { code: 'BR', name: 'Brasil' },
+        { code: 'ES', name: 'España' },
+        { code: 'FR', name: 'Francia' },
+        { code: 'IT', name: 'Italia' },
+        { code: 'CR', name: 'Costa Rica' },
+        { code: 'EC', name: 'Ecuador' },
+      ],
+      eventsLabel: 'Conferencias & Eventos',
+      events: [
+        {
+          name: 'Talent Land 2024',
+          role: 'Speaker Oficial',
+          detail: 'Ponencia de desarrollo profesional',
+          url: 'https://2024.talent-land.mx/eventos/ser-autodidacta-es-un-universo-de-oportunidades-laborales-y-personales-cococo-victor-alvarez/',
+          highlight: true,
+        },
+        {
+          name: 'Money Expo México',
+          role: 'Participante Constante',
+          detail: 'Foro de Trading, FinTech & Liquidez',
+          url: 'https://moneyexpoglobal.com/mexico/es',
+        },
+        {
+          name: 'Money Expo Colombia',
+          role: 'Participante Constante',
+          detail: 'Cumbre Financiera & Web3 LatAm',
+          url: 'https://moneyexpoglobal.com/colombia/es',
+        },
+        {
+          name: 'OneBillion',
+          role: 'Participante',
+          detail: 'Comunidad & Cumbre de Negocios',
+          url: 'https://onebillion.com',
+        },
+      ],
+      moreLabel: '+ muchos otros foros y festivales',
+    },
   },
   servicesSection: {
     eyebrow: 'INDUSTRIAS & ÁREAS DE EXPERIENCIA',
@@ -1847,16 +1917,16 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'fintech-web3',
-        name: 'FinTech, Web3 & ERP',
-        category: '25+ Live Platforms',
+        name: 'FinTech, Web3 & SaaS',
+        category: '15+ Live Platforms',
         positionClass: 'bottom-[24%] left-[-2%] sm:left-[0%]',
         delayClass: 'float-phase-3',
         accentColor: '#10B981',
       },
       {
         id: 'ai-lab',
-        name: 'AI Agents & GPU Lab',
-        category: 'RAG, Graphs & Fine-Tuning',
+        name: 'AI Agents & Automation',
+        category: 'RAG, Graphs & Local Models',
         positionClass: 'bottom-[14%] right-[-2%] sm:right-[0%]',
         delayClass: 'float-phase-4',
         accentColor: '#A855F7',
@@ -1873,29 +1943,29 @@ const enContent: PortfolioContent = {
       'Luthor Solutions (Software Studio)',
       'CTO & Co-CTO (USA · MX · ES)',
       '6+ yrs leading engineering teams',
-      'Home AI Lab (Dedicated GPUs)',
+      'Proprietary Products & Global Networking',
     ],
     milestones: [
       {
-        stage: '01 · Full-Stack & Enterprise Engineering',
-        title: 'Technical foundations in mission-critical corporate platforms',
-        tags: 'Procesos IQ · Lapzo · ERP · HRTech · E-Commerce',
+        stage: '01 · Full-Stack & High-Traffic Engineering',
+        title: 'End-to-end Full-Stack mastery in high-traffic platforms',
+        tags: 'Procesos IQ · Lapzo · HRTech · E-Commerce',
         description:
-          'Started by building and optimizing end-to-end enterprise systems: from agro-industrial ERPs and large-scale supply chain platforms (Procesos IQ) to AI-powered HRTech/LXP suites serving 150+ corporations (Lapzo) and high-traffic transactional ecosystems.',
+          'Built my foundation by taking full technical ownership from end to end—frontend interfaces, backend architecture, databases, and cloud infrastructure—collaborating with high-traffic companies serving thousands of concurrent users across corporate, educational, and transactional platforms.',
       },
       {
-        stage: '02 · Architect, Team Lead (6+ yrs) & International CTO',
-        title: 'Cross-border technical leadership and private GPU AI lab',
-        tags: 'Blue Castle (NY) · CoCoCo (MX/ES) · Voltz · Home AI Lab',
+        stage: '02 · Architect & Team Lead (6+ yrs)',
+        title: 'Technical leadership & international teams',
+        tags: 'Blue Castle (NY) · CoCoCo (MX/ES) · Voltz',
         description:
-          'For over 6 years I have built and led cross-functional engineering squads as CTO and Co-CTO for firms in New York (Blue Castle Ventures), Mexico, and Spain (CoCoCo Ventures, Voltz), backed by proprietary R&D in my local multi-GPU lab for RAG, graph search, and model fine-tuning.',
+          'For over 6 years I have built and led cross-functional engineering squads as CTO and Co-CTO for firms across the U.S., Mexico, and Spain, aligning systems architecture and team velocity with business strategy.',
       },
       {
-        stage: '03 · Founder of Luthor Solutions (Software Studio)',
-        title: 'High-performance software factory for financial & high-impact ecosystems',
-        tags: '2023 — Present · 20+ Platforms Delivered',
+        stage: '03 · Tech Founder & Global Networking',
+        title: 'Proprietary tech studio & international alliances',
+        tags: 'Luthor Solutions · Global Alliances · R&D',
         description:
-          'Founded my own engineering studio to architect and ship turnkey platforms for clients and partners: institutional trading and arbitrage terminals (Cicada, Imperio, Gibor), multi-chain wallets (Salomon), AI super-apps (Soul Link), and ConTech/BIM and luxury real estate ecosystems.',
+          'As the founder of my own technology studio, I drive international collaborations and strategic partnerships through global networking, while maintaining a strong culture of technical experimentation—including testing on local GPUs—to bring cutting-edge solutions to market.',
       },
       {
         stage: '04 · Owner of Autonomous Products (SaaS, Web3 & AI)',
@@ -1905,6 +1975,54 @@ const enContent: PortfolioContent = {
           'Today I consolidate my own technology product suite—non-custodial crypto payment gateways (NodePayments), voice and RAG AI agent workforces (NodeWorkforce), hybrid exchanges (NodexSpot), and AI web builders—engineered to scale and generate revenue autonomously.',
       },
     ],
+    lifestyle: {
+      eyebrow: 'LIFESTYLE · NETWORKING, CONFERENCES & FESTIVALS',
+      summary:
+        'I love traveling, experiencing festivals, and actively attending financial and tech summits to speak on stage and build genuine relationships.',
+      countriesLabel: '11 Countries Visited',
+      countries: [
+        { code: 'MX', name: 'Mexico' },
+        { code: 'US', name: 'United States' },
+        { code: 'CO', name: 'Colombia' },
+        { code: 'PE', name: 'Peru' },
+        { code: 'AR', name: 'Argentina' },
+        { code: 'BR', name: 'Brazil' },
+        { code: 'ES', name: 'Spain' },
+        { code: 'FR', name: 'France' },
+        { code: 'IT', name: 'Italy' },
+        { code: 'CR', name: 'Costa Rica' },
+        { code: 'EC', name: 'Ecuador' },
+      ],
+      eventsLabel: 'Conferences & Summits',
+      events: [
+        {
+          name: 'Talent Land 2024',
+          role: 'Official Speaker',
+          detail: 'Keynote on career & tech growth',
+          url: 'https://2024.talent-land.mx/eventos/ser-autodidacta-es-un-universo-de-oportunidades-laborales-y-personales-cococo-victor-alvarez/',
+          highlight: true,
+        },
+        {
+          name: 'Money Expo Mexico',
+          role: 'Regular Participant',
+          detail: 'Trading, FinTech & Liquidity Summit',
+          url: 'https://moneyexpoglobal.com/mexico/es',
+        },
+        {
+          name: 'Money Expo Colombia',
+          role: 'Regular Participant',
+          detail: 'LatAm Financial & Web3 Summit',
+          url: 'https://moneyexpoglobal.com/colombia/es',
+        },
+        {
+          name: 'OneBillion',
+          role: 'Participant',
+          detail: 'Entrepreneurship & Business Summit',
+          url: 'https://onebillion.com',
+        },
+      ],
+      moreLabel: '+ many other global summits & festivals',
+    },
   },
   servicesSection: {
     eyebrow: 'INDUSTRIES & DOMAINS',

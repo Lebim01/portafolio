@@ -36,6 +36,12 @@ export const GET: APIRoute = () => {
       (m) => `- **${m.stage} — ${m.title}** [${m.tags}]: ${m.description}`,
     ),
     '',
+    '## Speaking, Global Networking & Lifestyle',
+    `- **Countries Visited (${es.aboutData.lifestyle.countries.length})**: ${es.aboutData.lifestyle.countries.map((c) => c.name).join(', ')}`,
+    ...es.aboutData.lifestyle.events.map(
+      (ev) => `- **${ev.name} (${ev.role})**: ${ev.detail ? `${ev.detail} — ` : ''}${ev.url}`,
+    ),
+    '',
     '## Industries & Technologies',
     `- Industries: ${es.servicesSection.tags
       .filter((t) => t.group === 'industry')
