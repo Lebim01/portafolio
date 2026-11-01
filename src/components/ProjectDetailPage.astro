@@ -183,7 +183,12 @@ const detailJsonLd = {
       <!-- Unobstructed Morphing Hero Banner Carousel -->
       <div
         transition:name={`project-banner-${project.id}`}
-        class="group/banner relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface shadow-[0_20px_60px_rgba(0,0,0,0.65)]"
+        class:list={[
+          'group/banner relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border-subtle shadow-[0_20px_60px_rgba(0,0,0,0.65)]',
+          project.imageFit === 'contain'
+            ? 'bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.24),rgba(9,11,18,0.98)_75%)]'
+            : 'bg-surface',
+        ]}
       >
         <img
           id="detail-hero-banner-img"
@@ -193,7 +198,12 @@ const detailJsonLd = {
           height="675"
           fetchpriority="high"
           decoding="async"
-          class="h-full w-full object-cover object-center transition-opacity duration-300"
+          class:list={[
+            'h-full w-full object-center transition-opacity duration-300',
+            project.imageFit === 'contain'
+              ? 'object-contain p-8 drop-shadow-[0_18px_40px_rgba(37,99,235,0.35)]'
+              : 'object-cover',
+          ]}
         />
 
         {project.gallery && project.gallery.length > 1 && (

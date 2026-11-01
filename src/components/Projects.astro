@@ -84,7 +84,12 @@ const getProjectUrl = (id: string) =>
                 <!-- Cover Image (Morphs into Detail Banner via View Transition) -->
                 <div
                   transition:name={`project-banner-${project.id}`}
-                  class="relative aspect-[16/10] w-full overflow-hidden border-b border-border-subtle/80 bg-bg-base"
+                  class:list={[
+                    'relative aspect-[16/10] w-full overflow-hidden border-b border-border-subtle/80',
+                    project.imageFit === 'contain'
+                      ? 'bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.22),rgba(9,11,18,0.98)_75%)]'
+                      : 'bg-bg-base',
+                  ]}
                 >
                   <img
                     src={project.image}
@@ -94,7 +99,12 @@ const getProjectUrl = (id: string) =>
                     loading="lazy"
                     decoding="async"
                     itemprop="image"
-                    class="h-full w-full object-cover object-center opacity-85 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
+                    class:list={[
+                      'h-full w-full object-center opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100',
+                      project.imageFit === 'contain'
+                        ? 'object-contain p-5 drop-shadow-[0_14px_30px_rgba(37,99,235,0.35)]'
+                        : 'object-cover',
+                    ]}
                   />
                   <div
                     class="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-base via-bg-base/25 to-transparent"
