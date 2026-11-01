@@ -96,18 +96,18 @@ const { locale } = Astro.props;
         0.32
       );
 
-      // Step 5: Portrait Visual Stage & Floating Badges
+      // Step 5: Portrait Visual Stage & Floating Badges (no scale/leftover transform to keep subpixel text crisp)
       heroTl.fromTo(
         '[data-hero-visual]',
-        { opacity: 0, scale: 0.97 },
-        { opacity: 1, scale: 1, duration: 0.65 },
+        { opacity: 0 },
+        { opacity: 1, duration: 0.65, clearProps: 'transform,scale' },
         0.18
       );
 
       heroTl.fromTo(
         '[data-hero-badge]',
-        { opacity: 0, y: 12, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.07 },
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,scale' },
         0.38
       );
 
