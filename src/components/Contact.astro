@@ -70,15 +70,12 @@ const closeModalLabel = locale === 'en' ? 'Close contact modal' : 'Cerrar ventan
         </button>
       </div>
 
-      <!-- Compact Direct Info Strip -->
+      <!-- Compact Direct Info Strip (No mailto: protocol link to avoid external mail client redirects) -->
       <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-xl border border-border-subtle/70 bg-bg-base/60 px-4 py-2.5 text-xs">
-        <a
-          href={`mailto:${siteMetadata.email}`}
-          class="inline-flex items-center gap-2 font-mono text-text-primary transition-colors hover:text-accent"
-        >
+        <span class="inline-flex items-center gap-2 font-mono text-text-primary select-all">
           <Mail class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
           <span>{siteMetadata.email}</span>
-        </a>
+        </span>
         <span class="inline-flex items-center gap-2 text-text-secondary">
           <MapPin class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
           <span>{siteMetadata.location}</span>

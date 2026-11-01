@@ -142,13 +142,22 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const referenceId = `VA-${Date.now().toString(36).toUpperCase()}`;
   const submittedAt = new Date().toISOString();
 
-  const resendApiKey = import.meta.env.RESEND_API_KEY ?? '';
+  const runtimeEnv =
+    (globalThis as { process?: { env?: Record<string, string | undefined> } })
+      .process?.env ?? {};
+
+  const resendApiKey =
+    import.meta.env.RESEND_API_KEY || runtimeEnv.RESEND_API_KEY || '';
   const toEmail =
-    import.meta.env.CONTACT_TO_EMAIL ?? 'victoralvarezsaucedo@gmail.com';
+    import.meta.env.CONTACT_TO_EMAIL ||
+    runtimeEnv.CONTACT_TO_EMAIL ||
+    'victoralvarezsaucedo@gmail.com';
   const fromEmail =
-    import.meta.env.CONTACT_FROM_EMAIL ??
+    import.meta.env.CONTACT_FROM_EMAIL ||
+    runtimeEnv.CONTACT_FROM_EMAIL ||
     'Victor Alvarez Portfolio <onboarding@resend.dev>';
-  const webhookUrl = import.meta.env.CONTACT_WEBHOOK_URL ?? '';
+  const webhookUrl =
+    import.meta.env.CONTACT_WEBHOOK_URL || runtimeEnv.CONTACT_WEBHOOK_URL || '';
 
   const subject = `[Portafolio ${referenceId}] ${projectType} — ${name}`;
   const htmlBody = `
