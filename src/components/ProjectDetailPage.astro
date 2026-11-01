@@ -48,6 +48,17 @@ const pageKeywords = [
   project.category,
 ];
 
+// Prefer raster screenshot (.png/.jpg/.webp) over .svg for social OpenGraph/Twitter previews
+const rasterGallerySlide = project.gallery?.find(
+  (g) => !g.src.toLowerCase().endsWith('.svg'),
+);
+const socialOgImage = new URL(
+  project.image.toLowerCase().endsWith('.svg') && rasterGallerySlide
+    ? rasterGallerySlide.src
+    : project.image,
+  siteOrigin,
+).toString();
+
 const detailJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -58,6 +69,7 @@ const detailJsonLd = {
       applicationCategory: project.category,
       description: project.seoDescription,
       abstract: project.summary,
+      ...(project.liveUrl ? { url: project.liveUrl, sameAs: project.liveUrl } : {}),
       image: {
         '@type': 'ImageObject',
         url: new URL(project.image, siteOrigin).toString(),
@@ -107,7 +119,7 @@ const detailJsonLd = {
   canonicalPath={canonicalPath}
   alternateEsPath={alternateEsPath}
   alternateEnPath={alternateEnPath}
-  ogImage={project.image}
+  ogImage={socialOgImage}
   ogImageAlt={project.imageAlt}
   ogType="article"
   keywords={pageKeywords}

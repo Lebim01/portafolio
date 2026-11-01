@@ -26,8 +26,16 @@ interface Props {
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 Astro.response.headers.set('Content-Language', locale);
 Astro.response.headers.set('Vary', 'Accept-Language, Cookie');
+if (!Astro.response.headers.has('Cache-Control')) {
+  Astro.response.headers.set(
+    'Cache-Control',
+    'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
+  );
+}
 const content = getPortfolioContent(locale);
-const { siteMetadata, ogLocale, projectsSection, servicesSection } = content;
+const { siteMetadata, ogLocale, projectsSection, servicesSection, heroData } = content;
+
+const siteOrigin = (Astro.site ?? new URL('https://victoralvarez.dev')).toString();
 
 const {
   title = `${siteMetadata.brandName} — ${siteMetadata.roleTitle}`,
@@ -35,14 +43,28 @@ const {
   canonicalPath = Astro.url.pathname,
   alternateEsPath = locale === 'en' ? '/' : Astro.url.pathname,
   alternateEnPath = locale === 'es' ? '/en' : Astro.url.pathname,
-  ogImage = new URL('/retrato-profesional.png', Astro.site ?? 'https://victoralvarez.dev').toString(),
+  ogImage: rawOgImage = '/retrato-profesional.png',
   ogImageAlt = content.heroData.portraitPlaceholder.svgAriaLabel,
   ogType = 'website',
-  keywords = servicesSection.tags.map((t) => t.label),
+  keywords = [
+    'Victor Alvarez',
+    'Founder',
+    'Product Architect',
+    'CTO',
+    'Luthor Solutions',
+    'NodePayments',
+    'NodeWorkforce',
+    'NodexSpot',
+    'Blue Castle Ventures',
+    'CoCoCo Ventures',
+    ...servicesSection.tags.map((t) => t.label),
+  ],
   structuredData,
 } = Astro.props;
 
-const siteOrigin = (Astro.site ?? new URL('https://victoralvarez.dev')).toString();
+const ogImage = rawOgImage.startsWith('http')
+  ? rawOgImage
+  : new URL(rawOgImage, siteOrigin).toString();
 const canonicalURL = new URL(canonicalPath, siteOrigin);
 const esURL = new URL(alternateEsPath, siteOrigin).toString();
 const enURL = new URL(alternateEnPath, siteOrigin).toString();
@@ -55,20 +77,53 @@ const defaultJsonLd = {
       '@id': `${siteOrigin.replace(/\/$/, '')}/#person`,
       name: 'Victor Alvarez',
       jobTitle: siteMetadata.roleTitle,
-      description: siteMetadata.description,
+      description: `${heroData.summary} ${siteMetadata.description}`,
       image: new URL('/retrato-profesional.png', siteOrigin).toString(),
       url: canonicalURL.toString(),
       email: siteMetadata.email,
       inLanguage: locale,
+      founder: [
+        {
+          '@type': 'Organization',
+          name: 'Luthor Solutions',
+          url: 'https://luthorsolutions.com',
+        },
+        {
+          '@type': 'SoftwareApplication',
+          name: 'NodePayments',
+          url: 'https://nodepayments.luthor.solutions',
+        },
+        {
+          '@type': 'SoftwareApplication',
+          name: 'NodeWorkforce',
+          url: 'https://nodeworkforce.com',
+        },
+        {
+          '@type': 'SoftwareApplication',
+          name: 'NodexSpot',
+          url: 'https://nodexspot.com',
+        },
+      ],
+      worksFor: [
+        {
+          '@type': 'Organization',
+          name: 'Luthor Solutions',
+          url: 'https://luthorsolutions.com',
+        },
+        {
+          '@type': 'Organization',
+          name: 'Blue Castle Ventures',
+          url: 'https://www.bluecastleventures.com',
+        },
+      ],
       knowsAbout: [
-        'Full-Stack Software Engineering',
-        'Software Architecture & Product Ownership',
+        'Product Architecture & Technical Leadership (CTO / Co-CTO)',
+        'Full-Stack & Distributed Systems Engineering',
         'SaaS & B2B Multi-Tenant Platforms',
-        'Cryptocurrency Payment Gateways & On-Chain Settlement',
-        'Live Market & Forex Algorithmic Execution',
-        'E-Learning, HLS Streaming & Multi-Level Marketing (MLM) Engines',
-        'Self-Hosted AI GPU Labs, Vector Search (Qdrant) & Knowledge Graphs (Neo4j / GraphRAG)',
-        'E-Commerce & PropTech Real Estate Systems',
+        'Non-Custodial Cryptocurrency Payment Gateways & Hybrid Exchanges',
+        'Autonomous AI Agents, Voice Pipelines, GraphRAG & Vector Databases',
+        'Institutional Trading Terminals, Arbitrage & Live Market Scanners',
+        'Enterprise ERPs, HRTech/LXP & PropTech Platforms',
       ],
     },
     {
@@ -92,13 +147,14 @@ const defaultJsonLd = {
           name: proj.title,
           applicationCategory: proj.category,
           description: proj.seoDescription,
-          image: proj.image,
+          image: new URL(proj.image, siteOrigin).toString(),
           operatingSystem: 'Web, Cloud, Distributed Systems',
           keywords: [...proj.industryTags, ...proj.techTags, ...proj.stack].join(', '),
           url: new URL(
             locale === 'en' ? `/en/projects/${proj.id}` : `/proyectos/${proj.id}`,
             siteOrigin,
           ).toString(),
+          ...(proj.liveUrl ? { sameAs: proj.liveUrl } : {}),
         },
       })),
     },
@@ -116,7 +172,8 @@ const finalJsonLd = structuredData ?? defaultJsonLd;
     <meta name="theme-color" content="#0A0E13" />
     <meta name="color-scheme" content="dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <!-- Preload critical local WOFF2 variable fonts -->
     <link
@@ -141,8 +198,9 @@ const finalJsonLd = structuredData ?? defaultJsonLd;
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalURL.toString()} />
 
-    <!-- AI / LLM Crawler Context Discovery -->
+    <!-- AI / LLM Crawler Context & Sitemap Discovery -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context & Portfolio Summary" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <!-- i18n SEO Alternate Links (Hreflang) -->
     <link rel="alternate" hreflang="es" href={esURL} />

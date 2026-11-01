@@ -1,7 +1,7 @@
 ---
 import { getPortfolioContent } from '../data/portfolio';
 import type { Locale } from '../i18n/utils';
-import { Menu, X, ArrowUpRight, Terminal, Globe } from '@lucide/astro';
+import { Menu, X, ArrowUpRight, Globe } from '@lucide/astro';
 
 interface Props {
   locale?: Locale;
@@ -28,9 +28,15 @@ const resolveNavHref = (href: string) =>
       aria-label={`${siteMetadata.brandName} — ${navigationItems[0]?.label}`}
     >
       <span
-        class="flex h-10 w-10 items-center justify-center rounded-lg border border-accent/40 bg-surface text-accent shadow-[0_0_20px_rgba(245,158,11,0.16)] transition-transform duration-300 group-hover:scale-105 group-hover:border-accent"
+        class="flex h-10 items-center justify-center rounded-lg border border-accent/40 bg-surface px-2.5 shadow-[0_0_20px_rgba(245,158,11,0.16)] transition-transform duration-300 group-hover:scale-105 group-hover:border-accent"
       >
-        <Terminal class="h-5 w-5" aria-hidden="true" />
+        <img
+          src="/logo-victoralvarez.svg"
+          alt="VA"
+          width="44"
+          height="20"
+          class="h-4 w-auto object-contain select-none"
+        />
       </span>
       <div class="flex flex-col">
         <span class="font-display text-base font-bold tracking-wider text-text-primary">
