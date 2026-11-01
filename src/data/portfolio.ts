@@ -46,6 +46,13 @@ export interface ProjectGalleryImage {
   alt: string;
 }
 
+export interface ProjectOwnership {
+  teamScope: string;
+  personalModules: string;
+  hardestChallenge: string;
+  productImpact: string;
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -58,6 +65,7 @@ export interface ProjectItem {
   imageBg?: 'light' | 'dark';
   imageAlt: string;
   gallery?: ProjectGalleryImage[];
+  ownership: ProjectOwnership;
   seoDescription: string;
   category: string;
   summary: string;
@@ -437,7 +445,7 @@ const esContent: PortfolioContent = {
     items: [
       {
         id: 'luthor-solutions',
-        title: 'Luthor Solutions: Firma de Ingeniería de Software a Medida, IA & Plataformas B2B',
+        title: 'Luthor Solutions: Estudio de Software a Medida, IA & Plataformas B2B',
         role: 'Founder',
         dateRange: '2023 — Actualidad',
         featured: true,
@@ -446,28 +454,35 @@ const esContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Luthor Solutions (luthorsolutions.com) firma propia de ingeniería de software a medida, inteligencia artificial, plataformas SaaS, FinTech y E-Commerce fundada por Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Dirijo entre 6 y 12 personas organizadas por especialidad (frontend, backend, diseño y QA), además de llevar personalmente la relación con clientes y el cierre comercial.',
+          personalModules:
+            'Defino la arquitectura y las bases de datos de cada proyecto, elijo la tecnología adecuada y programo directamente las piezas más delicadas: pasarelas de pago, motores financieros y despliegues en la nube.',
+          hardestChallenge:
+            'Crear una base técnica modular que nos permitiera arrancar proyectos de industrias muy distintas (finanzas, cripto, construcción o comercio electrónico) sin rehacer desde cero la seguridad, los cobros ni la infraestructura.',
+          productImpact:
+            'Consolidé un estudio rentable con más de 15 plataformas en producción entregadas en semanas en lugar de meses, convirtiendo clientes iniciales en socios de largo plazo en México, EE. UU. y Latinoamérica.',
+        },
         seoDescription:
           'Luthor Solutions (luthorsolutions.com): Firma propia de ingeniería de software a la medida, desarrollo de plataformas SaaS, inteligencia artificial, aplicaciones móviles, pasarelas de pago y ecosistemas empresariales llave en mano con sede en Guadalajara, México. Rol: Founder.',
-        category: 'Software Engineering Studio · Custom Enterprise Systems · AI & Turnkey SaaS',
+        category: 'Software Studio · Sistemas a Medida · IA & SaaS',
         summary:
-          'Firma propia de ingeniería y consultoría tecnológica (con sede en Guadalajara, México) especializada en el diseño y construcción de ecosistemas de software a la medida, plataformas SaaS B2B, integración de Inteligencia Artificial, pasarelas de pago, e-commerce de alto tráfico y aplicaciones móviles para clientes en Latinoamérica y Estados Unidos.',
+          'Mi propio estudio de ingeniería de software con sede en Guadalajara. Diseñamos y construimos plataformas completas llave en mano —desde sistemas financieros y pasarelas cripto hasta marketplaces B2B y soluciones con inteligencia artificial— para empresas en México, Estados Unidos y Latinoamérica.',
         architectureNotes:
-          'Dirección general, arquitectura de soluciones y liderazgo de equipos multidisciplinarios entregando proyectos llave en mano desde el descubrimiento técnico hasta el despliegue en producción sobre stacks modernos (Next.js, React, NestJS, Node.js, TypeScript, PostgreSQL, Neo4j, Web3 e infraestructura Cloud/GPU).',
+          'Trabajamos con una arquitectura moderna basada en Next.js, NestJS y PostgreSQL, sumando bases de datos de grafos (Neo4j), búsqueda vectorial e infraestructura en AWS y Google Cloud según lo que exige cada negocio.',
         highlights: [
-          'Ingeniería de Productos Llave en Mano (End-to-End): diseño arquitectónico, desarrollo full-stack y despliegue de plataformas empresariales, ERPs, marketplaces B2B, pasarelas FinTech/Cripto y ecosistemas multinivel',
-          'Inteligencia Artificial & Automatización de Procesos: implementación de agentes conversacionales, motores de búsqueda semántica/vectorial, modelos predictivos e integraciones API que optimizan la rentabilidad operativa',
-          'Portafolio de Alto Impacto Multi-Industria: fábrica de software detrás de múltiples plataformas en producción (Voltz, Cicada, Retrypay, Gibor, 4Medic Health, Aura Series, entre otros ecosistemas regionales)',
+          'Desarrollo de principio a fin: tomamos una idea de negocio y entregamos el producto completo en producción (web, móvil, backend e infraestructura).',
+          'Inteligencia artificial aplicada a la operación: integramos agentes de atención, buscadores inteligentes de catálogo y automatizaciones que ahorran trabajo manual.',
+          'Fábrica detrás de más de 15 plataformas activas en distintos sectores, incluyendo Voltz, Retrypay, Gibor, INVIK, 4Medic Health y Coral de Plata.',
         ],
         industryTags: ['b2b', 'ia', 'saas'],
         techTags: ['ai-rag', 'automation', 'analytics', 'onchain'],
         stack: [
-          'Next.js, React & Astro',
-          'NestJS & Node.js',
-          'TypeScript',
-          'React Native & Expo (iOS / Android)',
-          'PostgreSQL, Neo4j & Redis',
-          'AI, Vector Search & Automation',
-          'Cloud Infrastructure (AWS / GCP)',
+          'Next.js & NestJS',
+          'PostgreSQL & Neo4j',
+          'AI & Vector Search',
+          'AWS & Google Cloud',
         ],
         statusLabel: 'luthorsolutions.com — Marca Propia & Software Studio',
         previewType: 'vector-graph',
@@ -475,7 +490,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'blue-castle-ventures',
-        title: 'Blue Castle Ventures: Ecosistema FinTech, Wealth Management & ERP Financiero',
+        title: 'Blue Castle Ventures: Plataforma Patrimonial & ERP Financiero',
         role: 'CTO',
         dateRange: 'Abr 2025 — Actualidad',
         featured: true,
@@ -496,32 +511,35 @@ const esContent: PortfolioContent = {
             alt: 'Tarjetas financieras corporativas y activos digitales de Blue Castle Ventures representando los certificados de inversión, capitalización compuesta y billetera híbrida multi-divisa.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como CTO escribí personalmente casi todo el código central de las 4 plataformas y su infraestructura, con el apoyo de 1 a 2 desarrolladores en interfaz y soporte.',
+          personalModules:
+            'Diseñé y programé el motor contable de partida doble, la API financiera, el portal de inversionistas, el ERP administrativo, la billetera con doble factor (2FA) y el generador automático de contratos legales con firma digital.',
+          hardestChallenge:
+            'Reemplazar un sistema antiguo en PHP que estaba en plena operación por 4 plataformas modernas en la nube, cuidando que cada centavo cuadrara a la perfección en millones de dólares bajo gestión y en 4 idiomas.',
+          productImpact:
+            'Se eliminaron por completo las conciliaciones manuales en Excel, el alta de inversionistas y la firma de contratos pasaron a tomar minutos, y la firma quedó lista para auditorías contables en Estados Unidos.',
+        },
         seoDescription:
           'Blue Castle Ventures (bluecastleventures.com): Ecosistema FinTech de Wealth Management y ERP financiero por partida doble en Nueva York (One Liberty Plaza) y Wyoming. Soporta decenas de millones de dólares en activos bajo gestión (AUM) en 3 continentes y 4 idiomas con Next.js, React 19, NestJS, PostgreSQL (Prisma), Google Cloud Run y Cloudflare R2.',
-        category: 'Wealth Management · Institutional FinTech · Financial ERP',
+        category: 'Wealth Management · FinTech Institucional · ERP Financiero',
         summary:
-          'Infraestructura FinTech y ERP financiero para una firma estadounidense de Wealth Management con sede en Nueva York (One Liberty Plaza) y Wyoming que administra decenas de millones de dólares (AUM) en 3 continentes (ES, EN, PT, IT). Reemplazó un sistema legacy en PHP por 4 plataformas Cloud-Native interconectadas, automatizando desde el onboarding KYC y firma electrónica hasta la contabilidad por partida doble.',
+          'Ecosistema tecnológico y ERP financiero para una firma estadounidense de gestión patrimonial con sede en Nueva York y Wyoming que administra decenas de millones de dólares en 3 continentes. Sustituyó su antiguo sistema por 4 plataformas conectadas que automatizan desde la firma del contrato hasta la contabilidad.',
         architectureNotes:
-          'Ecosistema de 4 plataformas interconectadas (Portal de Inversionistas, Backoffice ERP Administrativo, API Financiera Transaccional y Portal Corporativo) desplegadas en Google Cloud Run sobre Next.js, React 19, NestJS, TypeScript, PostgreSQL (Prisma ORM) y Cloudflare R2, alineado con vehículos calificados ante la SEC, auditorías CPA/AICPA y custodia en Interactive Brokers y BMO.',
+          'Cuatro aplicaciones conectadas entre sí (Portal de Inversionistas, ERP Administrativo, API Financiera y Sitio Corporativo) desplegadas en Google Cloud Run con Next.js, NestJS, PostgreSQL y almacenamiento seguro en Cloudflare R2.',
         highlights: [
-          'Volumen multimillonario (USD AUM) y alcance en 3 continentes (4 idiomas: ES, EN, PT, IT) con estándar regulatorio alineado a vehículos SEC, auditorías anuales CPA/AICPA y custodia institucional (Interactive Brokers & BMO)',
-          'Modernización Core desde PHP legacy hacia 4 plataformas Cloud-Native en Google Cloud Run: Portal de Inversionistas, Backoffice ERP, API Financiera y Portal Corporativo',
-          'Contratación legal 100% digital: verificación KYC, firma electrónica vinculante en pantalla, emisión automatizada de certificados/contratos en PDF y cálculo de rendimientos mensuales e interés compuesto',
-          'ERP Financiero de partida doble automatizada (transforma cada depósito, retiro, rendimiento y comisión en asientos contables balanceados) + Wallet híbrida con 2FA (SPEI, transferencias internacionales, PayPal y cripto), red comercial jerárquica, academia e-learning y soporte con IA',
+          'Operación internacional en 4 idiomas (español, inglés, portugués e italiano), alineada con auditorías contables en EE. UU. y custodia en Interactive Brokers y BMO.',
+          'Alta de clientes y contratación 100% digital: verificación de identidad, firma electrónica en pantalla, emisión de certificados en PDF y cálculo automático de rendimientos.',
+          'Contabilidad automática de partida doble: cada depósito, retiro, interés o comisión genera sus asientos contables al instante, integrado con billetera multimoneda y red de asesores.',
         ],
         industryTags: ['fintech'],
         techTags: ['automation', 'analytics', 'ai-rag'],
         stack: [
-          'Next.js',
-          'React 19',
-          'NestJS',
-          'TypeScript',
+          'Double-Entry ERP Engine',
+          'Next.js & NestJS',
           'PostgreSQL & Prisma',
           'Google Cloud Run',
-          'Cloudflare R2',
-          'Double-Entry ERP Engine',
-          'KYC & Digital Signature',
-          '2FA Hybrid Wallet',
         ],
         statusLabel: 'Proyecto Destacado · One Liberty Plaza, NY',
         previewType: 'crypto-gateway',
@@ -529,7 +547,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'node-payments-crypto-gateway',
-        title: 'NodePayments: Pasarela Cripto Multi-Cadena, Vaults CREATE2 & Dispersión Masiva',
+        title: 'NodePayments: Pasarela de Pagos Cripto & Dispersión Masiva',
         role: 'Founder & Principal Architect',
         dateRange: '2025 — Actualidad',
         featured: true,
@@ -560,31 +578,35 @@ const esContent: PortfolioContent = {
             alt: 'Módulo de Servicios y Suscripciones de NodePayments mostrando suscripciones activas, gasto mensual proyectado en USDT y ecosistema integrado (Accounting Pro, Agentes IA, Comunicaciones).',
           },
         ],
+        ownership: {
+          teamScope:
+            'Diseñé y programé personalmente el 100% del motor criptográfico y el backend de pagos, coordinando de 1 a 3 personas en detalles de interfaz e integración con clientes.',
+          personalModules:
+            'Programé los contratos inteligentes en Solidity, la generación de billeteras únicas por cobro, el monitoreo en tiempo real en múltiples redes (BSC, Ethereum, Polygon y Tron), el fondeo automático de gas y el motor de pagos masivos.',
+          hardestChallenge:
+            'Mover fondos de forma automática y sin custodia en varias blockchains con costos y tiempos distintos: detectar cada pago entrante, inyectar el gas exacto en ese instante y repartir los fondos sin trabar saldos ni duplicar envíos.',
+          productImpact:
+            'Permitió a empresas y plataformas procesar cobros y miles de pagos de comisiones en USDT en automático, ahorrando comisiones de intermediarios y manteniendo siempre el control de sus llaves.',
+        },
         seoDescription:
           'NodePayments (nodepayments.io): Infraestructura y pasarela de pagos cripto B2B multi-cadena (BSC, Polygon, Ethereum, Base, Tron) con contratos inteligentes CREATE2 (VaultFactory), derivación HD BIP32/BIP39, dispersión masiva de comisiones MLM, suscripciones Web3 y contabilidad automatizada.',
-        category: 'Crypto Payment Gateway · Web3 Infrastructure · B2B FinTech',
+        category: 'Pasarela Cripto · Infraestructura Web3 · FinTech B2B',
         summary:
-          'Pasarela de pagos cripto B2B e infraestructura de tesorería multi-cadena que permite a empresas, plataformas SaaS y redes MLM recibir pagos en USDT, USDC y activos nativos, ejecutar dispersiones masivas de comisiones en lote y automatizar suscripciones Web3 y ventas de tokens sin exponer su bóveda maestra.',
+          'Pasarela de pagos cripto para empresas que permite cobrar en USDT y otras monedas digitales en múltiples redes, dispersar miles de pagos o comisiones en un solo lote y cobrar suscripciones sin exponer nunca su billetera principal.',
         architectureNotes:
-          'Ecosistema de 4 repositorios: API core en NestJS 10 + Prisma + PostgreSQL + BullMQ/Redis + Socket.IO, contratos inteligentes en Solidity (VaultFactory CREATE2 y forwarder vaults), derivación determinística BIP32/BIP39 para Tron y EVM, indexación en tiempo real vía QuickNode Webhooks, portal Next.js y sistema contable dedicado.',
+          'Construida con NestJS, PostgreSQL, colas en Redis/BullMQ y contratos inteligentes en Solidity (CREATE2), conectada a nodos en tiempo real para operar sobre BSC, Polygon, Ethereum, Base y Tron.',
         highlights: [
-          'Bóvedas efímeras con CREATE2 (VaultFactory en Solidity) y billeteras HD (BIP32/BIP39): genera una dirección única por transacción en BSC, Polygon, Ethereum, Base y Tron manteniendo oculta la wallet maestra del comercio',
-          'Motor de Dispersión Masiva (Mass Payouts) para redes MLM y nóminas globales: liquidación en lote vía API Server-to-Server síncrona o con doble factor OTP y fondeo interno/externo',
-          'Estrategias flexibles de barrido y liquidación (Inmediata, Fin de Día, Por Umbral o Manual) con división porcentual multi-billetera, cobro de suscripciones Web3 recurrentes y módulo de Token Sales',
-          'Infraestructura en producción (~1 año de operación continua, +280 commits en ecosistema multi-repo) procesando cobros y dispersiones para empresas conectadas como Gibor, InDubai, Identiko y ecosistemas de tokens corporativos',
+          'Dirección única por cada cobro: crea bóvedas temporales en BSC, Polygon, Ethereum, Base y Tron para identificar cada pago al instante sin mostrar la billetera maestra del negocio.',
+          'Dispersión masiva por API o panel: permite liquidar nóminas globales y comisiones multinivel en lote con confirmación por doble factor.',
+          'Reglas flexibles de liquidación: el comercio elige si concentra sus fondos al instante, al cierre del día o al llegar a cierto monto, pudiendo dividir porcentajes entre varias billeteras.',
         ],
         industryTags: ['crypto', 'fintech', 'b2b', 'saas', 'multinivel'],
         techTags: ['onchain', 'automation', 'realtime'],
         stack: [
-          'NestJS 10',
-          'Next.js',
-          'TypeScript',
-          'Solidity (CREATE2 VaultFactory)',
-          'Ethers.js v6 & TronWeb',
+          'Solidity (CREATE2 Vaults)',
           'BIP32 / BIP39 HD Wallets',
-          'PostgreSQL & Prisma',
-          'BullMQ & Redis',
-          'QuickNode Streams',
+          'Ethers.js v6 & TronWeb',
+          'NestJS, BullMQ & QuickNode',
         ],
         statusLabel: 'nodepayments.io — Pasarela Cripto en Producción',
         previewType: 'crypto-gateway',
@@ -592,7 +614,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'nodeworkforce-ai-agents-saas',
-        title: 'NodeWorkforce: Plataforma SaaS Multi-Tenant de Agentes de IA, RAG, Fine-Tuning & Creative AI Studio',
+        title: 'NodeWorkforce: Plataforma SaaS de Agentes de IA & Estudio Creativo',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2026 — Actualidad',
         featured: true,
@@ -614,30 +636,35 @@ const esContent: PortfolioContent = {
             alt: 'Consola de NodeWorkforce mostrando la Bandeja de Conversaciones multi-workspace, estado de atención por Agente de Soporte, botón de Tomar Conversación (Takeover), corrección de respuestas para Fine-Tuning y comandos de supervisor.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: diseñé, programé y desplegué toda la plataforma por mi cuenta.',
+          personalModules:
+            'Construí el motor de agentes de IA con historial de versiones, el buscador documental (RAG), la bandeja en vivo para que un humano tome el control del chat, el entrenamiento automático a partir de correcciones, el sistema de cobro por créditos y el estudio de diseño con IA.',
+          hardestChallenge:
+            'Sincronizar en tiempo real el gasto de créditos de múltiples modelos de IA y GPUs por cada empresa cliente, mientras un supervisor humano puede intervenir cualquier conversación en vivo al instante y usar sus correcciones para reentrenar al agente.',
+          productImpact:
+            'Un producto SaaS propio capaz de automatizar áreas completas de soporte al cliente y diseño publicitario, cobrando por uso real y volviéndose más preciso con cada conversación.',
+        },
         seoDescription:
           'NodeWorkforce (nodeworkforce.io): Plataforma SaaS B2B Multi-Tenant de Agentes de IA Conversacionales y Creative AI Studio. Arquitectura en NestJS 10, Next.js 16 (React 19), PostgreSQL + Prisma, Redis + BullMQ, RAG vectorial, Fine-Tuning (LoRA/Unsloth/Qwen 2.5), inferencia GPU con SDXL Turbo/Lightning, edición por capas en Konva.js y Credit Ledger transaccional. Rol: Founder & Lead Product Engineer.',
-        category: 'Multi-Tenant AI Agents SaaS · Vector RAG & LoRA Fine-Tuning · Creative AI Studio (GPU)',
+        category: 'SaaS de Agentes IA · Búsqueda RAG & Entrenamiento · Estudio Creativo GPU',
         summary:
-          'Plataforma SaaS B2B Multi-Tenant para crear, versionar, entrenar (Fine-Tuning LoRA/Unsloth), evaluar y desplegar agentes autónomos de IA con RAG vectorial, ejecución idempotente de herramientas (Tool Calling), facturación por consumo en tiempo real (Credit Ledger) y un Creative AI Studio con edición en lienzo por capas (Konva.js) e inferencia GPU (SDXL Turbo/Lightning).',
+          'Plataforma SaaS para que las empresas creen, entrenen y conecten sus propios agentes de IA en WhatsApp, web o Slack usando su documentación interna, acompañada de un estudio creativo con IA para generar y editar piezas gráficas por capas.',
         architectureNotes:
-          'Fundada y diseñada en NestJS 10 (TypeScript, arquitectura orientada a dominios), Next.js 16 (React 19, Tailwind CSS 4, Konva.js), PostgreSQL + Prisma ORM + pgvector, Redis + BullMQ con patrón Transactional Outbox, Socket.IO (@socket.io/redis-adapter), orquestación multi-LLM (vLLM, OpenAI, Anthropic, Cloudflare), pipelines de Fine-Tuning (Qwen 2.5 / Unsloth) y workers GPU para SDXL.',
+          'Desarrollada en NestJS y Next.js con PostgreSQL (búsqueda vectorial), colas en Redis/BullMQ y WebSockets, conectando modelos de lenguaje (OpenAI, Anthropic y modelos propios en GPU) bajo un sistema de cobro exacto por consumo.',
         highlights: [
-          'Motor de Agentes de IA con Versionamiento Inmutable & Omnicanalidad: snapshots inmutables (AgentVersion) de prompts, guardrails y plantillas; trazabilidad de cada AgentRun (TTFT, tokens, latencia, ToolCall idempotente) y escalamiento Human-in-the-Loop en vivo por WebSockets (Web, WhatsApp, Slack, API)',
-          'Pipeline RAG Vectorial, LLM Evals & Fine-Tuning (LoRA / Unsloth): ingesta asíncrona con deduplicación SHA-256 e indexación vectorial, suites de evaluación automatizada (EvaluationSet/Run) y entrenamiento LoRA sobre conversaciones reales con telemetría de loss por época',
-          'Creative AI Studio con Konva.js & Workers GPU (SDXL Turbo / Lightning): gestión de BrandKit versionado, generación de conceptos publicitarios, editor no-destructivo por capas (DesignDocument / CreativeLayer) y auditoría automática de calidad visual',
-          'Arquitectura Multi-Tenant, API Keys & Usage-Based Credit Ledger: aislamiento CustomerAccount → Tenant con RBAC granular, API Keys B2B (sk_live_...), reserva atómica de créditos (PREPAID / POSTPAID), libro mayor inmutable (CreditLedger) e integración con Stripe',
+          'Atención omnicanal con supervisión humana: los agentes atienden en vivo y cualquier supervisor puede tomar el control de un chat con un clic; si corrige una respuesta, el sistema aprende de ella.',
+          'Entrenamiento con documentos propios: procesa manuales y catálogos de la empresa para responder con datos reales sin inventar información.',
+          'Estudio creativo y cobro por uso: incluye un editor visual por capas impulsado por GPU para generar anuncios de marca y una billetera de créditos recargable con Stripe.',
         ],
         industryTags: ['ia', 'saas'],
         techTags: ['ai-rag', 'gpu-lab', 'automation', 'realtime'],
         stack: [
-          'NestJS 10 & Next.js 16 (React 19)',
-          'PostgreSQL, Prisma & Vector RAG',
-          'vLLM, OpenAI, Anthropic & LoRA (Unsloth)',
-          'SDXL Turbo / Lightning & Konva.js Canvas',
-          'Redis, BullMQ & Transactional Outbox',
-          'Socket.IO Redis Adapter',
-          'Usage Billing, Credit Ledger & Stripe',
-          'AWS S3 / Cloudflare R2 & RBAC API Keys',
+          'Vector RAG & LoRA (Unsloth)',
+          'vLLM, OpenAI & Anthropic',
+          'SDXL GPU & Konva.js',
+          'BullMQ Outbox & Credit Ledger',
         ],
         statusLabel: 'nodeworkforce.io — AI Agents & Creative Studio SaaS',
         previewType: 'vector-graph',
@@ -645,7 +672,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'nodexspot-hybrid-exchange',
-        title: 'NodexSpot: Exchange Híbrido Multi-Cadena, Agregador DEX & Auto-Ejecución Spot',
+        title: 'NodexSpot: Exchange Cripto Híbrido & Auto-Trading Spot',
         role: 'Founder & Principal Architect',
         dateRange: '2026 — Actualidad',
         featured: true,
@@ -671,31 +698,35 @@ const esContent: PortfolioContent = {
             alt: 'Terminal de Mercados y Diferenciales de NodexSpot con cotizaciones en tiempo real vía WebSocket, volumen 24h ($571.69M), dominancia BTC y pares spot (BTC, ETH, BNB, SOL, POL, TRX, AVAX, LINK, NEAR, DOGE).',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: hice todo el sistema sin apoyo externo —motor, ruteo, interfaz, libro contable, custodia y trading spot—.',
+          personalModules:
+            'Programé las billeteras para 4 familias de redes (Bitcoin, Ethereum/EVM, Solana y Tron), el buscador de mejores precios entre exchanges descentralizados, el libro contable interno, las órdenes avanzadas (Limit, OCO, Trailing, DCA) y la ejecución automática de señales.',
+          hardestChallenge:
+            'Conectar 4 tecnologías blockchain completamente distintas bajo un mismo motor que compara precios en tiempo real entre 5 proveedores de liquidez y liquida órdenes complejas al instante sin descuadres de saldo.',
+          productImpact:
+            'Puse en producción un exchange propio que combina la rapidez y comodidad de un exchange tradicional con la liquidez directa de la blockchain y operación automática 24/7.',
+        },
         seoDescription:
           'NodexSpot (nodexspot.com): Exchange híbrido multi-cadena (EVM, Solana SVM, Bitcoin UTXO, Tron) que unifica bóvedas custodiales y billeteras Web3 con enrutamiento de liquidez (Jupiter, 0x, LI.FI, Chainflip), órdenes avanzadas (Limit, OCO, OTOCO, Trailing, DCA), auditoría de riesgo GoPlus y auto-ejecución de señales Spot.',
-        category: 'Hybrid Crypto Exchange · Cross-Chain Aggregator · Algorithmic Spot Engine',
+        category: 'Exchange Cripto Híbrido · Agregador Multi-Red · Auto-Trading Spot',
         summary:
-          'Exchange cripto híbrido y terminal de ejecución multi-cadena (EVM, Solana SVM, Bitcoin UTXO y Tron) que combina un motor de libro mayor custodial de alta velocidad con agregación de liquidez descentralizada (Jupiter, 0x, LI.FI, Chainflip), órdenes algorítmicas avanzadas y auto-ejecución de señales Spot con Take Profit y Stop Loss automáticos.',
+          'Exchange de criptomonedas que une lo mejor de dos mundos: la velocidad de una cuenta en custodia con el acceso directo a la liquidez de múltiples redes (Bitcoin, Ethereum, Solana y Tron), incluyendo órdenes avanzadas y ejecución automática de señales.',
         architectureNotes:
-          'Arquitectura full-stack sobre Next.js 16 (PWA) + React 19 y backend en NestJS 11 + Prisma 6 + PostgreSQL + Redis (ioredis) + Viem + BIP39/TweetNaCl, integrando cotizadores cross-chain en tiempo real, evaluación de riesgo pre-ejecución con GoPlus Security y motor de custodia/liquidación atómica.',
+          'Construido en Next.js y NestJS con PostgreSQL y Redis, conectando cotizadores descentralizados (Jupiter, 0x, LI.FI y Chainflip), análisis de seguridad GoPlus antes de cada operación y un libro contable interno de alta velocidad.',
         highlights: [
-          'Arquitectura Multi-Familia (EVM, Solana SVM, Bitcoin UTXO y Tron) con enrutamiento inteligente entre 5 agregadores de liquidez (Jupiter, 0x, LI.FI, Chainflip e InDubai) y billeteras HD derivadas (@scure/bip39 + TweetNaCl)',
-          'Motor de Órdenes Avanzadas y Ejecución Condicional: soporte para Limit, Stop Loss, Take Profit, Trailing Trigger, OCO, OTOCO y compras programadas DCA por tiempo o precio',
-          'Motor de Señales Spot con Auto-Ejecución: desbloqueo de señales cuantitativas (RSI, MACD, volumen) que abren posición automáticamente y monitorean salidas por Take Profit o Stop Loss en vivo',
-          'Blindaje de seguridad pre-swap con GoPlus Security (análisis de riesgo de contratos, direcciones y simulación de rutas) y contabilidad interna por partida en CustodialBalance y LedgerEntry',
+          'Operación en múltiples redes desde una sola cuenta: soporta Bitcoin, redes EVM, Solana y Tron buscando siempre la ruta con mejor precio.',
+          'Órdenes avanzadas y compras programadas: permite configurar órdenes Limit, Stop Loss, Take Profit, Trailing, OCO y planes de ahorro automático (DCA).',
+          'Señales Spot con ejecución automática: el usuario puede activar señales técnicas que abren la compra por sí solas y vigilan el cierre en ganancia o protección.',
         ],
         industryTags: ['crypto', 'fintech', 'live-market'],
         techTags: ['onchain', 'realtime', 'automation', 'analytics'],
         stack: [
-          'Next.js 16 (PWA)',
-          'React 19',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL & Prisma 6',
-          'Redis (ioredis)',
-          'Viem & BIP39 / TweetNaCl',
+          'EVM, Solana SVM, UTXO & Tron',
           'Jupiter, 0x, LI.FI & Chainflip',
-          'GoPlus Risk Engine',
+          'BIP39 / TweetNaCl Custody',
+          'GoPlus Security Engine',
         ],
         statusLabel: 'nodexspot.com — Exchange Híbrido en Producción',
         previewType: 'live-market',
@@ -703,7 +734,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'cococo-ventures',
-        title: 'CoCoCo Ventures: Corporate Venture Builder & Ejecución Tecnológica para Corporativos (México y España)',
+        title: 'CoCoCo Ventures: Creación de Nuevos Negocios Digitales para Corporativos',
         role: 'Co-CTO',
         dateRange: '2023 — 2024',
         featured: true,
@@ -730,27 +761,35 @@ const esContent: PortfolioContent = {
             alt: 'Ilustración editorial del equipo de operadores y venture builders de CoCoCo Ventures.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como Co-CTO coordiné equipos de ingeniería de 5 a 10+ personas entre México y España, trabajando directo con directores corporativos y líderes de negocio.',
+          personalModules:
+            'Definí la arquitectura técnica, el stack, la nube y la estrategia de IA de las nuevas empresas creadas por la firma, entrando directamente al código para destrabar integraciones complejas.',
+          hardestChallenge:
+            'Lograr que nuevos productos digitales se conectaran rápido y de forma segura con los sistemas antiguos (ERPs e inventarios) de grandes corporativos bancarios, farmacéuticos e industriales sin frenar su operación diaria.',
+          productImpact:
+            'Lanzamos en semanas múltiples unidades de negocio digitales en más de 10 industrias en México y España, abriendo nuevos canales de venta y reduciendo costos operativos.',
+        },
         seoDescription:
           'CoCoCo Ventures (cococo.ventures/mx — Corporate Cofounder Company): Firma internacional de Corporate Venture Building y operadores emprendedores en México (CDMX, Monterrey) y España (Madrid, Barcelona) que ejecuta nuevos negocios digitales y optimización con IA para corporativos como Fragua, Santander, Banco BASE, CIOSA, Tecnolite, Global Gas y Kiosko. Rol: Co-CTO.',
-        category: 'Corporate Venture Builder · Tech Strategy & AI Execution · Multi-Industry Products',
+        category: 'Corporate Venture Builder · Estrategia Tecnológica & IA · México y España',
         summary:
-          'Corporate Venture Builder ("Corporate Cofounder Company") con presencia en México (CDMX y Monterrey) y España (Madrid y Barcelona) que opera como un equipo S.W.A.T. externo para grandes corporativos (incluyendo Fragua/Farmacias Guadalajara, Santander, Banco BASE, CIOSA Autopartes, Tecnolite, Global Gas, Kiosko, Gonher e Impuls), construyendo nuevos negocios digitales desde cero, monetizando activos y automatizando operaciones con IA para mover directamente el EBITDA.',
+          'Firma internacional con presencia en México y España que funciona como un equipo externo de emprendedores y tecnólogos para grandes corporativos (como Santander, Banco BASE, Farmacias Guadalajara, Tecnolite o Kiosko), creando nuevos negocios digitales desde cero y automatizando procesos con IA.',
         architectureNotes:
-          'Desempeño como Co-CTO codirigiendo la estrategia tecnológica, arquitectura de software, selección de stacks y ejecución acelerada de múltiples ventures corporativos en +10 industrias (marketplaces B2B/D2C, comercio electrónico, FinTech, HealthTech, PropTech con visión 360° e IA, retail y logística de casilleros inteligentes), desde la validación en mercado hasta su escalamiento operativo.',
+          'Codirección tecnológica diseñando arquitecturas escalables en la nube para marketplaces B2B/D2C, plataformas financieras, salud digital, logística inteligente e inteligencia artificial aplicada.',
         highlights: [
-          'Dirección Tecnológica Multi-Venture (Co-CTO): arquitectura y lanzamiento acelerado de nuevas líneas de negocio digitales para corporativos líderes en México y España sin distraer su operación central (core business)',
-          'Ecosistema de Casos de Éxito en +10 Industrias: construcción de plataformas e-commerce D2C de autopartes, canales digitales para fabricantes de iluminación (Voltz), retail foodtech en tiendas de conveniencia, soluciones FinTech bancarias, telemedicina D2C farmacéutica y smart lockers logísticos',
-          'Apalancamiento con IA, Datos & Automatización Operativa: implementación de inteligencia artificial, recorridos 360° automatizados en bienes raíces e integraciones empresariales orientadas a generar nuevos ingresos en el P&L y reducir costos operativos',
+          'Liderazgo técnico multi-empresa: diseño y puesta en marcha de nuevas líneas de negocio digitales para corporativos líderes sin distraer a sus equipos internos.',
+          'Productos reales en más de 10 industrias: desde e-commerce de autopartes y marketplaces industriales (como Voltz) hasta telemedicina, soluciones bancarias y casilleros inteligentes.',
+          'Impacto directo en rentabilidad: automatización de operaciones e implementación de IA enfocadas en generar nuevos ingresos y reducir costos.',
         ],
         industryTags: ['b2b', 'ia', 'saas', 'ecommerce', 'fintech'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'Multi-Venture System Architecture',
-          'Next.js, React & TypeScript',
-          'Node.js, NestJS & Cloud Run',
+          'Multi-Venture Architecture',
           'AI & Process Automation',
-          'B2B / D2C Marketplaces & FinTech',
-          'PostgreSQL, Graph & Search Engines',
+          'B2B / D2C Marketplaces',
+          'Google Cloud Run & Graph DBs',
         ],
         statusLabel: 'cococo.ventures — Corporate Venture Builder (MX & ES)',
         previewType: 'vector-graph',
@@ -758,7 +797,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'voltz-b2b-marketplace',
-        title: 'Voltz: Core B2B Marketplace & Motor de Inteligencia de Catálogo Industrial',
+        title: 'Voltz: Marketplace B2B de Material Eléctrico & Buscador con IA',
         role: 'CTO',
         dateRange: 'Jun 2023 — Oct 2026',
         liveUrl: 'https://www.voltz.mx',
@@ -794,32 +833,35 @@ const esContent: PortfolioContent = {
             alt: 'Detalle de producto industrial en Voltz con control de precios confidenciales B2B, inventario reservado y recomendaciones de productos equivalentes homologados entre múltiples proveedores en Neo4j.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como CTO dirigí un equipo de 3 a 6 ingenieros y programé personalmente los motores centrales de búsqueda, grafos y cotización.',
+          personalModules:
+            'Diseñé y programé la base de datos en grafos (Neo4j) para conectar productos equivalentes, el buscador con IA en Elasticsearch, el cotizador B2B multi-proveedor y los procesos de sincronización en Google Cloud.',
+          hardestChallenge:
+            'Unificar decenas de miles de productos eléctricos de distintos fabricantes (Schneider, ABB, Siemens, Condumex) donde cada proveedor nombra las piezas diferente, logrando que un comprador encuentre equivalencias exactas en milisegundos.',
+          productImpact:
+            'Convertimos un catálogo industrial disperso en el marketplace eléctrico B2B más rápido de México, reduciendo el armado de cotizaciones empresariales de días a minutos.',
+        },
         seoDescription:
           'Voltz (voltz.mx): Core B2B Marketplace y motor de inteligencia de catálogo industrial en México para decenas de miles de SKUs eléctricos (Schneider, ABB, Siemens, Eaton, Condumex) con Neo4j, Elasticsearch 8 + ELSER, PostgreSQL (Neon + Prisma), Google Cloud Tasks/Run, OpenAI/Ollama y Google Merchant Center API.',
-        category: 'B2B Marketplace · Graph Catalog Engine · AI Search',
+        category: 'Marketplace B2B · Catálogo en Grafos · Buscador con IA',
         summary:
-          'Plataforma B2B líder en México para el suministro y cotización automatizada de material eléctrico e industrial (+decenas de miles de SKUs de Schneider Electric, ABB, Siemens, Eaton, Legrand y Condumex), conectando inventarios nacionales en tiempo real mediante una arquitectura políglota en Neo4j, Elasticsearch 8 (ELSER) y PostgreSQL.',
+          'Marketplace B2B que reúne el catálogo más grande de material eléctrico e industrial en México (Schneider Electric, ABB, Siemens, Condumex, entre otros), permitiendo a constructores y empresas cotizar pedidos completos comparando stock y precios en tiempo real.',
         architectureNotes:
-          'Arquitectura políglota y orientada a eventos en NestJS, Neo4j (grafo de homologación de SKUs y cálculo de best_price), Elasticsearch 8 + ELSER (búsqueda híbrida BM25 + embeddings neuronales), PostgreSQL (Neon Serverless + Prisma) & Firestore, ingesta asíncrona con Google Cloud Tasks + Cloud Run, enriquecimiento de catálogo con OpenAI/Ollama y sincronización en vivo con Google Merchant Center API.',
+          'Combina Neo4j para relacionar piezas equivalentes entre marcas, Elasticsearch con IA para búsqueda técnica, PostgreSQL para las cotizaciones y Google Cloud Run para actualizar miles de productos en segundo plano.',
         highlights: [
-          'Grafo de homologación en Neo4j que relaciona decenas de miles de SKUs equivalentes entre múltiples distribuidores y marcas, calculando en tiempo real el mejor costo (best_price), margen óptimo y stock consolidado',
-          'Buscador híbrido en Elasticsearch 8 + ELSER (BM25 léxico + embeddings neuronales) con equivalencia automática de marcas filiales (Schneider ↔ Square D, Eaton ↔ Cutler-Hammer, Legrand ↔ Bticino) y detección de intención técnica',
-          'Motor transaccional de cotizaciones B2B en PostgreSQL (Neon + Prisma) y Firestore con auditoría por partida (PartidaHistory), integración bidireccional con Zoho CRM y pasarelas Conekta, Openpay y SPEI',
-          'Ingesta asíncrona masiva vía Google Cloud Tasks + Cloud Run, pipelines de IA Generativa (OpenAI / Ollama) para normalizar especificaciones técnicas crudas en taxonomías/SEO y sincronización concurrente con Google Merchant Center API',
+          'Equivalencias automáticas entre marcas: si una pieza no tiene stock o es más cara, el grafo en Neo4j sugiere el componente técnico equivalente de otro fabricante con el mejor precio.',
+          'Buscador pensado para ingenieros: entiende códigos de parte, capacidades eléctricas y marcas filiales (como Schneider ↔ Square D) sin exigir el nombre exacto.',
+          'Cotizador empresarial completo: maneja precios confidenciales por cliente, reserva de inventario entre varios proveedores, pagos SPEI/tarjetas y conexión con Zoho CRM.',
         ],
         industryTags: ['ecommerce', 'b2b', 'data-analytics'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'NestJS & TypeScript',
           'Neo4j (Graph DB)',
-          'Elasticsearch 8 + ELSER',
-          'PostgreSQL (Neon) & Prisma',
-          'Google Cloud Run & Tasks',
+          'Elasticsearch 8 + ELSER AI',
           'OpenAI & Ollama Pipelines',
-          'Firestore',
-          'Google Merchant Center API',
-          'Conekta, Openpay & SPEI',
-          'Zoho CRM Integration',
+          'Google Cloud Run & Tasks',
         ],
         statusLabel: 'voltz.mx — Marketplace B2B en Producción',
         previewType: 'vector-graph',
@@ -827,7 +869,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'cicada-institutional-trading',
-        title: 'Cicada: Trading Institucional de Renta Fija & Infraestructura de Mercados (CLOB / RFQ)',
+        title: 'Cicada: Terminal Institucional de Bonos & Renta Fija',
         role: 'Frontend Lead',
         dateRange: 'Ene 2022 — May 2023',
         liveUrl: 'https://www.cicada.io',
@@ -862,29 +904,35 @@ const esContent: PortfolioContent = {
             alt: 'Terminal integral de ejecución de renta fija en Cicada con Central Limit Order Book (CLOB), profundidad de mercado, calculadora de Yield-Spread (DV01, Duración Macaulay/Modificada, Convexidad) y serie histórica.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como Frontend Lead coordiné de 2 a 4 desarrolladores trabajando mano a mano con el equipo de mercados y backend en Estados Unidos.',
+          personalModules:
+            'Diseñé y programé las pantallas principales de la terminal: el libro de órdenes en vivo (CLOB), la bandeja de cotizaciones entre bancos (RFQ), los gráficos de curvas de rendimiento y la calculadora financiera de bonos.',
+          hardestChallenge:
+            'Mostrar cientos de cambios de precio por segundo en el libro de órdenes y recalcular curvas de bonos en tiempo real sin que la pantalla se congelara ni perdiera fluidez durante la jornada del mercado.',
+          productImpact:
+            'Llevó la compraventa institucional de bonos gubernamentales (M Bono y UDI Bono) a una plataforma electrónica regulada en EE. UU. (SEC/FINRA), respaldada por una inversión Serie A de US$13.5M liderada por Citi.',
+        },
         seoDescription:
           'Cicada (cicada.io): Plataforma FinTech estadounidense de trading electrónico institucional de renta fija (CLOB y RFQ) para mercados de capitales de América Latina, operada bajo ATS regulado por SEC y FINRA (US$13.5M Serie A liderada por Citi). Rol: Frontend Lead.',
-        category: 'Financial Infrastructure · Institutional Trading · Capital Markets',
+        category: 'Infraestructura Financiera · Trading Institucional · Renta Fija',
         summary:
-          'Plataforma FinTech B2B estadounidense (respaldada con US$13.5M Serie A liderada por Citi y operada como ATS regulado ante SEC/FINRA) que moderniza los mercados de renta fija en Latinoamérica. Conecta inversionistas institucionales y dealers mediante libros de órdenes electrónicos (CLOB), protocolos de cotización (RFQ) y analítica avanzada de bonos.',
+          'Plataforma estadounidense de trading electrónico (respaldada con US$13.5M en Serie A liderada por Citi) que moderniza la compraventa de bonos gubernamentales en Latinoamérica, conectando a fondos institucionales y bancos en tiempo real.',
         architectureNotes:
-          'Liderazgo de arquitectura Frontend para la terminal de trading electrónico de baja latencia, visualización de profundidad de mercado (CLOB), flujos de negociación RFQ en tiempo real, calculadoras cuantitativas de renta fija (Yield, Spread, DV01, Duración y Convexidad) y automatización post-trade.',
+          'Aplicación financiera de baja latencia en React y TypeScript conectada por WebSockets a motores de mercado institucionales, con manejo de estado de alta frecuencia y herramientas de cálculo de bonos.',
         highlights: [
-          'Negociación electrónica institucional de bonos gubernamentales y corporativos (M Bono, UDI Bono) mediante Central Limit Order Book (CLOB) y protocolos Request for Quote (RFQ)',
-          'Suite de Market Data & Analytics en tiempo real: Curve Plotter, Spread Analysis, matriz de valor relativo y calculadora financiera (Dirty Price, DV01, Duración Macaulay/Modificada y Convexidad)',
-          'Automatización de operaciones pre-trade y post-trade: captura de órdenes por rendimiento o precio (% of Par), instrucciones de liquidación (T+1 / T+2 en Clearstream, Euroclear e Indeval) y conectividad API',
-          'Infraestructura de grado institucional operada por Cicada Securities (ATS registrado ante la SEC y miembro de FINRA), respaldada por una ronda Serie A de US$13.5M liderada por Citi',
+          'Compraventa electrónica de bonos (M Bono y UDI Bono) mediante libro de órdenes abierto (CLOB) y solicitudes de cotización directa entre instituciones (RFQ).',
+          'Herramientas de análisis en vivo: gráficos de curvas de tasas, comparativas de spreads históricos y calculadora de riesgo y sensibilidad del bono (DV01, duración y convexidad).',
+          'Flujo completo desde la postura hasta la liquidación internacional (Clearstream, Euroclear e Indeval) bajo regulación de la SEC y FINRA.',
         ],
         industryTags: ['fintech', 'live-market', 'b2b'],
         techTags: ['realtime', 'analytics', 'automation'],
         stack: [
-          'React',
-          'TypeScript',
-          'WebSockets (Real-Time Feeds)',
-          'CLOB & RFQ Trading Engine UI',
-          'Fixed-Income Analytics & Charting',
-          'High-Frequency State Management',
-          'Financial APIs & FIX Connectivity',
+          'CLOB & RFQ Trading Engine',
+          'High-Frequency WebSockets',
+          'Fixed-Income Analytics (DV01)',
+          'FIX & Institutional APIs',
         ],
         statusLabel: 'SEC / FINRA Regulated ATS · US$13.5M Serie A (Citi)',
         previewType: 'live-market',
@@ -892,7 +940,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'imperio-fintech-edtech',
-        title: 'Imperio: Ecosistema FinTech Cuantitativo, Motor Macro & TradingView Bridge',
+        title: 'Imperio: Terminal Macroeconómica, Escáner Armónico & Puente TradingView',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2024 — 2026',
         image: '/projects/imperio/Centro de Comando Imperio_ Terminal Macroeconómica.png',
@@ -915,32 +963,35 @@ const esContent: PortfolioContent = {
             alt: 'Dashboard principal de Imperio mostrando racha de actividad, progreso en la Academia institucional, accesos directos al Escáner Armónico, Backtesting MT5, Command Center y programa de fondeo Axi Select ($1M USD).',
           },
         ],
+        ownership: {
+          teamScope:
+            'Construí prácticamente todo el ecosistema de principio a fin por mi cuenta, con apoyo puntual solo en diseño visual y contenido educativo.',
+          personalModules:
+            'Programé las 3 partes del sistema: la aplicación web en Next.js, el backend en NestJS que procesa datos económicos e indicadores, la auditoría de cuentas de MetaTrader 5 y la extensión de Chrome que dibuja directo sobre TradingView.',
+          hardestChallenge:
+            'Lograr que nuestra extensión de Chrome se conectara directamente al lienzo interno de TradingView para dibujar patrones armónicos complejos y niveles de entrada y salida en menos de 100 milisegundos con un solo clic.',
+          productImpact:
+            'Ahorró horas diarias de análisis macroeconómico y trazo manual a los miembros, reuniendo academia, escáner, auditoría de cuentas reales y red de afiliados en una misma suscripción.',
+        },
         seoDescription:
           'Imperio (tradeimper.io): Ecosistema FinTech y EdTech institucional compuesto por PWA en Next.js 16 (66 rutas), Core Engine en NestJS 11 (+116 endpoints, 43 modelos Prisma/PostgreSQL, Redis/BullMQ) y extensión Chrome MV3 de inyección directa en TradingView (< 100 ms).',
-        category: 'Institutional FinTech · Quantitative Engine · TradingView Bridge',
+        category: 'FinTech Cuantitativo · Terminal Macro · Extensión TradingView',
         summary:
-          'Ecosistema FinTech y EdTech de grado institucional que unifica una plataforma SaaS de análisis cuantitativo y educación financiera, un motor macro/algorítmico en tiempo real (FRED, CFTC/COT, Bonos del Tesoro), auditoría automática de cuentas MT5 (MetaAPI) y un puente de inyección directa en TradingView en < 100 ms (Chrome Extension MV3).',
+          'Plataforma de análisis financiero y educación que reúne en un solo lugar un centro de comando macroeconómico en vivo, un escáner automático de patrones de mercado, auditoría de cuentas de trading reales (MT5) y una extensión de navegador que dibuja las operaciones directo en TradingView.',
         architectureNotes:
-          'Arquitectura tripartita desacoplada: (1) Web App & PWA en Next.js 16 + React 19 (66 rutas, +106 componentes, Three.js/R3F, GSAP, Rive, Remotion y Lightweight Charts v5 / ECharts 6 / amCharts 5), (2) Core Backend & Market Engine en NestJS 11 (19 módulos, +116 endpoints REST, 43 modelos en PostgreSQL Neon + Prisma ORM, colas BullMQ + Redis y Puppeteer Stealth), y (3) Browser Bridge Chrome Extension Manifest V3 (+3,700 LOC) con inyección en el contexto MAIN de TradingView.',
+          'Sistema dividido en tres piezas: aplicación web progresiva en Next.js, motor backend en NestJS con PostgreSQL y Redis que recopila datos económicos globales, y extensión de Chrome para inyección gráfica instantánea.',
         highlights: [
-          'Arquitectura tripartita en producción: Web App/PWA en Next.js 16 (66 rutas y +106 componentes), Core API en NestJS 11 (19 módulos, +116 endpoints, 43 modelos en PostgreSQL/Prisma) y Extensión Chrome MV3 (+3,700 líneas JS)',
-          'Motor de Inteligencia Macro & Cuantitativa: ingesta con Redis + BullMQ de datos de la Reserva Federal (FRED), curvas de Bonos del Tesoro (1M–30Y), reportes CFTC/COT y sentimiento retail para emitir Market Bias Snapshots ponderados',
-          'TradingView Bridge (< 100 ms 1-Click Execution): ingeniería inversa e inyección en el contexto MAIN del canvas de TradingView para trazar automáticamente patrones armónicos (XABCD), cajas de riesgo/beneficio y niveles Entry/SL/TP1–TP3',
-          'Auditoría en vivo con MetaAPI / MetaTrader 5, análisis de rendimiento asistido por IA, visualización de redes IB/afiliados (@xyflow/react, D3 Tree) con CRM de Lead Scoring y alertas Web Push (VAPID)',
+          'Centro de comando macroeconómico: procesa datos de la Reserva Federal (FRED), bonos del Tesoro, posicionamiento institucional y calendario económico para resumir el sesgo del mercado cada día.',
+          'Puente directo con TradingView en un clic: la extensión traza automáticamente el patrón detectado y sus niveles de entrada, Stop Loss y Take Profit sobre el gráfico del usuario.',
+          'Conexión con MetaTrader 5 y academia: audita el rendimiento real de las cuentas de los usuarios con apoyo de IA e incluye cursos y sistema de referidos.',
         ],
         industryTags: ['live-market', 'elearning', 'saas', 'multinivel'],
         techTags: ['realtime', 'analytics', 'automation', 'ai-rag'],
         stack: [
-          'Next.js 16',
-          'React 19',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL (Neon) & Prisma',
-          'Redis & BullMQ',
-          'Chrome Extension MV3',
-          'Three.js (R3F) & GSAP',
+          'Chrome Extension MV3 Bridge',
+          'Macro Engine (FRED / COT)',
+          'MetaAPI (MT5 Live Audit)',
           'Lightweight Charts & ECharts 6',
-          'MetaAPI (MT5) & Puppeteer',
         ],
         statusLabel: '3 Apps · +116 Endpoints · 43 Modelos DB',
         previewType: 'live-market',
@@ -948,7 +999,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'gibor-academy-community-mlm',
-        title: 'Gibor Community: Plataforma EdTech, Streaming WebRTC & Ecosistema MLM',
+        title: 'Gibor Community: Academia Online, Estudio en Vivo & Red de Afiliados',
         role: 'Principal Developer & Product Developer',
         dateRange: '2024 — 2026',
         image: '/projects/gibor-community/image.png',
@@ -977,31 +1028,35 @@ const esContent: PortfolioContent = {
             alt: 'Panel de organización comercial y red binaria en Neo4j con consultas genealógicas de hasta 10 niveles en menos de 20 ms, volumen de 149,221.64 puntos, balance de piernas del 98.9% y fidelización Gibor Travel Points',
           },
         ],
+        ownership: {
+          teamScope:
+            'Construí prácticamente toda la plataforma de principio a fin, con apoyo puntual en diseño y operación comercial.',
+          personalModules:
+            'Desarrollé el estudio de televisión web (Gibor Live Studio con 8 escenas y 2 educadores en pantalla sin instalar OBS), el motor de red binaria y comisiones en Neo4j, la academia de cursos y las pasarelas cripto/fiat.',
+          hardestChallenge:
+            'Transmitir video en vivo desde el navegador con menos de medio segundo de retraso para más de 500 alumnos por sala, mientras la base de datos de grafos calcula volúmenes de 10 niveles en milisegundos.',
+          productImpact:
+            'Escaló la comunidad a más de 5,000 usuarios registrados y +1,200 suscriptores mensuales activos en 5 países de Latinoamérica, eliminando el gasto en Zoom/Vimeo y automatizando el pago de comisiones.',
+        },
         seoDescription:
           'Gibor Community (giborcommunity.com): Plataforma EdTech, Estudio de Streaming WebRTC en vivo (WHIP/WHEP < 500 ms) y Ecosistema Comercial Multinivel en grafos (Neo4j < 20 ms) con +5,000 usuarios registrados y +1,200 suscriptores activos mensuales en LATAM.',
         category: 'EdTech · WebRTC Live Studio · Graph MLM · FinTech',
         summary:
-          'Plataforma educativa y financiera internacional (+5,000 usuarios registrados y +1,200 suscriptores activos mensuales en LATAM) que centraliza educación bajo demanda (Gibor Academy), estudio de televisión 100% web con latencia sub-segundo (< 500 ms WHIP/WHEP) y motor comercial multinivel en grafos (Neo4j).',
+          'Plataforma educativa y comercial (+5,000 usuarios registrados en LATAM) que une cursos grabados, su propio estudio de transmisión en vivo desde el navegador y un sistema de red de afiliados en tiempo real.',
         architectureNotes:
-          'Arquitectura distribuida de alta concurrencia en React, TypeScript, NestJS, PostgreSQL, Firebase y Neo4j con indexación genealógica en < 20 ms, streaming WebRTC en navegador (WHIP/WHEP a 720p/1080p @ 30 FPS con Cloudflare Stream & RealtimeKit), salas interactivas en Socket.IO y orquestación de pagos cripto/fiat.',
+          'Backend distribuido con base de datos de grafos en Neo4j para el árbol de afiliados, estudio de streaming WebRTC integrado en el navegador, salas interactivas en tiempo real y cobros automatizados en cripto y moneda local.',
         highlights: [
-          'Escala regional 24/7 en LATAM (Perú, México, Colombia, Ecuador, Chile): +5,000 usuarios registrados y +1,200 socios activos mensuales consumiendo educación, señales y gestión comercial',
-          'Gibor Live Studio (WebRTC WHIP/WHEP < 500 ms): Estudio de TV 100% web con 8 escenas y 2 educadores simultáneos (P2P) transmitiendo a 720p/1080p @ 30 FPS sin OBS para 300 a +500 alumnos concurrentes por sala',
-          'Interacción en vivo por sala con Socket.IO: chat moderado, reacciones flotantes, encuestas instantáneas y auditoría de asistencia segundo a segundo',
-          'Árboles genealógicos de hasta 10 niveles en Neo4j con tiempos de respuesta < 20 ms, liquidación automatizada de comisiones/rangos, Gibor Travel Points y pasarelas cripto/fiat (CoinPayments, XRPL, Openpay, Culqi, Izipay)',
+          'Comunidad activa en Perú, México, Colombia, Ecuador y Chile con más de 5,000 usuarios registrados y +1,200 socios activos cada mes',
+          'Estudio de TV en el navegador (Gibor Live Studio): permite a 2 educadores transmitir juntos en HD con 8 escenas sin instalar OBS para +500 alumnos por sala',
+          'Salas en vivo con chat moderado, reacciones en pantalla, encuestas instantáneas y registro automático de asistencia',
+          'Árbol binario en Neo4j que consulta 10 niveles de profundidad en menos de 20 ms, liquidación automática de comisiones y puntos de viaje',
         ],
         industryTags: ['elearning', 'streaming', 'multinivel', 'crypto'],
         techTags: ['ai-rag', 'realtime', 'automation', 'onchain'],
         stack: [
-          'React',
-          'TypeScript',
-          'NestJS',
-          'Neo4j',
-          'WebRTC (WHIP/WHEP)',
-          'Cloudflare Stream',
-          'Socket.IO',
-          'PostgreSQL',
-          'Firebase',
+          'WebRTC Studio (WHIP/WHEP)',
+          'Neo4j Binary Graph (<20ms)',
+          'Cloudflare Stream & Socket.IO',
           'Google Cloud Tasks',
         ],
         statusLabel: '+5,000 Usuarios · +500 Concurrentes WebRTC',
@@ -1010,7 +1065,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'salomon-multichain-wallet',
-        title: 'Salomon: Billetera Cripto Multired Sin Custodia & Infraestructura Financiera Web3',
+        title: 'Salomon: Billetera Cripto Multired sin Custodia (iOS, Android & Web)',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://salomonec.com',
@@ -1040,28 +1095,35 @@ const esContent: PortfolioContent = {
             alt: 'Pantalla de canje (Swap) de activos digitales en Salomon Wallet con cotización en tiempo real.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: construí toda la billetera para iOS, Android, Web y el motor multired sin equipo adicional.',
+          personalModules:
+            'Programé la bóveda local de llaves privadas en el dispositivo, la conexión con Ethereum, BNB Chain, Solana y TRON, el módulo de intercambio de tokens (Swaps), la compra de USDT con moneda local y la publicación en App Store y Google Play.',
+          hardestChallenge:
+            'Unificar 4 blockchains con arquitecturas muy distintas (EVM, Solana y TRON) dentro de una app móvil sencilla y rápida, asegurando que las llaves privadas nunca salgan del teléfono del usuario.',
+          productImpact:
+            'Publicada en App Store, Google Play y Web bajo PAY CORE SAS, permitiendo a usuarios en Latinoamérica guardar sus propios activos y comprar USDT con métodos de pago locales.',
+        },
         seoDescription:
           'Salomon Wallet (salomonec.com): Plataforma FinTech y billetera de criptomonedas multired sin custodia (non-custodial) para Latinoamérica, publicada en App Store (iOS), Google Play (Android) y Web Wallet. Integra Ethereum, BNB Smart Chain, Solana y TRON (BTC, ETH, SOL, BNB, TRX, USDT), swaps de tokens y rampa Fiat-a-USDT. Rol: Principal Developer.',
-        category: 'Blockchain Engineering · Non-Custodial Multi-Chain Wallet · Web3 FinTech (iOS / Android / Web)',
+        category: 'Blockchain · Non-Custodial Wallet · Web3 FinTech (iOS / Android / Web)',
         summary:
-          'Plataforma FinTech y Web3 especializada en la administración descentralizada de activos digitales mediante una billetera de criptomonedas no custodial para Latinoamérica (iOS en App Store, Android en Google Play y Web Wallet), integrando Ethereum, BNB Smart Chain, Solana y TRON en una experiencia unificada.',
+          'Billetera de criptomonedas sin custodia para Latinoamérica (disponible en App Store, Google Play y Web) que reúne Ethereum, BNB Chain, Solana y TRON en una sola aplicación fácil de usar.',
         architectureNotes:
-          'Liderazgo técnico como Principal Developer en la arquitectura multiplataforma (iOS, Android y Web Wallet), generación y resguardo local de claves privadas sin custodia (non-custodial), conectores RPC multired (EVM, Solana y TRON), motor de swaps de activos, monitoreo de transacciones on-chain y pasarela Fiat-to-Crypto para adquisición de USDT.',
+          'Arquitectura multiplataforma con resguardo cifrado de llaves privadas directamente en el dispositivo, conexión directa a nodos RPC multired, intercambio de tokens integrado y rampa de compra de USDT.',
         highlights: [
-          'Arquitectura Non-Custodial & Interoperabilidad Multired: autocustodia de claves privadas con soporte nativo para Ethereum, BNB Smart Chain, Solana y TRON (gestión de BTC, ETH, SOL, BNB, TRX, USDT e importación de tokens personalizados)',
-          'Digital Asset Swaps & Rampa Fiat-to-Crypto: motor de intercambio directo entre tokens compatibles, compra de USDT mediante métodos de pago tradicionales (tarjeta y transferencia) y seguimiento de movimientos on-chain con exploradores integrados',
-          'Ecosistema Multiplataforma en Producción (iOS, Android & Web): aplicaciones nativas/híbridas publicadas en App Store y Google Play (PAY CORE SAS) sincronizadas con billetera web, escaneo QR y módulo de respaldo de seguridad',
+          'Autocustodia real: el usuario tiene el control total de sus llaves privadas con soporte para BTC, ETH, SOL, BNB, TRX, USDT y tokens personalizados',
+          'Intercambio rápido (Swaps) entre tokens y compra directa de USDT mediante tarjeta o transferencia bancaria local',
+          'Apps publicadas en App Store y Google Play sincronizadas con su versión web, lector QR y copia de seguridad de frase semilla',
         ],
         industryTags: ['crypto', 'fintech'],
         techTags: ['onchain', 'realtime', 'automation'],
         stack: [
-          'TypeScript & React Native / Cross-Platform',
-          'Web3 & Multi-Chain RPC (EVM, Solana, TRON)',
-          'Non-Custodial Key Management',
-          'Token Swaps & Liquidity Routing',
-          'Fiat-to-Crypto On-Ramp (USDT)',
-          'iOS (App Store) & Android (Google Play)',
-          'Web Wallet & On-Chain Explorer Sync',
+          'EVM, Solana & TRON RPC',
+          'Non-Custodial Key Vault',
+          'React Native (iOS & Android)',
+          'On-Chain Swaps & USDT Ramp',
         ],
         statusLabel: 'salomonec.com · Publicada en App Store, Google Play & Web',
         previewType: 'crypto-gateway',
@@ -1069,7 +1131,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'etrno-fintech-ai-studio',
-        title: 'ETRNO: Ecosistema FinTech, E-Commerce, Red Binaria & AI Studio (SION AI)',
+        title: 'ETRNO: Ecosistema FinTech, Marketplace, Red Binaria & Estudio IA',
         role: 'Principal Developer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://www.etrnoworld.com',
@@ -1077,30 +1139,36 @@ const esContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'ETRNO (etrnoworld.com) ecosistema FinTech, Marketplace multi-tienda, Árbol Binario interactivo y ETRNO AI Studio (SION AI) desarrollado como Principal Developer por Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: construí toda la plataforma y sus módulos de principio a fin por mi cuenta.',
+          personalModules:
+            'Programé el estudio de IA (SION AI con visión por computadora en el navegador), el marketplace de tiendas personalizadas por socio, la billetera cripto/fiat con simulador de bonos, el árbol binario interactivo y el panel administrativo.',
+          hardestChallenge:
+            'Correr modelos de visión por computadora y gráficos 3D fluidos directamente en el navegador sin afectar la velocidad de la tienda, la billetera ni el árbol de afiliados en dispositivos móviles.',
+          productImpact:
+            'Reemplazó 4 herramientas separadas (academia, tienda online, software de red y asistente IA) en una sola plataforma donde cada socio tiene su propio escaparate público.',
+        },
         seoDescription:
           'ETRNO (etrnoworld.com): Plataforma web y PWA integral que combina gestión de activos digitales (Wallet & Liquidez), red de afiliados con árbol binario interactivo (D3/ReactFlow), marketplace multi-tienda, academia en vivo y estudio de Inteligencia Artificial (ETRNO AI Studio & SION AI con TensorFlow.js y MediaPipe Vision). Rol: Principal Developer.',
-        category: 'FinTech · AI Studio (SION AI) · Multi-Store Marketplace · Graph MLM',
+        category: 'FinTech · AI Studio · Multi-Store Marketplace · Graph MLM',
         summary:
-          'Plataforma web y PWA integral que combina gestión de activos digitales (Wallet, líneas de liquidez y simulador de recompensas), red de afiliados con árbol binario interactivo, marketplace multi-tienda personalizable por socio, academia en vivo y un estudio de Inteligencia Artificial (ETRNO AI Studio & SION AI) con experiencias inmersivas 3D/Motion a 60 FPS.',
+          'Plataforma todo-en-uno que combina billetera digital, red de afiliados con árbol binario interactivo, tiendas personalizadas por socio, academia en vivo y un asistente ejecutivo con Inteligencia Artificial.',
         architectureNotes:
-          'Arquitectura modular y Atomic Design en React 18, TypeScript y Vite con gestión de estado híbrida (Redux Toolkit, Zustand, TanStack Query), tiempo real en Socket.IO, renderizado 3D/Motion (Three.js/R3F, GSAP, Framer Motion, Rive), visión por computadora en navegador (@mediapipe/tasks-vision, TensorFlow.js, BlazeFace), Cloudflare Stream, Zoom SDK, Algolia Search y PWA/Capacitor.',
+          'Aplicación web progresiva (PWA) con gráficos interactivos, visión facial en el navegador con TensorFlow.js y MediaPipe, visualización de árboles de red en tiempo real, streaming de video y buscador instantáneo con Algolia.',
         highlights: [
-          'ETRNO AI Studio & SION AI: mentor ejecutivo conversacional especializado en liderazgo y planes de compensación, integrado con modelos de visión por computadora e inteligencia facial (@mediapipe/tasks-vision, TensorFlow.js, BlazeFace)',
-          'Marketplace B2B/B2C & Tiendas Públicas Personalizadas: catálogo dinámico de productos físicos y licencias digitales donde cada socio configura su propio escaparate público con seguimiento de pedidos y envíos',
-          'Wallet, Liquidez & Árbol Binario en Tiempo Real: control de saldos cripto/fiat (Openpay / nodos cripto), simulador interactivo de bonos por ciclo, árbol genealógico en react-d3-tree / ReactFlow y boletos QR para convenciones',
-          'Academia en Vivo (Cloudflare Stream & Zoom SDK) y Backoffice de Auditoría: LMS modular, escáner de señales y consola administrativa para cortes financieros, dispersión de nómina (payroll) y control RBAC (USER, ADMIN, SUPPORT, EDUCATOR, STARTER)',
+          'SION AI: mentor conversacional entrenado en el negocio e integrado con análisis visual y facial directamente en el navegador',
+          'Tiendas personalizadas por socio: catálogo de productos físicos y digitales donde cada afiliado comparte su propio enlace de venta',
+          'Billetera cripto/fiat, simulador interactivo de comisiones, árbol binario visual y boletos QR para eventos presenciales',
+          'Academia en vivo y panel administrativo para cortes financieros, dispersión de comisiones y gestión de permisos',
         ],
         industryTags: ['saas', 'ia', 'multinivel'],
         techTags: ['ai-rag', 'realtime', 'automation', 'analytics'],
         stack: [
-          'React 18 & TypeScript',
-          'Redux Toolkit, Zustand & React Query',
-          'Three.js (R3F), GSAP & Rive',
           'TensorFlow.js & MediaPipe Vision',
-          'D3.js & ReactFlow (Binary Tree)',
-          'Apache ECharts & ApexCharts',
-          'Cloudflare Stream & Zoom SDK',
-          'Firebase, Algolia & Socket.IO',
+          'Three.js (R3F), GSAP & Rive',
+          'D3.js & ReactFlow Binary Tree',
+          'Cloudflare Stream & Algolia',
         ],
         statusLabel: 'etrnoworld.com — Ecosistema FinTech & AI Studio',
         previewType: 'elearning-mlm',
@@ -1108,7 +1176,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'gibor-shop-ecommerce',
-        title: 'Gibor Shop: E-Commerce Multi-Tienda & Dropshipping LATAM',
+        title: 'Gibor Shop: E-Commerce Multi-Tienda & Dropshipping en LATAM',
         role: 'Principal Developer & Product Developer',
         dateRange: '2026',
         image: '/projects/gibor-shop/image.png',
@@ -1140,30 +1208,34 @@ const esContent: PortfolioContent = {
             alt: 'Bandeja de Historial de Pedidos de Gibor Shop gestionando más de 2,023 órdenes con pipeline transaccional completo (Pendiente, Pagado, Recibido, Enviado, Entregado, Incidencia y Devolución), filtro multi-tienda y chat contextual por pedido.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: diseñé y programé toda la plataforma multi-país de extremo a extremo por mi cuenta.',
+          personalModules:
+            'Programé el sistema de tiendas personalizadas por vendedor, el motor que divide automáticamente un carrito en sub-pedidos por proveedor, la conexión con el constructor visual de tiendas, los tableros de ventas por país y el chat en vivo por pedido.',
+          hardestChallenge:
+            'Conectar cientos de tiendas de vendedores con múltiples proveedores de dropshipping en 4 países, dividiendo cada compra automáticamente por proveedor sin sobrevender el inventario disponible.',
+          productImpact:
+            'Más de 3,100 pedidos procesados y +320 tiendas activas vendiendo en Perú, Colombia, México y Ecuador con control logístico completo y cálculo automático de ganancias.',
+        },
         category: 'E-Commerce · Multinivel · Dropshipping LATAM',
         summary:
-          'Ecosistema de comercio electrónico y dropshipping regional (Perú, Colombia, México y Ecuador) para la red comercial Gibor con +320 tiendas activas, +3,100 órdenes procesadas, división automática de pedidos multi-proveedor (order splitting) y atribución server-side con Meta CAPI.',
+          'Plataforma de e-commerce y dropshipping regional (Perú, Colombia, México y Ecuador) con más de 320 tiendas activas y +3,100 pedidos procesados, que automatiza desde el catálogo de proveedores hasta el reparto logístico.',
         architectureNotes:
-          'Arquitectura full-stack sobre Next.js 14 (App Router), NestJS 10, Prisma ORM y PostgreSQL con constructor visual embebido vía Luthor SSO (postMessage), almacenamiento de vouchers logísticos en Cloudflare R2 (AWS S3 SDK), telemetría propia de embudo en Apache ECharts y chat operativo por pedido en Socket.IO.',
+          'Plataforma multi-tienda con división automática de pedidos por proveedor en PostgreSQL, constructor visual integrado con inicio de sesión único (SSO), resguardo de guías y comprobantes en Cloudflare R2 y chat operativo en tiempo real.',
         highlights: [
-          'Tracción real en producción en 4 países (PEN, COP, MXN, USD): +3,100 órdenes procesadas, +320 tiendas activas (/store/[slug]) y +650 usuarios bajo control RBAC (Admin, Country Manager, Supplier, Carrier y Client)',
-          'Motor transaccional con Order Splitting atómico en Prisma + PostgreSQL que divide carritos multi-proveedor (ORD-xxx-1, ORD-xxx-2), descuenta stock concurrente y vincula comprobantes en Cloudflare R2 (S3)',
-          'Constructor visual de tiendas integrado mediante Luthor SSO (renovación silenciosa de tokens vía postMessage) y catálogo inteligente con herencia de variantes y paquetes promocionales (2x, 3x)',
-          'Atribución publicitaria Server-Side con Meta Conversions API (CAPI) + TikTok/Meta Pixels, telemetría de embudo en Apache ECharts y chat en vivo (Socket.IO) contextualizado por cada pedido',
+          'Operación real en 4 países y monedas locales (PEN, COP, MXN, USD) con +3,100 pedidos, +320 tiendas y perfiles para administradores, proveedores, transportistas y vendedores',
+          'División automática de carritos: si un cliente compra productos de distintos proveedores, el sistema genera las órdenes logísticas por separado y descuenta el stock al instante',
+          'Constructor visual de tiendas integrado sin volver a iniciar sesión y catálogo inteligente con precios mínimos validados y combos promocionales',
+          'Medición de campañas publicitarias con Meta Conversions API (CAPI), analítica de conversión y chat directo dentro de cada pedido',
         ],
         industryTags: ['ecommerce', 'multinivel'],
         techTags: ['automation', 'analytics', 'realtime'],
         stack: [
-          'Next.js 14',
-          'React 18',
-          'TypeScript',
-          'NestJS 10',
-          'Prisma ORM',
-          'PostgreSQL',
-          'Cloudflare R2 (S3)',
-          'Socket.IO',
-          'Apache ECharts',
-          'Meta CAPI & TikTok Pixel',
+          'Multi-Supplier Order Splitting',
+          'Multi-Tenant SSO Store Builder',
+          'Meta CAPI & Apache ECharts',
+          'Cloudflare R2 & Socket.IO',
         ],
         statusLabel: '+3,100 Órdenes · +320 Tiendas en LATAM',
         previewType: 'ecommerce-saas',
@@ -1171,7 +1243,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'soul-link-super-app',
-        title: 'Soul Link: Super-App Multiplataforma de Aprendizaje Gamificado, Geolocalización & Comunidad',
+        title: 'Soul Link: Super-App de Aprendizaje Gamificado, Mapas & Comunidad',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://thesoullink.online',
@@ -1179,30 +1251,36 @@ const esContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Soul Link (thesoullink.online) Super-App multiplataforma en iOS, Android y Web con aprendizaje gamificado estilo Duolingo, lector interactivo con Text-to-Speech, mapas de geolocalización y directorio de talentos desarrollada como Principal Developer por Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Lideré el diseño del producto y la arquitectura principal, coordinando a 2 desarrolladores de apoyo y flujos de IA generativa para las ilustraciones.',
+          personalModules:
+            'Construí la arquitectura compartida para iOS, Android y Web, el mapa de aprendizaje gamificado estilo Duolingo a 60 FPS, el lector sin conexión con lectura por voz, el mapa de grupos cercanos y el panel de administración.',
+          hardestChallenge:
+            'Lograr que una sola base de código funcione igual de fluida en iOS, Android y Web, combinando mapas nativos de geolocalización, animaciones a 60 FPS y lectura por voz sin internet.',
+          productImpact:
+            'Lanzamiento de una aplicación multiplataforma que reúne educación gamificada, mapas de grupos locales y directorio de profesionales en un solo lugar.',
+        },
         seoDescription:
           'Soul Link (thesoullink.online): Super-App comunitaria multiplataforma (iOS, Android y Web) construida con React Native 0.86, Expo SDK 57, Expo Router, React 19 y TypeScript 6.0. Integra aprendizaje gamificado estilo Duolingo, lector bíblico offline con Text-to-Speech (TTS), geolocalización en tiempo real, directorio de talentos y panel RBAC. Rol: Principal Developer.',
-        category: 'Cross-Platform Super-App (iOS / Android / Web) · Gamified EdTech · Geo-Maps & Community',
+        category: 'Cross-Platform App (iOS / Android / Web) · Gamified EdTech · Geo-Maps',
         summary:
-          'Super-App multiplataforma (iOS, Android y Web) diseñada para digitalizar, conectar y gamificar la vida en comunidad: combina un motor de aprendizaje gamificado estilo Duolingo, lector interactivo offline con síntesis de voz (TTS), geolocalización en tiempo real para grupos locales, directorio de profesionales y panel administrativo integral con RBAC.',
+          'Aplicación multiplataforma (iOS, Android y Web) para aprender y conectar en comunidad: incluye un mapa de retos gamificados estilo Duolingo, lector offline con voz, buscador de grupos en el mapa y directorio de servicios profesionales.',
         architectureNotes:
-          'Desarrollada como Principal Developer con React Native 0.86, Expo SDK 57, Expo Router, React 19 y TypeScript 6.0 bajo arquitectura isomórfica (.native.tsx y .web.tsx), animaciones a 60 FPS con react-native-reanimated, retroalimentación háptica (expo-haptics), gestión modular de estados (Auth, Game, Spiritual, Theme e i18n Contexts) y persistencia híbrida en expo-secure-store / AsyncStorage.',
+          'Código compartido entre móvil y web con React Native y Expo, animaciones nativas a 60 FPS con Reanimated, respuesta háptica, base de datos local para uso sin internet y mapas adaptados a cada plataforma.',
         highlights: [
-          'Motor de Aprendizaje Gamificado (Estilo Duolingo): mapa interactivo de progresión en camino serpenteante (winding-path-map.tsx) con generación dinámica de niveles, sistema de rachas diarias, XP, vidas, medallas, árbol de crecimiento evolutivo y mascota interactiva',
-          'Lector Interactivo Offline con Audio & Text-to-Speech (TTS): base de datos local optimizada con buscador avanzado, selector de versiones, subrayado multicolor, notas contextuales por versículo y síntesis de voz integrada (expo-speech / expo-audio)',
-          'Geolocalización Isomórfica (.native / .web) & Directorio de Talentos (Conecta): mapas interactivos (react-native-maps y adaptación web) con cálculo de distancias geográficas, directorio comunitario de profesionales con portafolio lightbox, reseñas y cotizaciones',
-          'Muro Social, Multiplicación QR & Dashboard Administrativo RBAC: muro de peticiones y testimonios, invitaciones orgánicas mediante códigos QR dinámicos y consola administrativa con selector de coordenadas en mapa y métricas de comunidad',
+          'Aprendizaje estilo Duolingo: camino interactivo por niveles con rachas diarias, puntos de experiencia, vidas, medallas y mascota animada',
+          'Lector sin conexión con voz integrada: buscador rápido, subrayado por colores, notas personales y lectura en voz alta',
+          'Mapa de grupos y Directorio de Talentos: geolocalización de reuniones cercanas y catálogo de profesionales de la comunidad con portafolio y reseñas',
+          'Muro comunitario, invitaciones por código QR y panel de administración con métricas y gestión de ubicaciones',
         ],
         industryTags: ['elearning'],
         techTags: ['automation', 'realtime', 'analytics'],
         stack: [
           'React Native 0.86 & Expo SDK 57',
-          'React 19 & TypeScript 6.0',
-          'Expo Router (Native + Web)',
-          'React Native Reanimated (60 FPS)',
-          'React Native Maps & Geo-Distance',
-          'Expo Speech (TTS) & Audio',
-          'Expo SecureStore & AsyncStorage',
-          'RBAC Admin & Dynamic QR',
+          'Reanimated (60 FPS Gamification)',
+          'Isomorphic Geo-Maps (Native/Web)',
+          'Offline TTS & Audio Engine',
         ],
         statusLabel: 'thesoullink.online — Super-App iOS, Android & Web',
         previewType: 'elearning-mlm',
@@ -1210,7 +1288,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'luthor-web-builder-saas',
-        title: 'Luthor Web Builder: Plataforma SaaS Multi-Tenant & Constructor Visual de Sitios Web',
+        title: 'Luthor Web Builder: Constructor Visual de Sitios Web para Plataformas SaaS',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2026 — Actualidad',
         liveUrl: 'https://webbuilder-luthor.vercel.app',
@@ -1218,28 +1296,35 @@ const esContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Luthor Web Builder (webbuilder-luthor.vercel.app) plataforma SaaS B2B multi-tenant de construcción visual drag-and-drop con SSO, PostgreSQL y Cloudflare R2 fundada y liderada por Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: diseñé y programé todo el constructor visual de principio a fin por mi cuenta.',
+          personalModules:
+            'Construí el lienzo de edición arrastrar y soltar con vista previa móvil/escritorio, el guardado automático en PostgreSQL, el inicio de sesión único (SSO) para incrustarlo dentro de otras plataformas y la publicación en un clic.',
+          hardestChallenge:
+            'Diseñar el motor visual para que pudiera incrustarse de forma transparente dentro de otros sistemas (como Gibor Shop), creando la cuenta y la tienda del usuario automáticamente sin pedirle otro inicio de sesión.',
+          productImpact:
+            'Permitió que agencias y cientos de vendedores personalicen y publiquen sus propias páginas de venta en minutos sin tocar código.',
+        },
         seoDescription:
           'Luthor Web Builder (webbuilder-luthor.vercel.app): Plataforma SaaS B2B multi-tenant de construcción visual de sitios web no-code para agencias digitales, desarrolladores y equipos empresariales. Integra motor drag-and-drop responsivo, guardado automático en PostgreSQL, integración SSO, exportación JSON y almacenamiento en Cloudflare R2. Rol: Founder & Lead Product Engineer.',
-        category: 'Developer Tools · No-Code Visual Website Builder · Multi-Tenant SaaS & SSO Infrastructure',
+        category: 'No-Code Website Builder · Multi-Tenant SaaS · SSO Infrastructure',
         summary:
-          'Plataforma SaaS B2B de creación, administración y publicación de sitios web mediante un editor visual no-code (drag-and-drop), diseñada para agencias digitales y plataformas empresariales con arquitectura multi-tenant, autenticación Single Sign-On (SSO), persistencia automática en PostgreSQL, exportación JSON y almacenamiento en Cloudflare R2.',
+          'Constructor visual de sitios web (arrastrar y soltar) pensado tanto para agencias como para integrarse dentro de otras plataformas SaaS, con autoguardado y publicación inmediata.',
         architectureNotes:
-          'Fundada y diseñada arquitectónicamente en Next.js y TypeScript con un motor de serialización de árboles de componentes visuales en JSON, edición responsiva multi-breakpoint en tiempo real, persistencia transaccional en PostgreSQL, aprovisionamiento multi-tenant vía SSO para incrustación en ecosistemas SaaS de terceros y CDN de activos en Cloudflare R2.',
+          'Motor que convierte los bloques visuales en estructuras JSON ligeras en tiempo real, con previsualización para celular, tablet y escritorio, autoguardado en PostgreSQL, archivos en Cloudflare R2 y acceso automático vía SSO.',
         highlights: [
-          'Visual Drag-and-Drop Editor & Responsive Design Engine: lienzo interactivo en tiempo real para componer y personalizar bloques visuales con previsualización simultánea para escritorio, tablet y móvil sin escribir código',
-          'Multi-Tenant Architecture & SSO Integration: infraestructura orientada a múltiples organizaciones con inicio de sesión único (Single Sign-On) y aprovisionamiento automático de usuarios para integrar el constructor dentro de otros ecosistemas SaaS',
-          'Persistent Layout Management, One-Click Publishing & JSON Export: autoguardado continuo en PostgreSQL, exportación de estructuras de diseño en JSON, almacenamiento en la nube con Cloudflare R2 y publicación instantánea a URL pública',
+          'Editor visual sin código: permite armar páginas arrastrando bloques y ajustar cómo se ven en computadora, tablet y celular al instante',
+          'Listo para incrustarse en otros SaaS: incluye inicio de sesión único (SSO) para que otras plataformas ofrezcan un creador web propio a sus usuarios',
+          'Guardado automático en la nube, exportación de plantillas en JSON y publicación a URL pública en un solo clic',
         ],
         industryTags: ['saas', 'b2b'],
         techTags: ['automation', 'realtime'],
         stack: [
-          'Next.js & React',
-          'TypeScript',
-          'Visual Drag & Drop AST / JSON Engine',
-          'PostgreSQL & Auto-Save Persistence',
+          'Drag & Drop AST / JSON Engine',
           'Multi-Tenant SSO Provisioning',
+          'PostgreSQL Auto-Save Engine',
           'Cloudflare R2 Storage',
-          'Tailwind CSS & Google Fonts API',
         ],
         statusLabel: 'webbuilder-luthor.vercel.app — SaaS Multi-Tenant en Producción',
         previewType: 'ecommerce-saas',
@@ -1247,7 +1332,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'lapzo-lernit-hrtech',
-        title: 'Lapzo (Lernit): Plataforma B2B de Desarrollo de Talento, LMS/LXP & Desempeño',
+        title: 'Lapzo (Lernit): Plataforma Empresarial de Talento, Capacitación & Desempeño',
         role: 'Full-Stack Senior Developer',
         dateRange: 'May 2021 — Ene 2022',
         liveUrl: 'https://www.lapzo.com',
@@ -1268,28 +1353,35 @@ const esContent: PortfolioContent = {
             alt: 'Interfaz de Lapzo (Lernit) mostrando mapa de competencias, métricas de desempeño, OKRs y catálogo de cursos empresariales (LMS/LXP).',
           },
         ],
+        ownership: {
+          teamScope:
+            'Participé como Full-Stack Senior Developer dentro de un equipo de ingeniería de 6 a 12+ personas enfocado en clientes corporativos.',
+          personalModules:
+            'Desarrollé módulos clave de capacitación corporativa (reproductor SCORM, rutas de aprendizaje y certificados), Evaluaciones 360°, matriz de talento 9-Box, seguimiento de objetivos (OKRs) y reportes ejecutivos.',
+          hardestChallenge:
+            'Optimizar las consultas y reportes de evaluaciones 360° y progreso de cursos para responder sin demoras cuando cientos de miles de empleados de más de 300 empresas entran en temporada de evaluación.',
+          productImpact:
+            'Ayudé a consolidar la plataforma de talento utilizada por más de 300 grandes corporativos en México y Latinoamérica (como Mazda, OXXO, Rotoplas, DEACERO y el Tec de Monterrey).',
+        },
         seoDescription:
           'Lapzo / Lernit (lapzo.com): Plataforma B2B mexicana de HR Tech y gestión del talento empresarial (+300 empresas como Mazda, OXXO, Rotoplas, DEACERO y Tecnológico de Monterrey) integrando LMS/LXP, Evaluación 360°, 9-Box, Competencias, OKRs y analítica con IA. Rol: Full-Stack Senior Developer.',
-        category: 'HR Tech · Enterprise B2B · EdTech & Human Capital Management',
+        category: 'HR Tech · Enterprise B2B · Corporate LMS & Performance',
         summary:
-          'Ecosistema B2B líder en tecnología para recursos humanos (HR Tech) utilizado por +300 empresas corporativas (incluyendo Mazda, OXXO, Rotoplas, DEACERO y Tecnológico de Monterrey). Unifica capacitación corporativa (LMS/LXP), evaluación del desempeño (360° y 9-Box), gestión de competencias, seguimiento de objetivos (OKRs) y aprendizaje asistido por IA.',
+          'Plataforma de recursos humanos y capacitación corporativa utilizada por más de 300 empresas líderes (Mazda, OXXO, Rotoplas, DEACERO, Tec de Monterrey) para gestionar cursos, evaluaciones 360°, talento 9-Box y objetivos OKR.',
         architectureNotes:
-          'Desarrollo Full-Stack Senior en la arquitectura modular multi-tenant para aprendizaje corporativo (SCORM, rutas personalizadas y certificaciones), motores de evaluación de desempeño y competencias, automatización de flujos de RR.HH. y tableros analíticos ejecutivos.',
+          'Arquitectura multi-empresa para reproducción de cursos SCORM, rutas de aprendizaje personalizadas, motores de evaluación de desempeño por competencias, recordatorios automáticos y tableros para directores de RR.HH.',
         highlights: [
-          'Learning Management System (LMS/LXP) & AI-Powered Learning: gestión de cursos, contenidos SCORM, certificaciones, rutas de aprendizaje personalizadas, gamificación y generación/recomendación asistida por IA',
-          'Performance & Competency Management: evaluaciones de desempeño, retroalimentación 360°, matrices de talento 9-Box, detección de brechas de habilidades y planes individuales de desarrollo',
-          'OKRs, Automatización & Enterprise Analytics: seguimiento de objetivos estratégicos y resultados clave, asignación automática de rutas/recordatorios y dashboards ejecutivos adoptados por +300 organizaciones corporativas',
+          'Capacitación corporativa (LMS/LXP): catálogo de cursos, soporte SCORM, emisión de certificados y rutas de estudio por puesto',
+          'Evaluación de Desempeño 360° y Matriz 9-Box: herramientas para detectar talento clave, brechas de habilidades y planes de carrera',
+          'Seguimiento de OKRs y analítica en tiempo real adoptada por más de 300 organizaciones corporativas',
         ],
         industryTags: ['elearning', 'b2b'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'React',
-          'Node.js',
-          'TypeScript',
           'LMS / LXP & SCORM Engine',
           'Performance 360° & 9-Box',
           'OKRs & Competency Matrix',
-          'Enterprise Analytics & AI',
+          'Enterprise HR Analytics',
         ],
         statusLabel: '+300 Empresas (Mazda, OXXO, Rotoplas, Tec de Monterrey)',
         previewType: 'elearning-mlm',
@@ -1297,34 +1389,41 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'retrypay-payment-orchestrator',
-        title: 'Retrypay: Orquestador Inteligente & Enrutador de Pagos Multi-Pasarela',
+        title: 'Retrypay: Enrutador Inteligente de Pagos Multi-Pasarela',
         role: 'Frontend Lead',
         dateRange: 'May 2023 — Jun 2024',
         image: '/projects/retrypay/image.png',
         imageAlt:
           'Retrypay plataforma de orquestación y enrutamiento inteligente de transacciones a múltiples pasarelas de pago para e-commerce con rol de Frontend Lead por Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Como Frontend Lead dirigí un equipo de 2 a 4 desarrolladores trabajando de la mano con el equipo de arquitectura bancaria.',
+          personalModules:
+            'Construí el Checkout unificado de pago (con tokenización de tarjetas y validación 3D Secure), el configurador visual de reglas de enrutamiento y los paneles de tasa de aprobación por banco.',
+          hardestChallenge:
+            'Unificar los distintos flujos de seguridad y 3D Secure de varios bancos en una sola ventana de cobro capaz de reintentar un pago rechazado en otra pasarela en milisegundos sin que el comprador tenga que volver a escribir su tarjeta.',
+          productImpact:
+            'Aumentó el porcentaje de ventas aprobadas de los comercios conectados al recuperar automáticamente pagos que un primer banco rechazaba.',
+        },
         seoDescription:
           'Retrypay: Orquestador y enrutador inteligente de transacciones hacia múltiples pasarelas de pago en línea en una sola integración técnica, diseñado para maximizar la tasa de aceptación, reducir rechazos bancarios y aumentar la conversión en e-commerce.',
-        category: 'Payment Orchestration · FinTech · E-Commerce Infrastructure',
+        category: 'Payment Orchestration · FinTech · E-Commerce Checkout',
         summary:
-          'Orquestador y enrutador inteligente de transacciones hacia múltiples opciones y procesadores de pago en línea, permitiendo a los comercios electrónicos aumentar su tasa de aceptación, disminuir rechazos y elevar sus ventas mediante una sola integración técnica.',
+          'Orquestador de pagos que conecta múltiples procesadores bancarios en una sola integración para reintentar cobros rechazados automáticamente y subir las ventas de tiendas online.',
         architectureNotes:
-          'Liderazgo de arquitectura Frontend para el ecosistema de checkout unificado, consola de reglas de enrutamiento (Smart Routing & Cascading Retries) y paneles analíticos de conversión y conciliación multi-adquirente.',
+          'Liderazgo Frontend del checkout de cobro unificado, el editor de reglas de ruteo inteligente (Smart Routing), los reintentos en cascada y los tableros de conciliación multi-pasarela.',
         highlights: [
-          'Enrutamiento dinámico (Smart Routing) y reintentos en cascada entre múltiples procesadores de pago para recuperar transacciones rechazadas en tiempo real',
-          'Integración técnica única (Single Integration Checkout) que abstrae múltiples pasarelas, métodos de pago locales y flujos de validación antifraude (3DS)',
-          'Consola administrativa para configurar reglas de orquestación, monitorear tasas de aceptación por procesador y analizar métricas de conversión comercial',
+          'Reintentos en cascada: si un procesador rechaza el cobro, la transacción se desvía al instante a una segunda pasarela de respaldo',
+          'Un solo Checkout para el comercio que abstrae múltiples bancos, métodos de pago locales y validaciones antifraude 3DS',
+          'Panel de control para definir reglas de ruteo y comparar qué pasarela aprueba más ventas en tiempo real',
         ],
         industryTags: ['fintech', 'ecommerce', 'b2b', 'saas'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'React',
-          'Next.js',
-          'TypeScript',
-          'Tailwind CSS',
-          'Payment Orchestration SDK',
-          '3DS & Tokenization Flows',
-          'REST APIs & Webhooks',
+          'Smart Payment Routing SDK',
+          'Cascading Failover Retries',
+          '3DS & Card Tokenization',
+          'Multi-Acquirer Webhooks',
         ],
         statusLabel: 'Orquestador de Pagos en Producción',
         previewType: 'crypto-gateway',
@@ -1332,7 +1431,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'gibor-scanner-live-market',
-        title: 'GiborScanner: Escaneo Algorítmico & Análisis en Vivo',
+        title: 'GiborScanner: Escáner Algorítmico de Mercados en Vivo',
         role: 'Principal Developer & Product Developer',
         dateRange: '2026',
         image: '/projects/gibor-scanner/image.png',
@@ -1352,29 +1451,36 @@ const esContent: PortfolioContent = {
             alt: 'Terminal financiera GiborScanner mostrando gráfico interactivo BTCUSD en 30m con patrón ABC bajista trazado automáticamente, zonas sombreadas de Stop Loss y Take Profit (TP1, TP2, TP3) y panel de señales.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: diseñé y programé toda la terminal financiera de principio a fin por mi cuenta.',
+          personalModules:
+            'Programé el detector y dibujante automático de patrones armónicos/ABC sobre los gráficos en vivo, la conexión por WebSockets a Cripto, Metales y Forex, la calculadora de riesgo/beneficio y el sistema de votación en tiempo real.',
+          hardestChallenge:
+            'Dibujar patrones geométricos y zonas de ganancia/pérdida directamente sobre las velas en vivo al milisegundo, manteniendo la pantalla fluida mientras se actualizan los precios y los votos de la comunidad.',
+          productImpact:
+            'Entregó a cientos de traders una terminal web lista para detectar oportunidades en vivo con niveles de entrada claros y acceso automático según su membresía.',
+        },
         seoDescription:
           'GiborScanner: Plataforma web de escaneo algorítmico y análisis técnico en tiempo real para Cripto, Metales y Forex, desarrollada con Next.js 16, React 19, TypeScript 5, amCharts 5, Lightweight Charts y Firebase.',
         category: 'Live Market · Algorithmic Scanner',
         summary:
-          'Terminal de escaneo algorítmico que centraliza la detección de patrones chartistas/armónicos y señales operativas en tiempo real para Cripto, Metales y Forex, automatizando el cálculo y trazado de niveles de riesgo/beneficio.',
+          'Terminal web que escanea Cripto, Metales y Forex en tiempo real para detectar patrones técnicos y dibujar automáticamente el punto de entrada, Stop Loss y objetivos de ganancia.',
         architectureNotes:
-          'Construida sobre Next.js 16 (App Router), React 19 y TypeScript 5, integrando motores de renderizado financiero de alta frecuencia (amCharts 5, Lightweight Charts y Apache ECharts) alimentados por feeds WebSockets/REST (Binance & Forex). La sincronización de señales, validación comunitaria en vivo y control de acceso por membresías (Ruby, Black, Diamond) operan en tiempo real sobre Firebase Auth y Firestore.',
+          'Gráficos financieros de alta velocidad (amCharts 5 y Lightweight Charts) conectados por WebSockets a precios en vivo, con sincronización instantánea en Firebase para alertas, votos de la comunidad y permisos por membresía.',
         highlights: [
-          'Watchlist multimercado categorizada (Cripto BTC/ETH, Oro/Plata y 12 pares Forex) con indicadores de temporalidades activas (30m, 1H, 4H)',
-          'Gráficos interactivos con herramientas de dibujo, trazado automático de patrones (ej. ABC alcistas/bajistas) y zonas sombreadas de ganancia vs. pérdida',
-          'Panel de Control de Señales con Precio de Entrada, Stop Loss, 3 niveles de Take Profit (TP1–TP3), cálculo automático de Ratio R:R y copiado rápido',
-          'Validación social en tiempo real (votos y comentarios en vivo por señal) y control de acceso dinámico por niveles de suscripción (Ruby, Black, Diamond)',
+          'Lista de seguimiento en vivo para Cripto (BTC/ETH), Oro/Plata y 12 pares Forex en temporalidades de 30m, 1H y 4H',
+          'Trazado automático de patrones sobre el gráfico con zonas sombreadas de ganancia vs. pérdida listas para operar',
+          'Tarjeta de señal con precio de entrada, Stop Loss, 3 niveles de Take Profit, cálculo de ratio riesgo/beneficio y copiado en un clic',
+          'Votación y comentarios en vivo de la comunidad en cada operación, con filtros por nivel de suscripción',
         ],
         industryTags: ['live-market', 'crypto', 'multinivel'],
         techTags: ['realtime', 'analytics', 'automation'],
         stack: [
-          'Next.js 16',
-          'React 19',
-          'TypeScript 5',
-          'amCharts 5',
-          'Lightweight Charts',
-          'Firebase',
-          'WebSockets',
+          'Automated Harmonic Scanner',
+          'amCharts 5 & Lightweight Charts',
+          'Multi-Market WebSockets',
+          'Firebase Real-Time Sync',
         ],
         statusLabel: 'GiborScanner — En Producción',
         previewType: 'live-market',
@@ -1382,7 +1488,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'identiko-mlm-ecommerce',
-        title: 'Identiko: Ecosistema E-Commerce de Alta Perfumería, Red Binaria MLM & Dropshipping',
+        title: 'Identiko: Boutique E-Commerce de Perfumería & Red de Afiliados',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://www.identiko.network',
@@ -1408,28 +1514,35 @@ const esContent: PortfolioContent = {
             alt: 'Fragancia Aura Dorada de Identiko integrada en el flujo de venta directa y dropshipping centralizado.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: construí toda la tienda online, el motor de comisiones binarias y el panel de socios sin equipo externo.',
+          personalModules:
+            'Programé la tienda con precios dinámicos (cliente público vs. distribuidor), el árbol binario con conteo de puntos por pierna, el liquidador semanal de comisiones y la oficina virtual de socios.',
+          hardestChallenge:
+            'Unir en una sola compra la venta al público con dropshipping y las reglas del plan binario (puntos personales y grupales, topes por rango y descuentos de hasta el 50% para afiliados).',
+          productImpact:
+            'Digitalizó por completo las ventas, los envíos y el cálculo de comisiones semanales de la red de distribuidores en Colombia desde su lanzamiento.',
+        },
         seoDescription:
           'Identiko (identiko.network): Ecosistema digital de comercio electrónico y gestión de redes de distribución multinivel (MLM) para alta perfumería en Colombia. Integra boutique e-commerce, compensación binaria por puntos PV/BV, rangos de liderazgo, precios preferenciales, backoffice de distribuidores y logística dropshipping. Rol: Principal Developer.',
-        category: 'E-Commerce Engineering · Binary MLM Compensation · Direct Selling & Dropshipping',
+        category: 'E-Commerce · Binary MLM Compensation · Direct Selling',
         summary:
-          'Plataforma digital de comercio electrónico y gestión de redes de distribución multinivel (MLM) enfocada en alta perfumería para el mercado colombiano, que unifica una boutique e-commerce, precios preferenciales para socios, plan de compensación binario por volumen (PV/BV), rangos de liderazgo, consola de distribuidores y logística de dropshipping centralizada.',
+          'Tienda online y plataforma de venta directa para una marca de alta perfumería en Colombia, que une catálogo público, descuentos para socios, árbol binario de comisiones y logística de envíos.',
         architectureNotes:
-          'Desarrollada como Principal Developer en Next.js y TypeScript integrando el storefront transaccional de comercio electrónico con el motor de red comercial jerárquica (árbol binario, acumulación de volumen PV/BV, cálculo de comisiones semanales, progresión de rangos, paquetes de afiliación y backoffice privado de socios).',
+          'E-commerce conectado directamente al motor de red comercial: cada compra actualiza al instante los puntos de volumen del árbol binario, el avance de rango y las comisiones semanales en la oficina virtual del socio.',
         highlights: [
-          'E-Commerce & Digital Storefront con Precios Diferenciados: boutique digital de alta perfumería con catálogo interactivo, paquetes de afiliación, descuentos preferenciales de hasta 50% para distribuidores y flujo de dropshipping centralizado',
-          'Motor de Compensación Binaria MLM & Volumen PV/BV: modelado de estructura binaria de equipos, cálculo automatizado de puntos de volumen personal y grupal (PV/BV), liquidación de comisiones semanales y bonos de liderazgo',
-          'Distributor Back Office & Gestión de Rangos: consola privada para socios con seguimiento de organización comercial, métricas de ventas directas, progresión por rangos de liderazgo e integración de pagos',
+          'Tienda digital con precios diferenciados: venta a precio público con comisión para el patrocinador o compra con hasta 50% de descuento para socios activos',
+          'Motor de compensación binaria: conteo automático de puntos personales y de equipo (PV/BV), cortes semanales y bonos por rango',
+          'Oficina virtual para distribuidores con visualización de su equipo, historial de ventas y control de envíos',
         ],
         industryTags: ['ecommerce', 'multinivel'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js & React',
-          'TypeScript',
-          'Binary MLM Tree & PV/BV Engine',
-          'E-Commerce & Tiered Pricing',
-          'Distributor Back Office',
+          'Binary MLM & PV/BV Engine',
           'Automated Commission Settlement',
-          'Dropshipping & Fulfillment Workflow',
+          'Tiered Affiliate E-Commerce',
+          'Dropshipping Fulfillment Core',
         ],
         statusLabel: 'identiko.network — E-Commerce & Red MLM en Producción',
         previewType: 'ecommerce-saas',
@@ -1437,7 +1550,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: '4medic-health-ecommerce',
-        title: '4Medic Health: E-Commerce D2C de Suplementos con Respaldo Clínico',
+        title: '4Medic Health: Marca Propia & E-Commerce de Suplementos Clínicos',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://4medichealth.com',
@@ -1468,29 +1581,35 @@ const esContent: PortfolioContent = {
             alt: 'Línea Focus & Performance Black Coffee Armonía de 4Medic Health formulada con extractos naturales y respaldo médico.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como fundador desarrollé el 100% de la plataforma e-commerce y coordiné directamente el diseño de las fórmulas médicas y la maquila en México.',
+          personalModules:
+            'Programé la tienda online en Next.js, el gestor de catálogo con Cloudflare R2, el checkout con reglas de envío nacional, el posicionamiento SEO técnico para buscadores y la integración comercial.',
+          hardestChallenge:
+            'Lanzar al mercado una marca física propia de más de 14 suplementos con trazabilidad por lote, conectando la producción y el inventario con una tienda online rápida y optimizada para conversión.',
+          productImpact:
+            'Consolidación de una marca propia de suplementos clínicos con canal de venta directa automatizado y envíos a todo México.',
+        },
         seoDescription:
           '4Medic Health (4medichealth.com): Marca propia D2C de suplementos alimenticios maquilada en México con diseño de fórmula respaldado por médicos, trazabilidad por lote y plataforma E-Commerce con envíos nacionales desarrollada en Next.js, Payload CMS y Cloudflare R2.',
         category: 'D2C E-Commerce · Own Brand · HealthTech',
         summary:
-          'Marca propia de suplementos y salud integral maquilada en México, con diseño de fórmulas respaldado por médicos especialistas y operación logística de envíos a nivel nacional. Cuenta con su propio ecosistema E-Commerce D2C de alto rendimiento (4medichealth.com) para venta directa, trazabilidad por lote y cobros automatizados.',
+          'Marca propia de suplementos clínicos formulados con médicos especialistas y maquilados en México, acompañada de su propia tienda online de venta directa con envíos a todo el país.',
         architectureNotes:
-          'Storefront D2C desarrollado en Next.js (App Router), React, TypeScript y Tailwind CSS, gestionado mediante CMS headless, almacenamiento de catálogo multimedia en Cloudflare R2, marcado estructurado Schema.org (Product/Offer) para indexación orgánica y logística nacional integrada.',
+          'Tienda D2C de carga instantánea con gestión de catálogo mediante CMS headless, imágenes servidas desde Cloudflare R2, datos estructurados de producto para Google y cálculo automático de envíos nacionales.',
         highlights: [
-          'Marca propia (Own Brand) maquilada en México con +14 formulaciones especializadas (Línea Clínica, Wellness, Focus & Performance y Fitness) diseñadas con respaldo médico y trazabilidad por lote',
-          'Plataforma E-Commerce D2C (4medichealth.com) optimizada para conversión, con checkout cifrado, cálculo automático de envío nacional gratis (> $1,000 MXN) y atención directa vía WhatsApp',
-          'Arquitectura SEO-First con generación dinámica de catálogo estructurado en Schema.org (Product & Offer), entrega de activos en Cloudflare R2 CDN y analítica de embudo comercial',
+          'Marca propia maquilada en México con más de 14 fórmulas especializadas (línea clínica, bienestar, enfoque y rendimiento) y control de calidad por lote',
+          'Tienda online rápida y clara, con cobro automatizado, envío gratis en compras mayores a $1,000 MXN y asesoría directa por WhatsApp',
+          'Catálogo optimizado con marcado Schema.org para destacar precios y disponibilidad directamente en los resultados de Google',
         ],
         industryTags: ['ecommerce'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js (App Router)',
-          'React',
-          'TypeScript',
-          'Tailwind CSS',
-          'Cloudflare R2 CDN',
-          'Headless CMS',
+          'Next.js D2C Storefront',
+          'Headless CMS & Cloudflare R2',
           'Schema.org E-Commerce SEO',
-          'National Shipping & Checkout',
+          'Automated Checkout & Shipping',
         ],
         statusLabel: '4medichealth.com — Marca Propia en Producción',
         previewType: 'ecommerce-saas',
@@ -1498,7 +1617,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'invik-bim-contech',
-        title: 'INVIK: Plataforma B2B ConTech, Modelado BIM & CMS de Ingeniería Digital',
+        title: 'INVIK: Plataforma B2B de Ingeniería BIM & CMS Técnico',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://invik.com.mx',
@@ -1528,27 +1647,35 @@ const esContent: PortfolioContent = {
             alt: 'Coordinación tridimensional de nave industrial e ingeniería eléctrica de 500 kVA con subestación y tableros de potencia.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Diseñé la arquitectura general y programé personalmente todo el backend y el CMS a medida, coordinando de 1 a 2 desarrolladores en la interfaz web.',
+          personalModules:
+            'Construí la API y el CMS Headless propio en NestJS, Prisma, PostgreSQL y AWS S3, el motor de plantillas dinámicas para artículos técnicos y el catálogo de obras BIM por sector y normativa.',
+          hardestChallenge:
+            'Crear un gestor de contenidos flexible que permitiera a los propios ingenieros civiles y arquitectos publicar comparativas de instalaciones, modelos de alta resolución y casos de estudio sin pedir ayuda a programación.',
+          productImpact:
+            'Fortaleció la presencia comercial de INVIK ante clientes industriales y corporativos (como KFC México), dándoles autonomía total para actualizar su portafolio y captar licitaciones.',
+        },
         seoDescription:
           'INVIK (invik.com.mx): Empresa mexicana B2B de ConTech e ingeniería multidisciplinaria mediante metodología BIM (Building Information Modeling). Plataforma web interactiva y Headless CMS propio desarrollado en Next.js, NestJS 11, Prisma 7, PostgreSQL y AWS S3. Rol: Principal Developer.',
-        category: 'ConTech · Building Information Modeling (BIM) · B2B Engineering CMS',
+        category: 'ConTech · BIM Engineering · Custom Headless CMS',
         summary:
-          'Empresa mexicana B2B especializada en ingeniería multidisciplinaria y transformación digital de la construcción mediante metodología BIM (arquitectura, estructura, instalaciones eléctricas de hasta 500 kVA, hidrosanitarias, HVAC y protección contra incendios para sectores industrial, residencial y retail como KFC México).',
+          'Plataforma digital y gestor de contenidos a medida para una firma de ingeniería BIM especializada en naves industriales, torres residenciales y franquicias comerciales (como KFC México).',
         architectureNotes:
-          'Desarrollo como Principal Developer de la plataforma digital B2B y su sistema CMS Headless a medida (invik-api en NestJS 11, Prisma 7, PostgreSQL, autenticación JWT y almacenamiento S3) para administrar el catálogo dinámico de portafolio por tipología de obra, normativas, software técnico, blog con plantillas JSON y comparadores interactivos de instalaciones.',
+          'Sitio interactivo conectado a un CMS Headless propio en NestJS, PostgreSQL y AWS S3 para administrar proyectos por tipo de obra, normativas de construcción, software utilizado y artículos técnicos con plantillas configurables.',
         highlights: [
-          'Experiencia Digital B2B & Visualización Técnica: interfaz interactiva con comparador de instalaciones MEP, fichas técnicas por sector (Industrial 500 kVA, Torres Residenciales, Retail / KFC Dark Kitchens) y flujos de cotización',
-          'CMS Headless Propio en NestJS 11 + Prisma 7 + PostgreSQL: administración dinámica de portafolio de proyectos BIM (Portfolio & ProjectType), catálogo de normativas (Regulation), software especializado y colaboradores con carga de activos en S3',
-          'Motor Editorial con Plantillas Dinámicas & SEO Técnico: sistema de publicación de artículos y casos de estudio con estructura JSON configurable por plantilla (templateId / templateData), control de vistas y metadatos SEO',
+          'Presentación interactiva de proyectos de ingeniería (instalaciones eléctricas de 500 kVA, aire acondicionado, gas y protección contra incendios) con comparadores visuales',
+          'CMS propio para que el equipo de ingeniería actualice su catálogo de obras, normativas y clientes sin tocar código',
+          'Blog técnico con plantillas dinámicas y optimización SEO para atraer licitaciones industriales y corporativas',
         ],
         industryTags: ['b2b', 'real-estate'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js & React',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL & Prisma 7',
-          'AWS S3 SDK',
-          'Custom Headless CMS & JWT',
+          'Custom Headless CMS (NestJS 11)',
+          'Dynamic JSON Template Engine',
+          'PostgreSQL, Prisma 7 & AWS S3',
+          'Interactive BIM / MEP Viewer',
         ],
         statusLabel: 'invik.com.mx — ConTech & CMS en Producción',
         previewType: 'real-estate',
@@ -1556,7 +1683,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'coral-de-plata-real-estate',
-        title: 'Coral de Plata: Plataforma PropTech & Desarrollo Residencial en Manzanillo (Alianza)',
+        title: 'Coral de Plata: Plataforma Inmobiliaria & Master Plan Interactivo',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://www.coraldeplata.com',
@@ -1586,28 +1713,35 @@ const esContent: PortfolioContent = {
             alt: 'Plano maestro interactivo con la lotificación de baja densidad (63 lotes únicos) y áreas verdes de Coral de Plata.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Desarrollo 100% individual: diseñé y programé toda la plataforma inmobiliaria, el plano interactivo y la estrategia de posicionamiento SEO.',
+          personalModules:
+            'Construí el visor interactivo de los 63 lotes del desarrollo, la galería de recorridos en dron y renders 4K, el sistema de asignación automática de prospectos por asesor hacia WhatsApp y el centro de contenidos de inversión.',
+          hardestChallenge:
+            'Mostrar videos aéreos y renders en 4K que carguen al instante en celulares, conservando siempre qué asesor inmobiliario invitó al cliente durante toda su visita para no perder su comisión.',
+          productImpact:
+            'Aceleró la captación de compradores para los 63 lotes residenciales en Manzanillo, enviando cada prospecto directo al WhatsApp del asesor que compartió el enlace.',
+        },
         seoDescription:
           'Coral de Plata (coraldeplata.com): Plataforma digital PropTech y ecosistema de comercialización inmobiliaria para el desarrollo residencial Coral de Plata en Manzanillo, Colima (Alianza). 63 lotes exclusivos, galería cinemática 4K, visor interactivo de Master Plan, atribución por asesor y hub SEO de inversión patrimonial. Rol: Principal Developer.',
-        category: 'PropTech · Real Estate Development · Residential Master Plan · Lead Attribution',
+        category: 'PropTech · Real Estate Master Plan · Lead Attribution',
         summary:
-          'Plataforma digital PropTech y ecosistema de captación patrimonial para Coral de Plata, desarrollo residencial exclusivo de 63 lotes en el nuevo corredor norte de Manzanillo, Colima (Alianza), con galería cinemática 4K, visor interactivo de Master Plan, atribución dinámica por asesor comercial y hub editorial SEO de inversión inmobiliaria.',
+          'Plataforma comercial para un desarrollo residencial de 63 lotes en Manzanillo, Colima, con plano maestro interactivo, recorridos en dron 4K y asignación automática de prospectos por asesor.',
         architectureNotes:
-          'Desarrollado como Principal Developer sobre Next.js (App Router) y TypeScript con Server Actions para captura de leads, sistema de atribución multi-asesor por query params con canalización directa a WhatsApp, reproductor de recorridos aéreos en video, visor interactivo de lotificación con zoom táctil/cursor y arquitectura SEO de contenidos inmobiliarios e inversión.',
+          'Construida en Next.js con captura de prospectos mediante Server Actions, atribución persistente por asesor para redirigir el contacto directo a su WhatsApp, visor de lotes con zoom táctil y arquitectura SEO para inversionistas.',
         highlights: [
-          'Experiencia Digital Inmersiva & Galería Cinemática 4K: recorridos en dron, vistas aéreas 4K y renders hiperrealistas del ingreso monumental, urbanización y Casa Club con carga optimizada en WebP/AVIF',
-          'Visor Interactivo de Master Plan & Atribución Comercial Dinámica: exploración detallada de los 63 lotes residenciales con zoom interactivo, enrutamiento personalizado por asesor comercial y formularios con Server Actions',
-          'Hub SEO de Inversión Patrimonial & Analítica de Conversión: clúster de artículos especializados (plusvalía del Puerto y Aduana ANAM en Manzanillo, eje Vallarta-Colima, certeza jurídica y construcción) integrado con GA4 y Google Ads',
+          'Recorridos en dron y galería 4K del pórtico de acceso, vialidades y Casa Club optimizados para abrir rápido en móvil',
+          'Plano maestro interactivo para explorar los 63 lotes y sistema de enlaces personalizados para cada asesor de ventas',
+          'Centro de artículos sobre plusvalía e inversión inmobiliaria en Manzanillo conectado con Google Analytics y campañas de anuncios',
         ],
         industryTags: ['real-estate'],
         techTags: ['analytics', 'automation'],
         stack: [
-          'Next.js (App Router)',
-          'React & TypeScript',
-          'Tailwind CSS & Motion',
-          'Next.js Server Actions',
+          'Interactive 63-Lot Master Plan',
           'Dynamic Advisor Attribution',
-          'Technical SEO & Schema',
-          'Google Analytics 4 & Ads Tracking',
+          'Next.js Server Actions',
+          'Technical Real Estate SEO',
         ],
         statusLabel: 'coraldeplata.com — Residencial Manzanillo (Alianza)',
         previewType: 'real-estate',
@@ -1615,7 +1749,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'aura-series-mediatech',
-        title: 'Aura Series & Premios Aura: Ecosistema de Medios Digitales, Streaming & Entretenimiento',
+        title: 'Aura Series & Premios Aura: Portal de Entretenimiento y Streaming',
         role: 'Principal Developer',
         dateRange: '2024',
         liveUrl: 'https://auraseries.com',
@@ -1634,27 +1768,35 @@ const esContent: PortfolioContent = {
             alt: 'Escenario de gala de los Premios Aura de Aura Series (FCO Group) con pantallas digitales e iluminación para la premiación de series en streaming de habla hispana.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Lideré la arquitectura principal y los motores centrales, coordinando a otros 4 desarrolladores encargados de integraciones y del gestor editorial.',
+          personalModules:
+            'Desarrollé personalmente el algoritmo de recomendación de contenido y ranking de series/nominados, así como el flujo de carga y reproducción de video de alta disponibilidad.',
+          hardestChallenge:
+            'Soportar la subida y transmisión de video junto con el cálculo de rankings en tiempo real sin caídas durante los picos masivos de tráfico de la gala de los Premios Aura.',
+          productImpact:
+            'Operó con total estabilidad para una comunidad de 1.1 millones de seguidores, +50M de impactos mensuales y más de 550M de impactos durante la premiación anual de FCO Group.',
+        },
         seoDescription:
           'Aura Series & Premios Aura (auraseries.com / premiosaura.com): Ecosistema de medios digitales, entretenimiento y streaming perteneciente a FCO Group (creadores de Eliot Awards), con 1.1M seguidores, +50M impactos mensuales y +550M impactos en Premios Aura. Rol: Principal Developer.',
-        category: 'Digital Entertainment · Streaming Media · MediaTech · Audience Engagement',
+        category: 'Digital Media · Streaming Portal · High-Traffic Architecture',
         summary:
-          'Ecosistema de medios digitales y entretenimiento perteneciente a FCO Group (creadores de los Eliot Awards) especializado en cine, series y plataformas de streaming en habla hispana, creador de los Premios Aura (+1.1M seguidores, +50M impactos mensuales y +550M impactos en la gala de premiación).',
+          'Portal editorial y plataforma oficial de los Premios Aura (FCO Group), dedicados a las mejores series en streaming de habla hispana, con una audiencia de 1.1M de seguidores y +550M de impactos.',
         architectureNotes:
-          'Liderazgo técnico como Principal Developer en la arquitectura e implementación de las plataformas web editoriales y del portal oficial de Premios Aura (auraseries.com / premiosaura.com), gestión de contenidos de alto tráfico, catálogo de nominados/producciones y experiencias interactivas para audiencias multiplataforma.',
+          'Arquitectura web preparada para alto tráfico con caché en el borde (Edge CDN), flujo de carga y streaming de video, motor de ranking de nominados y gestor editorial para reseñas y estrenos.',
         highlights: [
-          'Digital Media & Publishing Platform: desarrollo y arquitectura web para la publicación editorial de estrenos, críticas, entrevistas exclusivas y tendencias de plataformas de streaming de alto tráfico',
-          'Plataforma Digital de Premios Aura: ecosistema interactivo para la difusión de nominados, categorías, talento creativo y producciones de series de habla hispana con alcance de +550M de impactos de marca',
-          'Distribución Multiplataforma & Audience Engagement: infraestructura optimizada para SEO, rendimiento web y conexión con comunidades digitales (1.1M de seguidores y +50M de impactos mensuales en el ecosistema)',
+          'Portal editorial de alto tráfico para estrenos, críticas, entrevistas y tendencias de series en plataformas de streaming',
+          'Sitio oficial de los Premios Aura con catálogo interactivo de categorías, nominados y talento creativo (+550M de impactos)',
+          'Infraestructura optimizada para buscadores y picos virales de audiencia (1.1M de seguidores y +50M de impactos al mes)',
         ],
         industryTags: ['streaming'],
         techTags: ['analytics', 'automation'],
         stack: [
-          'React & Next.js',
-          'TypeScript',
-          'Headless CMS & Digital Publishing',
-          'High-Traffic CDN & Edge Caching',
-          'SEO & Structured Media Schema',
-          'Interactive Event & Awards Portal',
+          'High-Availability Video Streaming',
+          'Series & Nominee Ranking Engine',
+          'High-Traffic CDN & Edge Cache',
+          'Headless CMS & Media Schema',
         ],
         statusLabel: 'auraseries.com · 1.1M Seguidores · +550M Impactos',
         previewType: 'elearning-mlm',
@@ -1662,7 +1804,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'martinez-y-de-labra-abogados',
-        title: 'Martínez y de Labra Abogados: Transformación Digital LegalTech, SEO, IA, Capacitación & Automatización Low-Code',
+        title: 'Martínez y de Labra Abogados: Transformación Digital, SEO & IA Legal',
         role: 'Consultor & Principal Developer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://www.martinezydelabra.com.mx',
@@ -1688,27 +1830,35 @@ const esContent: PortfolioContent = {
             alt: 'Torre corporativa de oficinas de Martínez y de Labra Abogados.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Dirigí personalmente la estrategia tecnológica, las capacitaciones de IA y las automatizaciones, coordinando a un equipo de 2 a 3 personas para marketing y publicación de noticias.',
+          personalModules:
+            'Diseñé e impartí los talleres de IA para socios y abogados, construí las automatizaciones operativas conectadas con IA y lideré la renovación web y el posicionamiento SEO de sus 6 áreas de práctica.',
+          hardestChallenge:
+            'Llevar herramientas de IA generativa y automatización al trabajo diario de abogados y fiscalistas cuidando al máximo la confidencialidad de los expedientes, logrando que los socios realmente las adoptaran.',
+          productImpact:
+            'Aceleró la revisión documental y el seguimiento de clientes dentro del despacho, posicionando además sus 6 áreas de especialidad en Google para Guadalajara y CDMX.',
+        },
         seoDescription:
           'Martínez y de Labra Abogados (martinezydelabra.com.mx): Consultoría tecnológica, desarrollo web, posicionamiento SEO, marketing digital, difusión de noticias jurídicas, capacitaciones en Inteligencia Artificial y automatizaciones low-code para firma legal y financiera con sedes en Guadalajara (Puerta de Hierro) y CDMX (Lomas de Chapultepec). Rol: Consultor & Principal Developer.',
-        category: 'LegalTech Consulting · Technical SEO & Digital Marketing · AI Training & Low-Code Automation',
+        category: 'LegalTech Consulting · Technical SEO · AI Training & Automation',
         summary:
-          'Consultoría tecnológica integral y liderazgo de desarrollo para Martínez y de Labra Abogados, prestigiosa firma de consultoría empresarial, jurídica, fiscal y financiera con presencia nacional (Puerta de Hierro en Guadalajara y Lomas de Chapultepec en CDMX). El proyecto abarcó evolución web, posicionamiento SEO, estrategia de marketing y noticias, capacitación ejecutiva en Inteligencia Artificial e implementación de automatizaciones low-code.',
+          'Consultoría tecnológica y modernización digital para una reconocida firma jurídica y fiscal en Guadalajara y CDMX, combinando posicionamiento web (SEO), automatización de procesos y capacitación práctica en Inteligencia Artificial para sus abogados.',
         architectureNotes:
-          'Desempeño como Consultor y Principal Developer articulando cuatro frentes estratégicos: (1) optimización técnica web, posicionamiento SEO orgánico y difusión de noticias/boletines especializados para las 6 direcciones de práctica de la firma, (2) estrategia de marketing digital B2B, (3) programas de capacitación práctica en Inteligencia Artificial para socios, directores y asociados, y (4) diseño de flujos de trabajo y automatizaciones low-code conectadas con modelos de IA para acelerar procesos internos.',
+          'Estrategia integral dividida en cuatro frentes: optimización web y SEO para sus 6 áreas legales, portal de noticias fiscales/jurídicas, talleres prácticos de IA para socios y flujos automatizados para el seguimiento de prospectos y documentos.',
         highlights: [
-          'Posicionamiento SEO, Presencia Web & Portal de Noticias: optimización técnica, indexación orgánica por especialidad jurídica/fiscal (Corporativo, Fiscal, Litigio, Laboral, Penal e Infraestructura Pública) y publicación de noticias y análisis legales',
-          'Capacitación Ejecutiva en Inteligencia Artificial (AI Enablement): talleres y programas de formación continua para socios y equipos legales en el uso estratégico y seguro de herramientas de IA generativa, análisis documental e investigación jurídica',
-          'Automatizaciones Low-Code & Flujos Asistidos por IA: implementación de pipelines low-code e integraciones automatizadas para seguimiento de prospectos, gestión de comunicaciones, clasificación de información y productividad operativa del despacho',
+          'Posicionamiento SEO y portal editorial para sus 6 áreas de práctica (Corporativo, Fiscal, Litigio, Laboral, Penal e Infraestructura)',
+          'Capacitación ejecutiva en IA: entrenamiento práctico para socios y abogados en análisis de documentos e investigación jurídica segura con IA',
+          'Automatización de flujos internos para clasificar prospectos, dar seguimiento comercial y ahorrar horas operativas en el despacho',
         ],
         industryTags: ['b2b', 'ia', 'elearning'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'Web Development & Technical SEO',
-          'AI Workflows & Prompt Engineering',
+          'AI Workflows & Legal Prompting',
           'Low-Code Automation Pipelines',
-          'Digital Marketing & Legal News',
-          'Corporate AI Training Programs',
-          'Analytics & Search Console',
+          'Technical SEO & Legal Hub',
+          'Corporate AI Training',
         ],
         statusLabel: 'martinezydelabra.com.mx — LegalTech, SEO, IA & Automatización',
         previewType: 'ecommerce-saas',
@@ -1716,7 +1866,7 @@ const esContent: PortfolioContent = {
       },
       {
         id: 'procesos-iq-enterprise',
-        title: 'Procesos IQ: Sistemas Empresariales ERP, AgriTech (Agro IQ), BI & Automatización IoT',
+        title: 'Procesos IQ: Sistema ERP, Control Agrícola (Agro IQ) & Sensores IoT',
         role: 'Principal Developer',
         dateRange: 'Dic 2016 — Feb 2019',
         liveUrl: 'https://www.procesos-iq.com',
@@ -1742,27 +1892,35 @@ const esContent: PortfolioContent = {
             alt: 'Consola de aplicaciones de ERP IQ integrando CRM, Ventas, Punto de Venta, Inventario, Fabricación, Contabilidad y Finanzas, Facturación, Nómina y conector con AgroIQ Database.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Como Principal Developer coordiné un equipo de 3 a 5 desarrolladores mientras programaba los módulos centrales de campo y su conexión con el ERP.',
+          personalModules:
+            'Desarrollé módulos clave de Agro IQ y ERP IQ: trazabilidad de cosecha por lote y edad, control de mermas y calidad, lectura directa de básculas electrónicas y estaciones climáticas, y su enlace con inventarios y contabilidad.',
+          hardestChallenge:
+            'Capturar datos en zonas agrícolas con mal internet y leer básculas industriales y sensores climáticos en tiempo real, sincronizando todo sin pérdidas con la contabilidad central de la empresa.',
+          productImpact:
+            'Digitalizó la operación desde la cosecha en el campo hasta la facturación, eliminando el papeleo manual y las mermas sin registrar en empresas agroindustriales.',
+        },
         seoDescription:
           'Procesos IQ (procesos-iq.com): Ecosistema B2B de software empresarial, Industria 4.0, AgriTech (Agro IQ), ERP modular (ERP IQ), Business Intelligence e integración de hardware IoT (balanzas, estaciones meteorológicas, biométricos) en Latinoamérica. Rol: Principal Developer.',
-        category: 'Enterprise Software · Industry 4.0 · AgriTech · ERP & IoT',
+        category: 'Enterprise ERP · AgriTech · IoT Hardware Integration',
         summary:
-          'Ecosistema B2B de transformación digital e ingeniería de sistemas empresariales en Latinoamérica que integra gestión agrícola e industrial (Agro IQ), planificación de recursos empresariales (ERP IQ), Business Intelligence e integración directa con hardware e IoT (balanzas industriales, estaciones meteorológicas, rastreo y biométricos).',
+          'Suite empresarial para la agroindustria en Latinoamérica que conecta el control de producción en el campo (Agro IQ) y básculas/sensores físicos con la contabilidad, inventarios y facturación (ERP IQ).',
         architectureNotes:
-          'Liderazgo técnico como Principal Developer en el diseño e implementación de las plataformas web/móviles, arquitectura modular ERP (contabilidad, inventario, costos, facturación y nómina), sincronización con bases de datos operativas en campo e integración de telemetría de sensores y hardware industrial.',
+          'Plataforma web y móvil conectada a un ERP modular (contabilidad, costos, inventarios, nómina y facturación), con sincronización para trabajo en campo y lectura directa de básculas electrónicas y estaciones meteorológicas.',
         highlights: [
-          'Agro IQ (AgriTech & Industry 4.0): control integral de producción agrícola en tiempo real con trazabilidad por lote y edad, control de mermas/recusados, inspecciones de calidad e integración con balanzas electrónicas y estaciones meteorológicas',
-          'ERP IQ (Enterprise Resource Planning): suite modular empresarial para contabilidad, facturación electrónica, inventarios, costos de producción, compras, recursos humanos y planificación operativa conectada con Agro IQ',
-          'Business Intelligence & Integración IoT: paneles ejecutivos de indicadores operativos, correlación histórica de datos, alertas automatizadas y recolección en campo mediante aplicaciones móviles y dispositivos físicos',
+          'Agro IQ: seguimiento de producción agrícola en tiempo real por lote, control de mermas e integración directa con básculas y estaciones de clima',
+          'ERP IQ: sistema administrativo completo para contabilidad, costos de producción, compras, inventarios y nómina alimentado por lo que ocurre en planta',
+          'Tableros directivos con indicadores de productividad, alertas operativas y captura desde dispositivos móviles en campo',
         ],
         industryTags: ['b2b', 'data-analytics'],
         techTags: ['automation', 'analytics', 'realtime'],
         stack: [
-          'Full-Stack Web & Mobile',
-          'ERP Modular Architecture',
-          'PostgreSQL & Relational DBs',
-          'IoT & Hardware Integration (Scales / Weather)',
-          'Business Intelligence & Dashboards',
-          'REST APIs & Field Sync',
+          'Modular ERP & Costing Core',
+          'Agro IQ Batch Traceability',
+          'IoT Scales & Weather Telemetry',
+          'Offline-First Field Sync',
         ],
         statusLabel: 'procesos-iq.com — ERP, AgriTech & IoT en Producción',
         previewType: 'ecommerce-saas',
@@ -2070,7 +2228,7 @@ const enContent: PortfolioContent = {
     items: [
       {
         id: 'luthor-solutions',
-        title: 'Luthor Solutions: Custom Software Engineering Studio, AI & B2B Platforms',
+        title: 'Luthor Solutions: Software Studio, AI & Custom Platforms',
         role: 'Founder',
         dateRange: '2023 — Present',
         featured: true,
@@ -2079,28 +2237,35 @@ const enContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Luthor Solutions (luthorsolutions.com) custom software engineering studio, artificial intelligence, SaaS, FinTech, and E-Commerce agency founded by Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Led teams of 6 to 12 professionals across Frontend, Backend, Design, and QA, while personally managing client relationships, networking, and B2B sales.',
+          personalModules:
+            'Personally designed the core architecture of each project, modeled the databases, chose the tech stack, and coded the most critical modules (payments, financial engines, security, and cloud infrastructure).',
+          hardestChallenge:
+            'Building a solid, reusable technical foundation (authentication, roles, billing, and deployments) adaptable to very different industries—from banking and crypto to e-commerce and construction—without losing speed.',
+          productImpact:
+            'Consolidated a profitable software studio with 15+ platforms in production delivered in weeks instead of months, turning first-time clients into long-term technology partners across Mexico, the U.S., and Latin America.',
+        },
         seoDescription:
           'Luthor Solutions (luthorsolutions.com): Proprietary software engineering studio specializing in custom enterprise platforms, B2B SaaS, artificial intelligence, mobile applications, payment gateways, and turnkey digital ecosystems based in Guadalajara, Mexico. Role: Founder.',
-        category: 'Software Engineering Studio · Custom Enterprise Systems · AI & Turnkey SaaS',
+        category: 'Software Studio · Custom Enterprise Systems · AI & Turnkey SaaS',
         summary:
-          'Proprietary software engineering and technology consulting firm (based in Guadalajara, Mexico) specializing in architecting and building custom software ecosystems, B2B SaaS platforms, AI integrations, payment gateways, high-traffic e-commerce, and mobile applications for clients across Latin America and the United States.',
+          'My own software studio based in Guadalajara, Mexico, where we design and launch custom digital products, SaaS platforms, AI integrations, payment gateways, and mobile apps for companies across Latin America and the United States.',
         architectureNotes:
-          'Executive leadership, solutions architecture, and cross-functional engineering management delivering turnkey products from technical discovery to production deployment across modern stacks (Next.js, React, NestJS, Node.js, TypeScript, PostgreSQL, Neo4j, Web3, and Cloud/GPU infrastructure).',
+          'Executive and technical direction from initial scoping to production launch, combining Next.js, NestJS, PostgreSQL, Neo4j, Web3, and cloud infrastructure.',
         highlights: [
-          'Turnkey End-to-End Product Engineering: systems architecture, full-stack development, and production deployment for enterprise platforms, ERPs, B2B marketplaces, FinTech/Crypto gateways, and MLM ecosystems',
-          'Artificial Intelligence & Process Automation: implementation of conversational AI agents, semantic/vector search engines, predictive analytics, and custom API integrations that drive operational efficiency',
-          'Multi-Industry Production Track Record: engineering studio behind high-impact production platforms across FinTech, E-Commerce, EdTech, and MediaTech (including Voltz, Cicada, Retrypay, Gibor, 4Medic Health, and Aura Series)',
+          'Turnkey Products: end-to-end design and development for ERPs, B2B marketplaces, FinTech/Crypto gateways, and affiliate networks',
+          'Practical AI & Automation: conversational assistants, intelligent search engines, and API integrations that cut manual operational work',
+          'Production Track Record: engineering studio behind platforms such as Voltz, Cicada, Retrypay, Gibor, 4Medic Health, and Aura Series',
         ],
         industryTags: ['b2b', 'ia', 'saas'],
         techTags: ['ai-rag', 'automation', 'analytics', 'onchain'],
         stack: [
-          'Next.js, React & Astro',
-          'NestJS & Node.js',
-          'TypeScript',
-          'React Native & Expo (iOS / Android)',
-          'PostgreSQL, Neo4j & Redis',
-          'AI, Vector Search & Automation',
-          'Cloud Infrastructure (AWS / GCP)',
+          'Next.js & NestJS',
+          'PostgreSQL & Neo4j',
+          'AI & Vector Search',
+          'AWS & Google Cloud',
         ],
         statusLabel: 'luthorsolutions.com — Proprietary Brand & Software Studio',
         previewType: 'vector-graph',
@@ -2108,7 +2273,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'blue-castle-ventures',
-        title: 'Blue Castle Ventures: Wealth Management FinTech Ecosystem & Financial ERP',
+        title: 'Blue Castle Ventures: Wealth Management Platform & Financial ERP',
         role: 'CTO',
         dateRange: 'Apr 2025 — Present',
         featured: true,
@@ -2129,32 +2294,36 @@ const enContent: PortfolioContent = {
             alt: 'Blue Castle Ventures metallic wealth cards and gold assets representing fixed-income investment certificates, compound capitalization, and multi-rail hybrid wallet.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As CTO I personally built almost the entire technical platform and cloud infrastructure, supported by 1–2 developers on interface and operational tasks.',
+          personalModules:
+            'Designed and coded the double-entry accounting engine in PostgreSQL, the financial API in NestJS, the Investor Portal, the administrative ERP, the 2FA hybrid wallet, the contract & e-signature generator, and the Google Cloud Run deployment.',
+          hardestChallenge:
+            'Migrating a live financial operation from a legacy PHP system into 4 connected cloud platforms without halting operations or losing a single cent of accounting accuracy across tens of millions of dollars.',
+          productImpact:
+            'Eliminated manual Excel reconciliations, reduced investor onboarding and legal contract signing to minutes, and left the operation ready for international financial audits.',
+        },
         seoDescription:
           'Blue Castle Ventures (bluecastleventures.com): Institutional Wealth Management FinTech ecosystem and automated double-entry ERP headquartered in New York (One Liberty Plaza) and Wyoming, supporting tens of millions in AUM across 3 continents and 4 languages on Next.js, React 19, NestJS, PostgreSQL (Prisma), Google Cloud Run, and Cloudflare R2.',
         category: 'Wealth Management · Institutional FinTech · Financial ERP',
         summary:
-          'End-to-end FinTech and Financial ERP infrastructure for a U.S. Wealth Management firm headquartered in New York (One Liberty Plaza) and Wyoming managing tens of millions of dollars in AUM across 3 continents (ES, EN, PT, IT). Replaced a legacy PHP system with 4 interconnected Cloud-Native platforms automating digital KYC onboarding, binding e-signatures, and double-entry accounting.',
+          'Financial platform and accounting ERP for a Wealth Management firm headquartered in New York (One Liberty Plaza) and Wyoming managing tens of millions of dollars across 3 continents. Replaced a legacy PHP system with 4 modern platforms that automate investor onboarding, legal contracts, and accounting.',
         architectureNotes:
-          'Interconnected 4-platform cloud-native architecture (Investor Portal, Administrative ERP Backoffice, Transactional Financial API, and Corporate Portal) deployed on Google Cloud Run using Next.js, React 19, NestJS, TypeScript, PostgreSQL (Prisma ORM), and Cloudflare R2, aligned with SEC-qualified vehicles, annual CPA/AICPA audits, and institutional custody (Interactive Brokers & BMO).',
+          'Four connected systems on Google Cloud Run (Investor Portal, Administrative ERP, Financial API, and Corporate Portal) built with Next.js, NestJS, PostgreSQL, and Cloudflare R2 under auditing standards for accounts custodied at Interactive Brokers and BMO.',
         highlights: [
-          'Multi-million dollar AUM scale across 3 continents in 4 languages (ES, EN, PT, IT), aligned with SEC-qualified vehicles, independent CPA/AICPA audits, and institutional custody at Interactive Brokers and BMO',
-          'Core modernization from legacy PHP into 4 interconnected platforms on Google Cloud Run: Investor Portal, Administrative ERP, Financial API, and Corporate Portal',
-          '100% digital investment & legal contracting engine: KYC identity verification, on-screen binding electronic signature, automated PDF contract generation, and scheduled fixed-income/compound yield calculation',
-          'Automated double-entry Financial ERP (converting every deposit, withdrawal, yield payout, and commission into balanced journal entries) + 2FA hybrid Wallet (bank wires/SPEI, PayPal, crypto), hierarchical advisor commission engine, e-learning academy, and AI-assisted ticketing',
+          'Multilingual operation (ES, EN, PT, IT) across 3 continents, aligned with independent CPA/AICPA audits and institutional custody',
+          'Full modernization from legacy PHP into 4 cloud applications: Investor Portal, Administrative Backoffice, Financial Core, and Corporate Website',
+          '100% digital onboarding and contracting: identity verification (KYC), on-screen electronic signature, automatic PDF contract generation, and interest calculation',
+          'Automated double-entry ERP that records every deposit, withdrawal, yield payout, and advisor commission without manual intervention, paired with a 2FA hybrid wallet',
         ],
         industryTags: ['fintech'],
         techTags: ['automation', 'analytics', 'ai-rag'],
         stack: [
-          'Next.js',
-          'React 19',
-          'NestJS',
-          'TypeScript',
+          'Double-Entry ERP Engine',
+          'Next.js & NestJS',
           'PostgreSQL & Prisma',
           'Google Cloud Run',
-          'Cloudflare R2',
-          'Double-Entry ERP Engine',
-          'KYC & Digital Signature',
-          '2FA Hybrid Wallet',
         ],
         statusLabel: 'Featured Project · One Liberty Plaza, NY',
         previewType: 'crypto-gateway',
@@ -2162,7 +2331,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'node-payments-crypto-gateway',
-        title: 'NodePayments: Multi-Chain Crypto Payment Gateway, CREATE2 Vaults & Mass Payouts',
+        title: 'NodePayments: Multi-Chain Crypto Payment Gateway & Mass Payouts',
         role: 'Founder & Principal Architect',
         dateRange: '2025 — Present',
         featured: true,
@@ -2193,31 +2362,36 @@ const enContent: PortfolioContent = {
             alt: 'NodePayments Services & Subscriptions module displaying active recurring payments, projected monthly USDT spend, and integrated ecosystem apps (Accounting Pro, AI Agents, Transactional Email).',
           },
         ],
+        ownership: {
+          teamScope:
+            'Personally designed and coded 100% of the core crypto and payment engine, coordinating 1 to 3 developers on interface components and client integrations.',
+          personalModules:
+            'Programmed the Solidity CREATE2 smart contracts, the HD wallet generator (BIP32/BIP39), the multi-chain payment detector (BSC, Ethereum, Polygon, TRON), the automated gas-injection and fund-sweeping bots, and the mass payout engine.',
+          hardestChallenge:
+            'Automating non-custodial fund sweeping across multiple blockchains at once: detecting each deposit in a temporary address, injecting the exact gas needed on the fly, and routing the funds to the merchant without locking balances.',
+          productImpact:
+            'Enabled companies and international networks to collect and disperse USDT 100% automatically, saving third-party gateway fees while keeping full control of their funds.',
+        },
         seoDescription:
           'NodePayments (nodepayments.io): B2B multi-chain crypto payment gateway and treasury infrastructure (BSC, Polygon, Ethereum, Base, Tron) featuring Solidity CREATE2 forwarder vaults, BIP32/BIP39 HD wallets, MLM mass payouts, Web3 subscriptions, and automated accounting.',
         category: 'Crypto Payment Gateway · Web3 Infrastructure · B2B FinTech',
         summary:
-          'B2B multi-chain crypto payment gateway and treasury infrastructure enabling enterprises, SaaS platforms, and MLM networks to accept USDT, USDC, and native assets, execute batch commission payouts, and automate Web3 subscriptions and token sales without exposing their master vault.',
+          'Multi-chain crypto payment gateway that lets businesses and SaaS platforms accept USDT/USDC, pay out commissions in batches, and automate Web3 subscriptions without exposing their main treasury wallet.',
         architectureNotes:
-          '4-repository ecosystem: core API built with NestJS 10 + Prisma + PostgreSQL + BullMQ/Redis + Socket.IO, Solidity smart contracts (CREATE2 VaultFactory & forwarder vaults), deterministic BIP32/BIP39 HD derivation across Tron and EVM, real-time indexing via QuickNode Webhooks, Next.js merchant portal, and dedicated accounting suite.',
+          '4-repository ecosystem combining a NestJS + PostgreSQL + Redis backend, Solidity smart contracts (CREATE2 vaults), deterministic wallet generation across Tron and EVM chains, real-time blockchain indexing, and a merchant dashboard.',
         highlights: [
-          'Ephemeral CREATE2 smart contract vaults (Solidity VaultFactory) and HD wallets (BIP32/BIP39): generates a unique deposit address per order across BSC, Polygon, Ethereum, Base, and Tron while keeping the merchant master wallet hidden',
-          'Mass Payouts engine for MLM commission dispersion and global payroll: supports synchronous Server-to-Server API batch execution or 2FA OTP-protected disbursements with internal or external wallet funding',
-          'Flexible sweep and settlement strategies (Immediate, End-of-Day, Threshold, or Manual) with multi-wallet percentage splits, recurring Web3 subscriptions, and automated Token Sales',
-          'Production infrastructure (~1 year of continuous operation, +280 commits across a multi-repo ecosystem) powering crypto collections and payouts for connected companies including Gibor, InDubai, Identiko, and corporate token ecosystems',
+          'Unique deposit addresses per order (CREATE2 vaults & HD wallets) across BSC, Polygon, Ethereum, Base, and Tron, keeping the merchant’s main treasury private',
+          'Mass Payouts engine to pay hundreds of commissions or payrolls in a single batch via API or 2FA-protected approval',
+          'Automatic fund sweeping (instant, end-of-day, or by threshold) with percentage splits across multiple wallets and recurring Web3 subscriptions',
+          'Production infrastructure processing real volume for connected companies such as Gibor, InDubai, and Identiko',
         ],
         industryTags: ['crypto', 'fintech', 'b2b', 'saas', 'multinivel'],
         techTags: ['onchain', 'automation', 'realtime'],
         stack: [
-          'NestJS 10',
-          'Next.js',
-          'TypeScript',
-          'Solidity (CREATE2 VaultFactory)',
-          'Ethers.js v6 & TronWeb',
+          'Solidity (CREATE2 Vaults)',
           'BIP32 / BIP39 HD Wallets',
-          'PostgreSQL & Prisma',
-          'BullMQ & Redis',
-          'QuickNode Streams',
+          'Ethers.js v6 & TronWeb',
+          'NestJS, BullMQ & QuickNode',
         ],
         statusLabel: 'nodepayments.io — Production Crypto Gateway',
         previewType: 'crypto-gateway',
@@ -2225,7 +2399,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'nodeworkforce-ai-agents-saas',
-        title: 'NodeWorkforce: Multi-Tenant AI Agents SaaS, Vector RAG, Fine-Tuning & Creative AI Studio',
+        title: 'NodeWorkforce: Conversational AI Agents & Creative Studio SaaS',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2026 — Present',
         featured: true,
@@ -2247,30 +2421,36 @@ const enContent: PortfolioContent = {
             alt: 'NodeWorkforce console displaying the multi-workspace live conversation inbox, AI Support Agent status, Human Takeover button, inline response correction for LoRA training, and supervisor commands.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo execution: designed, coded, and deployed the entire platform from scratch on my own.',
+          personalModules:
+            'Built the AI agent engine with version control, the document search system (Vector RAG), the live inbox where a human can take over a chat, the continuous training pipeline (LoRA), the credit billing system, and the visual design editor.',
+          hardestChallenge:
+            'Ensuring every AI response or generated image deducts the exact credit balance without billing errors, while allowing a human supervisor to take over a live chat in milliseconds and turn their corrections into future AI training.',
+          productImpact:
+            'Created an autonomous B2B SaaS product that automates customer support and ad design for businesses, charging per usage credit and getting smarter from human corrections.',
+        },
         seoDescription:
           'NodeWorkforce (nodeworkforce.io): Multi-Tenant B2B SaaS platform for Conversational AI Agents and Generative Creative AI Studio. Built with NestJS 10, Next.js 16 (React 19), PostgreSQL + Prisma, Redis + BullMQ, Vector RAG, LoRA/Unsloth Fine-Tuning (Qwen 2.5), GPU image synthesis (SDXL Turbo/Lightning), Konva.js layered canvas editor, and a transactional Credit Ledger. Role: Founder & Lead Product Engineer.',
-        category: 'Multi-Tenant AI Agents SaaS · Vector RAG & LoRA Fine-Tuning · Creative AI Studio (GPU)',
+        category: 'AI Agents SaaS · Vector RAG & Fine-Tuning · Creative AI Studio',
         summary:
-          'Multi-tenant B2B SaaS platform engineered to build, version, fine-tune (LoRA/Unsloth), evaluate, and deploy autonomous AI agents with Vector RAG, idempotent Tool Calling, real-time usage-based billing (Credit Ledger), and an AI-assisted Creative Studio with layered canvas editing (Konva.js) and hybrid GPU inference (SDXL Turbo/Lightning).',
+          'B2B SaaS platform to create, train, and connect customer-service AI agents across WhatsApp, Web, and Slack, paired with an AI-assisted graphic design studio and pay-per-use credit billing.',
         architectureNotes:
-          'Founded and architected with NestJS 10 (domain-driven modular backend), Next.js 16 (React 19, Tailwind CSS 4, Konva.js), PostgreSQL + Prisma ORM + vector embeddings, Redis + BullMQ with the Transactional Outbox pattern, Socket.IO (@socket.io/redis-adapter), multi-provider LLM orchestration (vLLM, OpenAI, Anthropic, Cloudflare), LoRA Fine-Tuning pipelines, and SDXL GPU workers.',
+          'Modular architecture in NestJS and Next.js with PostgreSQL vector search, Redis queues, multi-model orchestration (OpenAI, Anthropic, vLLM), LoRA fine-tuning, and a Konva.js layered canvas editor connected to image generation.',
         highlights: [
-          'Immutable AI Agent Versioning & Omnichannel Execution: immutable configuration snapshots (AgentVersion) freezing prompts, guardrails, and cost caps; granular AgentRun telemetry (TTFT, tokens, latency, idempotent ToolCalls) and live Human-in-the-Loop WebSocket handoff across Web, WhatsApp, Slack, and API',
-          'Async Vector RAG Pipeline, LLM Evals & LoRA Fine-Tuning: document ingestion with SHA-256 deduplication and vector indexing, automated evaluation suites (EvaluationSet/Run), and LoRA/Unsloth fine-tuning jobs from validated conversations with per-epoch loss telemetry',
-          'Creative AI Studio with Konva.js & GPU Workers (SDXL Turbo / Lightning): versioned BrandKit management, automated ad concept generation, non-destructive layered canvas editor (DesignDocument / CreativeLayer), and automated visual quality auditing',
-          'Multi-Tenant Security, B2B API Keys & Transactional Credit Ledger: strict CustomerAccount → Tenant isolation with granular RBAC, programmatic API Keys (sk_live_...), atomic credit reservation (PREPAID / POSTPAID), immutable CreditLedger, and Stripe subscriptions',
+          'Omnichannel AI Agents: versioned prompts and spending limits, real-time metrics, and instant human takeover across Web, WhatsApp, and Slack',
+          'Continuous Learning (RAG + LoRA): indexes company PDFs/documents and lets supervisors correct agent replies in the chat to retrain the model',
+          'Creative AI Studio: manages brand kits and combines a layered visual canvas with fast AI image generation for marketing',
+          'Multi-company architecture with API Keys, atomic usage credit accounting, and Stripe subscriptions',
         ],
         industryTags: ['ia', 'saas'],
         techTags: ['ai-rag', 'gpu-lab', 'automation', 'realtime'],
         stack: [
-          'NestJS 10 & Next.js 16 (React 19)',
-          'PostgreSQL, Prisma & Vector RAG',
-          'vLLM, OpenAI, Anthropic & LoRA (Unsloth)',
-          'SDXL Turbo / Lightning & Konva.js Canvas',
-          'Redis, BullMQ & Transactional Outbox',
-          'Socket.IO Redis Adapter',
-          'Usage Billing, Credit Ledger & Stripe',
-          'AWS S3 / Cloudflare R2 & RBAC API Keys',
+          'Vector RAG & LoRA (Unsloth)',
+          'vLLM, OpenAI & Anthropic',
+          'SDXL GPU & Konva.js',
+          'BullMQ Outbox & Credit Ledger',
         ],
         statusLabel: 'nodeworkforce.io — AI Agents & Creative Studio SaaS',
         previewType: 'vector-graph',
@@ -2278,7 +2458,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'nodexspot-hybrid-exchange',
-        title: 'NodexSpot: Multi-Chain Hybrid Exchange, DEX Aggregator & Spot Auto-Execution',
+        title: 'NodexSpot: Multi-Chain Hybrid Exchange & Automated Spot Trading',
         role: 'Founder & Principal Architect',
         dateRange: '2026 — Present',
         featured: true,
@@ -2304,31 +2484,36 @@ const enContent: PortfolioContent = {
             alt: 'NodexSpot Markets and Spreads terminal featuring live WebSocket quotes, 24h volume ($571.69M), BTC dominance, and spot pairs (BTC, ETH, BNB, SOL, POL, TRX, AVAX, LINK, NEAR, DOGE).',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo execution: I built everything on my own without external support—the core engine, routing, interface, accounting ledger, custody logic, and spot trading.',
+          personalModules:
+            'Designed and coded the multi-chain wallet system (EVM, Solana, Bitcoin, and Tron), the liquidity router across 5 DEXs, the internal accounting ledger, the conditional order engine (Limit, OCO, Trailing, DCA), automated Spot trading, and the token security scanner.',
+          hardestChallenge:
+            'Connecting 4 completely different blockchain families (Bitcoin, Solana, Tron, and EVM) under a single engine that compares prices across 5 aggregators in real time and executes automated orders with exact balance accounting.',
+          productImpact:
+            'Launched a hybrid exchange that combines the speed and ease of a traditional exchange with decentralized multi-chain liquidity and 24/7 automated Spot trading.',
+        },
         seoDescription:
           'NodexSpot (nodexspot.com): Multi-chain hybrid crypto exchange (EVM, Solana SVM, Bitcoin UTXO, Tron) unifying custodial vaults and Web3 wallets with cross-chain DEX routing (Jupiter, 0x, LI.FI, Chainflip), advanced order types (Limit, OCO, OTOCO, Trailing, DCA), GoPlus risk screening, and automated Spot signal execution.',
-        category: 'Hybrid Crypto Exchange · Cross-Chain Aggregator · Algorithmic Spot Engine',
+        category: 'Hybrid Crypto Exchange · Cross-Chain Aggregator · Automated Spot Trading',
         summary:
-          'Multi-chain hybrid crypto exchange and execution terminal (EVM, Solana SVM, Bitcoin UTXO, and Tron) combining a high-speed custodial ledger with decentralized cross-chain liquidity aggregation (Jupiter, 0x, LI.FI, Chainflip), advanced conditional order types, and automated Spot signal execution with Take Profit and Stop Loss monitoring.',
+          'Multi-chain hybrid crypto exchange (Bitcoin, Solana, Tron, and EVM) that combines fast custodial balances with decentralized liquidity from 5 aggregators, advanced orders, and automated Spot trading.',
         architectureNotes:
-          'Full-stack architecture built on Next.js 16 (PWA) + React 19 and NestJS 11 + Prisma 6 + PostgreSQL + Redis (ioredis) + Viem + BIP39/TweetNaCl, integrating real-time cross-chain quote routing, pre-trade GoPlus Security risk scoring, and atomic custodial ledger accounting.',
+          'Built with Next.js and NestJS + PostgreSQL + Redis, integrating multi-chain wallet derivation, real-time route quoting, pre-trade token risk scanning, and an internal double-check accounting ledger.',
         highlights: [
-          'Multi-Family Chain Architecture (EVM, Solana SVM, Bitcoin UTXO, and Tron) with smart order routing across 5 liquidity providers (Jupiter, 0x, LI.FI, Chainflip, and InDubai) and derived HD wallets (@scure/bip39 + TweetNaCl)',
-          'Advanced Order & Conditional Execution Engine: supports Limit, Stop Loss, Take Profit, Trailing Trigger, OCO, OTOCO, and time/price-conditional DCA strategies',
-          'Spot Signals Auto-Execution Engine: unlocks quantitative setups (RSI, MACD, volume spikes) that automatically execute entry swaps and actively monitor live Take Profit and Stop Loss exits',
-          'Pre-trade GoPlus Security risk shield (token, address, and route simulation screening) paired with atomic internal ledger accounting across CustodialBalance and LedgerEntry',
+          'Unified custody and routing across EVM, Solana, Bitcoin, and Tron searching for the best price across Jupiter, 0x, LI.FI, and Chainflip',
+          'Advanced order engine: Limit, Stop Loss, Take Profit, Trailing Stop, OCO, OTOCO, and automated recurring buys (DCA)',
+          'Automated Spot Trading: executes market entries from quantitative signals and monitors Take Profit and Stop Loss exits 24/7',
+          'Pre-trade GoPlus security shield that detects malicious tokens before swapping, backed by an atomic internal ledger',
         ],
         industryTags: ['crypto', 'fintech', 'live-market'],
         techTags: ['onchain', 'realtime', 'automation', 'analytics'],
         stack: [
-          'Next.js 16 (PWA)',
-          'React 19',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL & Prisma 6',
-          'Redis (ioredis)',
-          'Viem & BIP39 / TweetNaCl',
+          'EVM, Solana SVM, UTXO & Tron',
           'Jupiter, 0x, LI.FI & Chainflip',
-          'GoPlus Risk Engine',
+          'BIP39 / TweetNaCl Custody',
+          'GoPlus Security Engine',
         ],
         statusLabel: 'nodexspot.com — Production Hybrid Exchange',
         previewType: 'live-market',
@@ -2336,7 +2521,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'cococo-ventures',
-        title: 'CoCoCo Ventures: Corporate Venture Builder & Tech Execution for Enterprises (Mexico & Spain)',
+        title: 'CoCoCo Ventures: Corporate Venture Builder (Mexico & Spain)',
         role: 'Co-CTO',
         dateRange: '2023 — 2024',
         featured: true,
@@ -2363,27 +2548,35 @@ const enContent: PortfolioContent = {
             alt: 'Editorial illustration of the CoCoCo Ventures leadership and operator team.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As Co-CTO I led engineering teams of 5 to 10+ professionals across Mexico and Spain alongside corporate executives and business operators.',
+          personalModules:
+            'Defined software architectures, tech stacks, cloud infrastructure, and AI integrations for new digital ventures, stepping in directly to solve complex technical roadblocks.',
+          hardestChallenge:
+            'Connecting fast-moving new digital products with the legacy ERPs, compliance rules, and security standards of major corporations (banking, pharma, auto parts, and retail) to launch in weeks.',
+          productImpact:
+            'Accelerated the launch of multiple digital business units across 10+ industries in Mexico and Spain, turning existing corporate assets into new revenue streams.',
+        },
         seoDescription:
           'CoCoCo Ventures (cococo.ventures/mx — Corporate Cofounder Company): International Corporate Venture Builder operating across Mexico (Mexico City, Monterrey) and Spain (Madrid, Barcelona), building new digital businesses and AI automations for major corporations including Fragua, Santander, Banco BASE, CIOSA, Tecnolite, Global Gas, and Kiosko. Role: Co-CTO.',
-        category: 'Corporate Venture Builder · Tech Strategy & AI Execution · Multi-Industry Products',
+        category: 'Corporate Venture Builder · Tech Strategy & AI · Multi-Industry Products',
         summary:
-          'International Corporate Venture Builder ("Corporate Cofounder Company") operating in Mexico (Mexico City & Monterrey) and Spain (Madrid & Barcelona) as an external entrepreneurial S.W.A.T. team for major corporations (including Fragua/Farmacias Guadalajara, Santander, Banco BASE, CIOSA Autopartes, Tecnolite, Global Gas, Kiosko, Gonher, and Impuls) to build new digital ventures from scratch, monetize assets, and automate operations with AI to directly grow EBITDA.',
+          'Corporate Venture Builder operating in Mexico and Spain that partners with major enterprises (such as Farmacias Guadalajara, Santander, Banco BASE, CIOSA, Tecnolite, and Kiosko) to build new digital businesses from scratch and automate operations with AI.',
         architectureNotes:
-          'Served as Co-CTO co-leading technology strategy, software architecture, engineering teams, and rapid product execution across corporate ventures in 10+ industries (B2B/D2C marketplaces, e-commerce, FinTech, HealthTech, PropTech with 360° & AI vision, convenience retail, and smart locker logistics), from market validation to production scale.',
+          'Co-led technology strategy, architecture, and engineering teams across 10+ industries (B2B/D2C marketplaces, e-commerce, FinTech, HealthTech, PropTech, and smart logistics) from initial validation to production scale.',
         highlights: [
-          'Multi-Venture Technical Leadership (Co-CTO): architected and launched high-velocity digital business units for leading corporations across Mexico and Spain without distracting their core business operations',
-          'Cross-Industry Venture Track Record (10+ Industries): engineered D2C auto-parts e-commerce platforms, electrical/lighting B2B marketplaces (Voltz), convenience-store foodtech apps, banking FinTech solutions, D2C pharmaceutical telemedicine, and smart locker networks',
-          'AI Leverage, Data & Operational Efficiency: deployed artificial intelligence, 360° computer vision for real estate, and enterprise integrations focused on generating net-new P&L revenue and reducing operational costs',
+          'Technical Leadership (Co-CTO): designed and launched new digital business units for major corporations without slowing down their core operations',
+          'Products Across 10+ Industries: auto-parts e-commerce, electrical B2B marketplaces (Voltz), retail foodtech apps, banking FinTech tools, telemedicine, and smart locker networks',
+          'Practical AI & Efficiency: implemented computer vision, process automation, and ERP integrations focused on growing revenue and reducing operating costs',
         ],
         industryTags: ['b2b', 'ia', 'saas', 'ecommerce', 'fintech'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'Multi-Venture System Architecture',
-          'Next.js, React & TypeScript',
-          'Node.js, NestJS & Cloud Run',
+          'Multi-Venture Architecture',
           'AI & Process Automation',
-          'B2B / D2C Marketplaces & FinTech',
-          'PostgreSQL, Graph & Search Engines',
+          'B2B / D2C Marketplaces',
+          'Google Cloud Run & Graph DBs',
         ],
         statusLabel: 'cococo.ventures — Corporate Venture Builder (MX & ES)',
         previewType: 'vector-graph',
@@ -2391,7 +2584,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'voltz-b2b-marketplace',
-        title: 'Voltz: Core B2B Marketplace & Industrial Catalog Intelligence Engine',
+        title: 'Voltz: B2B Marketplace & AI Search for Electrical Supply',
         role: 'CTO',
         dateRange: 'Jun 2023 — Oct 2026',
         liveUrl: 'https://www.voltz.mx',
@@ -2427,32 +2620,36 @@ const enContent: PortfolioContent = {
             alt: 'Voltz B2B industrial product detail view with confidential enterprise pricing, reserved stock, and Neo4j-powered cross-supplier equivalent SKU recommendations.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As CTO I led a team of 3 to 6 engineers while personally designing and coding the product equivalence graph, the AI search engine, and the B2B quotation system.',
+          personalModules:
+            'Designed and coded the Neo4j product equivalence graph, the hybrid search engine with Elasticsearch 8 + ELSER AI, the multi-supplier B2B quotation system with inventory reservation, and the cloud ingestion workers.',
+          hardestChallenge:
+            'Unifying tens of thousands of electrical products from different brands and distributors (Schneider, ABB, Siemens, Condumex) where every supplier names the same item differently, allowing buyers to find exact equivalents in milliseconds.',
+          productImpact:
+            'Turned fragmented distributor catalogs into Mexico’s most complete electrical B2B marketplace, cutting industrial quote turnaround times from days to minutes.',
+        },
         seoDescription:
           'Voltz (voltz.mx): Leading B2B electrical and industrial marketplace in Mexico managing tens of thousands of SKUs (Schneider, ABB, Siemens, Eaton, Condumex) with Neo4j, Elasticsearch 8 + ELSER, PostgreSQL (Neon + Prisma), Google Cloud Tasks/Run, OpenAI/Ollama, and Google Merchant Center API.',
         category: 'B2B Marketplace · Graph Catalog Engine · AI Search',
         summary:
-          'Leading B2B platform in Mexico for automated electrical and industrial supply and quoting (+tens of thousands of interconnected SKUs from Schneider Electric, ABB, Siemens, Eaton, Legrand, and Condumex), unifying fragmented national inventories in real time through a polyglot Neo4j, Elasticsearch 8 (ELSER), and PostgreSQL architecture.',
+          'Mexico’s B2B marketplace for electrical and industrial supply (+tens of thousands of products from Schneider Electric, ABB, Siemens, Eaton, and Condumex) that connects distributor inventories in real time using graphs and AI.',
         architectureNotes:
-          'Event-driven polyglot architecture built with NestJS, Neo4j (cross-distributor SKU homologation graph and real-time best_price engine), Elasticsearch 8 + ELSER (BM25 lexical + neural sparse embeddings), PostgreSQL (Neon Serverless + Prisma) & Firestore, asynchronous ingestion via Google Cloud Tasks + Cloud Run, OpenAI/Ollama catalog enrichment pipelines, and live Google Merchant Center API sync.',
+          'Architecture combining NestJS, Neo4j (to match equivalent products across suppliers and pick the best price), Elasticsearch 8 with AI semantic search, PostgreSQL, background workers on Google Cloud Run, and AI catalog enrichment.',
         highlights: [
-          'Neo4j SKU homologation graph linking tens of thousands of equivalent products across distributors and brands, computing real-time best_price, optimal margin, and consolidated inventory with price history',
-          'Elasticsearch 8 + ELSER hybrid search engine (lexical BM25 + neural embeddings) with industrial domain rules, subsidiary brand equivalence (Schneider ↔ Square D, Eaton ↔ Cutler-Hammer, Legrand ↔ Bticino), and technical intent detection',
-          'Transactional B2B quotation engine in PostgreSQL (Neon + Prisma) and Firestore featuring line-item audit trails (PartidaHistory), Zoho CRM sync, and Conekta, Openpay, and SPEI payment rails',
-          'Massive event-driven ingestion via Google Cloud Tasks + Cloud Run, Generative AI pipelines (OpenAI / Ollama) structuring raw technical specs into filterable taxonomies/SEO, and fault-tolerant Google Merchant Center API synchronization',
+          'Product graph in Neo4j that connects equivalent parts across brands and distributors, automatically calculating the best price, margin, and available stock',
+          'Intelligent search engine (Elasticsearch + AI) that understands technical electrical terms and suggests equivalent subsidiary brands (such as Schneider ↔ Square D)',
+          'Multi-supplier B2B quotation engine with inventory reservation, negotiation history, CRM sync, and online/SPEI payments',
+          'Automated catalog processing with AI (OpenAI / Ollama) to clean messy technical sheets and sync prices with Google Merchant Center',
         ],
         industryTags: ['ecommerce', 'b2b', 'data-analytics'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'NestJS & TypeScript',
           'Neo4j (Graph DB)',
-          'Elasticsearch 8 + ELSER',
-          'PostgreSQL (Neon) & Prisma',
-          'Google Cloud Run & Tasks',
+          'Elasticsearch 8 + ELSER AI',
           'OpenAI & Ollama Pipelines',
-          'Firestore',
-          'Google Merchant Center API',
-          'Conekta, Openpay & SPEI',
-          'Zoho CRM Integration',
+          'Google Cloud Run & Tasks',
         ],
         statusLabel: 'voltz.mx — Production B2B Marketplace',
         previewType: 'vector-graph',
@@ -2460,7 +2657,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'cicada-institutional-trading',
-        title: 'Cicada: Institutional Fixed-Income Trading & Financial Infrastructure (CLOB / RFQ)',
+        title: 'Cicada: Institutional Bond Trading Terminal (CLOB / RFQ)',
         role: 'Frontend Lead',
         dateRange: 'Jan 2022 — May 2023',
         liveUrl: 'https://www.cicada.io',
@@ -2495,29 +2692,36 @@ const enContent: PortfolioContent = {
             alt: 'Comprehensive Cicada bond execution terminal combining Central Limit Order Book (CLOB) depth, Yield-Spread Calculator (DV01, Macaulay/Modified Duration, Convexity), and historical yield curves.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As Frontend Lead I led 2 to 4 frontend developers working closely with the institutional trading and backend teams in the U.S.',
+          personalModules:
+            'Personally designed and coded the core real-time trading terminal: the Central Limit Order Book (CLOB), the multi-bank Request for Quote (RFQ) module, the yield curve charts, and the financial bond calculator.',
+          hardestChallenge:
+            'Processing and rendering hundreds of price updates per second via WebSockets—updating order books, spreads, and yield curves at the same time—without freezing the browser screen during peak market hours.',
+          productImpact:
+            'Digitized institutional trading of Mexican government bonds (M Bono & UDI Bono) on an SEC/FINRA-regulated U.S. platform backed by a US$13.5M Series A led by Citi.',
+        },
         seoDescription:
           'Cicada (cicada.io): U.S. B2B FinTech platform modernizing Latin American fixed-income capital markets via electronic CLOB and RFQ trading, operated as an SEC/FINRA-regulated ATS (US$13.5M Series A led by Citi). Role: Frontend Lead.',
         category: 'Financial Infrastructure · Institutional Trading · Capital Markets',
         summary:
-          'U.S. B2B FinTech platform (backed by a US$13.5M Series A led by Citi and operated as an SEC/FINRA-regulated ATS) modernizing Latin American fixed-income capital markets. Connects institutional investors and dealers through electronic Central Limit Order Books (CLOB), Request for Quote (RFQ) protocols, and fixed-income analytics.',
+          'U.S. institutional trading platform (backed by a US$13.5M Series A led by Citi and regulated by the SEC/FINRA) that modernizes the buying and selling of Latin American government bonds among banks, pension funds, and broker-dealers.',
         architectureNotes:
-          'Frontend architecture leadership for the low-latency electronic bond trading terminal, real-time CLOB market depth visualization, multi-party RFQ negotiation workflows, quantitative fixed-income calculators (Yield, Spread, DV01, Duration, Convexity), and post-trade settlement automation.',
+          'Frontend architecture leadership for the low-latency electronic trading terminal, live order book depth visualization, multi-dealer quote workflows (RFQ), and real-time bond risk calculators.',
         highlights: [
-          'Institutional electronic bond trading (M Bono, UDI Bono) powered by Central Limit Order Books (CLOB) and multi-dealer Request for Quote (RFQ) protocols',
-          'Real-time Market Data & Analytics suite: Curve Plotter, Spread Analysis, Relative Value Matrix, and quantitative bond calculator (Dirty Price, DV01, Macaulay/Modified Duration, Convexity)',
-          'Pre-trade and post-trade workflow automation: yield/price order entry, T+1 / T+2 settlement instructions (Clearstream, Euroclear, Indeval), and institutional API connectivity',
-          'Regulated financial infrastructure operated by Cicada Securities (SEC-registered ATS & FINRA member), backed by a US$13.5M Series A led by Citi',
+          'Electronic government bond trading (M Bono, UDI Bono) combining a live Central Limit Order Book (CLOB) and multi-dealer Request for Quote (RFQ)',
+          'Real-time analysis tools: Yield Curve Plotter, Spread Analysis, Relative Value Matrix, and risk calculators (DV01, Duration, Convexity)',
+          'End-to-end trade execution with automated post-trade settlement instructions (Clearstream, Euroclear, Indeval)',
+          'Regulated financial infrastructure operated by Cicada Securities (SEC ATS & FINRA member), backed by Citi',
         ],
         industryTags: ['fintech', 'live-market', 'b2b'],
         techTags: ['realtime', 'analytics', 'automation'],
         stack: [
-          'React',
-          'TypeScript',
-          'WebSockets (Real-Time Feeds)',
-          'CLOB & RFQ Trading Engine UI',
-          'Fixed-Income Analytics & Charting',
-          'High-Frequency State Management',
-          'Financial APIs & FIX Connectivity',
+          'CLOB & RFQ Trading Engine',
+          'High-Frequency WebSockets',
+          'Fixed-Income Analytics (DV01)',
+          'FIX & Institutional APIs',
         ],
         statusLabel: 'SEC / FINRA Regulated ATS · US$13.5M Series A (Citi)',
         previewType: 'live-market',
@@ -2525,7 +2729,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'imperio-fintech-edtech',
-        title: 'Imperio: Quantitative FinTech Ecosystem, Macro Engine & TradingView Bridge',
+        title: 'Imperio: Macroeconomic Terminal, Harmonic Scanner & TradingView Bridge',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2024 — 2026',
         image: '/projects/imperio/Centro de Comando Imperio_ Terminal Macroeconómica.png',
@@ -2548,32 +2752,36 @@ const enContent: PortfolioContent = {
             alt: 'Imperio main member dashboard displaying learning streak, Academy progress, quick-launch cards for the Harmonic Scanner, MT5 Backtesting, Command Center, and Axi Select ($1M USD) institutional funding.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Personally built almost the entire ecosystem end-to-end, with occasional support only for visual assets and educational content.',
+          personalModules:
+            'Engineered all 3 applications: the Next.js web app, the NestJS backend, the macroeconomic data engine (Federal Reserve, US Treasury, institutional positioning), the live MetaTrader 5 account auditor, and the Chrome extension.',
+          hardestChallenge:
+            'Creating a Chrome extension capable of communicating directly with TradingView’s chart canvas to automatically draw harmonic patterns and entry, Stop Loss, and Take Profit zones in under 100 milliseconds.',
+          productImpact:
+            'Turned hours of manual macroeconomic analysis and chart drawing into a 1-click workflow, uniting academy, algorithmic scanner, MT5 account auditing, and affiliate network in a single subscription.',
+        },
         seoDescription:
           'Imperio (tradeimper.io): Institutional FinTech and EdTech ecosystem comprising a Next.js 16 PWA (66 routes), a NestJS 11 Core Market Engine (+116 REST endpoints, 43 Prisma/PostgreSQL models, Redis/BullMQ), and a sub-100ms Chrome MV3 TradingView injection bridge.',
         category: 'Institutional FinTech · Quantitative Engine · TradingView Bridge',
         summary:
-          'Institutional-grade FinTech and EdTech ecosystem unifying a quantitative analysis and financial education SaaS, a real-time macroeconomic/algorithmic engine (FRED, CFTC/COT, US Treasury Yields), automated MT5 brokerage auditing (MetaAPI), and a < 100 ms direct TradingView injection bridge (Chrome Extension MV3).',
+          'Financial and educational ecosystem that brings together a real-time macroeconomic terminal, an algorithmic chart pattern scanner, live MetaTrader 5 account auditing, and a Chrome extension that draws signals directly onto TradingView in one click.',
         architectureNotes:
-          'Tripartite decoupled architecture: (1) Web App & PWA in Next.js 16 + React 19 (66 routes, +106 components, Three.js/R3F, GSAP, Rive, Remotion, and Lightweight Charts v5 / ECharts 6 / amCharts 5), (2) Core Backend & Market Engine in NestJS 11 (19 domain modules, +116 REST endpoints, 43 PostgreSQL Neon + Prisma ORM models, BullMQ + Redis queues, and Puppeteer Stealth), and (3) Chrome Extension Manifest V3 Browser Bridge (+3,700 LOC) injecting into TradingView MAIN world.',
+          'Three connected applications: (1) Next.js web platform with interactive financial charts, (2) NestJS + PostgreSQL + Redis backend that processes macroeconomic data and market signals, and (3) a Chrome extension that injects drawings straight onto TradingView.',
         highlights: [
-          'Tripartite production ecosystem: Next.js 16 Web App/PWA (66 routes, +106 components), NestJS 11 Core API (19 modules, +116 endpoints, 43 PostgreSQL/Prisma models), and Chrome MV3 Extension (+3,700 lines of JS)',
-          'Macro & Quantitative Intelligence Engine: Redis + BullMQ ingestion of Federal Reserve (FRED) series, US Treasury Yield Curves (1M–30Y), CFTC/COT institutional reports, and retail sentiment to compute weighted Market Bias Snapshots',
-          'TradingView Bridge (< 100 ms 1-Click Execution): reverse-engineered MAIN-context injection into TradingView canvas to programmatically plot harmonic patterns (XABCD), risk/reward boxes, and forensic Entry/SL/TP1–TP3 levels',
-          'Live brokerage auditing via MetaAPI / MetaTrader 5 with AI-assisted trade analysis, interactive IB affiliate network trees (@xyflow/react, D3 Tree), automated Lead Scoring CRM, and VAPID Web Push alerts',
+          '3-part ecosystem in production: Web App/PWA, central API in NestJS + PostgreSQL, and a Chrome Extension for traders',
+          'Macroeconomic Terminal: processes Federal Reserve (FRED) data, US Treasury yields, institutional COT reports, and market sentiment to determine daily bias',
+          'TradingView Bridge (< 100 ms): draws harmonic patterns, risk/reward boxes, and Entry, Stop Loss, and Take Profit levels on the user’s chart in 1 click',
+          'Live trading account auditing connected to MetaTrader 5 with AI feedback, affiliate network tree, and real-time push alerts',
         ],
         industryTags: ['live-market', 'elearning', 'saas', 'multinivel'],
         techTags: ['realtime', 'analytics', 'automation', 'ai-rag'],
         stack: [
-          'Next.js 16',
-          'React 19',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL (Neon) & Prisma',
-          'Redis & BullMQ',
-          'Chrome Extension MV3',
-          'Three.js (R3F) & GSAP',
+          'Chrome Extension MV3 Bridge',
+          'Macro Engine (FRED / COT)',
+          'MetaAPI (MT5 Live Audit)',
           'Lightweight Charts & ECharts 6',
-          'MetaAPI (MT5) & Puppeteer',
         ],
         statusLabel: '3 Apps · +116 Endpoints · 43 DB Models',
         previewType: 'live-market',
@@ -2581,7 +2789,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'gibor-academy-community-mlm',
-        title: 'Gibor Community: EdTech Platform, WebRTC Live Studio & Graph MLM',
+        title: 'Gibor Community: Online Academy, Browser Live Studio & Affiliate Network',
         role: 'Principal Developer & Product Developer',
         dateRange: '2024 — 2026',
         image: '/projects/gibor-community/image.png',
@@ -2610,31 +2818,35 @@ const enContent: PortfolioContent = {
             alt: 'Commercial organization dashboard and Neo4j binary network tree resolving 10-level genealogical queries in under 20 ms, showing 149,221.64 volume points, 98.9% leg balance, and Gibor Travel Points loyalty',
           },
         ],
+        ownership: {
+          teamScope:
+            'Built almost the entire platform end-to-end on my own, with targeted support on design and commercial operations.',
+          personalModules:
+            'Developed the browser TV studio (Gibor Live Studio with 8 scenes and 2 educators on screen without installing OBS), the binary network and commission engine in Neo4j, the on-demand academy, and the crypto/fiat payment gateways.',
+          hardestChallenge:
+            'Streaming live HD video straight from the browser with under half a second of delay for 500+ students per room, while the graph database calculates 10-level network volumes in milliseconds.',
+          productImpact:
+            'Scaled the community to 5,000+ registered users and 1,200+ monthly active subscribers across 5 LATAM countries, eliminating external Zoom/Vimeo costs and automating commission payouts.',
+        },
         seoDescription:
           'Gibor Community (giborcommunity.com): EdTech platform, sub-second WebRTC Live Studio (WHIP/WHEP < 500 ms), and Graph MLM Ecosystem (Neo4j < 20 ms) serving +5,000 registered users and +1,200 monthly active subscribers across LATAM.',
         category: 'EdTech · WebRTC Live Studio · Graph MLM · FinTech',
         summary:
-          'International EdTech and financial platform (+5,000 registered users and +1,200 monthly active subscribers across LATAM) centralizing on-demand education (Gibor Academy), a 100% browser-based TV studio with sub-second latency (< 500 ms WHIP/WHEP), and a graph-powered commercial engine in Neo4j.',
+          'Educational and commercial platform (+5,000 registered users in LATAM) combining on-demand courses, its own browser-based live streaming studio, and a real-time affiliate network engine.',
         architectureNotes:
-          'High-concurrency distributed architecture built with React, TypeScript, NestJS, PostgreSQL, Firebase, and Neo4j featuring < 20 ms genealogical indexing, browser-native WebRTC streaming (WHIP/WHEP at 720p/1080p @ 30 FPS via Cloudflare Stream & RealtimeKit), Socket.IO interactive rooms, and multi-rail crypto/fiat checkout.',
+          'Distributed backend with a Neo4j graph database for the affiliate tree, browser-native WebRTC streaming studio, interactive real-time rooms, and automated crypto and local currency billing.',
         highlights: [
-          '24/7 regional scale across LATAM (Peru, Mexico, Colombia, Ecuador, Chile): +5,000 registered users and +1,200 monthly active subscribers consuming courses, live market signals, and network tools',
-          'Gibor Live Studio (WebRTC WHIP/WHEP < 500 ms): 100% browser TV studio with 8 scenes and 2 simultaneous P2P educators streaming 720p/1080p @ 30 FPS without OBS to 300–500+ concurrent students per session',
-          'Real-time room engagement via Socket.IO: moderated live chat, floating reactions, instant polls, and second-by-second attendance auditing',
-          '10-level organization trees in Neo4j with < 20 ms query response times, automated rank/commission settlement, Gibor Travel Points loyalty, and crypto/fiat gateways (CoinPayments, XRPL, Openpay, Culqi, Izipay)',
+          'Active community across Peru, Mexico, Colombia, Ecuador, and Chile with 5,000+ registered users and 1,200+ active monthly members',
+          'Browser TV Studio (Gibor Live Studio): lets 2 educators broadcast together in HD across 8 scenes without OBS to 500+ students per room',
+          'Live rooms with moderated chat, on-screen reactions, instant polls, and automatic attendance tracking',
+          'Binary tree in Neo4j querying 10 levels deep in under 20 ms, automated commission payouts, and travel loyalty points',
         ],
         industryTags: ['elearning', 'streaming', 'multinivel', 'crypto'],
         techTags: ['ai-rag', 'realtime', 'automation', 'onchain'],
         stack: [
-          'React',
-          'TypeScript',
-          'NestJS',
-          'Neo4j',
-          'WebRTC (WHIP/WHEP)',
-          'Cloudflare Stream',
-          'Socket.IO',
-          'PostgreSQL',
-          'Firebase',
+          'WebRTC Studio (WHIP/WHEP)',
+          'Neo4j Binary Graph (<20ms)',
+          'Cloudflare Stream & Socket.IO',
           'Google Cloud Tasks',
         ],
         statusLabel: '+5,000 Users · +500 Concurrent WebRTC Viewers',
@@ -2643,7 +2855,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'salomon-multichain-wallet',
-        title: 'Salomon: Building a Multi-Chain, Non-Custodial Crypto Wallet for Latin America',
+        title: 'Salomon: Non-Custodial Multi-Chain Crypto Wallet (iOS, Android & Web)',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://salomonec.com',
@@ -2673,28 +2885,35 @@ const enContent: PortfolioContent = {
             alt: 'Token swap interface in Salomon Wallet with real-time conversion quotes.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo development: built the entire wallet for iOS, Android, Web, and the multi-chain engine without an external team.',
+          personalModules:
+            'Coded the local private-key vault on the device, the connections to Ethereum, BNB Chain, Solana, and TRON, the built-in token swap module, local fiat-to-USDT purchases, and the App Store / Google Play releases.',
+          hardestChallenge:
+            'Unifying 4 very different blockchains (EVM, Solana, and TRON) inside a simple, fast mobile app while ensuring private keys never leave the user’s phone.',
+          productImpact:
+            'Published on the App Store, Google Play, and Web under PAY CORE SAS, allowing users across Latin America to hold their own crypto and buy USDT with local payment methods.',
+        },
         seoDescription:
           'Salomon Wallet (salomonec.com): FinTech and Web3 platform providing a multi-chain, non-custodial cryptocurrency wallet for Latin America, published on the App Store (iOS), Google Play (Android), and Web. Integrates Ethereum, BNB Smart Chain, Solana, and TRON (BTC, ETH, SOL, BNB, TRX, USDT), token swaps, and Fiat-to-USDT on-ramp. Role: Principal Developer.',
-        category: 'Blockchain Engineering · Non-Custodial Multi-Chain Wallet · Web3 FinTech (iOS / Android / Web)',
+        category: 'Blockchain · Non-Custodial Wallet · Web3 FinTech (iOS / Android / Web)',
         summary:
-          'FinTech and Web3 platform specializing in decentralized digital asset management through a non-custodial multi-chain cryptocurrency wallet for Latin America (published on iOS App Store, Android Google Play, and Web Wallet), unifying Ethereum, BNB Smart Chain, Solana, and TRON.',
+          'Non-custodial cryptocurrency wallet for Latin America (available on the App Store, Google Play, and Web) bringing Ethereum, BNB Chain, Solana, and TRON together in one easy-to-use app.',
         architectureNotes:
-          'Led engineering as Principal Developer across the cross-platform ecosystem (iOS, Android, and Web Wallet), non-custodial client-side key management, multi-chain RPC connectors (EVM, Solana, and TRON), digital asset swap routing, real-time on-chain transaction monitoring, and Fiat-to-Crypto USDT acquisition services.',
+          'Cross-platform architecture with encrypted local key storage on the device, direct multi-chain RPC connections, built-in token swaps, and a fiat-to-USDT purchase ramp.',
         highlights: [
-          'Non-Custodial Wallet Architecture & Multi-Chain Interoperability: full user self-custody of private keys with unified support for Ethereum, BNB Smart Chain, Solana, and TRON (managing BTC, ETH, SOL, BNB, TRX, USDT, and custom token imports)',
-          'Digital Asset Swaps & Fiat-to-Crypto Integration: built-in token swap engine, USDT acquisition via traditional payment rails (credit card and bank transfer), and on-chain transaction history linked to blockchain explorers',
-          'Cross-Platform Financial Experience (iOS, Android & Web): production mobile apps published on the App Store and Google Play (PAY CORE SAS) alongside a web wallet with QR scanning and encrypted backup workflows',
+          'True self-custody: users keep full control of their private keys with support for BTC, ETH, SOL, BNB, TRX, USDT, and custom tokens',
+          'Instant token swaps and direct USDT purchases via credit card or local bank transfer',
+          'Published mobile apps on the App Store and Google Play synced with the web wallet, QR scanner, and seed phrase backup',
         ],
         industryTags: ['crypto', 'fintech'],
         techTags: ['onchain', 'realtime', 'automation'],
         stack: [
-          'TypeScript & React Native / Cross-Platform',
-          'Web3 & Multi-Chain RPC (EVM, Solana, TRON)',
-          'Non-Custodial Key Management',
-          'Token Swaps & Liquidity Routing',
-          'Fiat-to-Crypto On-Ramp (USDT)',
-          'iOS (App Store) & Android (Google Play)',
-          'Web Wallet & On-Chain Explorer Sync',
+          'EVM, Solana & TRON RPC',
+          'Non-Custodial Key Vault',
+          'React Native (iOS & Android)',
+          'On-Chain Swaps & USDT Ramp',
         ],
         statusLabel: 'salomonec.com · Live on App Store, Google Play & Web',
         previewType: 'crypto-gateway',
@@ -2702,7 +2921,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'etrno-fintech-ai-studio',
-        title: 'ETRNO: FinTech Ecosystem, Multi-Store Marketplace, Binary Network & AI Studio (SION AI)',
+        title: 'ETRNO: FinTech Ecosystem, Marketplace, Binary Network & AI Studio',
         role: 'Principal Developer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://www.etrnoworld.com',
@@ -2710,30 +2929,36 @@ const enContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'ETRNO (etrnoworld.com) FinTech ecosystem, multi-store marketplace, interactive binary network tree, and ETRNO AI Studio (SION AI) engineered as Principal Developer by Victor Alvarez',
+        ownership: {
+          teamScope:
+            '100% solo development: built the entire platform and all its modules from start to finish on my own.',
+          personalModules:
+            'Coded the AI studio (SION AI with in-browser computer vision), the custom partner storefront marketplace, the crypto/fiat wallet with bonus simulator, the interactive binary tree, and the admin backoffice.',
+          hardestChallenge:
+            'Running computer vision models and smooth 3D graphics directly in the browser without slowing down the store, wallet, or affiliate tree on mobile devices.',
+          productImpact:
+            'Replaced 4 separate tools (academy, online store, network software, and AI assistant) with a single platform where every partner gets their own public storefront.',
+        },
         seoDescription:
           'ETRNO (etrnoworld.com): Comprehensive web platform and PWA unifying digital asset management (Wallet & Liquidity), interactive binary affiliate network (D3/ReactFlow), multi-store marketplace, live academy, and AI Studio (ETRNO AI Studio & SION AI with TensorFlow.js & MediaPipe Vision). Role: Principal Developer.',
-        category: 'FinTech · AI Studio (SION AI) · Multi-Store Marketplace · Graph MLM',
+        category: 'FinTech · AI Studio · Multi-Store Marketplace · Graph MLM',
         summary:
-          'Comprehensive web platform and PWA combining digital asset management (Wallet, liquidity lines, and reward simulator), an interactive binary affiliate network, customizable distributor storefronts, live streaming academy, and an Artificial Intelligence suite (ETRNO AI Studio & SION AI) with 60 FPS 3D/Motion experiences.',
+          'All-in-one platform combining a digital wallet, interactive binary affiliate network, custom partner storefronts, live academy, and an Artificial Intelligence executive coach.',
         architectureNotes:
-          'Modular Atomic Design architecture in React 18, TypeScript, and Vite featuring hybrid state management (Redux Toolkit, Zustand, TanStack Query), real-time Socket.IO, 3D/Motion rendering (Three.js/R3F, GSAP, Framer Motion, Rive), browser computer vision (@mediapipe/tasks-vision, TensorFlow.js, BlazeFace), Cloudflare Stream, Zoom SDK, Algolia Search, and PWA/Capacitor.',
+          'Progressive Web App (PWA) featuring interactive 3D graphics, in-browser facial vision with TensorFlow.js and MediaPipe, real-time network tree visualization, live video streaming, and instant Algolia search.',
         highlights: [
-          'ETRNO AI Studio & SION AI: specialized executive AI mentor trained on leadership, compensation plans, and sales closing, integrated with browser computer vision and facial intelligence models (@mediapipe/tasks-vision, TensorFlow.js, BlazeFace)',
-          'B2B/B2C Marketplace & Custom Public Storefronts: dynamic catalog for physical wellness products and digital licenses enabling each partner to launch a personalized storefront with order and shipment tracking',
-          'Wallet, Liquidity & Real-Time Binary Tree: crypto/fiat balance and payout management (Openpay / crypto nodes), interactive cycle reward simulator, hierarchical genealogy in react-d3-tree / ReactFlow, and QR convention ticketing',
-          'Live Academy (Cloudflare Stream & Zoom SDK) & Financial Audit Backoffice: structured LMS, signal scanner, and admin console for financial cutoffs, payroll dispersion, and 5-tier RBAC (USER, ADMIN, SUPPORT, EDUCATOR, STARTER)',
+          'SION AI: conversational business mentor integrated with real-time visual and facial analysis directly in the browser',
+          'Custom Partner Storefronts: catalog of physical and digital products where each affiliate shares their own public sales link',
+          'Crypto/fiat wallet, interactive commission simulator, visual binary tree, and QR tickets for live events',
+          'Live streaming academy and administrative backoffice for financial cutoffs, commission payouts, and role permissions',
         ],
         industryTags: ['saas', 'ia', 'multinivel'],
         techTags: ['ai-rag', 'realtime', 'automation', 'analytics'],
         stack: [
-          'React 18 & TypeScript',
-          'Redux Toolkit, Zustand & React Query',
-          'Three.js (R3F), GSAP & Rive',
           'TensorFlow.js & MediaPipe Vision',
-          'D3.js & ReactFlow (Binary Tree)',
-          'Apache ECharts & ApexCharts',
-          'Cloudflare Stream & Zoom SDK',
-          'Firebase, Algolia & Socket.IO',
+          'Three.js (R3F), GSAP & Rive',
+          'D3.js & ReactFlow Binary Tree',
+          'Cloudflare Stream & Algolia',
         ],
         statusLabel: 'etrnoworld.com — FinTech & AI Studio Ecosystem',
         previewType: 'elearning-mlm',
@@ -2741,7 +2966,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'gibor-shop-ecommerce',
-        title: 'Gibor Shop: Multi-Store E-Commerce & Dropshipping (LATAM)',
+        title: 'Gibor Shop: Multi-Store E-Commerce & Dropshipping in LATAM',
         role: 'Principal Developer & Product Developer',
         dateRange: '2026',
         image: '/projects/gibor-shop/image.png',
@@ -2773,30 +2998,34 @@ const enContent: PortfolioContent = {
             alt: 'Gibor Shop Order History dashboard managing over 2,023 orders across the full transactional lifecycle (Pending, Paid, Received, Shipped, Delivered, Incident, and Return), multi-store filter, and per-order live chat.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo development: designed and coded the entire multi-country platform end-to-end on my own.',
+          personalModules:
+            'Built the custom seller storefront system, the engine that automatically splits a shopping cart into sub-orders per supplier, the embedded visual store builder connection, country sales dashboards, and live per-order chat.',
+          hardestChallenge:
+            'Connecting hundreds of seller stores with multiple dropshipping suppliers across 4 countries, automatically splitting each purchase by supplier without overselling available inventory.',
+          productImpact:
+            'Processed 3,100+ orders across 320+ active stores selling in Peru, Colombia, Mexico, and Ecuador with full delivery tracking and automatic profit calculation.',
+        },
         category: 'E-Commerce · MLM · LATAM Dropshipping',
         summary:
-          'Regional e-commerce and dropshipping ecosystem across Peru, Colombia, Mexico, and Ecuador for the Gibor commercial network, powering +320 active stores and +3,100 processed orders with automated multi-supplier order splitting and server-side Meta CAPI attribution.',
+          'Regional e-commerce and dropshipping platform (Peru, Colombia, Mexico, and Ecuador) with 320+ active stores and 3,100+ processed orders, automating everything from supplier catalogs to delivery dispatch.',
         architectureNotes:
-          'Full-stack architecture built on Next.js 14 (App Router), NestJS 10, Prisma ORM, and PostgreSQL featuring an embedded visual store builder via Luthor SSO (postMessage), Cloudflare R2 (AWS S3 SDK) voucher storage, custom Apache ECharts funnel telemetry, and per-order Socket.IO live chat.',
+          'Multi-store platform with automatic per-supplier order splitting in PostgreSQL, an embedded visual store builder via Single Sign-On (SSO), shipping voucher storage on Cloudflare R2, and real-time operational chat.',
         highlights: [
-          'Production traction across 4 LATAM countries (PEN, COP, MXN, USD): +3,100 processed orders, +320 active stores (/store/[slug]), and +650 users under RBAC (Admin, Country Manager, Supplier, Carrier, Client)',
-          'Atomic multi-supplier Order Splitting engine in Prisma + PostgreSQL that partitions mixed carts (ORD-xxx-1, ORD-xxx-2), deducts concurrent stock, and links logistics vouchers in Cloudflare R2 (S3)',
-          'Embedded visual storefront builder powered by Luthor SSO (silent token refresh via postMessage) plus smart catalog inheritance with volume bundle rules (2x, 3x)',
-          'Server-side ad attribution via Meta Conversions API (CAPI) + TikTok/Meta Pixels, custom funnel telemetry in Apache ECharts, and contextual per-order real-time chat (Socket.IO)',
+          'Live production across 4 countries and local currencies (PEN, COP, MXN, USD) with 3,100+ orders, 320+ stores, and dedicated roles for admins, suppliers, carriers, and sellers',
+          'Automatic cart splitting: when a customer buys items from different suppliers, the system creates separate logistics orders and deducts stock immediately',
+          'Embedded visual store builder without requiring a second login, plus a smart catalog with validated minimum prices and bundle promos',
+          'Server-side ad tracking with Meta Conversions API (CAPI), conversion analytics, and direct chat inside every order',
         ],
         industryTags: ['ecommerce', 'multinivel'],
         techTags: ['automation', 'analytics', 'realtime'],
         stack: [
-          'Next.js 14',
-          'React 18',
-          'TypeScript',
-          'NestJS 10',
-          'Prisma ORM',
-          'PostgreSQL',
-          'Cloudflare R2 (S3)',
-          'Socket.IO',
-          'Apache ECharts',
-          'Meta CAPI & TikTok Pixel',
+          'Multi-Supplier Order Splitting',
+          'Multi-Tenant SSO Store Builder',
+          'Meta CAPI & Apache ECharts',
+          'Cloudflare R2 & Socket.IO',
         ],
         statusLabel: '+3,100 Orders · +320 Active Stores in LATAM',
         previewType: 'ecommerce-saas',
@@ -2804,7 +3033,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'soul-link-super-app',
-        title: 'Soul Link: Cross-Platform Gamified Learning, Geo-Mapping & Community Super-App',
+        title: 'Soul Link: Gamified Learning, Maps & Community Super-App',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://thesoullink.online',
@@ -2812,30 +3041,36 @@ const enContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Soul Link (thesoullink.online) cross-platform iOS, Android, and Web Super-App featuring Duolingo-style gamified learning, offline interactive reader with Text-to-Speech, real-time geolocation maps, and professional talent directory built as Principal Developer by Victor Alvarez',
+        ownership: {
+          teamScope:
+            'Led product design and core architecture, coordinating 2 supporting developers and generative AI workflows for illustrations.',
+          personalModules:
+            'Built the shared architecture for iOS, Android, and Web, the 60 FPS Duolingo-style gamified learning map, the offline reader with voice playback, the nearby group locator map, and the admin dashboard.',
+          hardestChallenge:
+            'Making a single shared codebase run just as smoothly on iOS, Android, and Web while combining native geolocation maps, 60 FPS animations, and offline voice reading.',
+          productImpact:
+            'Launched a cross-platform app bringing gamified education, local group maps, and a professional services directory together in one place.',
+        },
         seoDescription:
           'Soul Link (thesoullink.online): Cross-platform community Super-App (iOS, Android, and Web) built with React Native 0.86, Expo SDK 57, Expo Router, React 19, and TypeScript 6.0. Unifies Duolingo-style gamified education, an offline interactive Bible reader with Text-to-Speech (TTS), real-time geolocation maps, a community talent directory, and an RBAC admin dashboard. Role: Principal Developer.',
-        category: 'Cross-Platform Super-App (iOS / Android / Web) · Gamified EdTech · Geo-Maps & Community',
+        category: 'Cross-Platform App (iOS / Android / Web) · Gamified EdTech · Geo-Maps',
         summary:
-          'Cross-platform Super-App (iOS, Android, and Web) designed to digitize, connect, and gamify community life: combines a Duolingo-style gamified learning engine, an interactive offline reader with Text-to-Speech (TTS), real-time geolocation for local groups, a community professional directory, and a full RBAC administrative dashboard.',
+          'Cross-platform app (iOS, Android, and Web) to learn and connect in community: features a Duolingo-style challenge map, an offline reader with voice synthesis, a local group finder map, and a professional talent directory.',
         architectureNotes:
-          'Engineered as Principal Developer with React Native 0.86, Expo SDK 57, Expo Router, React 19, and TypeScript 6.0 using platform-specific isomorphic components (.native.tsx and .web.tsx), 60 FPS animations via react-native-reanimated, haptic feedback (expo-haptics), modular Context state architecture (Auth, Game, Spiritual, Theme, i18n), and hybrid persistence (expo-secure-store / AsyncStorage).',
+          'Shared mobile and web codebase built with React Native and Expo, featuring 60 FPS animations with Reanimated, haptic feedback, local offline database storage, and platform-adapted maps.',
         highlights: [
-          'Gamified Learning Engine (Duolingo-Style): interactive winding-path progression map (winding-path-map.tsx) with dynamic level generation, daily streaks, XP, lives, unlockable badges, an evolving spiritual growth tree, and an interactive companion mascot',
-          'Offline Interactive Reader with Audio & Text-to-Speech (TTS): optimized local database with advanced search, version switching, multi-color verse highlighting, contextual study notes, and integrated TTS audio playback (expo-speech / expo-audio)',
-          'Isomorphic Geolocation (.native / .web) & Community Talent Directory (Conecta): cross-platform interactive maps (react-native-maps and web adaptation) with distance calculation, plus a community marketplace featuring portfolios, trust badges, reviews, and quote requests',
-          'Social Prayer Wall, QR Multiplication & RBAC Admin Console: interactive community wall, organic growth via dynamic QR invitations (react-native-qrcode-svg), and an administrative dashboard with map coordinate pickers and community metrics',
+          'Duolingo-style learning: interactive level path with daily streaks, experience points, lives, badges, and an animated mascot',
+          'Offline reader with built-in voice: fast search, color highlighting, personal notes, and read-aloud audio',
+          'Group Map & Talent Directory: geolocation for nearby meetups and a directory of community professionals with portfolios and reviews',
+          'Community wall, QR code invitations, and an admin panel with metrics and map location management',
         ],
         industryTags: ['elearning'],
         techTags: ['automation', 'realtime', 'analytics'],
         stack: [
           'React Native 0.86 & Expo SDK 57',
-          'React 19 & TypeScript 6.0',
-          'Expo Router (Native + Web)',
-          'React Native Reanimated (60 FPS)',
-          'React Native Maps & Geo-Distance',
-          'Expo Speech (TTS) & Audio',
-          'Expo SecureStore & AsyncStorage',
-          'RBAC Admin & Dynamic QR',
+          'Reanimated (60 FPS Gamification)',
+          'Isomorphic Geo-Maps (Native/Web)',
+          'Offline TTS & Audio Engine',
         ],
         statusLabel: 'thesoullink.online — iOS, Android & Web Super-App',
         previewType: 'elearning-mlm',
@@ -2843,7 +3078,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'luthor-web-builder-saas',
-        title: 'Luthor Web Builder: Visual Website Builder & Multi-Tenant SaaS Infrastructure',
+        title: 'Luthor Web Builder: Visual Website Builder for SaaS Platforms',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2026 — Present',
         liveUrl: 'https://webbuilder-luthor.vercel.app',
@@ -2851,28 +3086,35 @@ const enContent: PortfolioContent = {
         imageFit: 'contain',
         imageAlt:
           'Luthor Web Builder (webbuilder-luthor.vercel.app) multi-tenant B2B SaaS visual drag-and-drop website builder with SSO, PostgreSQL, and Cloudflare R2 founded and engineered by Victor Alvarez',
+        ownership: {
+          teamScope:
+            '100% solo development: designed and coded the entire visual website builder end-to-end on my own.',
+          personalModules:
+            'Built the drag-and-drop editing canvas with mobile/desktop previews, automatic PostgreSQL saving, Single Sign-On (SSO) to embed it inside other platforms, and 1-click publishing.',
+          hardestChallenge:
+            'Designing the visual engine so it could be embedded seamlessly inside other systems (such as Gibor Shop), automatically provisioning the user’s account and store without asking for a second login.',
+          productImpact:
+            'Allowed agencies and hundreds of sellers to customize and publish their own sales pages in minutes without touching code.',
+        },
         seoDescription:
           'Luthor Web Builder (webbuilder-luthor.vercel.app): Multi-tenant B2B SaaS visual website builder designed for digital agencies, developers, and enterprise SaaS ecosystems. Features a drag-and-drop responsive engine, PostgreSQL auto-save persistence, Single Sign-On (SSO) tenant provisioning, JSON layout export, and Cloudflare R2 storage. Role: Founder & Lead Product Engineer.',
-        category: 'Developer Tools · No-Code Visual Website Builder · Multi-Tenant SaaS & SSO Infrastructure',
+        category: 'No-Code Website Builder · Multi-Tenant SaaS · SSO Infrastructure',
         summary:
-          'B2B SaaS platform for creating, managing, and publishing responsive websites through a no-code drag-and-drop visual editor, engineered for digital agencies and enterprise platforms with multi-tenant architecture, Single Sign-On (SSO), automatic PostgreSQL persistence, JSON layout export, and Cloudflare R2 storage.',
+          'Drag-and-drop visual website builder designed both for digital agencies and for embedding inside other SaaS platforms, featuring auto-save and instant publishing.',
         architectureNotes:
-          'Founded and architected in Next.js and TypeScript featuring a JSON visual component tree serialization engine, real-time multi-breakpoint responsive editing, automatic transactional persistence in PostgreSQL, multi-tenant SSO user provisioning for embedding into external SaaS platforms, and Cloudflare R2 asset storage.',
+          'Engine that converts visual blocks into lightweight JSON structures in real time, with mobile, tablet, and desktop previews, PostgreSQL auto-save, Cloudflare R2 storage, and automatic SSO access.',
         highlights: [
-          'Visual Drag-and-Drop Editor & Responsive Design Engine: interactive real-time canvas for arranging and styling visual components with live desktop, tablet, and mobile breakpoint previews without writing code',
-          'Multi-Tenant Architecture & SSO Integration: organization-scoped tenancy with Single Sign-On and automated user provisioning to embed the website builder directly into existing B2B SaaS ecosystems',
-          'Persistent Layout Management, One-Click Publishing & JSON Export: continuous auto-save in PostgreSQL, structured JSON layout serialization, Cloudflare R2 cloud asset storage, and one-click public URL publishing',
+          'No-code visual editor: build pages by dragging blocks and preview how they look on desktop, tablet, and mobile in real time',
+          'Ready to embed in other SaaS products: includes Single Sign-On (SSO) so partner platforms can offer a native page builder to their users',
+          'Continuous cloud auto-save, JSON template export, and 1-click publishing to a live URL',
         ],
         industryTags: ['saas', 'b2b'],
         techTags: ['automation', 'realtime'],
         stack: [
-          'Next.js & React',
-          'TypeScript',
-          'Visual Drag & Drop AST / JSON Engine',
-          'PostgreSQL & Auto-Save Persistence',
+          'Drag & Drop AST / JSON Engine',
           'Multi-Tenant SSO Provisioning',
+          'PostgreSQL Auto-Save Engine',
           'Cloudflare R2 Storage',
-          'Tailwind CSS & Google Fonts API',
         ],
         statusLabel: 'webbuilder-luthor.vercel.app — Multi-Tenant SaaS Live',
         previewType: 'ecommerce-saas',
@@ -2880,7 +3122,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'lapzo-lernit-hrtech',
-        title: 'Lapzo (Lernit): Enterprise Talent Management, LMS/LXP & Performance Platform',
+        title: 'Lapzo (Lernit): Enterprise Talent, Training & Performance Platform',
         role: 'Full-Stack Senior Developer',
         dateRange: 'May 2021 — Jan 2022',
         liveUrl: 'https://www.lapzo.com',
@@ -2901,28 +3143,35 @@ const enContent: PortfolioContent = {
             alt: 'Lapzo (Lernit) enterprise platform displaying competency mapping, performance metrics, OKRs, and corporate LMS/LXP course catalog.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Contributed as a Senior Full-Stack Developer within an engineering team of 6 to 12+ developers focused on enterprise clients.',
+          personalModules:
+            'Developed key corporate training modules (SCORM player, learning paths, and certificates), 360° Performance Reviews, 9-Box talent matrices, OKR tracking, and executive reports.',
+          hardestChallenge:
+            'Optimizing 360° review queries and course progress reports so they remained fast when hundreds of thousands of employees across 300+ companies logged in during evaluation cycles.',
+          productImpact:
+            'Helped scale the talent platform used by 300+ major enterprises across Mexico and Latin America (including Mazda, OXXO, Rotoplas, DEACERO, and Tec de Monterrey).',
+        },
         seoDescription:
           'Lapzo / Lernit (lapzo.com): B2B Enterprise HR Tech and Talent Management platform (+300 enterprise clients including Mazda, OXXO, Rotoplas, DEACERO, and Tecnológico de Monterrey) integrating LMS/LXP, 360° Performance Reviews, 9-Box, Competency Management, OKRs, and AI-powered learning. Role: Full-Stack Senior Developer.',
-        category: 'HR Tech · Enterprise B2B · EdTech & Human Capital Management',
+        category: 'HR Tech · Enterprise B2B · Corporate LMS & Performance',
         summary:
-          'Leading B2B Enterprise HR Tech ecosystem trusted by 300+ organizations (including Mazda, OXXO, Rotoplas, DEACERO, and Tecnológico de Monterrey). Unifies corporate training (LMS/LXP), performance management (360° reviews & 9-Box), competency mapping, OKR tracking, and AI-powered learning analytics.',
+          'Corporate HR and training platform used by 300+ leading companies (Mazda, OXXO, Rotoplas, DEACERO, Tec de Monterrey) to manage courses, 360° reviews, 9-Box talent matrices, and OKR goals.',
         architectureNotes:
-          'Senior Full-Stack engineering across the multi-tenant modular architecture for corporate learning (SCORM, custom learning paths, certifications), performance and competency evaluation engines, HR workflow automation, and executive analytics dashboards.',
+          'Multi-tenant architecture for SCORM course playback, custom learning paths, competency-based performance evaluation engines, automated reminders, and dashboards for HR directors.',
         highlights: [
-          'Learning Management System (LMS/LXP) & AI-Powered Learning: course authoring, SCORM content delivery, certifications, personalized learning paths, gamification, and AI-assisted course generation and recommendations',
-          'Performance & Competency Management: 360° feedback evaluations, 9-Box talent matrices, skill gap identification, and individualized professional development plans',
-          'OKRs, Workflow Automation & Enterprise Analytics: strategic goal and key result tracking, automated training assignments/reminders, and executive HR dashboards powering 300+ enterprise clients',
+          'Corporate Training (LMS/LXP): course catalog, SCORM support, certificate issuance, and role-based learning paths',
+          '360° Performance Reviews & 9-Box Matrix: tools to spot key talent, skill gaps, and individual growth plans',
+          'OKR goal tracking and real-time analytics adopted by 300+ corporate organizations',
         ],
         industryTags: ['elearning', 'b2b'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'React',
-          'Node.js',
-          'TypeScript',
           'LMS / LXP & SCORM Engine',
           'Performance 360° & 9-Box',
           'OKRs & Competency Matrix',
-          'Enterprise Analytics & AI',
+          'Enterprise HR Analytics',
         ],
         statusLabel: '300+ Enterprises (Mazda, OXXO, Rotoplas, Tec de Monterrey)',
         previewType: 'elearning-mlm',
@@ -2930,34 +3179,41 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'retrypay-payment-orchestrator',
-        title: 'Retrypay: Smart Payment Orchestrator & Multi-Acquirer Transaction Router',
+        title: 'Retrypay: Smart Multi-Gateway Payment Router',
         role: 'Frontend Lead',
         dateRange: 'May 2023 — Jun 2024',
         image: '/projects/retrypay/image.png',
         imageAlt:
           'Retrypay smart payment orchestration and multi-gateway transaction routing platform for e-commerce merchants led on the frontend by Victor Alvarez',
+        ownership: {
+          teamScope:
+            'As Frontend Lead I managed a team of 2 to 4 developers working closely with the banking and payments architecture team.',
+          personalModules:
+            'Built the unified payment Checkout (with card tokenization and 3D Secure validation), the visual routing rule builder, and the approval-rate dashboards per bank.',
+          hardestChallenge:
+            'Unifying the different security and 3D Secure flows of multiple banks into a single checkout window capable of retrying a declined payment on another gateway in milliseconds without making the buyer re-enter their card.',
+          productImpact:
+            'Increased the percentage of approved sales for connected online stores by automatically recovering payments declined by the first bank.',
+        },
         seoDescription:
           'Retrypay: Online payment orchestrator and smart transaction router across multiple payment gateways through a single technical integration, helping e-commerce merchants maximize acceptance rates, reduce declines, and boost revenue.',
-        category: 'Payment Orchestration · FinTech · E-Commerce Infrastructure',
+        category: 'Payment Orchestration · FinTech · E-Commerce Checkout',
         summary:
-          'Transaction orchestrator and smart payment router connecting multiple online payment processors through a single technical integration, helping e-commerce merchants increase acceptance rates, reduce false declines, and grow sales.',
+          'Payment orchestrator that connects multiple bank processors in a single integration to automatically retry declined charges and increase online store sales.',
         architectureNotes:
-          'Frontend architecture leadership across the unified checkout experience, visual routing rule builder (Smart Routing & Cascading Retries), and multi-acquirer acceptance and reconciliation dashboards.',
+          'Frontend architecture leadership for the unified checkout, the smart routing rule editor, cascading retries, and multi-gateway reconciliation dashboards.',
         highlights: [
-          'Dynamic Smart Routing and cascading failover retries across multiple payment gateways to recover declined transactions in real time',
-          'Single technical integration checkout abstracting multiple acquirers, local payment methods, tokenization, and 3DS anti-fraud flows',
-          'Merchant orchestration console to configure routing rules, monitor per-gateway acceptance rates, and track revenue recovery metrics',
+          'Cascading retries: if one processor declines a charge, the transaction is instantly routed to a backup gateway',
+          'Single Checkout for merchants that unifies multiple banks, local payment methods, and 3DS anti-fraud checks',
+          'Control panel to configure routing rules and compare which payment gateway approves more sales in real time',
         ],
         industryTags: ['fintech', 'ecommerce', 'b2b', 'saas'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'React',
-          'Next.js',
-          'TypeScript',
-          'Tailwind CSS',
-          'Payment Orchestration SDK',
-          '3DS & Tokenization Flows',
-          'REST APIs & Webhooks',
+          'Smart Payment Routing SDK',
+          'Cascading Failover Retries',
+          '3DS & Card Tokenization',
+          'Multi-Acquirer Webhooks',
         ],
         statusLabel: 'Production Payment Orchestrator',
         previewType: 'crypto-gateway',
@@ -2965,7 +3221,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'gibor-scanner-live-market',
-        title: 'GiborScanner: Algorithmic Market Scanner & Live Signals',
+        title: 'GiborScanner: Live Algorithmic Market Scanner',
         role: 'Principal Developer & Product Developer',
         dateRange: '2026',
         image: '/projects/gibor-scanner/image.png',
@@ -2985,29 +3241,36 @@ const enContent: PortfolioContent = {
             alt: 'GiborScanner displaying interactive BTCUSD 30m chart with automated Bearish ABC pattern overlay, shaded Stop Loss and Take Profit zones (TP1, TP2, TP3), and Signal Control Panel.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo development: designed and coded the entire financial scanner terminal end-to-end on my own.',
+          personalModules:
+            'Coded the automatic harmonic/ABC pattern detector and chart drawer, the live WebSocket connections for Crypto, Metals, and Forex, the risk/reward calculator, and real-time community voting.',
+          hardestChallenge:
+            'Drawing geometric patterns and profit/loss zones directly over live candlesticks to the millisecond, keeping the interface smooth while prices and community votes update simultaneously.',
+          productImpact:
+            'Gave hundreds of traders a web terminal ready to spot live setups with clear entry levels and automatic access control based on their membership tier.',
+        },
         seoDescription:
           'GiborScanner: Real-time algorithmic chart pattern scanner and financial analysis terminal for Crypto, Metals, and Forex built with Next.js 16, React 19, TypeScript 5, amCharts 5, Lightweight Charts, and Firebase.',
         category: 'Live Market · Algorithmic Scanner',
         summary:
-          'Algorithmic scanning terminal that centralizes real-time chart/harmonic pattern detection and actionable trade setups across Crypto, Metals, and Forex, automating risk/reward projection.',
+          'Web terminal that scans Crypto, Metals, and Forex in real time to detect technical chart patterns and automatically draw entry points, Stop Loss, and profit targets.',
         architectureNotes:
-          'Engineered on Next.js 16 (App Router), React 19, and TypeScript 5, orchestrating high-frequency financial rendering engines (amCharts 5, Lightweight Charts, and Apache ECharts) fed by live WebSocket/REST market streams (Binance & Forex). Signal synchronization, live community sentiment, and tier-based access control (Ruby, Black, Diamond) run in real time on Firebase Auth and Firestore.',
+          'High-speed financial charts (amCharts 5 and Lightweight Charts) connected via WebSockets to live market feeds, with instant Firebase sync for alerts, community votes, and membership permissions.',
         highlights: [
-          'Categorized multi-market Watchlist (Crypto BTC/ETH, Gold/Silver, and 12 Forex pairs) with active timeframe signal badges (30m, 1H, 4H)',
-          'High-performance interactive charts with technical drawing tools, automated pattern plotting (e.g., Bullish/Bearish ABC), and shaded Risk vs. Reward zones',
-          'Signal Control Panel featuring Entry Price, Stop Loss, 3 Take Profit targets (TP1–TP3 with % and pips), automated R:R calculation, and one-click clipboard copy',
-          'Real-time social validation (upvotes/downvotes & live comments per signal) and dynamic subscription tier gating (Ruby, Black, Diamond)',
+          'Live watchlist across Crypto (BTC/ETH), Gold/Silver, and 12 Forex pairs on 30m, 1H, and 4H timeframes',
+          'Automatic pattern drawing on the chart with shaded profit vs. loss zones ready to trade',
+          'Signal card with entry price, Stop Loss, 3 Take Profit levels, automatic risk/reward calculation, and 1-click copy',
+          'Live community voting and comments on every setup, with dynamic access by subscription tier',
         ],
         industryTags: ['live-market', 'crypto', 'multinivel'],
         techTags: ['realtime', 'analytics', 'automation'],
         stack: [
-          'Next.js 16',
-          'React 19',
-          'TypeScript 5',
-          'amCharts 5',
-          'Lightweight Charts',
-          'Firebase',
-          'WebSockets',
+          'Automated Harmonic Scanner',
+          'amCharts 5 & Lightweight Charts',
+          'Multi-Market WebSockets',
+          'Firebase Real-Time Sync',
         ],
         statusLabel: 'GiborScanner — In Production',
         previewType: 'live-market',
@@ -3015,7 +3278,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'identiko-mlm-ecommerce',
-        title: 'Identiko: Multi-Level Marketing (MLM) & E-Commerce Ecosystem',
+        title: 'Identiko: Perfumery E-Commerce Boutique & Affiliate Network',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://www.identiko.network',
@@ -3041,28 +3304,35 @@ const enContent: PortfolioContent = {
             alt: 'Aura Dorada fragrance integrated into the Identiko direct-selling and centralized dropshipping workflow.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo development: built the entire online store, binary commission engine, and partner portal without an external team.',
+          personalModules:
+            'Coded the storefront with dynamic pricing (retail customer vs. distributor), the binary tree with leg point tracking, the weekly commission settlement engine, and the partner virtual office.',
+          hardestChallenge:
+            'Combining retail dropshipping sales and binary compensation rules (personal and group points, rank caps, and up to 50% affiliate discounts) inside a single checkout flow.',
+          productImpact:
+            'Fully digitized sales, shipping, and weekly commission calculations for the distributor network across Colombia from day one.',
+        },
         seoDescription:
           'Identiko (identiko.network): Digital e-commerce and multi-level marketing (MLM) distribution platform for luxury perfumery in Colombia. Unifies a digital storefront, binary compensation plan with PV/BV volume points, leadership ranks, tiered distributor pricing, partner back office, and centralized dropshipping fulfillment. Role: Principal Developer.',
-        category: 'E-Commerce Engineering · Binary MLM Compensation · Direct Selling & Dropshipping',
+        category: 'E-Commerce · Binary MLM Compensation · Direct Selling',
         summary:
-          'Digital e-commerce and multi-level marketing (MLM) distribution platform for luxury perfumery in the Colombian market, unifying a digital storefront, preferential partner pricing, a binary volume compensation plan (PV/BV), leadership rank progression, a distributor back office, and centralized dropshipping fulfillment.',
+          'Online boutique and direct-selling platform for a luxury perfumery brand in Colombia, uniting a public catalog, partner discounts, a binary commission tree, and shipping fulfillment.',
         architectureNotes:
-          'Engineered as Principal Developer in Next.js and TypeScript, integrating the transactional e-commerce storefront with the hierarchical sales network engine (binary tree modeling, PV/BV volume accumulation, weekly commission calculations, rank progression, membership packages, and partner back office).',
+          'E-commerce storefront connected directly to the network engine: every purchase immediately updates binary volume points, rank progression, and weekly commissions in the partner’s virtual office.',
         highlights: [
-          'E-Commerce Storefront & Tiered Partner Pricing: digital perfumery boutique featuring interactive catalogs, membership starter packs, up to 50% preferential distributor discounts, and centralized dropshipping fulfillment',
-          'Binary MLM Compensation & PV/BV Volume Engine: hierarchical binary team structure modeling, automated personal and group volume (PV/BV) calculation, weekly commission payouts, and leadership bonuses',
-          'Distributor Back Office & Leadership Rank Progression: private partner console providing real-time downline visibility, direct sales telemetry, rank progression tracking, and payment integration',
+          'Digital store with tiered pricing: retail sales with sponsor commissions or up to 50% discount for active distributors',
+          'Binary compensation engine: automatic calculation of personal and team volume points (PV/BV), weekly cutoffs, and rank bonuses',
+          'Virtual office for distributors to view their team structure, sales history, and order shipments',
         ],
         industryTags: ['ecommerce', 'multinivel'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js & React',
-          'TypeScript',
-          'Binary MLM Tree & PV/BV Engine',
-          'E-Commerce & Tiered Pricing',
-          'Distributor Back Office',
+          'Binary MLM & PV/BV Engine',
           'Automated Commission Settlement',
-          'Dropshipping & Fulfillment Workflow',
+          'Tiered Affiliate E-Commerce',
+          'Dropshipping Fulfillment Core',
         ],
         statusLabel: 'identiko.network — Production E-Commerce & MLM Network',
         previewType: 'ecommerce-saas',
@@ -3070,7 +3340,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: '4medic-health-ecommerce',
-        title: '4Medic Health: Clinically Backed D2C Supplement Brand & E-Commerce',
+        title: '4Medic Health: Own Brand & Clinical Supplement E-Commerce',
         role: 'Founder & Lead Product Engineer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://4medichealth.com',
@@ -3101,29 +3371,35 @@ const enContent: PortfolioContent = {
             alt: '4Medic Health Focus & Performance Black Coffee Armonía formulated with natural extracts and medical backing.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As founder I built 100% of the e-commerce platform and directly coordinated medical formulation design and manufacturing in Mexico.',
+          personalModules:
+            'Coded the Next.js online store, the catalog manager with Cloudflare R2, the checkout with nationwide shipping rules, technical SEO for search engines, and commercial WhatsApp flows.',
+          hardestChallenge:
+            'Launching a physical proprietary brand of 14+ supplements with batch traceability by connecting manufacturing and inventory with a fast, conversion-focused online store.',
+          productImpact:
+            'Consolidated a proprietary clinical supplement brand with an automated direct-to-consumer sales channel and nationwide shipping across Mexico.',
+        },
         seoDescription:
           '4Medic Health (4medichealth.com): Proprietary D2C supplement brand manufactured in Mexico featuring doctor-designed clinical formulations, batch traceability, and a nationwide E-Commerce storefront built with Next.js, Headless CMS, and Cloudflare R2.',
         category: 'D2C E-Commerce · Own Brand · HealthTech',
         summary:
-          'Proprietary health and supplement brand manufactured in Mexico, featuring doctor-designed clinical formulations and nationwide fulfillment. Powered by a custom high-converting D2C E-Commerce platform (4medichealth.com) with batch quality traceability and encrypted checkout.',
+          'Proprietary brand of clinical supplements formulated with medical specialists and manufactured in Mexico, paired with its own direct-to-consumer online store shipping nationwide.',
         architectureNotes:
-          'D2C storefront engineered with Next.js (App Router), React, TypeScript, and Tailwind CSS, backed by a Headless CMS, Cloudflare R2 media CDN, Schema.org Product/Offer structured data, and nationwide shipping rules.',
+          'Fast-loading D2C store managed via a headless CMS, images served from Cloudflare R2, structured product data for Google, and automated nationwide shipping calculation.',
         highlights: [
-          'Proprietary brand manufactured in Mexico across +14 specialized formulations (Clinical Line, Wellness, Focus & Performance, and Fitness) designed with medical backing and batch traceability',
-          'Custom D2C E-Commerce storefront (4medichealth.com) featuring encrypted payments, automated free nationwide shipping rules (> $1,000 MXN), and direct WhatsApp commerce flows',
-          'SEO-First architecture with dynamic Schema.org (Product & Offer) structured data, Cloudflare R2 edge asset delivery, and conversion telemetry',
+          'Proprietary brand manufactured in Mexico across 14+ specialized formulas (clinical line, wellness, focus, and performance) with per-batch quality control',
+          'Fast, clear online store with automated checkout, free shipping on orders over $1,000 MXN, and direct WhatsApp support',
+          'Catalog optimized with Schema.org markup to display prices and stock availability directly on Google search results',
         ],
         industryTags: ['ecommerce'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js (App Router)',
-          'React',
-          'TypeScript',
-          'Tailwind CSS',
-          'Cloudflare R2 CDN',
-          'Headless CMS',
+          'Next.js D2C Storefront',
+          'Headless CMS & Cloudflare R2',
           'Schema.org E-Commerce SEO',
-          'National Shipping & Checkout',
+          'Automated Checkout & Shipping',
         ],
         statusLabel: '4medichealth.com — Own Brand in Production',
         previewType: 'ecommerce-saas',
@@ -3131,7 +3407,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'invik-bim-contech',
-        title: 'INVIK: B2B ConTech Platform, BIM Engineering Showcase & Custom CMS',
+        title: 'INVIK: B2B BIM Engineering Platform & Custom CMS',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://invik.com.mx',
@@ -3161,27 +3437,35 @@ const enContent: PortfolioContent = {
             alt: '3D BIM coordination for an industrial warehouse and 500 kVA electrical substation and power distribution network.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Designed the overall architecture and personally coded the entire backend and custom CMS, coordinating 1 to 2 developers on the web interface.',
+          personalModules:
+            'Built the custom API and Headless CMS in NestJS, Prisma, PostgreSQL, and AWS S3, the dynamic template engine for technical articles, and the BIM project catalog by sector and regulation.',
+          hardestChallenge:
+            'Creating a flexible content manager that lets civil engineers and architects publish installation comparisons, high-res models, and case studies on their own without needing a developer.',
+          productImpact:
+            'Strengthened INVIK’s commercial presence in front of industrial and corporate clients (such as KFC Mexico), giving their team full autonomy to update their portfolio and win B2B bids.',
+        },
         seoDescription:
           'INVIK (invik.com.mx): Mexican B2B ConTech and multidisciplinary engineering firm specializing in Building Information Modeling (BIM). Interactive web platform and custom Headless CMS built with Next.js, NestJS 11, Prisma 7, PostgreSQL, and AWS S3. Role: Principal Developer.',
-        category: 'ConTech · Building Information Modeling (BIM) · B2B Engineering CMS',
+        category: 'ConTech · BIM Engineering · Custom Headless CMS',
         summary:
-          'Mexican B2B engineering firm specializing in multidisciplinary Building Information Modeling (BIM) and digital construction across architecture, structural engineering, 500 kVA industrial electrical systems, plumbing, HVAC, and fire protection for residential, industrial, and retail clients (including KFC Mexico).',
+          'Digital platform and custom content manager for a BIM engineering firm specializing in industrial warehouses, residential towers, and commercial franchises (including KFC Mexico).',
         architectureNotes:
-          'Engineered as Principal Developer both the interactive B2B web platform and a custom Headless CMS backend (invik-api in NestJS 11, Prisma 7, PostgreSQL, JWT auth, and AWS S3) managing project portfolios by construction sector, compliance regulations, engineering software catalogs, dynamic JSON-templated blog posts, and B2B quoting workflows.',
+          'Interactive website connected to a custom Headless CMS in NestJS, PostgreSQL, and AWS S3 to manage projects by building type, construction codes, software used, and technical articles with configurable templates.',
         highlights: [
-          'Interactive B2B Engineering Experience: features an interactive MEP installation comparator, technical project sheets (500 kVA Industrial Substations, 11-Unit Residential Towers, KFC Dark Kitchens), and B2B lead capture',
-          'Custom Headless CMS in NestJS 11 + Prisma 7 + PostgreSQL: full CRUD management for BIM project portfolios (Portfolio & ProjectType), building regulations, engineering software stacks, and S3 media storage',
-          'Dynamic Template Publishing & Technical SEO: case study and blog engine supporting customizable JSON layout templates (templateId / templateData), view tracking, and structured SEO metadata',
+          'Interactive showcase of engineering projects (500 kVA electrical systems, HVAC, gas, and fire protection) with visual installation comparators',
+          'Custom CMS so the engineering team can update their project catalog, building codes, and clients without touching code',
+          'Technical blog with dynamic templates and SEO optimization to attract industrial and corporate tenders',
         ],
         industryTags: ['b2b', 'real-estate'],
         techTags: ['automation', 'analytics'],
         stack: [
-          'Next.js & React',
-          'NestJS 11',
-          'TypeScript 5',
-          'PostgreSQL & Prisma 7',
-          'AWS S3 SDK',
-          'Custom Headless CMS & JWT',
+          'Custom Headless CMS (NestJS 11)',
+          'Dynamic JSON Template Engine',
+          'PostgreSQL, Prisma 7 & AWS S3',
+          'Interactive BIM / MEP Viewer',
         ],
         statusLabel: 'invik.com.mx — Production ConTech & CMS',
         previewType: 'real-estate',
@@ -3189,7 +3473,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'coral-de-plata-real-estate',
-        title: 'Coral de Plata: PropTech Platform & Residential Development in Manzanillo (Alianza)',
+        title: 'Coral de Plata: Real Estate Platform & Interactive Master Plan',
         role: 'Principal Developer',
         dateRange: '2026',
         liveUrl: 'https://www.coraldeplata.com',
@@ -3219,28 +3503,35 @@ const enContent: PortfolioContent = {
             alt: 'Interactive master plan showing the low-density 63 residential lots and green areas of Coral de Plata.',
           },
         ],
+        ownership: {
+          teamScope:
+            '100% solo development: designed and coded the entire real estate platform, interactive master plan, and SEO strategy on my own.',
+          personalModules:
+            'Built the interactive 63-lot master plan viewer, the 4K drone and render gallery, the automatic lead attribution system per sales advisor routing to WhatsApp, and the investment content hub.',
+          hardestChallenge:
+            'Delivering aerial drone videos and 4K renders that load instantly on mobile phones while remembering which sales advisor invited the buyer throughout their entire visit so they never lose their commission.',
+          productImpact:
+            'Accelerated buyer lead capture for all 63 residential lots in Manzanillo, sending each prospect straight to the WhatsApp of the advisor who shared the link.',
+        },
         seoDescription:
           'Coral de Plata (coraldeplata.com): PropTech digital platform and real estate commercialization ecosystem for the Coral de Plata residential development in Manzanillo, Colima (Alianza). Features 63 exclusive lots, 4K cinematic drone gallery, interactive Master Plan viewer, dynamic sales advisor attribution, and a real estate investment SEO hub. Role: Principal Developer.',
-        category: 'PropTech · Real Estate Development · Residential Master Plan · Lead Attribution',
+        category: 'PropTech · Real Estate Master Plan · Lead Attribution',
         summary:
-          'PropTech digital platform and real estate investment ecosystem for Coral de Plata, an exclusive 63-lot residential development in the northern growth corridor of Manzanillo, Colima (Alianza), featuring a 4K cinematic drone gallery, interactive Master Plan viewer, dynamic sales advisor attribution, and an SEO content hub.',
+          'Commercial platform for a 63-lot residential development in Manzanillo, Colima, featuring an interactive master plan, 4K drone tours, and automatic lead routing per sales advisor.',
         architectureNotes:
-          'Engineered as Principal Developer using Next.js (App Router) and TypeScript with Server Actions for lead capture, multi-advisor attribution via URL query parameters with direct WhatsApp routing, 4K aerial video player, touch/cursor zoomable lot distribution map, and a technical SEO content cluster targeting Pacific coast real estate investors.',
+          'Built with Next.js using Server Actions for lead capture, persistent advisor attribution that routes inquiries straight to their WhatsApp, a touch-zoomable lot map, and an SEO hub for real estate investors.',
         highlights: [
-          'Immersive PropTech Experience & 4K Cinematic Gallery: aerial drone tours, 4K flyovers, and hyper-realistic renders of the monumental entrance, urbanization, and Clubhouse with Next/Image WebP optimization',
-          'Interactive Master Plan Viewer & Dynamic Advisor Attribution: high-resolution zoomable map of all 63 low-density residential lots, personalized sales advisor routing, and Server Action lead forms',
-          'Real Estate Investment SEO Hub & Conversion Analytics: specialized editorial cluster covering Manzanillo port & ANAM customs appreciation, the Vallarta-Colima corridor, legal certainty, and GA4 / Google Ads conversion tracking',
+          '4K drone tours and gallery of the gated entrance, roads, and Clubhouse optimized for fast mobile loading',
+          'Interactive master plan to explore all 63 lots paired with custom referral links for every sales advisor',
+          'Investment article hub covering property appreciation in Manzanillo connected to Google Analytics and ad campaigns',
         ],
         industryTags: ['real-estate'],
         techTags: ['analytics', 'automation'],
         stack: [
-          'Next.js (App Router)',
-          'React & TypeScript',
-          'Tailwind CSS & Motion',
-          'Next.js Server Actions',
+          'Interactive 63-Lot Master Plan',
           'Dynamic Advisor Attribution',
-          'Technical SEO & Schema',
-          'Google Analytics 4 & Ads Tracking',
+          'Next.js Server Actions',
+          'Technical Real Estate SEO',
         ],
         statusLabel: 'coraldeplata.com — Manzanillo Residential (Alianza)',
         previewType: 'real-estate',
@@ -3248,7 +3539,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'aura-series-mediatech',
-        title: 'Aura Series & Premios Aura: Digital Entertainment, Streaming & Media Ecosystem',
+        title: 'Aura Series & Premios Aura: Entertainment & Streaming Portal',
         role: 'Principal Developer',
         dateRange: '2024',
         liveUrl: 'https://auraseries.com',
@@ -3267,27 +3558,35 @@ const enContent: PortfolioContent = {
             alt: 'Premios Aura gala stage by Aura Series (FCO Group) featuring LED screens and production lighting honoring Spanish-language streaming series.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Led the core architecture and primary engines, coordinating 4 additional developers responsible for integrations and the editorial CMS.',
+          personalModules:
+            'Personally developed the content recommendation and series/nominee ranking algorithm, as well as the high-availability video upload and streaming workflow.',
+          hardestChallenge:
+            'Handling video uploads and streaming alongside real-time ranking calculations without downtime during the massive traffic spikes of the Premios Aura gala.',
+          productImpact:
+            'Ran smoothly for a community of 1.1 million followers, 50M+ monthly impressions, and over 550M impressions during FCO Group’s annual awards event.',
+        },
         seoDescription:
           'Aura Series & Premios Aura (auraseries.com / premiosaura.com): Digital entertainment, streaming media, and awards ecosystem by FCO Group (creators of the Eliot Awards), reaching 1.1M followers, 50M+ monthly impressions, and 550M+ Premios Aura impressions. Role: Principal Developer.',
-        category: 'Digital Entertainment · Streaming Media · MediaTech · Audience Engagement',
+        category: 'Digital Media · Streaming Portal · High-Traffic Architecture',
         summary:
-          'Digital media and entertainment ecosystem owned by FCO Group (creators of the Eliot Awards) focused on film, series, and Spanish-language streaming platforms, and creator of Premios Aura (reaching 1.1M followers, 50M+ monthly impressions, and 550M+ impressions across the awards gala).',
+          'Editorial portal and official platform for Premios Aura (FCO Group), dedicated to Spanish-language streaming series, reaching 1.1M followers and 550M+ impressions.',
         architectureNotes:
-          'Technical leadership as Principal Developer for the web publishing platform and official Premios Aura portal (auraseries.com / premiosaura.com), high-traffic content management, nominee/production showcases, and multiplatform audience engagement experiences.',
+          'High-traffic web architecture with Edge CDN caching, video upload and streaming pipeline, nominee ranking engine, and editorial CMS for reviews and premieres.',
         highlights: [
-          'Digital Media & Publishing Platform: web architecture and content management system delivering editorial coverage, streaming premieres, exclusive talent interviews, and entertainment trends under high traffic peaks',
-          'Premios Aura Digital Experience: interactive portal showcasing nominees, categories, creative talent, and Spanish-language streaming productions supporting a 550M+ impression media event',
-          'Multiplatform Distribution & Audience Engagement: SEO-first architecture, edge caching, and social distribution integrations serving an ecosystem of 1.1M followers and 50M+ monthly impressions',
+          'High-traffic editorial portal covering streaming premieres, reviews, exclusive interviews, and entertainment trends',
+          'Official Premios Aura website featuring an interactive catalog of categories, nominees, and creative talent (+550M impressions)',
+          'Infrastructure optimized for search engines and viral audience spikes (1.1M followers and 50M+ monthly impressions)',
         ],
         industryTags: ['streaming'],
         techTags: ['analytics', 'automation'],
         stack: [
-          'React & Next.js',
-          'TypeScript',
-          'Headless CMS & Digital Publishing',
-          'High-Traffic CDN & Edge Caching',
-          'SEO & Structured Media Schema',
-          'Interactive Event & Awards Portal',
+          'High-Availability Video Streaming',
+          'Series & Nominee Ranking Engine',
+          'High-Traffic CDN & Edge Cache',
+          'Headless CMS & Media Schema',
         ],
         statusLabel: 'auraseries.com · 1.1M Followers · +550M Impressions',
         previewType: 'elearning-mlm',
@@ -3295,7 +3594,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'martinez-y-de-labra-abogados',
-        title: 'Martínez y de Labra Abogados: LegalTech Digital Transformation, SEO, AI Training & Low-Code Automation',
+        title: 'Martínez y de Labra Abogados: Digital Transformation, SEO & Legal AI',
         role: 'Consultant & Principal Developer',
         dateRange: '2025 — 2026',
         liveUrl: 'https://www.martinezydelabra.com.mx',
@@ -3321,27 +3620,35 @@ const enContent: PortfolioContent = {
             alt: 'High-rise office tower housing Martínez y de Labra Abogados.',
           },
         ],
+        ownership: {
+          teamScope:
+            'Personally directed the technology strategy, AI training programs, and automations, coordinating a team of 2 to 3 people for marketing and news publishing.',
+          personalModules:
+            'Designed and delivered hands-on AI workshops for partners and attorneys, built AI-connected operational automations, and led the website overhaul and SEO positioning across all 6 practice areas.',
+          hardestChallenge:
+            'Bringing generative AI and automation into the daily work of corporate and tax attorneys while protecting strict client confidentiality, achieving real adoption among senior partners.',
+          productImpact:
+            'Sped up document review and client follow-up inside the firm while positioning its 6 specialized practice areas on Google across Guadalajara and Mexico City.',
+        },
         seoDescription:
           'Martínez y de Labra Abogados (martinezydelabra.com.mx): Technology consulting, web engineering, SEO positioning, B2B digital marketing, legal news publishing, corporate Artificial Intelligence training, and low-code workflow automation for a premier Mexican law and financial consulting firm in Guadalajara and Mexico City. Role: Consultant & Principal Developer.',
-        category: 'LegalTech Consulting · Technical SEO & Digital Marketing · AI Training & Low-Code Automation',
+        category: 'LegalTech Consulting · Technical SEO · AI Training & Automation',
         summary:
-          'Comprehensive technology consulting and principal development for Martínez y de Labra Abogados, a prominent Mexican corporate, legal, tax, and financial consulting firm with offices in Guadalajara (Puerta de Hierro) and Mexico City (Lomas de Chapultepec). Spanning web platform evolution, SEO positioning, digital marketing and news publishing, executive AI training programs, and low-code workflow automation.',
+          'Technology consulting and digital modernization for a prominent corporate and tax law firm in Guadalajara and Mexico City, combining web SEO positioning, process automation, and hands-on Artificial Intelligence training for its attorneys.',
         architectureNotes:
-          'Served as Consultant and Principal Developer leading four strategic pillars: (1) web platform engineering, technical SEO positioning, and legal news/bulletin publishing across the firm’s 6 practice divisions, (2) B2B digital marketing strategy, (3) hands-on Artificial Intelligence training workshops for partners, directors, and legal associates, and (4) low-code workflow automations integrated with AI models to streamline internal operations.',
+          'Four-pillar strategy: technical web and SEO optimization across its 6 legal divisions, a legal/tax news hub, practical AI workshops for partners, and automated workflows for prospect follow-up and document handling.',
         highlights: [
-          'Technical SEO, Web Platform & Legal News Hub: organic search positioning across specialized practice areas (Corporate, Tax, Civil/Commercial Litigation, Labor, Criminal, and Public Infrastructure) paired with editorial news and regulatory updates',
-          'Corporate AI Training & Enablement Programs: tailored training workshops for partners and legal teams on leveraging generative AI, document analysis, and AI-assisted legal research securely and effectively',
-          'Low-Code Workflow Automation & AI Integrations: design and deployment of low-code automation pipelines for client intake, marketing communications, information routing, and internal operational productivity',
+          'SEO positioning and editorial news portal across its 6 practice areas (Corporate, Tax, Litigation, Labor, Criminal, and Public Infrastructure)',
+          'Executive AI training: practical training for partners and legal teams on secure document analysis and AI-assisted legal research',
+          'Internal workflow automation to classify leads, streamline client follow-up, and save operational hours across the firm',
         ],
         industryTags: ['b2b', 'ia', 'elearning'],
         techTags: ['ai-rag', 'automation', 'analytics'],
         stack: [
-          'Web Development & Technical SEO',
-          'AI Workflows & Prompt Engineering',
+          'AI Workflows & Legal Prompting',
           'Low-Code Automation Pipelines',
-          'Digital Marketing & Legal News',
-          'Corporate AI Training Programs',
-          'Analytics & Search Console',
+          'Technical SEO & Legal Hub',
+          'Corporate AI Training',
         ],
         statusLabel: 'martinezydelabra.com.mx — LegalTech, SEO, AI & Automation',
         previewType: 'ecommerce-saas',
@@ -3349,7 +3656,7 @@ const enContent: PortfolioContent = {
       },
       {
         id: 'procesos-iq-enterprise',
-        title: 'Procesos IQ: Enterprise ERP Systems, AgriTech (Agro IQ), BI & IoT Automation',
+        title: 'Procesos IQ: Enterprise ERP, Agricultural Control (Agro IQ) & IoT Sensors',
         role: 'Principal Developer',
         dateRange: 'Dec 2016 — Feb 2019',
         liveUrl: 'https://www.procesos-iq.com',
@@ -3375,27 +3682,35 @@ const enContent: PortfolioContent = {
             alt: 'ERP IQ application console integrating CRM, Sales, POS, Inventory, Manufacturing, Accounting & Finance, Invoicing, Payroll, and the AgroIQ Database Connector.',
           },
         ],
+        ownership: {
+          teamScope:
+            'As Principal Developer I coordinated a team of 3 to 5 developers while coding the core field-production modules and their ERP integration.',
+          personalModules:
+            'Developed key Agro IQ and ERP IQ modules: harvest traceability by batch and age, waste and quality control, direct readings from electronic scales and weather stations, and synchronization with inventory and accounting.',
+          hardestChallenge:
+            'Capturing data in agricultural zones with spotty internet and reading industrial scales and weather sensors in real time, syncing everything reliably into the company’s central accounting system.',
+          productImpact:
+            'Digitized operations from field harvest to invoicing, eliminating manual paper logs and untracked product shrinkage across agro-industrial companies.',
+        },
         seoDescription:
           'Procesos IQ (procesos-iq.com): B2B enterprise software, Industry 4.0, AgriTech (Agro IQ), modular ERP (ERP IQ), Business Intelligence, and IoT hardware integration ecosystem (industrial scales, weather stations, biometrics) across Latin America. Role: Principal Developer.',
-        category: 'Enterprise Software · Industry 4.0 · AgriTech · ERP & IoT',
+        category: 'Enterprise ERP · AgriTech · IoT Hardware Integration',
         summary:
-          'B2B digital transformation and enterprise systems ecosystem in Latin America unifying agricultural and industrial management (Agro IQ), modular Enterprise Resource Planning (ERP IQ), Business Intelligence, and direct hardware/IoT integration (electronic scales, weather stations, GPS tracking, and biometrics).',
+          'Enterprise software suite for Latin American agribusinesses that connects field production control (Agro IQ) and physical scales/sensors directly with accounting, inventory, and invoicing (ERP IQ).',
         architectureNotes:
-          'Technical leadership as Principal Developer across the web and mobile platforms, modular ERP architecture (accounting, inventory, production costing, invoicing, HR), field data synchronization, and industrial hardware/IoT sensor telemetry.',
+          'Web and mobile platform connected to a modular ERP (accounting, costs, inventory, payroll, and invoicing), featuring offline-ready field sync and direct readings from electronic scales and weather stations.',
         highlights: [
-          'Agro IQ (AgriTech & Industry 4.0): real-time agricultural production control with per-batch and age traceability, waste/rejection tracking, quality inspections, and direct integration with electronic scales and weather stations',
-          'ERP IQ (Enterprise Resource Planning): modular enterprise platform covering accounting, invoicing, inventory, manufacturing costs, procurement, HR, and operational planning natively bridged to Agro IQ',
-          'Business Intelligence & IoT Integration: executive operational KPI dashboards, historical data correlation, automated alerting, and field data capture across mobile apps and physical devices',
+          'Agro IQ: real-time agricultural production tracking by batch, waste control, and direct integration with electronic scales and weather stations',
+          'ERP IQ: complete administrative system for accounting, production costs, purchasing, inventory, and payroll fed directly by plant operations',
+          'Executive dashboards with productivity KPIs, operational alerts, and mobile data capture in the field',
         ],
         industryTags: ['b2b', 'data-analytics'],
         techTags: ['automation', 'analytics', 'realtime'],
         stack: [
-          'Full-Stack Web & Mobile',
-          'ERP Modular Architecture',
-          'PostgreSQL & Relational DBs',
-          'IoT & Hardware Integration (Scales / Weather)',
-          'Business Intelligence & Dashboards',
-          'REST APIs & Field Sync',
+          'Modular ERP & Costing Core',
+          'Agro IQ Batch Traceability',
+          'IoT Scales & Weather Telemetry',
+          'Offline-First Field Sync',
         ],
         statusLabel: 'procesos-iq.com — Production ERP, AgriTech & IoT',
         previewType: 'ecommerce-saas',

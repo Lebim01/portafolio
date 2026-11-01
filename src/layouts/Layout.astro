@@ -237,6 +237,19 @@ const finalJsonLd = structuredData ?? defaultJsonLd;
 
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
+    <script is:inline>
+      document.addEventListener('astro:before-preparation', () => {
+        document.documentElement.style.scrollBehavior = 'auto';
+      });
+      document.addEventListener('astro:after-swap', () => {
+        document.documentElement.style.scrollBehavior = 'auto';
+      });
+      document.addEventListener('astro:page-load', () => {
+        requestAnimationFrame(() => {
+          document.documentElement.style.scrollBehavior = '';
+        });
+      });
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(finalJsonLd)} />
   </head>
   <body class="bg-bg-base text-text-primary antialiased selection:bg-accent/25 selection:text-text-primary">

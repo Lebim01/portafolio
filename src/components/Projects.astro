@@ -73,6 +73,7 @@ const getProjectUrl = (id: string) =>
           return (
             <a
               href={projectHref}
+              data-astro-prefetch
               data-reveal
               data-project-card
               data-project-tags={JSON.stringify(allProjectTags)}
@@ -87,7 +88,6 @@ const getProjectUrl = (id: string) =>
               <div>
                 <!-- Cover Image: Uniform Dark Rest State + Centered Logo -> Crossfades to Real Interface Screenshot on Hover -->
                 <div
-                  transition:name={`project-banner-${project.id}`}
                   class="relative aspect-[16/10] w-full overflow-hidden border-b border-border-subtle/80 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.22),rgba(9,11,18,0.98)_76%)]"
                 >
                   {previewSlide && (
@@ -197,7 +197,6 @@ const getProjectUrl = (id: string) =>
                   <!-- Date Range Badge over Image bottom-left & Expand Icon bottom-right -->
                   <div class="absolute inset-x-3.5 bottom-2.5 z-[3] flex items-center justify-between gap-2">
                     <span
-                      transition:name={`project-date-${project.id}`}
                       class="inline-flex items-center gap-1.5 rounded-[20px] border border-border-subtle/80 bg-bg-base/85 px-2.5 py-0.5 font-mono text-[11px] font-medium text-text-secondary backdrop-blur-md"
                     >
                       <Calendar class="h-3 w-3 text-accent" aria-hidden="true" />
@@ -216,7 +215,6 @@ const getProjectUrl = (id: string) =>
                     {project.role}
                   </p>
                   <h3
-                    transition:name={`project-title-${project.id}`}
                     itemprop="name"
                     class="font-display text-base font-bold leading-snug text-text-primary transition-colors group-hover:text-accent sm:text-lg line-clamp-1"
                   >
