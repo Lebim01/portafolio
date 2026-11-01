@@ -12,7 +12,9 @@ interface Props {
 
 const locale: Locale = Astro.props.locale ?? Astro.locals.locale ?? 'es';
 const { projectsSection, servicesSection } = getPortfolioContent(locale);
-const { items: featuredProjects } = projectsSection;
+const featuredProjects = [...projectsSection.items].sort(
+  (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)),
+);
 
 const tagLabelMap = new Map(
   servicesSection.tags.map((tag) => [tag.id, tag]),
@@ -29,33 +31,20 @@ const getProjectUrl = (id: string) =>
 >
   <div class="container-shell">
     <!-- Compact Section Header -->
-    <div
-      class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
-      data-reveal
-    >
-      <div class="max-w-2xl">
-        <div class="mb-2 inline-flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          <span>{projectsSection.eyebrow}</span>
-          <span class="h-[1px] w-8 bg-accent/70" aria-hidden="true"></span>
-        </div>
-        <h2
-          id="projects-heading"
-          class="font-display text-2xl font-bold tracking-tight text-text-primary sm:text-3xl"
-        >
-          {projectsSection.heading}
-        </h2>
-        <p class="mt-1.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
-          {projectsSection.subtitle}
-        </p>
+    <div class="max-w-2xl" data-reveal>
+      <div class="mb-2 inline-flex items-center gap-3 font-mono text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+        <span>{projectsSection.eyebrow}</span>
+        <span class="h-[1px] w-8 bg-accent/70" aria-hidden="true"></span>
       </div>
-
-      <a
-        href="#contact"
-        class="inline-flex shrink-0 items-center gap-1.5 self-start rounded-[20px] border border-border-subtle bg-surface px-4 py-2 font-mono text-xs font-semibold tracking-wider text-text-primary uppercase transition-all duration-200 hover:border-accent/60 hover:text-accent md:self-auto"
+      <h2
+        id="projects-heading"
+        class="font-display text-2xl font-bold tracking-tight text-text-primary sm:text-3xl"
       >
-        <span>{projectsSection.headerCtaLabel}</span>
-        <ArrowUpRight class="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-      </a>
+        {projectsSection.heading}
+      </h2>
+      <p class="mt-1.5 text-xs leading-relaxed text-text-secondary sm:text-sm">
+        {projectsSection.subtitle}
+      </p>
     </div>
 
     <!-- Minimalist Compact 3-Column Card Grid -->
@@ -70,7 +59,7 @@ const getProjectUrl = (id: string) =>
     >
       {
         featuredProjects.map((project) => {
-          const allProjectTags = [...project.industryTags, ...project.techTags];
+          const allProjectTags = project.industryTags;
           const visibleTags = allProjectTags
             .map((id) => tagLabelMap.get(id))
             .filter(Boolean)
@@ -112,6 +101,15 @@ const getProjectUrl = (id: string) =>
                     aria-hidden="true"
                   />
 
+                  {project.featured && (
+                    <div class="absolute top-2.5 left-3.5">
+                      <span class="inline-flex items-center gap-1.5 rounded-[20px] border border-accent/60 bg-bg-base/90 px-2.5 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-accent uppercase backdrop-blur-md">
+                        <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                        <span>{locale === 'en' ? 'Featured' : 'Destacado'}</span>
+                      </span>
+                    </div>
+                  )}
+
                   <!-- Date Range Badge over Image bottom-left & Expand Icon bottom-right -->
                   <div class="absolute inset-x-3.5 bottom-2.5 flex items-center justify-between gap-2">
                     <span
@@ -130,6 +128,9 @@ const getProjectUrl = (id: string) =>
 
                 <!-- Minimalist Card Body -->
                 <div class="p-4 sm:p-5">
+                  <p class="mb-1 font-mono text-[10px] font-semibold tracking-wider text-accent uppercase line-clamp-1">
+                    {project.role}
+                  </p>
                   <h3
                     transition:name={`project-title-${project.id}`}
                     itemprop="name"
@@ -147,12 +148,12 @@ const getProjectUrl = (id: string) =>
                 </div>
               </div>
 
-              <!-- Max 3 Tags Footer -->
-              <div class="flex flex-wrap items-center gap-1.5 border-t border-border-subtle/60 px-4 py-3 sm:px-5">
+              <!-- Max 3 Tags Footer (Forced Single Line) -->
+              <div class="flex flex-nowrap items-center gap-1.5 overflow-hidden border-t border-border-subtle/60 px-4 py-3 sm:px-5">
                 {visibleTags.map((tagObj) => (
-                  <span class="inline-flex items-center gap-1 rounded-[20px] border border-border-subtle bg-bg-base/75 px-2.5 py-0.5 font-mono text-[10px] font-medium text-text-secondary transition-colors group-hover:border-accent/35 group-hover:text-text-primary">
-                    <span class="text-accent">#</span>
-                    <span>{tagObj!.label}</span>
+                  <span class="inline-flex min-w-0 items-center gap-0.5 whitespace-nowrap rounded-[20px] border border-border-subtle bg-bg-base/75 px-2 py-0.5 font-mono text-[10px] font-medium text-text-secondary transition-colors group-hover:border-accent/35 group-hover:text-text-primary">
+                    <span class="shrink-0 text-accent">#</span>
+                    <span class="truncate">{tagObj!.label}</span>
                   </span>
                 ))}
               </div>

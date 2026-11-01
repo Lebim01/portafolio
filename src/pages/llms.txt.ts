@@ -42,6 +42,7 @@ export const GET: APIRoute = () => {
     ...es.projectsSection.items.flatMap((p) => [
       `### ${p.title} (${p.dateRange})`,
       `- URL: https://victoralvarez.dev/proyectos/${p.id}`,
+      `- Role: ${p.role}`,
       `- Category: ${p.category} | Status: ${p.statusLabel}`,
       `- Description: ${p.seoDescription}`,
       `- Architecture: ${p.architectureNotes}`,
@@ -53,6 +54,7 @@ export const GET: APIRoute = () => {
     ...en.projectsSection.items.flatMap((p) => [
       `### ${p.title} (${p.dateRange})`,
       `- URL: https://victoralvarez.dev/en/projects/${p.id}`,
+      `- Role: ${p.role}`,
       `- Category: ${p.category} | Status: ${p.statusLabel}`,
       `- Description: ${p.seoDescription}`,
       `- Architecture: ${p.architectureNotes}`,
